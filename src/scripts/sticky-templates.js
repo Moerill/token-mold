@@ -92,6 +92,9 @@ export const initStickyTemplates = function() {
 			// Move each template by the same distance the token moved
 			templateIds.forEach(async id => {
 				const template = canvas.scene.getEmbeddedEntity("MeasuredTemplate", id);
+				// template not found? skip
+				if (!template)
+					return;
 				let data = {};
 				// Rotate template around token if flag is set
 				if (template.t !== "rect" && dAlpha !== 0 && getProperty(template, "flags.token-mold.sticky-templates.rotate") === true) {
