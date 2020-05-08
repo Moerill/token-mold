@@ -16,7 +16,7 @@ On creation each Token will fit snuggly into the pattern of your mold.
 - [Automatic token scaling](#automatic-token-scaling) according to creature size and map grid distance.  (dnd5e and pf2e only)
 
 ## Installation
-- Copy [https://gitlab.com/moerills-fvtt-modules/token-mold/raw/master/module.json](https://gitlab.com/moerills-fvtt-modules/token-mold/raw/master/module.json) into the module installer inside foundry
+- Copy [https://raw.githubusercontent.com/Moerill/token-mold/master/src/module.json](https://raw.githubusercontent.com/Moerill/token-mold/master/src/module.json) into the module installer inside foundry
 - Press install and wait for it to finish
 - Start your world and activate the module
 
