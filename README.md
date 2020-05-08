@@ -1,7 +1,5 @@
 # Token Mold
-<img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/moerill/token-mold?style=for-the-badge">  
-<img alt="GitHub" src="https://img.shields.io/github/license/moerill/token-mold?style=for-the-badge">  
-<img alt="GitHub Releases" src="https://img.shields.io/github/downloads/moerill/token-mold/latest/total?style=for-the-badge">  
+<img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/moerill/token-mold?style=flat-square"> <img alt="GitHub" src="https://img.shields.io/github/license/moerill/token-mold?style=flat-square"> <img alt="GitHub Releases" src="https://img.shields.io/github/downloads/moerill/token-mold/latest/total?style=flat-square">  
 
 
 What is a foundry without its molds? This module provides you with a customizable mold for your Tokens.  
