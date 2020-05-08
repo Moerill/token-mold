@@ -1,0 +1,6 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([["welcome-screen"],{"./src/scripts/welcome-screen.js":
+/*!***************************************!*\
+  !*** ./src/scripts/welcome-screen.js ***!
+  \***************************************/
+/*! exports provided: default */function(e,t,s){"use strict";function n(){const e=game.modules.get("token-mold"),t=e.id,s=e.data.title,n=e.data.version;game.settings.register(s,"version",{name:s+" Version",default:"0.0.0",type:String,scope:"world"});const i=game.settings.get(s,"version");if(isNewerVersion(n,i)){class e extends Application{static get defaultOptions(){const e=super.defaultOptions;return e.template=`modules/${t}/templates/welcome-screen.html`,e.resizable=!0,e.width=450,e.height=600,e.classes=["welcome-screen"],e.title=s+" - Welcome Screen",e}activateListeners(e){super.activateListeners(e),e.find(".show-again").on("change",e=>{let t="0.0.0";e.currentTarget.checked&&(t=n),game.settings.set(s,"version",t)})}}(new e).render(!0)}}s.r(t),s.d(t,"default",(function(){return n}))}}]);
+//# sourceMappingURL=welcome-screen.6377.js.map

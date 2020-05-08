@@ -1,0 +1,39 @@
+<style>
+.welcome-screen a[href] {
+    color: #4a52ca;
+}
+.welcome-screen .window-content > * {
+	flex: 0;
+}
+</style>
+
+<h1>Thank you for using Token Mold!</h1>
+<p>Make sure to read the <a href="https://github.com/Moerill/token-mold#token-mold">README</a>, to get an overview of Token Molds features.</p>
+        <h2>Bugs? Issues?</h2>
+        <p>Take a look at the <a href="https://github.com/Moerill/token-mold#faq">FAQ</a>. If this does not help, read and follow <a href="https://github.com/Moerill/token-mold#bug-reporting">these instructions</a>.
+        <h2>Suggestions? Feature Requests?</h2>
+        <p>Currently planned features (and bugs) are on the <a href="https://github.com/Moerill/token-mold/issues">GitHubs Issue Board</a>. Please check the issues if your suggestion does already exist. If it does, give it a thumbsup, else create an issue for it and label it as suggestion.</p>
+
+				<p style="font-weight: bold; text-align: right;">Best regards, <br>Moerill</p>
+				<h2></h2>
+				<p style="display: flex; flex-flow: row nowrap; align-items: center; justify-content: flex-start;"><input type="checkbox" class='show-again' id="welcome-screen-show-again"/> <label for="welcome-screen-show-again">Don't show this screen again until next update.</label></p>
+				<p style="text-align: right">Want to support development? <a href="https://github.com/Moerill/token-mold#support-the-development">Click here</a></p>
+				<h2></h2>
+<h1>Changelog v2.6:</h1>
+<ul>
+	<li><em>Important</em>: Changed from GitLab to GitHub. The new Repositories link is <a href="https://github.com/Moerill/token-mold">https://github.com/Moerill/token-mold</a>. For issues and suggestions please use the githubs issue board.
+	</li>
+	<li>Added a reapply button to the quick settings. This button does reapply all current settings to the selected tokens, as if they were newly placed onto the scene.</li>
+	<li>Added some info and links to the GitHub page to the settings menu.</li>
+	<li>Added ability to randomize horizontal and vertical mirroring.</li>
+	<li>Now using Webpack</li>
+	<li>Fixed some issues when loading the dictionary
+		<ul>
+			<li>Split it into multiple smaller parts</li>
+			<li>Import now using import statements instead of the fetch API, resulting in hopefully more reliable results.</li>
+			<li>Only loading the dictionary, when the setting to use it is set.</li>
+		</ul>
+	</li>
+	<li>Fixed not being able to set the configs for token bars.</li>
+	<li>Switched to the not so new TabsV2 for the application class.</li>
+</ul>
