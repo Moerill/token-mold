@@ -107,6 +107,9 @@ Also thanks to:
 * Ben Howard for extending the english adjective list massively
 * @Cosmo Corban for the spanish adjectives
 
+Thanks to N.van Oosten for his ![foundry project creator](https://gitlab.com/foundry-projects/foundry-pc/create-foundry-project) which i'm using in a modified version for my building and publishing workflow.
+
+
 ## Bug Reporting
 Go to the [GitHub's issue board](https://github.com/Moerill/token-mold/issues) and check if the Bug is already reported. If not create a new issue, with at least the following information:
 1. Token Mold version
