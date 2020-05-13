@@ -121,6 +121,7 @@ Go to the [GitHub's issue board](https://github.com/Moerill/token-mold/issues) a
 	- Console errors? (F12 or F11 in most browsers)
 5. Workflow to recreate the bug
 6. Helpful videos or screenshots if possible
+7. Either activate notifications, stay active or post your discord handle so i can get back to you for further questions
 
 
 ## Licensing
