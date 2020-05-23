@@ -25,6 +25,7 @@ export class TokenMoldOverlay extends BasePlaceableHUD {
 	}
 
 	setPosition() {
+		if (!this.object) return;
 
 	  const position = {
 	    width: this.object.w,

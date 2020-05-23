@@ -48,6 +48,7 @@ export default class TokenMold {
                 return;
 
             Hooks.on('deleteToken', (...args) => {
+                if (!canvas.hud.TokenMold) return;
                 canvas.hud.TokenMold.clear();
             })
 
@@ -250,7 +251,7 @@ export default class TokenMold {
             this._setCreatureSize(data, actor, scene.id);
 
         if (!game.user.isGM || (data.actorLink && this.data.unlinkedOnly)) // Don't for linked token
-            return;
+            return data;
         
         if (this.counter[scene.id] === undefined)
             this.counter[scene.id] = {};
@@ -271,10 +272,11 @@ export default class TokenMold {
 
 
     async _refreshSelected() {
-        const selected = canvas.tokens.controlledTokens;
+        const selected = canvas.tokens.controlled;
         let udata = [];
         for (const token of selected) 
             udata.push(this._setTokenData(canvas.scene, duplicate(token.data)));
+
         canvas.scene.updateEmbeddedEntity('Token', udata);
     }
 
@@ -290,7 +292,7 @@ export default class TokenMold {
                 data[key] = val * Math.floor((Math.random() * (value.max - value.min) + value.min ) * 100) / 100;
             } else if (value.attribute !== undefined && getProperty(actor, 'data.data.'+value.attribute) !== undefined) {
                 data[key].attribute = value.attribute;
-            } else { // Random mirroring
+            } else if (value.attribute === undefined && value.min === undefined && value.max === undefined && value.value === undefined) { // Random mirroring
                 data[key] = Boolean(Math.round(Math.random()));
             }
         }
