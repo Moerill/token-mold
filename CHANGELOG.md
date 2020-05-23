@@ -1,3 +1,7 @@
+# v2.6.1
+* Fixed FVTT 0.6.0 incompatibilities
+* Fixed some errors
+
 # v2.6
 * *Important*: Changed from GitLab to GitHub. The new Repositories link is <a href="https://github.com/Moerill/token-mold">https://github.com/Moerill/token-mold</a>. For issues and suggestions please use the githubs issue board.
 * Added a reapply button to the quick settings. This button does reapply all current settings to the selected tokens, as if they were newly placed onto the scene.
