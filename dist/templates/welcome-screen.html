@@ -19,21 +19,14 @@
 				<p style="display: flex; flex-flow: row nowrap; align-items: center; justify-content: flex-start;"><input type="checkbox" class='show-again' id="welcome-screen-show-again"/> <label for="welcome-screen-show-again">Don't show this screen again until next update.</label></p>
 				<p style="text-align: right">Want to support development? <a href="https://github.com/Moerill/token-mold#support-the-development">Click here</a></p>
 				<h2></h2>
-<h1>Changelog v2.6:</h1>
+<h1>Changelog v2.6.1</h1>
 <ul>
-	<li><em>Important</em>: Changed from GitLab to GitHub. The new Repositories link is <a href="https://github.com/Moerill/token-mold">https://github.com/Moerill/token-mold</a>. For issues and suggestions please use the githubs issue board.
-	</li>
-	<li>Added a reapply button to the quick settings. This button does reapply all current settings to the selected tokens, as if they were newly placed onto the scene.</li>
-	<li>Added some info and links to the GitHub page to the settings menu.</li>
-	<li>Added ability to randomize horizontal and vertical mirroring.</li>
-	<li>Now using Webpack</li>
-	<li>Fixed some issues when loading the dictionary
+	<li>Fixed FVTT 0.6.0 incompatibilities</li>
+	<li>Fixed errors when...
 		<ul>
-			<li>Split it into multiple smaller parts</li>
-			<li>Import now using import statements instead of the fetch API, resulting in hopefully more reliable results.</li>
-			<li>Only loading the dictionary, when the setting to use it is set.</li>
+			<li>deleting tokens</li>
+			<li>reapply settings not working when linked tokens in selected</li>
+			<li>selecting "none" for a config setting</li>
 		</ul>
 	</li>
-	<li>Fixed not being able to set the configs for token bars.</li>
-	<li>Switched to the not so new TabsV2 for the application class.</li>
 </ul>
