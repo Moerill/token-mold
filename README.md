@@ -1,5 +1,6 @@
 # Token Mold
 <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/moerill/token-mold?style=flat-square"> <img alt="GitHub" src="https://img.shields.io/github/license/moerill/token-mold?style=flat-square"> <img alt="GitHub Releases" src="https://img.shields.io/github/downloads/moerill/token-mold/latest/total?style=flat-square">  
+[![PayPal](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-PayPal-blue?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FYZ294SP2JBGS&source=url)  
 
 
 What is a foundry without its molds? This module provides you with a customizable mold for your Tokens.  
@@ -15,14 +16,28 @@ On creation each Token will fit snuggly into the pattern of your mold.
 - [Hit Point rolling](#hit-point-rolling) by formula (currently dnd5e only)
 - [Automatic token scaling](#automatic-token-scaling) according to creature size and map grid distance.  (dnd5e and pf2e only)
 
-## Installation
-- Copy [https://raw.githubusercontent.com/Moerill/token-mold/master/src/module.json](https://raw.githubusercontent.com/Moerill/token-mold/master/src/module.json) into the module installer inside foundry
-- Press install and wait for it to finish
-- Start your world and activate the module
-
 ## Usage
 Pull a token onto the canvas and the chosen pattern will be automatically applied to your Token.
 ![Usage](doc/usage.gif)  
+
+# Important Information!
+## FVTT Version compatibility
+My focus is the FVTTs stable branch. I will neither promise nor prioritise updates for FVTTs beta or alpha branches! Feel free to report a bug so i know whats coming, but don't expect a fix before a stable FVTT update.
+
+## Bug Reporting
+Go to the [GitHub's issue board](https://github.com/Moerill/Layer-Hotkeys/issues) and check if the Bug is already reported. If not first test with all other modules disabled! If the bug persists create a new issue, with at least the following information:
+1. Module version
+2. FVTT version
+3. Browser and OS used. Or if the app itself is used.
+4. Bug description
+	- What happened?
+	- What should've happened?
+	- Console errors? (F12 or F11 in most browsers)
+5. Workflow to recreate the bug
+6. Helpful videos or screenshots if possible
+7. Either activate notifications, stay active or post your discord handle so i can get back to you for further questions  
+
+**I will only take a quick glance at half hearted bug reports or Discord mentions! Don't expect me to react there!**  
 
 ## FAQ
 ### Why are there so many confusing attributes to choose from?
@@ -37,6 +52,26 @@ Due to FVTTs permission settings players may only manipulate their own templates
 For GMs this restriction does not apply, since they can manipulate even user created templates.  
 I may try to find a workaround for this in the future, but for the time being this restriction will stay.
 
+## Attribution
+Special thanks to @trdischat for providing the awesome name generation algorithm and data!
+Also thanks to:
+* @Brother Sharp for the japanese adjectives
+* Ben Howard for extending the english adjective list massively
+* @Cosmo Corban for the spanish adjectives
+
+Thanks to @NickEast for his ![foundry project creator](https://gitlab.com/foundry-projects/foundry-pc/create-foundry-project) which i'm using in a modified version for my building and publishing workflow.
+
+## Licensing
+Token Mold is licensed under the [MIT-License](https://gitlab.com/moerills-fvtt-modules/Adnd5e/raw/master/LICENSE).
+
+This work is licensed under Foundry Virtual Tabletop [EULA - Limited License Agreement for module development](https://foundryvtt.com/article/license/).
+
+## Support the development
+Want to help me develop? Send a merge request on this gitlab or contact me on Discord (Moerill#7205).  
+Want to support me in another way? 
+Leave me some nice comments (e.g. on Discord), recommend this module to others and/or leave a donation over at my [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FYZ294SP2JBGS&source=url).
+
+# Features
 ## Automatic Indexing
 You like to name all your goats "goat"? Don't worry this mod is here to help you differentiate them!
 Just let *Token-Mold* add a number as suffix and you're fine.  
@@ -99,37 +134,3 @@ The overlay will only show if you're the tokens owner.
 Again to lazy to configure your tokens?  
 Or got a 10ft map now and don't want to rescale everything?  
 Just activate this feature and it will do the work for you, by automatically choosing the correct size based on the tokens set creature size and the map size. (Works only with scenes grid units set to multiples of "ft", "ft." or "feet")
-
-## Attribution
-Special thanks to @trdischat for providing the awesome name generation algorithm and data!
-Also thanks to:
-* @Brother Sharp for the japanese adjectives
-* Ben Howard for extending the english adjective list massively
-* @Cosmo Corban for the spanish adjectives
-
-Thanks to N.van Oosten for his ![foundry project creator](https://gitlab.com/foundry-projects/foundry-pc/create-foundry-project) which i'm using in a modified version for my building and publishing workflow.
-
-
-## Bug Reporting
-Go to the [GitHub's issue board](https://github.com/Moerill/token-mold/issues) and check if the Bug is already reported. If not create a new issue, with at least the following information:
-1. Token Mold version
-2. FVTT version
-3. Browser and OS used. Or if the app itself is used.
-4. Bug description
-	- What happened?
-	- What should've happened?
-	- Console errors? (F12 or F11 in most browsers)
-5. Workflow to recreate the bug
-6. Helpful videos or screenshots if possible
-7. Either activate notifications, stay active or post your discord handle so i can get back to you for further questions
-
-
-## Licensing
-Token Mold is licensed under the [LGPLv3-License](https://github.com/Moerill/token-mold/blob/master/LICENSE).
-
-This work is licensed under Foundry Virtual Tabletop [EULA - Limited License Agreement for module development](https://foundryvtt.com/article/license/).
-
-## Support the development
-Want to help me develop? Send a merge request on this gitlab or contact me on Discord (Moerill#7205).  
-Want to support me in another way? 
-Leave me some nice comments (e.g. on Discord), recommend this module to others and/or leave a donation over at my [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FYZ294SP2JBGS&source=url).
