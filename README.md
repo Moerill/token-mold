@@ -1,6 +1,5 @@
 # Token Mold
-<img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/moerill/token-mold?style=flat-square"> <img alt="GitHub" src="https://img.shields.io/github/license/moerill/token-mold?style=flat-square"> <img alt="GitHub Releases" src="https://img.shields.io/github/downloads/moerill/token-mold/latest/total?style=flat-square">  
-[![PayPal](https://img.shields.io/badge/Donate-PayPal-blue?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FYZ294SP2JBGS&source=url)  
+<img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/moerill/token-mold?style=flat-square"> <img alt="GitHub" src="https://img.shields.io/github/license/moerill/token-mold?style=flat-square"> <img alt="GitHub Releases" src="https://img.shields.io/github/downloads/moerill/token-mold/latest/total?style=flat-square">  [![PayPal](https://img.shields.io/badge/Donate-PayPal-blue?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FYZ294SP2JBGS&source=url)  
 
 
 What is a foundry without its molds? This module provides you with a customizable mold for your Tokens.  
