@@ -24,7 +24,7 @@ Pull a token onto the canvas and the chosen pattern will be automatically applie
 My focus is the FVTTs stable branch. I will neither promise nor prioritise updates for FVTTs beta or alpha branches! Feel free to report a bug so i know whats coming, but don't expect a fix before a stable FVTT update.
 
 ## Bug Reporting
-Go to the [GitHub's issue board](https://github.com/Moerill/Layer-Hotkeys/issues) and check if the Bug is already reported. If not first test with all other modules disabled! If the bug persists create a new issue, with at least the following information:
+Go to the [GitHub's issue board](https://github.com/Moerill/token-mold/issues) and check if the Bug is already reported. If not first test with all other modules disabled! If the bug persists create a new issue, with at least the following information:
 1. Module version
 2. FVTT version
 3. Browser and OS used. Or if the app itself is used.
