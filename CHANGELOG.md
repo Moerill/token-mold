@@ -1,3 +1,14 @@
+<h1>v2.7.0</h1>
+<ul>
+	<li>*NEW* French adjective rollable table, thanks to Discord User @MagicRabbit</li>
+	<li>*NEW* You can now decide whether adjectives should be placed before or behind the name.</li>
+	<li>*FIX* Overriding bars to "NONE" not working.</li>
+	<li>*FIX* DnD5e token scaling feature not respecting "apply to unlinked only" setting</li>
+	<li>*FIX* Some reasons resulting in the overlay not being activated.</li>
+	<li>*FIX* Different errors shown for tokens without representing actors</li>
+	<li>*FIX* Settings menu not showing the correct setting for vertical mirroring.</li>
+</ul>
+
 # v2.6.1
 * Fixed FVTT 0.6.0 incompatibilities
 * Fixed some errors

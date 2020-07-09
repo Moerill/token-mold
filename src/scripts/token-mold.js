@@ -20,29 +20,31 @@ export default class TokenMold {
         this.loadSettings();
         this.systemSupported = /dnd5e|pf2e/.exec(game.data.system.id) !== null;
 
+
+        Hooks.on('hoverToken', (token, hovered) => {
+            if (!token || !token.actor)
+                return;
+                
+            // Don't show for permission lvl lower than observer
+            if (token.actor.permission < CONST.ENTITY_PERMISSIONS.OBSERVER)
+                return;
+
+            if (canvas.hud.TokenMold === undefined || this.data.overlay.attrs.length === 0)
+                return;
+
+            if (hovered && this.data.overlay.use === true) {
+                canvas.hud.TokenMold.attrs = this.data.overlay.attrs
+                canvas.hud.TokenMold.bind(token);
+            } else {
+                canvas.hud.TokenMold.clear();
+            }
+        });
+
         Hooks.on('ready', async () => {
             Hooks.on('renderHeadsUpDisplay', async (app, html, data) => {
                 html.append('<template id="token-mold-overlay"></template>');
                 canvas.hud.TokenMold = new TokenMoldOverlay();
             })
-
-            Hooks.on('hoverToken', async (token, hovered) => {
-                if (!token)
-                    return;
-                // Don't show for permission lvl lower than observer
-                if (token.actor.permission < CONST.ENTITY_PERMISSIONS.OBSERVER)
-                    return;
-
-                if (canvas.hud.TokenMold === undefined || this.data.overlay.attrs.length === 0)
-                    return;
-
-                if (hovered && this.data.overlay.use === true) {
-                    canvas.hud.TokenMold.attrs = this.data.overlay.attrs
-                    canvas.hud.TokenMold.bind(token);
-                } else {
-                    canvas.hud.TokenMold.clear();
-                }
-            });
 
             if (!game.user.isGM)
                 return;
@@ -246,12 +248,13 @@ export default class TokenMold {
      */
     _setTokenData(scene, data) {
         const actor = game.actors.get(data.actorId);
+
+        if (data.actorLink && this.data.unlinkedOnly) // Don't for linked token
+            return data;
+
         // Do this for all tokens, even player created ones
         if (this.data.size.use && this.systemSupported === true)
             this._setCreatureSize(data, actor, scene.id);
-
-        if (!game.user.isGM || (data.actorLink && this.data.unlinkedOnly)) // Don't for linked token
-            return data;
         
         if (this.counter[scene.id] === undefined)
             this.counter[scene.id] = {};
@@ -281,7 +284,8 @@ export default class TokenMold {
     }
 
     _overwriteConfig(data, actor) {
-        mergeObject(data, this.data.config.data);
+        // data = mergeObject(data, this.data.config);
+        console.log(data, this.data.config);
         for (let [key, value] of Object.entries(this.data.config)) {
             if(value.use !== true)
                 continue;
@@ -290,7 +294,7 @@ export default class TokenMold {
             } else if(value.min !== undefined && value.max !== undefined) {
                 let val = data[key] || 1;
                 data[key] = val * Math.floor((Math.random() * (value.max - value.min) + value.min ) * 100) / 100;
-            } else if (value.attribute !== undefined && getProperty(actor, 'data.data.'+value.attribute) !== undefined) {
+            } else if (value.attribute !== undefined && (value.attribute === "" || getProperty(actor, 'data.data.'+value.attribute) !== undefined)) {
                 data[key].attribute = value.attribute;
             } else if (value.attribute === undefined && value.min === undefined && value.max === undefined && value.value === undefined) { // Random mirroring
                 data[key] = Boolean(Math.round(Math.random()));
@@ -322,6 +326,7 @@ export default class TokenMold {
 
         if (this.data.name.replace !== "" && this.data.name.replace !== "nothing") name = "";
         
+        let numberSuffix = "";
         if (this.data.name.number.use) {
             let number = 0;
             // Check if number in session database
@@ -363,16 +368,20 @@ export default class TokenMold {
             
             this.counter[sceneId][data.actorId] = number;
 
-            name += this.data.name.number.prefix + number + this.data.name.number.suffix;
+            numberSuffix = this.data.name.number.prefix + number + this.data.name.number.suffix;
         }
 
         if  (this.data.name.replace === "replace")
             name = this._pickNewName(actor) + " " + name;
 
         if (this.data.name.prefix.use)
-            name = this.adjectives.roll().results[0].text + " " + name;
+            if (this.data.name.prefix.position === "back")
+                name = name + " " + this.adjectives.roll().results[0].text;
+            else 
+                name = this.adjectives.roll().results[0].text + " " + name;
             // name = this.adjectives[Math.floor(Math.random() * this.adjectives.length)] + " " + name;
 
+        name += numberSuffix;
         
         return name;
     }
@@ -585,6 +594,7 @@ export default class TokenMold {
                 remove: false,
                 prefix: {
                     use: true,
+                    position: "front",
                     table: 'Compendium.token-mold.adjectives.H0BSHD6uCDodIT5x' // English
                 },
                 replace: "",

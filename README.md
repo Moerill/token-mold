@@ -6,14 +6,31 @@ What is a foundry without its molds? This module provides you with a customizabl
 On creation each Token will fit snuggly into the pattern of your mold.  
 
 ## Feature Overview
-- [Automatic indexing](#automatic-indexing)
-- [Random name generation](#random-name-generation) from 35(!) languages
-- [Override token config](#override-token-config)
-- [Auras/Sticky Templates](#sticky-templates). Make your templates follow your tokens around and even rotate with them.
-- [Customizable overlay](#customizable-token-overlay) on token hover, for quick reference
-- [Automatic name hiding](#hide-names)
-- [Hit Point rolling](#hit-point-rolling) by formula (currently dnd5e only)
-- [Automatic token scaling](#automatic-token-scaling) according to creature size and map grid distance.  (dnd5e and pf2e only)
+- [Token Mold](#token-mold)
+	- [Feature Overview](#feature-overview)
+	- [Usage](#usage)
+- [Important Information!](#important-information)
+	- [FVTT Version compatibility](#fvtt-version-compatibility)
+	- [Bug Reporting](#bug-reporting)
+	- [Attribution](#attribution)
+	- [Licensing](#licensing)
+	- [Support the development](#support-the-development)
+- [FAQ](#faq)
+		- [Why are there so many confusing attributes to choose from?](#why-are-there-so-many-confusing-attributes-to-choose-from)
+		- [Why are there only squares shown for icon selections dropdown in Firefox?](#why-are-there-only-squares-shown-for-icon-selections-dropdown-in-firefox)
+		- [Why does the sticky template only move if the GM moves the token?](#why-does-the-sticky-template-only-move-if-the-gm-moves-the-token)
+- [Features](#features)
+	- [Automatic Indexing](#automatic-indexing)
+	- [Naming options](#naming-options)
+		- [Random Name Generation](#random-name-generation)
+			- [How does this work?](#how-does-this-work)
+		- [Random adjectives](#random-adjectives)
+		- [Hide Names](#hide-names)
+	- [Override Token Config](#override-token-config)
+	- [Sticky Templates](#sticky-templates)
+	- [Hit Point Rolling](#hit-point-rolling)
+	- [Customizable Token Overlay](#customizable-token-overlay)
+	- [Automatic Token Scaling](#automatic-token-scaling)
 
 ## Usage
 Pull a token onto the canvas and the chosen pattern will be automatically applied to your Token.
@@ -24,7 +41,7 @@ Pull a token onto the canvas and the chosen pattern will be automatically applie
 My focus is the FVTTs stable branch. I will neither promise nor prioritise updates for FVTTs beta or alpha branches! Feel free to report a bug so i know whats coming, but don't expect a fix before a stable FVTT update.
 
 ## Bug Reporting
-Go to the [GitHub's issue board](https://github.com/Moerill/Layer-Hotkeys/issues) and check if the Bug is already reported. If not first test with all other modules disabled! If the bug persists create a new issue, with at least the following information:
+Go to the [GitHub's issue board](https://github.com/Moerill/Token-Mold/issues) and check if the Bug is already reported. If not first test with all other modules disabled! If the bug persists create a new issue, with at least the following information:
 1. Module version
 2. FVTT version
 3. Browser and OS used. Or if the app itself is used.
@@ -38,7 +55,26 @@ Go to the [GitHub's issue board](https://github.com/Moerill/Layer-Hotkeys/issues
 
 **I will only take a quick glance at half hearted bug reports or Discord mentions! Don't expect me to react there!**  
 
-## FAQ
+## Attribution
+Special thanks to Discord User @trdischat for providing the awesome name generation algorithm and data!
+Also thanks to:
+* Discord User @BrotherSharp for the japanese adjectives
+* Ben Howard for extending the english adjective list massively
+* Discord User @CosmoCorban for the spanish adjectives
+* Discord User @MagicRabbit for the french adjective lists
+
+Thanks to @NickEast for his ![foundry project creator](https://gitlab.com/foundry-projects/foundry-pc/create-foundry-project) which i'm using in a modified version for my building and publishing workflow.
+
+## Licensing
+Token Mold is licensed under the [LGPLv3](https://github.com/Moerill/token-mold/blob/master/LICENSE).
+
+This work is licensed under Foundry Virtual Tabletop [EULA - Limited License Agreement for module development](https://foundryvtt.com/article/license/).
+
+## Support the development
+I'm doing this project mostly alone (with partial help of some wonderful people mentioned above) in my spare time and for free.  
+If you want to encourage me to keep doing this, i am happy about all kind of tokens of appreciation. (Like some nice words, recommending this project or even a small donation over at my [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FYZ294SP2JBGS&source=url)).  
+
+# FAQ
 ### Why are there so many confusing attributes to choose from?
 To allow *Token-Mold* to be usable for all kind of systems the module generates a list of possible attribute values dependend on the systems default data model. Since the module can not decide which are useful to use or which are not all possible values are shown. Although this may be kind of confusing or annoying this is a decision made to ensure that most *Token-Mold* features are universally usable.
 
@@ -51,24 +87,6 @@ Due to FVTTs permission settings players may only manipulate their own templates
 For GMs this restriction does not apply, since they can manipulate even user created templates.  
 I may try to find a workaround for this in the future, but for the time being this restriction will stay.
 
-## Attribution
-Special thanks to @trdischat for providing the awesome name generation algorithm and data!
-Also thanks to:
-* @Brother Sharp for the japanese adjectives
-* Ben Howard for extending the english adjective list massively
-* @Cosmo Corban for the spanish adjectives
-
-Thanks to @NickEast for his ![foundry project creator](https://gitlab.com/foundry-projects/foundry-pc/create-foundry-project) which i'm using in a modified version for my building and publishing workflow.
-
-## Licensing
-Token Mold is licensed under the [MIT-License](https://gitlab.com/moerills-fvtt-modules/Adnd5e/raw/master/LICENSE).
-
-This work is licensed under Foundry Virtual Tabletop [EULA - Limited License Agreement for module development](https://foundryvtt.com/article/license/).
-
-## Support the development
-Want to help me develop? Send a merge request on this gitlab or contact me on Discord (Moerill#7205).  
-Want to support me in another way? 
-Leave me some nice comments (e.g. on Discord), recommend this module to others and/or leave a donation over at my [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FYZ294SP2JBGS&source=url).
 
 # Features
 ## Automatic Indexing

@@ -63,6 +63,15 @@
             </select>
         </div>
         <div class="form-group">
+            <label>Adjective Placement:</label>
+            <select name="name.prefix.position" data-dtype="String">
+                {{#select data.name.prefix.position}}
+                <option value="front">Front</option>
+                <option value="back">Back</option>
+                {{/select}}
+            </select>
+        </div>
+        <div class="form-group">
             <label for='name.replace'>Base name: </label>
             <select class='name-replace' name='name.replace' data-dtype="String">
                 {{#select data.name.replace}}
@@ -296,7 +305,7 @@
                     Horizontal
                 </section>
                 <section>
-                    <input type='checkbox' name='config.mirrorY.use' {{checked data.config.mirrorY.use}}' data-dtype='Boolean'/>
+                    <input type='checkbox' name='config.mirrorY.use' {{checked data.config.mirrorY.use}} data-dtype='Boolean'/>
                     Vertical
                 </section>
             </div>

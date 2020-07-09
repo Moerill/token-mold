@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   name: 'token-mold',
   entry: {
-    index: './src/scripts/index.js'
+    index: path.resolve(__dirname, 'src/scripts/index.js')
   },
   mode: 'development',
   devtool: 'source-map',
