@@ -1,3 +1,9 @@
+# v2.7.1
+<ul>
+	<li>*NEW* Portuguese adjective lists, thanks to Discord User @innocenti</li>
+	<li>*FIX* Update not working. (hopefully)</li>
+</ul>
+
 <h1>v2.7.0</h1>
 <ul>
 	<li>*NEW* French adjective rollable table, thanks to Discord User @MagicRabbit</li>
