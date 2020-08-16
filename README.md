@@ -66,7 +66,7 @@ Also thanks to:
 Thanks to @NickEast for his ![foundry project creator](https://gitlab.com/foundry-projects/foundry-pc/create-foundry-project) which i'm using in a modified version for my building and publishing workflow.
 
 ## Licensing
-Token Mold is licensed under the [LGPLv3](https://github.com/Moerill/token-mold/blob/master/LICENSE).
+<img alt="GitHub" src="https://img.shields.io/github/license/moerill/token-mold?style=flat-square">
 
 This work is licensed under Foundry Virtual Tabletop [EULA - Limited License Agreement for module development](https://foundryvtt.com/article/license/).
 
