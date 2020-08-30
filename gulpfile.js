@@ -1,43 +1,24 @@
 const gulp = require('gulp');
 const fs = require('fs-extra');
 const path = require('path');
-const chalk = require('chalk');
 const stringify = require('json-stringify-pretty-compact');
 const less = require('gulp-less');
 const git = require('gulp-git');
+const concat = require('gulp-concat');
+
+const chalk = require('chalk');
 
 const argv = require('yargs').argv;
 
-const webpack = require('webpack');
-const webpackConfig = require('./webpack.config.js');
-
 const browserSync = require('browser-sync').create();
 
-
-
-function getConfig() {
-	const configPath = path.resolve(process.cwd(), 'foundryconfig.json');
-	let config;
-
-	if (fs.existsSync(configPath)) {
-		config = fs.readJSONSync(configPath);
-		return config;
-	} else {
-		return;
-	}
-}
+const moduleName = "token-mold";
 
 function getManifest() {
 	const json = {};
 
-	if (fs.existsSync('src')) {
-		json.root = 'src';
-	} else {
-		json.root = 'dist';
-	}
-
-	const modulePath = path.join(json.root, 'module.json');
-	const systemPath = path.join(json.root, 'system.json');
+	const modulePath = 'module.json';
+	const systemPath = 'system.json';
 
 	if (fs.existsSync(modulePath)) {
 		json.file = fs.readJSONSync(modulePath);
@@ -61,29 +42,15 @@ function getManifest() {
  * Build Less
  */
 function buildLess() {
-	return gulp.src('src/css/*.less').pipe(less()).pipe(gulp.dest('dist/css/')).pipe(browserSync.stream());
+	return gulp.src('less/*.less').pipe(concat(moduleName + '.css')).pipe(less()).pipe(gulp.dest('.')).pipe(browserSync.stream());
 }
 
 
 /**
  * Copy static files
  */
-async function copyFiles() {
-	const statics = [
-		'lang',
-		'fonts',
-		'assets',
-		'templates',
-		'module.json',
-		'system.json',
-		'template.json',
-	];
+async function watchFiles() {
 	try {
-		for (const file of statics) {
-			if (fs.existsSync(path.join('src', file))) {
-				await fs.copy(path.join('src', file), path.join('dist', file));
-			}
-		}
 		browserSync.reload();
 		return Promise.resolve();
 	} catch (err) {
@@ -101,141 +68,18 @@ function buildWatch() {
 			target: "localhost:30000",
 			ws: true
 		},
-		browser: false
+		browser: 'google-chrome',
+		open: false
 	}
 	browserSync.init(config);
 
-	gulp.watch('src/**/*.less', { ignoreInitial: false }, buildLess);
+	gulp.watch('**/*.less', { ignoreInitial: false }, buildLess);
 	gulp.watch(
-		['src/fonts', 'src/lang', 'src/templates', 'src/*.json', 'src/assets/**/*'],
+		['fonts', 'lang', 'templates', '*.json', 'assets/**/*', 'js/**/*'],
 		{ ignoreInitial: false },
-		copyFiles
+		watchFiles
 	);
-	gulp.watch('src/scripts/**/*.js', buildWebpack);
 }
-
-
-function buildWebpack() {
-	return new Promise(function (resolve, reject) {
-		webpack(webpackConfig,  function(err, stats) {
-			if (err)
-				return reject(err);
-			if (stats.hasErrors()) 
-				return reject(new Error(stats.compilation.errors.join('\n')));
-
-			browserSync.reload();
-			resolve();
-		});
-	});
-}
-
-/********************/
-/*		CLEAN		*/
-/********************/
-
-/**
- * Remove built files from `dist` folder
- * while ignoring source files
- */
-async function clean() {
-	const name = path.basename(path.resolve('.'));
-	const files = [];
-
-	// If the project uses TypeScript
-	if (fs.existsSync(path.join('src', `${name}.ts`))) {
-		files.push(
-			'lang',
-			'templates',
-			'assets',
-			'module',
-			`${name}.js`,
-			'module.json',
-			'system.json',
-			'template.json'
-		);
-	}
-
-	// If the project uses Less or SASS
-	if (
-		fs.existsSync(path.join('src', `${name}.less`)) ||
-		fs.existsSync(path.join('src', `${name}.scss`))
-	) {
-		files.push('fonts', `${name}.css`);
-	}
-
-	console.log(' ', chalk.yellow('Files to clean:'));
-	console.log('   ', chalk.blueBright(files.join('\n    ')));
-
-	// Attempt to remove the files
-	try {
-		for (const filePath of files) {
-			await fs.remove(path.join('dist', filePath));
-		}
-		return Promise.resolve();
-	} catch (err) {
-		Promise.reject(err);
-	}
-}
-
-/********************/
-/*		LINK		*/
-/********************/
-
-/**
- * Link build to User Data folder
- */
-async function linkUserData() {
-	const name = path.basename(path.resolve('.'));
-	const config = fs.readJSONSync('foundryconfig.json');
-
-	let destDir;
-	try {
-		if (
-			fs.existsSync(path.resolve('.', 'dist', 'module.json')) ||
-			fs.existsSync(path.resolve('.', 'src', 'module.json'))
-		) {
-			destDir = 'modules';
-		} else if (
-			fs.existsSync(path.resolve('.', 'dist', 'system.json')) ||
-			fs.existsSync(path.resolve('.', 'src', 'system.json'))
-		) {
-			destDir = 'systems';
-		} else {
-			throw Error(
-				`Could not find ${chalk.blueBright(
-					'module.json'
-				)} or ${chalk.blueBright('system.json')}`
-			);
-		}
-
-		let linkDir;
-		if (config.dataPath) {
-			if (!fs.existsSync(path.join(config.dataPath, 'Data')))
-				throw Error('User Data path invalid, no Data directory found');
-
-			linkDir = path.join(config.dataPath, 'Data', destDir, name);
-		} else {
-			throw Error('No User Data path defined in foundryconfig.json');
-		}
-
-		if (argv.clean || argv.c) {
-			console.log(
-				chalk.yellow(`Removing build in ${chalk.blueBright(linkDir)}`)
-			);
-
-			await fs.remove(linkDir);
-		} else if (!fs.existsSync(linkDir)) {
-			console.log(
-				chalk.green(`Copying build to ${chalk.blueBright(linkDir)}`)
-			);
-			await fs.symlink(path.resolve('./dist'), linkDir);
-		}
-		return Promise.resolve();
-	} catch (err) {
-		Promise.reject(err);
-	}
-}
-
 
 /*********************/
 /*	update manifest  */
@@ -372,15 +216,12 @@ function gitTag() {
 
 const execGit = gulp.series(gitAdd, gitCommit, gitTag);
 
-const execBuild = gulp.parallel(buildWebpack, buildLess, copyFiles);
+const execBuild = gulp.parallel(buildLess);
 
-exports.build = gulp.series(clean, execBuild);
+exports.build = gulp.series(execBuild);
 exports.watch = buildWatch;
-exports.clean = clean;
-exports.link = linkUserData;
 exports.update = updateManifest;
 exports.publish = gulp.series(
-	clean,
 	updateManifest,
 	execBuild,
 	execGit

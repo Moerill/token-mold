@@ -7,30 +7,28 @@ On creation each Token will fit snuggly into the pattern of your mold.
 
 ## Feature Overview
 - [Token Mold](#token-mold)
-	- [Feature Overview](#feature-overview)
-	- [Usage](#usage)
+  - [Feature Overview](#feature-overview)
+  - [Usage](#usage)
 - [Important Information!](#important-information)
-	- [FVTT Version compatibility](#fvtt-version-compatibility)
-	- [Bug Reporting](#bug-reporting)
-	- [Attribution](#attribution)
-	- [Licensing](#licensing)
-	- [Support the development](#support-the-development)
+  - [FVTT Version compatibility](#fvtt-version-compatibility)
+  - [Bug Reporting](#bug-reporting)
+  - [Attribution](#attribution)
+  - [Licensing](#licensing)
+  - [Support the development](#support-the-development)
 - [FAQ](#faq)
-		- [Why are there so many confusing attributes to choose from?](#why-are-there-so-many-confusing-attributes-to-choose-from)
-		- [Why are there only squares shown for icon selections dropdown in Firefox?](#why-are-there-only-squares-shown-for-icon-selections-dropdown-in-firefox)
-		- [Why does the sticky template only move if the GM moves the token?](#why-does-the-sticky-template-only-move-if-the-gm-moves-the-token)
+    - [Why are there so many confusing attributes to choose from?](#why-are-there-so-many-confusing-attributes-to-choose-from)
+    - [Why are there only squares shown for icon selections dropdown in Firefox?](#why-are-there-only-squares-shown-for-icon-selections-dropdown-in-firefox)
 - [Features](#features)
-	- [Automatic Indexing](#automatic-indexing)
-	- [Naming options](#naming-options)
-		- [Random Name Generation](#random-name-generation)
-			- [How does this work?](#how-does-this-work)
-		- [Random adjectives](#random-adjectives)
-		- [Hide Names](#hide-names)
-	- [Override Token Config](#override-token-config)
-	- [Sticky Templates](#sticky-templates)
-	- [Hit Point Rolling](#hit-point-rolling)
-	- [Customizable Token Overlay](#customizable-token-overlay)
-	- [Automatic Token Scaling](#automatic-token-scaling)
+  - [Automatic Indexing](#automatic-indexing)
+  - [Naming options](#naming-options)
+    - [Random Name Generation](#random-name-generation)
+      - [How does this work?](#how-does-this-work)
+    - [Random adjectives](#random-adjectives)
+    - [Hide Names](#hide-names)
+  - [Override Token Config](#override-token-config)
+  - [Hit Point Rolling](#hit-point-rolling)
+  - [Customizable Token Overlay](#customizable-token-overlay)
+  - [Automatic Token Scaling](#automatic-token-scaling)
 
 ## Usage
 Pull a token onto the canvas and the chosen pattern will be automatically applied to your Token.
@@ -72,7 +70,7 @@ This work is licensed under Foundry Virtual Tabletop [EULA - Limited License Agr
 
 ## Support the development
 I'm doing this project mostly alone (with partial help of some wonderful people mentioned above) in my spare time and for free.  
-If you want to encourage me to keep doing this, i am happy about all kind of tokens of appreciation. (Like some nice words, recommending this project or even a small donation over at my [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FYZ294SP2JBGS&source=url)).  
+If you want to encourage me to keep doing this, i am happy about all kind of tokens of appreciation. (Like some nice words, recommending this project, contributions to the project or even a small donation over at my [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FYZ294SP2JBGS&source=url)).  
 
 # FAQ
 ### Why are there so many confusing attributes to choose from?
@@ -81,12 +79,6 @@ To allow *Token-Mold* to be usable for all kind of systems the module generates 
 ### Why are there only squares shown for icon selections dropdown in Firefox?
 This is a current bug in Firefox in combination with icons inside of html options tags. They will show properly inside the select box when selected though. My suggestion here is that you either focus the box and then switch between the selections using the arrow keys or use a different browser for this configuration.  
 After they're selected they should display fine in the overlay and the select box!
-
-### Why does the sticky template only move if the GM moves the token?  
-Due to FVTTs permission settings players may only manipulate their own templates. So for a player to be able to use sticky templates properly, **make sure that the player controlling the token created the template**.  
-For GMs this restriction does not apply, since they can manipulate even user created templates.  
-I may try to find a workaround for this in the future, but for the time being this restriction will stay.
-
 
 # Features
 ## Automatic Indexing
@@ -114,6 +106,7 @@ Using the chosen language *Token-Mold* will now generate a name for the token us
 A bonus treat for DnD5e users: trdischat has created a predefined list of attributes, values and languages for you to use.  
 
 Awesome, but..
+
 #### How does this work?
 The algorithm tries to generate a word using letter frequencies sampled for 35 different languages. So each letter is chosen randomly based on the previous two letters and weighted by their frequency of appereance. 
 
@@ -121,18 +114,11 @@ The algorithm tries to generate a word using letter frequencies sampled for 35 d
 What? you can't speak those newly generated names out loud? No problem, here is some more help to make your minions more descriptive, by adding random (english) adjectives to their names!  
 ![Random Adjectives](doc/random_adjectives.webp)  
 
-
 ### Hide Names
 Don't like names at all? You can just let *Token-Mold* delete the tokens name so your players will never know what hit them! (Or maybe they just know that it was **Bamboozled 8**, but not what he/she/it is.)
 
-
 ## Override Token Config
 Don't like how you set up all your tokens? Or you dislike the default settings set for a compendium? Then you got the perfect module! Set your wanted configuration in the menu and it will automatically get applied to every token you from now on create!
-
-## Sticky Templates
-You miss auras in FVTT? or some kind of other template following your beloved tokens?  
-Just use *Token-Mold*s sticky templates!  
-![Sticky Templates](doc/sticky_template.gif)  
 
 ## Hit Point Rolling
 (DnD5e only)
