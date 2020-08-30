@@ -1,3 +1,7 @@
+# v2.8.1
+
+- Fixed error in manifest URL (which is probably harmless, but still just to be sure)
+
 # v2.8
 
 - *IMPORTANT* Removed sticky templates from token mold! There is now a dedicated module for sticking stuff to tokens: ![Token Attacher by Kayelgee](https://foundryvtt.com/packages/token-attacher/)
