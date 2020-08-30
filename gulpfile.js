@@ -13,9 +13,11 @@ const argv = require('yargs').argv;
 const browserSync = require('browser-sync').create();
 
 const moduleName = "token-mold";
+const repoBaseUrl = 'https://github.com/Moerill/';
+const rawBaseUrl = 'https://raw.githubusercontent.com/Moerill/'
 
 function getManifest() {
-	const json = {};
+	const json = {root: ''};
 
 	const modulePath = 'module.json';
 	const systemPath = 'system.json';
@@ -90,7 +92,10 @@ function buildWatch() {
  */
 function updateManifest(cb) {
 	const packageJson = fs.readJSONSync('package.json');
-	const config = getConfig(),
+	const config = {
+      repository: repoBaseUrl + moduleName,
+      rawURL: rawBaseUrl + moduleName
+    },
 		manifest = getManifest(),
 		rawURL = config.rawURL,
 		repoURL = config.repository,
@@ -165,7 +170,7 @@ function updateManifest(cb) {
 
 		/* Update URLs */
 
-		const downloadUrl = `${repoURL}/releases/download/v${manifest.file.version}/${manifest.file.name}.zip`;
+		const downloadUrl = `${repoURL}/releases/download/v${manifest.file.version}/v${manifest.file.version}.zip`;
 		// const result = `${rawURL}/v${manifest.file.version}/package/${manifest.file.name}-v${manifest.file.version}.zip`;
 
 		manifest.file.url = repoURL;

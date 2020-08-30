@@ -18,7 +18,7 @@ jobs:
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/*/}
       - name: Zip files
         run: |
-          zip -r ${{ steps.get_version.outputs.VERSION }}.zip *.css *.js scripts module.json LICENSE templates assets
+          zip -r ${{ steps.get_version.outputs.VERSION }}.zip *.css *.js module.json LICENSE scripts templates assets
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1

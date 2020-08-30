@@ -1,3 +1,14 @@
+# v2.8
+
+- *IMPORTANT* Removed sticky templates from token mold! There is now a dedicated module for sticking stuff to tokens: ![Token Attacher by Kayelgee](https://foundryvtt.com/packages/token-attacher/)
+- Now also overwriting the tokens actor name, on name generation.
+- *FIX* Tab content not being shown in FVTT 0.7.X
+- Removed the welcome screen / popup
+- *FIX* some deprecated code used in the regenerating names function.
+- Removed bundling through webpack. Now only native ESM 6 modules are used. 
+  - Reason: slowness when building for development, less complications for people wanting to contribute
+  - Modified the dict files, to be native ESM6 modules enow instead of json files.
+
 # v2.7.1
 <ul>
 	<li>*NEW* Portuguese adjective lists, thanks to Discord User @innocenti</li>
