@@ -2,7 +2,7 @@ on:
   push:
     # Sequence of patterns matched against refs/tags
     tags:
-    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 name: Upload Release Asset
 
@@ -13,9 +13,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Get version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/*/}
       - name: Zip files
         run: |
-           cd dist && zip -r token-mold *
+          zip -r ${{ steps.get_version.outputs.VERSION }}.zip *.css *.js scripts module.json LICENSE templates assets
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -27,12 +30,12 @@ jobs:
           draft: false
           prerelease: false
       - name: Upload Release Asset
-        id: upload-release-asset 
+        id: upload-release-asset
         uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./dist/token-mold.zip
-          asset_name: token-mold.zip
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./${{ steps.get_version.outputs.VERSION }}.zip
+          asset_name: ${{ steps.get_version.outputs.VERSION }}.zip
           asset_content_type: application/zip

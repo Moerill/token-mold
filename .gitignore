@@ -1,2 +1,4 @@
 node_modules
 foundryconfig.json
+package-lock.json
+yarn-error.log
