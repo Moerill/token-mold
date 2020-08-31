@@ -11,7 +11,7 @@ On creation each Token will fit snuggly into the pattern of your mold.
   - [Usage](#usage)
 - [Important Information!](#important-information)
   - [FVTT Version compatibility](#fvtt-version-compatibility)
-  - [Bug Reporting](#bug-reporting)
+  - [Bug Reporting and Feature Suggestions](#bug-reporting-and-feature-suggestions)
   - [Attribution](#attribution)
   - [Licensing](#licensing)
   - [Support the development](#support-the-development)
@@ -38,18 +38,8 @@ Pull a token onto the canvas and the chosen pattern will be automatically applie
 ## FVTT Version compatibility
 My focus is the FVTTs stable branch. I will neither promise nor prioritise updates for FVTTs beta or alpha branches! Feel free to report a bug so i know whats coming, but don't expect a fix before a stable FVTT update.
 
-## Bug Reporting
-Go to the [GitHub's issue board](https://github.com/Moerill/Token-Mold/issues) and check if the Bug is already reported. If not first test with all other modules disabled! If the bug persists create a new issue, with at least the following information:
-1. Module version
-2. FVTT version
-3. Browser and OS used. Or if the app itself is used.
-4. Bug description
-	- What happened?
-	- What should've happened?
-	- Console errors? (F12 or F11 in most browsers)
-5. Workflow to recreate the bug
-6. Helpful videos or screenshots if possible
-7. Either activate notifications, stay active or post your discord handle so i can get back to you for further questions  
+## Bug Reporting and Feature Suggestions
+Go to the [GitHub's issue board](https://github.com/Moerill/Token-Mold/issues) and create an issue with the template fitting to what you want to post and follow its instructions.
 
 **I will only take a quick glance at half hearted bug reports or Discord mentions! Don't expect me to react there!**  
 
