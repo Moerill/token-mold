@@ -594,7 +594,7 @@ export default class TokenMold {
                 prefix: {
                     use: true,
                     position: "front",
-                    table: 'Compendium.token-mold.adjectives.H0BSHD6uCDodIT5x' // English
+                    table: 'Compendium.token-mold.adjectives.BGNM2VPUyFfA5ZMJ' // English
                 },
                 replace: "",
                 options: {

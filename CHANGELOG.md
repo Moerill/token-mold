@@ -1,3 +1,8 @@
+# v2.9
+
+- New smaller but curated list of english adjectives. This list is designed to allow for a better narrative instead of just having a lot of random, but sometimes really unfitting, adjectives. Thanks to Reddit user u/VagabondVivant and Github user @focalmatter for providing this list.
+  - This list is set to be the default for *new* token mold users.
+
 # v2.8.1
 
 - Fixed error in manifest URL (which is probably harmless, but still just to be sure)
