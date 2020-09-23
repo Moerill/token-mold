@@ -245,7 +245,7 @@ export default class TokenMold {
     _setTokenData(scene, data) {
         const actor = game.actors.get(data.actorId);
 
-        if (data.actorLink && this.data.unlinkedOnly) // Don't for linked token
+        if (!actor || (data.actorLink && this.data.unlinkedOnly)) // Don't for linked token
             return data;
 
         // Do this for all tokens, even player created ones
