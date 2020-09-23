@@ -1,4 +1,4 @@
-# v2.9.1
+# v2.10.0
 
 - Fixed compatibility issue with the multilevel token module. Thanks to github user @grandseiken for fixing this!
 - Changed Settings from automatically saving every time a setting was changed, to prevent accidently downloading all dicts, just because on looked at the replace name setting.
