@@ -806,7 +806,7 @@ class TokenMoldForm extends FormApplication {
         options.title = "Token Mold";
         options.closeOnSubmit = false;
         options.submitOnClose = true;
-        options.submitOnChange = true;
+        options.submitOnChange = false;
         options.tabs = [ {
             navSelector: '.tabs',
             contentSelector: 'form',

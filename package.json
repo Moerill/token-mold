@@ -1,6 +1,6 @@
 {
 	"name": "module-template",
-	"version": "2.9.0",
+	"version": "2.10.0",
 	"description": "",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"

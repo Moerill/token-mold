@@ -1,3 +1,9 @@
+# v2.9.1
+
+- Fixed compatibility issue with the multilevel token module. Thanks to github user @grandseiken for fixing this!
+- Changed Settings from automatically saving every time a setting was changed, to prevent accidently downloading all dicts, just because on looked at the replace name setting.
+- Added clarification that enabling name replacement results in about 100MB of extra memory usage for the GM. (Someone mentioned this and it catched me by surprise. I'll still look into it if there is something i can do, but i'm not sure about that.)
+
 # v2.9
 
 - New smaller but curated list of english adjectives. This list is designed to allow for a better narrative instead of just having a lot of random, but sometimes really unfitting, adjectives. Thanks to Reddit user u/VagabondVivant and Github user @focalmatter for providing this list.
