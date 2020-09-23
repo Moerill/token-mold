@@ -101,7 +101,8 @@ Awesome, but..
 The algorithm tries to generate a word using letter frequencies sampled for 35 different languages. So each letter is chosen randomly based on the previous two letters and weighted by their frequency of appereance. 
 
 ### Random adjectives
-What? you can't speak those newly generated names out loud? No problem, here is some more help to make your minions more descriptive, by adding random (english) adjectives to their names!  
+What? you can't speak those newly generated names out loud? No problem, here is some more help to make your minions more descriptive, by adding random adjectives to their names!  
+Just choose one rollable table of your choice inside the settings menu and you're good to go! Token Mold does ship with a few for different languages, all created through community effort. If you happen to have a nice list and think it would be nice to ship it with the module, just contact me or send a pull request to this repo and i'll add it!  
 ![Random Adjectives](doc/random_adjectives.webp)  
 
 ### Hide Names
