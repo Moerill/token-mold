@@ -1,3 +1,7 @@
+# v2.10.1
+
+- *FIX* saving settings to break, if no adjective list was loaded before. (Happened e.g. when the set table doesn't exist anymore).
+
 # v2.10.0
 
 - Fixed compatibility issue with the multilevel token module. Thanks to github user @grandseiken for fixing this!

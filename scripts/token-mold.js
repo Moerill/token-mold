@@ -748,9 +748,9 @@ export default class TokenMold {
     }
 
    async saveSettings() {
-       if (this.adjectives.uuid !== this.data.name.prefix.table)
+       if (!this.adjectives || this.adjectives.uuid !== this.data.name.prefix.table)
         this._loadTable();
-        
+
        await game.settings.set('Token-Mold', 'everyone', this.data);
        this._loadDicts();
        console.log("Token Mold | Saving Settings", this.data);
