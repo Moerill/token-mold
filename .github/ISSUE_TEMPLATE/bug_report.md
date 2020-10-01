@@ -7,6 +7,11 @@ assignees: ''
 
 ---
 
+**Using the template**  
+Choose a fitting  title to your issue.  
+Please go through each section, adding as much detailed information as possible and remove the default text. If a section is completly irrelevant for some reason, delete it completly.  
+Also ideally be somewhat responsive in this issues thread so you can answer possible questions i have.  
+
 **Describe the bug**
 A clear and concise description of what the bug is.  
 Also post console errors (F12 for most browsers) here that occur.
