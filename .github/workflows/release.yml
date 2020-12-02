@@ -2,7 +2,7 @@ on:
   push:
     # Sequence of patterns matched against refs/tags
     tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
 
 name: Upload Release Asset
 
@@ -18,7 +18,7 @@ jobs:
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/*/}
       - name: Zip files
         run: |
-          zip -r ${{ steps.get_version.outputs.VERSION }}.zip *.css module.json LICENSE scripts templates assets
+          zip -r ${{ steps.get_version.outputs.VERSION }}.zip *.css module.json LICENSE scripts templates assets lang
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
