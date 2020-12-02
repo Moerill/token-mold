@@ -1,5 +1,5 @@
 .token-mold {
-  a[href]  {
+  a[href] {
     color: #4a52ca;
   }
 
@@ -9,9 +9,9 @@
     align-items: center;
     justify-content: flex-start;
 
-    input[type='text'] {
+    input[type="text"] {
       flex: 0 200px;
-      margin-left:  auto;
+      margin-left: auto;
     }
     > * {
       margin: 3px;
@@ -25,7 +25,8 @@
     ul {
       flex: 1;
     }
-    h2, .token-mold-support {
+    h2,
+    .token-mold-support {
       flex: 0;
     }
   }
@@ -39,7 +40,7 @@
   min-width: 540px;
 }
 
-.token-mold .unlinked{
+.token-mold .unlinked {
   border-bottom: 1px solid rgba(102, 102, 102, 1);
   justify-content: center;
   margin: 0;
@@ -50,7 +51,7 @@
   flex: 0 auto;
 }
 .token-mold nav {
-  background: rgba(0,0,0,0.05);
+  background: rgba(0, 0, 0, 0.05);
   padding: 6px;
   margin: 0;
   margin-bottom: 3px;
@@ -75,7 +76,7 @@
   margin: 0 0 6px 0;
 }
 
-.token-mold nav .item{
+.token-mold nav .item {
   flex: 1 auto;
 }
 
@@ -83,7 +84,7 @@ section.token-mold {
   flex: 0 auto;
 }
 
-section.token-mold input[type=checkbox] {
+section.token-mold input[type="checkbox"] {
   display: none;
 }
 
@@ -99,13 +100,16 @@ section.token-mold label.label-inp {
   margin: 0 auto;
 }
 
-section.token-mold input[type=checkbox]:checked ~ span{
+section.token-mold input[type="checkbox"]:checked ~ span {
   color: #eee;
   /*text-shadow: 0px 0px 5px #FF0000;*/
 }
-section.token-mold input[type=checkbox]:checked ~ span span.checkmark::before {
-  font-family: "Font Awesome 5 Free"; 
-  font-weight: 900; 
+section.token-mold
+  input[type="checkbox"]:checked
+  ~ span
+  span.checkmark::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   content: "\f00c";
 }
 
@@ -114,8 +118,8 @@ section.token-mold span.checkmark {
   text-shadow: none;
 }
 section.token-mold span.checkmark::before {
-  font-family: "Font Awesome 5 Free"; 
-  font-weight: 900; 
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   content: "\f05e";
 }
 
@@ -145,29 +149,36 @@ section.token-mold {
 
 .token-mold .flexcol {
   padding: 5px;
-  border-bottom: 1px dashed rgba(0,0,0,0.5);
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.5);
 }
 
 .token-mold .language-selection {
-  
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: flex-start;
 }
 
-.token-mold h4.language, .token-mold select.language, .token-mold h4.icon, .token-mold select.icon {
+.token-mold h4.language,
+.token-mold select.language,
+.token-mold h4.icon,
+.token-mold select.icon {
   flex: 0 100px;
   margin: 3px;
   max-width: 100px;
 }
 
-.token-mold h4.attributes, .token-mold input.attributes, .token-mold h4.value, .token-mold select.value {
+.token-mold h4.attributes,
+.token-mold input.attributes,
+.token-mold h4.value,
+.token-mold select.value {
   flex: 0 50%;
   margin: 3px;
 }
 
-.token-mold a.remove, .token-mold a.reset, .token-mold a.lang-remove {
+.token-mold a.remove,
+.token-mold a.reset,
+.token-mold a.lang-remove {
   flex: 0 15px;
   align-self: flex-end;
   padding: 3px 5px;
@@ -175,18 +186,19 @@ section.token-mold {
 
 .token-mold .name-randomizer-options {
   margin-top: 3px;
-  background: rgba(0,0,0,0.05);
+  background: rgba(0, 0, 0, 0.05);
   padding: 3px;
   border: 1px solid rgba(102, 102, 102, 1);
 }
 
 .token-mold .header {
   margin-top: 6px;
-  background: rgba(0,0,0,0.05);
+  background: rgba(0, 0, 0, 0.05);
   border-top: 1px solid rgba(102, 102, 102, 1);
   border-bottom: 1px solid rgba(102, 102, 102, 1);
 }
-.token-mold .language-selection.header h4, .token-mold .attributes h4 {
+.token-mold .language-selection.header h4,
+.token-mold .attributes h4 {
   margin: 3px;
 }
 
@@ -223,6 +235,7 @@ section.token-mold {
   max-width: 100%;
   display: flex;
   flex-flow: row wrap;
+  align-items: flex-start;
 }
 
 .token-mold .attribute-group .language-selection {

@@ -28,7 +28,7 @@
   align-items: center;
   justify-content: flex-start;
 }
-.token-mold .form-group section input[type='text'] {
+.token-mold .form-group section input[type="text"] {
   flex: 0 200px;
   margin-left: auto;
 }
@@ -89,7 +89,7 @@
 section.token-mold {
   flex: 0 auto;
 }
-section.token-mold input[type=checkbox] {
+section.token-mold input[type="checkbox"] {
   display: none;
 }
 section.token-mold span:not(.checkmark) {
@@ -101,11 +101,11 @@ section.token-mold .token-rand-form-btn {
 section.token-mold label.label-inp {
   margin: 0 auto;
 }
-section.token-mold input[type=checkbox]:checked ~ span {
+section.token-mold input[type="checkbox"]:checked ~ span {
   color: #eee;
   /*text-shadow: 0px 0px 5px #FF0000;*/
 }
-section.token-mold input[type=checkbox]:checked ~ span span.checkmark::before {
+section.token-mold input[type="checkbox"]:checked ~ span span.checkmark::before {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   content: "\f00c";
@@ -214,6 +214,7 @@ section.token-mold {
   max-width: 100%;
   display: flex;
   flex-flow: row wrap;
+  align-items: flex-start;
 }
 .token-mold .attribute-group .language-selection {
   display: flex;
