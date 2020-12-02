@@ -15,7 +15,14 @@
 			"path": "assets/adjectives.db",
 			"entity": "RollTable"
 		}
-	],
+  ],
+  "languages": [
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "lang/en.json"
+		}
+  ],
 	"esmodules": ["scripts/index.js"],
 	"styles": ["token-mold.css"],
 	"manifest": "https://raw.githubusercontent.com/Moerill/token-mold/master/module.json",
