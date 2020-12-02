@@ -1,3 +1,7 @@
+# v2.11.1
+
+- fixed packaging
+
 # v2.11
 
 - Localization support, including german translation! Huge thanks to GitHub user @CarnVanBeck, who did *all* the work!
