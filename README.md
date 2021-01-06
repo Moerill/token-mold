@@ -7,28 +7,28 @@ On creation each Token will fit snuggly into the pattern of your mold.
 
 ## Feature Overview
 - [Token Mold](#token-mold)
-  - [Feature Overview](#feature-overview)
-  - [Usage](#usage)
+	- [Feature Overview](#feature-overview)
+	- [Usage](#usage)
 - [Important Information!](#important-information)
-  - [FVTT Version compatibility](#fvtt-version-compatibility)
-  - [Bug Reporting and Feature Suggestions](#bug-reporting-and-feature-suggestions)
-  - [Attribution](#attribution)
-  - [Licensing](#licensing)
-  - [Support the development](#support-the-development)
+	- [FVTT Version compatibility](#fvtt-version-compatibility)
+	- [Bug Reporting and Feature Suggestions](#bug-reporting-and-feature-suggestions)
+	- [Attribution](#attribution)
+	- [Licensing](#licensing)
+	- [Support the development](#support-the-development)
 - [FAQ](#faq)
-    - [Why are there so many confusing attributes to choose from?](#why-are-there-so-many-confusing-attributes-to-choose-from)
-    - [Why are there only squares shown for icon selections dropdown in Firefox?](#why-are-there-only-squares-shown-for-icon-selections-dropdown-in-firefox)
+		- [Why are there so many confusing attributes to choose from?](#why-are-there-so-many-confusing-attributes-to-choose-from)
+		- [Why are there only squares shown for icon selections dropdown in Firefox?](#why-are-there-only-squares-shown-for-icon-selections-dropdown-in-firefox)
 - [Features](#features)
-  - [Automatic Indexing](#automatic-indexing)
-  - [Naming options](#naming-options)
-    - [Random Name Generation](#random-name-generation)
-      - [How does this work?](#how-does-this-work)
-    - [Random adjectives](#random-adjectives)
-    - [Hide Names](#hide-names)
-  - [Override Token Config](#override-token-config)
-  - [Hit Point Rolling](#hit-point-rolling)
-  - [Customizable Token Overlay](#customizable-token-overlay)
-  - [Automatic Token Scaling](#automatic-token-scaling)
+	- [Automatic Indexing](#automatic-indexing)
+	- [Naming options](#naming-options)
+		- [Random Name Generation](#random-name-generation)
+			- [How does this work?](#how-does-this-work)
+		- [Random adjectives](#random-adjectives)
+		- [Hide Names](#hide-names)
+	- [Override Token Config](#override-token-config)
+	- [Hit Point Rolling](#hit-point-rolling)
+	- [Customizable Token Overlay](#customizable-token-overlay)
+	- [Automatic Token Scaling](#automatic-token-scaling)
 
 ## Usage
 Pull a token onto the canvas and the chosen pattern will be automatically applied to your Token.
@@ -47,6 +47,7 @@ Its not difficult to put at least some effort into something that you want someo
 ## Attribution
 Special thanks to Discord User @trdischat for providing the awesome name generation algorithm and data!
 Also thanks to:
+* @CarnVanBeck for adding localization support and the german translation!
 * Discord User @BrotherSharp for the japanese adjectives
 * Ben Howard for extending the english adjective list massively
 * Discord User @CosmoCorban for the spanish adjectives
