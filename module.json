@@ -14,6 +14,11 @@
       "lang": "de",
       "name": "Deutsch (German)",
       "path": "lang/de.json"
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
     }
   ],
   "manifest": "https://raw.githubusercontent.com/Moerill/token-mold/master/module.json",
