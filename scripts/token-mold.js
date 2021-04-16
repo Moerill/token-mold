@@ -15,7 +15,7 @@ export default class TokenMold {
 
         this.registerSettings();
         this.loadSettings();
-        this.systemSupported = /dnd5e|pf2e/.exec(game.data.system.id) !== null;
+        this.systemSupported = /dnd5e|pf2e|sw5e/.exec(game.data.system.id) !== null;
 
 
         Hooks.on('hoverToken', (token, hovered) => {
@@ -186,7 +186,7 @@ export default class TokenMold {
         <label class='label-inp' title='(De-)activate Name randomizing'>
             <input class='name rollable' type='checkbox' name='name.use' ${this.data.name.use ? 'checked' : ''}><span><span class='checkmark'></span>&nbsp;Name</span>
         </label>
-        ${game.data.system.id === "dnd5e" ? `
+        ${(game.data.system.id === "dnd5e" || game.data.system.id === "sw5e") ? `
         <label class='label-inp' title='(De-)activate Hit Point rolling'>
             <input class='hp rollable' type='checkbox' name='hp.use' ${this.data.hp.use ? 'checked' : ''} ><span><span class='checkmark'></span>&nbsp;HP</span>
         </label>` : ``}
@@ -261,7 +261,7 @@ export default class TokenMold {
           setProperty(data, 'actorData.name', newName);
         }
 
-        if (game.data.system.id === "dnd5e") {
+        if (game.data.system.id === "dnd5e" || game.data.system.id === "sw5e") {
           if (this.data.hp.use)
             this._rollHP(data, actor);
         }
@@ -902,7 +902,7 @@ class TokenMoldForm extends FormApplication {
         data.displayModes = CONST.TOKEN_DISPLAY_MODES;
         data.dispositions = CONST.TOKEN_DISPOSITIONS;
         data.defaultIcons = this.defaultIcons;
-        data.showHP = game.data.system.id === "dnd5e";
+        data.showHP = (game.data.system.id === "dnd5e" || game.data.system.id === "sw5e");
         data.showSystem = this.object.systemSupported;
         data.languages = this.languages;
         data.rollTableList = this.object._rollTableList;
@@ -911,7 +911,7 @@ class TokenMoldForm extends FormApplication {
     }
 
     static get defaultAttrs() {
-        if (game.data.system.id === "dnd5e") {
+        if (game.data.system.id === "dnd5e" || game.data.system.id === "sw5e") {
             return [
                 {
                     value: "data.attributes.ac.value",
