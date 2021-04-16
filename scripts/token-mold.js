@@ -684,7 +684,7 @@ export default class TokenMold {
         if (getProperty(this.data, "name.options.attributes") && this.data.name.options.attributes.length === 0)
             delete this.data.name.options.attributes;
         this.data = mergeObject(this.defaultSettings(), this.data);
-        if (game.data.system.id === "dnd5e") {
+        if (game.data.system.id === "dnd5e" || game.data.system.id === "sw5e") {
             if (this.data.name.options === undefined) {
                 const dndOptions = this.dndDefaultNameOptions;
                 this.data.name.options.default = dndOptions.default;
@@ -1121,7 +1121,7 @@ class TokenMoldForm extends FormApplication {
             });
         }
         // also populate with some calculated data for dnd5e, that is not in the template.json
-        if (game.data.system.id === "dnd5e") {
+        if (game.data.system.id === "dnd5e" || game.data.system.id === "sw5e") {
             let sortFun = function(a,b) {
                 if (a.attribute > b.attribute)
                     return 1
