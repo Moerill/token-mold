@@ -195,8 +195,8 @@
                         <option value="">None</option>
                         {{#each barAttributes as |attrs label|}}
                             <optgroup label="{{label}}">
-                                {{#each attrs}}
-                                    <option value="{{this.attribute}}">{{this.attribute}} [{{this.entity}}]</option>
+                                {{#each attrs as |types attr|}}
+                                    <option value="{{attr}}">{{attr}} [{{types}}]</option>
                                 {{/each}}
                             </optgroup>
                         {{/each}}
@@ -215,8 +215,8 @@
                         <option value="">None</option>
                         {{#each barAttributes as |attrs label|}}
                             <optgroup label="{{label}}">
-                                {{#each attrs}}
-                                    <option value="{{this.attribute}}">{{this.attribute}} [{{this.entity}}]</option>
+                                {{#each attrs as |types attr|}}
+                                    <option value="{{attr}}">{{attr}} [{{types}}]</option>
                                 {{/each}}
                             </optgroup>
                         {{/each}}
