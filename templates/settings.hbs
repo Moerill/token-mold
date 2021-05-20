@@ -1,0 +1,53 @@
+<form class="{{classes}}" autocomplete="off">
+    <nav class="sheet-tabs tabs" data-group='sections'>
+        <a class='item' data-tab='general' data-group='sections'>{{ localize "TOKEN-MOLD.settings.general.tab" }}</a>
+				<a class="item" data-tab="attributes" data-group="sections">{{localize "TOKEN-MOLD.settings.attributes.tab"}}</a>
+        <a class='item' data-tab='config' data-group='sections'>{{ localize "TOKEN-MOLD.settings.config.tab" }}</a>
+    </nav>
+		<div class='tab general' data-tab='general' data-group='sections'>
+			General stuff, like unlinked tokens only, some general information and *maybe* an option for legacy/easy mode.
+			<ul class='settings-list'>
+				<li class='config-item'>
+					<input type="checkbox" id="token-mold.unlinkedOnly" name="unlinkedOnly"/>
+					<label class="name" for="tokenk-mold.unlinkedOnly">{{{localize "TOKEN-MOLD.settings.general.unlinkedOnly"}}}</label>
+				</li>
+			</ul>
+		</div>
+		<div class='tab config' data-tab='config' data-group='sections'>
+			{{localize "TOKEN-MOLD.settings.config.description"}}
+			<ul class='settings-list'>
+				<li class='config-item list-header'><label>{{{localize "TOKEN-MOLD.settings.config.title"}}}</label><label>{{{localize "TOKEN-MOLD.settings.config.configure"}}}</label></label></li>
+				{{#each settings.config}}
+					{{{this}}}
+				{{/each}}
+			</ul>
+		</div>
+		<div class='tab attributes' data-tab='attributes' data-group='sections'>
+			{{{localize "TOKEN-MOLD.settings.attributes.description"}}}
+			Configure Attribute Overwrites here!
+			<ul>
+				<li>Multiple configs
+					<ul>
+						<li>Config import/export</li>
+						<li>make them activateable</li>
+						<li>Each ahs: an attribute field, an equals/includes, a value to set.</li>
+						<li>Each has a "default" value</li>
+					</ul>
+				</li>
+				<li>
+					Values may be:
+					<ul>
+						<li>Formulas (including all rolldata stuff)</li>
+						<li>String generator. This will be.. complicated i guess? How to do this flexible, but easy? Like.. Only declare in default, but allow to modify namegenerator features on non-default?</li>
+						<li>(random) Active Effects (and possibly items)</li>
+					</ul>
+				</li>
+				<li>Maybe, just maybe, make the string thingy for names only and extra</li>
+				<li>Where to safe the stuff? In world settings? In Journals, as plain text?</li>
+			</ul>
+			{{{attributes}}}
+		</div>
+		{{#each lists}}
+			{{{this}}}
+		{{/each}}
+	</form>

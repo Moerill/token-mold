@@ -19,6 +19,217 @@
   background-color: rgba(0, 0, 0, 0.6);
   grid-column: 0.66666667;
 }
+.token-mold.settings .settings-list {
+  border-radius: 0.5em;
+  border: 2px inset;
+  padding: 0em;
+}
+.token-mold.settings .settings-list .list-header {
+  text-align: left;
+  padding: 0 0.5em;
+  margin: 0;
+  font-size: 1.2em;
+  border-bottom: 1px dashed;
+}
+.token-mold.settings .settings-list > li {
+  list-style-type: none;
+}
+.token-mold.settings input[type="checkbox"] {
+  display: none;
+}
+.token-mold.settings input[type="checkbox"] + label {
+  cursor: pointer;
+}
+.token-mold.settings input[type="checkbox"] + label:hover {
+  text-shadow: 0 0 0.5em red;
+}
+.token-mold.settings input[type="checkbox"] + label:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 300;
+  letter-spacing: 10px;
+  content: "\f0c8";
+}
+.token-mold.settings input[type="checkbox"]:checked + label:before {
+  font-weight: 900;
+  content: "\f14a";
+}
+.token-mold.settings .config-item {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 0.5em;
+}
+.token-mold.settings .config-item:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.05);
+}
+.token-mold.settings .config .name,
+.token-mold.settings .config .list-header :first-child {
+  flex: 0 200px;
+  margin-right: 1ch;
+  padding-right: 1ch;
+  border-right: 1px dashed;
+}
+.token-mold.settings .config-setting {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+.token-mold.settings .config-setting > * {
+  margin: 0 1ch;
+}
+.token-mold.settings .config-setting input[type="number"] {
+  flex: 0 5ch;
+  margin: 0 1ch 0 0.5ch;
+  height: 1.2em;
+}
+.token-mold.settings .config-setting select {
+  height: 1.4em;
+  margin: -0.2em 0;
+}
+.token-mold.settings .attributes .config-item {
+  position: relative;
+}
+.token-mold.settings .attributes .attribute-selector,
+.token-mold.settings .attributes .list-selector {
+  flex: 0 20ch;
+}
+.token-mold.settings .attributes input {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid #7a7971;
+  border-radius: 3px;
+  font-family: inherit;
+  padding: 0.05em 0.2em;
+  color: inherit;
+  font-size: inherit;
+  text-align: left;
+  line-height: inherit;
+  text-overflow: ellipsis;
+  width: 20ch;
+}
+.token-mold.settings .attributes select,
+.token-mold.settings .attributes input {
+  height: 1.4em;
+}
+.token-mold.settings .attributes .attribute-value {
+  width: 10ch;
+}
+.token-mold.settings .datalist {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ccc;
+  border: 1px solid rgba(150, 150, 150, 0.5);
+  box-shadow: 0 5px 5px #000;
+  border-radius: 0.2em;
+  padding: 0;
+  margin: 0;
+  max-height: 10em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: min-content;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.token-mold.settings .datalist li {
+  list-style-type: none;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding: 0.2em 0.2em;
+}
+.token-mold.settings .datalist li[data-value] {
+  cursor: pointer;
+}
+.token-mold.settings .datalist li[data-value]:hover {
+  text-shadow: 0 0 0.2em red;
+  color: #aaa;
+  background: rgba(90, 90, 90, 0.5);
+}
+.token-mold.settings .datalist li:not(:last-child) {
+  border-bottom: 1px solid rgba(90, 90, 90, 0.5);
+}
+.token-mold.settings .datalist .optgroup {
+  display: block;
+}
+.token-mold.settings .datalist .optgroup label {
+  color: #888;
+  font-weight: bold;
+}
+.token-mold.settings .datalist .info {
+  color: #aaa;
+  margin-left: 1ch;
+}
+.token-mold.settings .datalist .info:before {
+  content: "[";
+}
+.token-mold.settings .datalist .info:after {
+  content: "]";
+}
+.token-mold.settings .dropzone {
+  width: 20ch;
+  height: 2em;
+  border: 1px solid;
+  border-radius: 0.3em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 2em;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.1);
+}
+.token-mold.settings .dropzone.over {
+  box-shadow: 0 0 5px red;
+  border: 2px outset;
+}
+.token-mold.settings .attribute-molds {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.token-mold.settings .mold-list {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 1em 0;
+  margin: 0;
+}
+.token-mold.settings .mold-list li {
+  list-style-type: none;
+  text-align: left;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px solid #3335;
+  border-radius: 0.2em;
+  border-right: none;
+  padding: 0.2em;
+  cursor: pointer;
+}
+.token-mold.settings .mold-list li:not(:first-child) {
+  border-top: none;
+}
+.token-mold.settings .mold-list li h4 {
+  flex: 1 100%;
+  min-width: 15ch;
+}
+.token-mold.settings .mold-list li.selected {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0px 11px 8px -10px red, inset 0px -11px 8px -10px red;
+}
+.token-mold.settings .mold-list li:hover {
+  text-shadow: 0 0 0.2em red;
+}
+.token-mold.settings li.add-row {
+  border: none;
+  line-height: 1.2em;
+  background: none;
+}
+.token-mold.settings li.add-row:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  content: "\f067";
+  padding: 0 0.3ch;
+}
+.token-mold.settings li.add-row:hover {
+  text-shadow: 0 0 0.2em red;
+}
 .token-mold a[href] {
   color: #4a52ca;
 }

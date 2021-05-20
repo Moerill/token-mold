@@ -1,0 +1,250 @@
+.token-mold.settings {
+  .settings-list {
+    border-radius: 0.5em;
+    border: 2px inset;
+    padding: 0em;
+
+    .list-header {
+      text-align: left;
+      padding: 0 0.5em;
+      margin: 0;
+      font-size: 1.2em;
+      border-bottom: 1px dashed;
+    }
+    > li {
+      list-style-type: none;
+    }
+  }
+  input[type="checkbox"] {
+    display: none;
+
+    & + label {
+      cursor: pointer;
+      &:hover {
+        text-shadow: 0 0 0.5em red;
+      }
+    }
+
+    & + label:before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 300;
+      letter-spacing: 10px;
+
+      content: "\f0c8";
+    }
+
+    &:checked + label:before {
+      font-weight: 900;
+      content: "\f14a";
+    }
+  }
+
+  .config-item {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 0.5em;
+
+    &:nth-child(odd) {
+      background: rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  .config {
+    .name,
+    .list-header :first-child {
+      flex: 0 200px;
+      margin-right: 1ch;
+      padding-right: 1ch;
+      border-right: 1px dashed;
+    }
+  }
+
+  .config-setting {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    > * {
+      margin: 0 1ch;
+    }
+
+    input[type="number"] {
+      flex: 0 5ch;
+      margin: 0 1ch 0 0.5ch;
+      height: 1.2em;
+    }
+
+    select {
+      height: 1.4em;
+      margin: -0.2em 0;
+    }
+  }
+  .attributes {
+    .config-item {
+      position: relative;
+    }
+    .attribute-selector,
+    .list-selector {
+      flex: 0 20ch;
+    }
+    input {
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid #7a7971;
+      border-radius: 3px;
+      font-family: inherit;
+      padding: 0.05em 0.2em;
+      color: inherit;
+      font-size: inherit;
+      text-align: left;
+      line-height: inherit;
+      text-overflow: ellipsis;
+      width: 20ch;
+    }
+    select,
+    input {
+      height: 1.4em;
+    }
+
+    .attribute-value {
+      width: 10ch;
+    }
+  }
+
+  .datalist {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.8);
+    color: #ccc;
+    border: 1px solid rgba(150, 150, 150, 0.5);
+    box-shadow: 0 5px 5px #000;
+    border-radius: 0.2em;
+    padding: 0;
+    margin: 0;
+
+    max-height: 10em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: min-content;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    li {
+      list-style-type: none;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+
+      &[data-value] {
+        cursor: pointer;
+        &:hover {
+          text-shadow: 0 0 0.2em red;
+          color: #aaa;
+          background: rgba(90, 90, 90, 0.5);
+        }
+      }
+
+      padding: 0.2em 0.2em;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid rgba(90, 90, 90, 0.5);
+      }
+    }
+
+    .optgroup {
+      display: block;
+      label {
+        color: #888;
+        font-weight: bold;
+      }
+    }
+
+    .info {
+      color: #aaa;
+      margin-left: 1ch;
+      &:before {
+        content: "[";
+      }
+      &:after {
+        content: "]";
+      }
+    }
+  }
+
+  .dropzone {
+    width: 20ch;
+    height: 2em;
+    border: 1px solid;
+    border-radius: 0.3em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 2em;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.1);
+
+    &.over {
+      box-shadow: 0 0 5px red;
+      border: 2px outset;
+    }
+  }
+
+  .attribute-molds {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
+  .mold-list {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 1em 0;
+    margin: 0;
+
+    li {
+      list-style-type: none;
+      text-align: left;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-end;
+
+      background: rgba(0, 0, 0, 0.1);
+      border: 2px solid #3335;
+      border-radius: 0.2em;
+      border-right: none;
+      padding: 0.2em;
+
+      cursor: pointer;
+
+      &:not(:first-child) {
+        border-top: none;
+      }
+
+      h4 {
+        flex: 1 100%;
+        min-width: 15ch;
+      }
+
+      &.selected {
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: inset 0px 11px 8px -10px red, inset 0px -11px 8px -10px red;
+      }
+
+      &:hover {
+        text-shadow: 0 0 0.2em red;
+      }
+    }
+  }
+
+  li.add-row {
+    border: none;
+    line-height: 1.2em;
+    background: none;
+    &:before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 600;
+      content: "\f067";
+      padding: 0 0.3ch;
+    }
+    &:hover {
+      text-shadow: 0 0 0.2em red;
+    }
+  }
+}
