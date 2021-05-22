@@ -11,6 +11,11 @@
 			"path": "lang/en.json"
 		},
 		{
+      			"lang": "cn",
+      			"name": "中文",
+     			"path": "lang/cn.json"
+  		},
+		{
 			"lang": "de",
 			"name": "Deutsch (German)",
 			"path": "lang/de.json"
@@ -32,5 +37,5 @@
 	"title": "Token Mold",
 	"type": "module",
 	"url": "https://github.com/Moerill/token-mold",
-	"version": "2.12.0"
+	"version": "2.12.1"
 }
