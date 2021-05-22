@@ -1,3 +1,9 @@
+# v2.13
+
+- Add chinese localization. Thanks to GitHub User 长耳 ( @FuyuEnnju ) for contributing this!
+- Add [Bug reporter module](https://www.foundryvtt-hub.com/package/bug-reporter/) support
+- Add [Developer Mode module](https://www.foundryvtt-hub.com/package/_dev-mode/) support
+
 # v2.12
 
 - Add german adjective list
