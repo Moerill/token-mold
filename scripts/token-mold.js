@@ -868,7 +868,7 @@ export default class TokenMold {
     };
     for (const type of types) {
       const { bar, value } = TokenDocument.getTrackedAttributes(
-        new CONFIG.Actor.documentClass({ type: "npc", name: "tmp" }).data.data
+        new CONFIG.Actor.documentClass({ type: type, name: "tmp" }).data.data
       );
       for (const val of bar) {
         addElement(barData.bar, val.join("."), type);
@@ -878,35 +878,6 @@ export default class TokenMold {
       }
     }
     return barData;
-    let barAttributes = {};
-    const model = game.system.model.Actor;
-    for (const type in model) {
-      const data = model[type];
-      const attributes = TokenConfig.getTrackedAttributes(data);
-      const newAttributes = TokenConfig.getTrackedAttributeChoices(attributes);
-
-      // find duplicates and map attributes to string
-      for (const key of Object.keys(newAttributes)) {
-        if (!barAttributes[key]) barAttributes[key] = [];
-        for (const attr of newAttributes[key]) {
-          // Search if attribute already found
-          const duplicate = barAttributes[key].find((el) =>
-            el.attribute.includes(attr)
-          );
-          // If not found,  add to attributes
-          if (duplicate === undefined) {
-            barAttributes[key].push({
-              entity: type,
-              attribute: attr,
-            });
-          } else {
-            // if found add actor type to list
-            duplicate.entity += ", " + type;
-          }
-        }
-      }
-    }
-    return barAttributes;
   }
 }
 

@@ -1,3 +1,7 @@
+# v2.13.1
+
+- **Fix** Barattributes not using the correct actor types....
+
 # v2.13
 
 - Add chinese localization. Thanks to GitHub User 长耳 ( @FuyuEnnju ) for contributing this!
