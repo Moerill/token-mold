@@ -1,14 +1,30 @@
+# v2.13.1
+
+- **Fix** Barattributes not using the correct actor types....
+
+# v2.13
+
+- Add chinese localization. Thanks to GitHub User 长耳 ( @FuyuEnnju ) for contributing this!
+- Add [Bug reporter module](https://www.foundryvtt-hub.com/package/bug-reporter/) support
+- Add [Developer Mode module](https://www.foundryvtt-hub.com/package/_dev-mode/) support
+
+# v2.12
+
+- Add german adjective list
+- Removed "Men's Rights" from community curated english adjective list
+- FVTT 0.8.5 compatibility
+
 # v2.11.1
 
 - fixed packaging
 
 # v2.11
 
-- Localization support, including german translation! Huge thanks to GitHub user @CarnVanBeck, who did *all* the work!
+- Localization support, including german translation! Huge thanks to GitHub user @CarnVanBeck, who did _all_ the work!
 
 # v2.10.1
 
-- *FIX* saving settings to break, if no adjective list was loaded before. (Happened e.g. when the set table doesn't exist anymore).
+- _FIX_ saving settings to break, if no adjective list was loaded before. (Happened e.g. when the set table doesn't exist anymore).
 
 # v2.10.0
 
@@ -19,7 +35,7 @@
 # v2.9
 
 - New smaller but curated list of english adjectives. This list is designed to allow for a better narrative instead of just having a lot of random, but sometimes really unfitting, adjectives. Thanks to Reddit user u/VagabondVivant and Github user @focalmatter for providing this list.
-  - This list is set to be the default for *new* token mold users.
+  - This list is set to be the default for _new_ token mold users.
 
 # v2.8.1
 
@@ -27,16 +43,17 @@
 
 # v2.8
 
-- *IMPORTANT* Removed sticky templates from token mold! There is now a dedicated module for sticking stuff to tokens: ![Token Attacher by Kayelgee](https://foundryvtt.com/packages/token-attacher/)
+- _IMPORTANT_ Removed sticky templates from token mold! There is now a dedicated module for sticking stuff to tokens: ![Token Attacher by Kayelgee](https://foundryvtt.com/packages/token-attacher/)
 - Now also overwriting the tokens actor name, on name generation.
-- *FIX* Tab content not being shown in FVTT 0.7.X
+- _FIX_ Tab content not being shown in FVTT 0.7.X
 - Removed the welcome screen / popup
-- *FIX* some deprecated code used in the regenerating names function.
-- Removed bundling through webpack. Now only native ESM 6 modules are used. 
+- _FIX_ some deprecated code used in the regenerating names function.
+- Removed bundling through webpack. Now only native ESM 6 modules are used.
   - Reason: slowness when building for development, less complications for people wanting to contribute
   - Modified the dict files, to be native ESM6 modules enow instead of json files.
 
 # v2.7.1
+
 <ul>
 	<li>*NEW* Portuguese adjective lists, thanks to Discord User @innocenti</li>
 	<li>*FIX* Update not working. (hopefully)</li>
@@ -54,18 +71,20 @@
 </ul>
 
 # v2.6.1
-* Fixed FVTT 0.6.0 incompatibilities
-* Fixed some errors
+
+- Fixed FVTT 0.6.0 incompatibilities
+- Fixed some errors
 
 # v2.6
-* *Important*: Changed from GitLab to GitHub. The new Repositories link is <a href="https://github.com/Moerill/token-mold">https://github.com/Moerill/token-mold</a>. For issues and suggestions please use the githubs issue board.
-* Added a reapply button to the quick settings. This button does reapply all current settings to the selected tokens, as if they were newly placed onto the scene.
-* Added some info and links to the GitHub page to the settings menu.
-* Added ability to randomize horizontal and vertical mirroring.
-* Now using Webpack
-* Fixed some issues when loading the dictionary
-	- Split it into multiple smaller parts
-	- Import now using import statements instead of the fetch API, resulting in hopefully more reliable results.
-	- Only loading the dictionary, when the setting to use it is set.
-* Fixed not being able to set the configs for token bars.
-* Switched to the not so new TabsV2 for the application class.
+
+- _Important_: Changed from GitLab to GitHub. The new Repositories link is <a href="https://github.com/Moerill/token-mold">https://github.com/Moerill/token-mold</a>. For issues and suggestions please use the githubs issue board.
+- Added a reapply button to the quick settings. This button does reapply all current settings to the selected tokens, as if they were newly placed onto the scene.
+- Added some info and links to the GitHub page to the settings menu.
+- Added ability to randomize horizontal and vertical mirroring.
+- Now using Webpack
+- Fixed some issues when loading the dictionary
+  - Split it into multiple smaller parts
+  - Import now using import statements instead of the fetch API, resulting in hopefully more reliable results.
+  - Only loading the dictionary, when the setting to use it is set.
+- Fixed not being able to set the configs for token bars.
+- Switched to the not so new TabsV2 for the application class.
