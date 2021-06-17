@@ -14,7 +14,7 @@ export default class TokenMold {
 
     this.registerSettings();
     this.loadSettings();
-    this.systemSupported = /dnd5e|pf2e/.exec(game.data.system.id) !== null;
+    this.systemSupported = /dnd5e|pf2e|sw5e/.exec(game.data.system.id) !== null;
 
     Hooks.on("hoverToken", (token, hovered) => {
       if (!token || !token.actor) return;
@@ -183,7 +183,8 @@ export default class TokenMold {
             }><span><span class='checkmark'></span>&nbsp;Name</span>
         </label>
         ${
-          game.data.system.id === "dnd5e"
+          (game.data.system.id === "dnd5e"
+           || game.data.system.id === "sw5e")
             ? `
         <label class='label-inp' title='(De-)activate Hit Point rolling'>
             <input class='hp rollable' type='checkbox' name='hp.use' ${
@@ -275,7 +276,7 @@ export default class TokenMold {
       setProperty(data, "actorData.name", newName);
     }
 
-    if (game.data.system.id === "dnd5e") {
+    if (game.data.system.id === "dnd5e" || game.data.system.id === "sw5e") {
       if (this.data.hp.use) this._rollHP(data, actor);
     }
 
@@ -784,7 +785,7 @@ export default class TokenMold {
     )
       delete this.data.name.options.attributes;
     this.data = mergeObject(this.defaultSettings(), this.data);
-    if (game.data.system.id === "dnd5e") {
+    if (game.data.system.id === "dnd5e" || game.data.system.id === "sw5e") {
       if (this.data.name.options === undefined) {
         const dndOptions = this.dndDefaultNameOptions;
         this.data.name.options.default = dndOptions.default;
@@ -994,7 +995,7 @@ class TokenMoldForm extends FormApplication {
     data.displayModes = CONST.TOKEN_DISPLAY_MODES;
     data.dispositions = CONST.TOKEN_DISPOSITIONS;
     data.defaultIcons = this.defaultIcons;
-    data.showHP = game.data.system.id === "dnd5e";
+    data.showHP = (game.data.system.id === "dnd5e" || game.data.system.id === "sw5e");
     data.showSystem = this.object.systemSupported;
     data.languages = this.languages;
     data.rollTableList = this.object._rollTableList;
@@ -1003,7 +1004,7 @@ class TokenMoldForm extends FormApplication {
   }
 
   static get defaultAttrs() {
-    if (game.data.system.id === "dnd5e") {
+    if (game.data.system.id === "dnd5e" || game.data.system.id === "sw5e") {
       return [
         {
           value: "data.attributes.ac.value",
@@ -1140,7 +1141,7 @@ class TokenMoldForm extends FormApplication {
       }
     });
 
-    if (game.system.id === "dnd5e") {
+    if (game.system.id === "dnd5e" || game.system.id === "sw5e") {
       const resetBtn = html.find(".reset");
       resetBtn[0].innerHTML = '<i class="fas fa-undo"></i>';
       let resetLangs = (ev) => {};
@@ -1224,7 +1225,7 @@ class TokenMoldForm extends FormApplication {
       });
     }
     // also populate with some calculated data for dnd5e, that is not in the template.json
-    if (game.data.system.id === "dnd5e") {
+    if (game.data.system.id === "dnd5e" || game.system.id === "sw5e") {
       let sortFun = function (a, b) {
         if (a.attribute > b.attribute) return 1;
         else if (a.attribute < b.attribute) return -1;
