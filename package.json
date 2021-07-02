@@ -3,21 +3,26 @@
 	"version": "2.10.1",
 	"description": "",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "node build.js"
 	},
 	"author": "Moerill",
 	"license": "MIT",
 	"devDependencies": {
-		"foundry-pc-types": "gitlab:foundry-projects/foundry-pc/foundry-pc-types"
+		"foundry-pc-types": "gitlab:foundry-projects/foundry-pc/foundry-pc-types",
+		"prettier-plugin-svelte": "^2.3.0"
 	},
 	"dependencies": {
 		"browser-sync": "^2.26.14",
 		"chalk": "^4.1.1",
+		"esbuild": "^0.12.6",
 		"gulp": "^4.0.2",
 		"gulp-concat": "^2.6.1",
 		"gulp-git": "^2.10.1",
 		"gulp-less": "^4.0.1",
 		"json-stringify-pretty-compact": "^3.0.0",
-		"yargs": "^16.2.0"
+		"svelte": "^3.38.2",
+		"svelte-select": "^3.17.0",
+		"yargs": "^17.0.1"
 	}
 }
