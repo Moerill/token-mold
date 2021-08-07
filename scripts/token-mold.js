@@ -183,7 +183,7 @@ export default class TokenMold {
             }><span><span class='checkmark'></span>&nbsp;Name</span>
         </label>
         ${
-          game.data.system.id in [ "dnd5e", "dcc" ] 
+          [ "dnd5e", "dcc" ] .includes(game.data.system.id)
             ? `
         <label class='label-inp' title='(De-)activate Hit Point rolling'>
             <input class='hp rollable' type='checkbox' name='hp.use' ${
@@ -275,7 +275,7 @@ export default class TokenMold {
       setProperty(data, "actorData.name", newName);
     }
 
-    if (game.data.system.id in ["dnd5e", "dcc"] ) {
+    if (["dnd5e", "dcc"].includes(game.data.system.id)) {
       if (this.data.hp.use) this._rollHP(data, actor);
     }
 
