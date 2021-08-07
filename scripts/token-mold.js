@@ -999,7 +999,7 @@ class TokenMoldForm extends FormApplication {
     data.displayModes = CONST.TOKEN_DISPLAY_MODES;
     data.dispositions = CONST.TOKEN_DISPOSITIONS;
     data.defaultIcons = this.defaultIcons;
-    data.showHP = game.data.system.id === "dnd5e";
+    data.showHP = ["dnd5e", "dcc"].includes(game.data.system.id);
     data.showSystem = this.object.systemSupported;
     data.languages = this.languages;
     data.rollTableList = this.object._rollTableList;
