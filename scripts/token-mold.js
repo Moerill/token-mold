@@ -329,7 +329,7 @@ export default class TokenMold {
   _rollHP(data, actor) {
     const hpProperties = {
       "dnd5e": "data.data.attributes.hp.formula",
-      "dcc": "data.data.attributes.hitDice"
+      "dcc": "data.data.attributes.hitDice.value"
     }
 
     const formula = getProperty(actor, hpProperties[game.data.system.id]);
