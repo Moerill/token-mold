@@ -999,6 +999,7 @@ class TokenMoldForm extends FormApplication {
     data.displayModes = CONST.TOKEN_DISPLAY_MODES;
     data.dispositions = CONST.TOKEN_DISPOSITIONS;
     data.defaultIcons = this.defaultIcons;
+    data.showCreatureSize = /dnd5e|pf2e/.exec(game.data.system.id) !== null
     data.showHP = /dnd5e|dcc/.exec(game.data.system.id) !== null
     data.showSystem = this.object.systemSupported;
     data.languages = this.languages;
