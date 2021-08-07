@@ -264,7 +264,7 @@ export default class TokenMold {
       return data;
 
     // Do this for all tokens, even player created ones
-    if (this.data.size.use && this.systemSupported === true)
+    if (this.data.size.use && /dnd5e|pf2e/.exec(game.data.system.id) !== null)
       this._setCreatureSize(data, actor, scene.id);
 
     if (this.counter[scene.id] === undefined) this.counter[scene.id] = {};
@@ -275,7 +275,7 @@ export default class TokenMold {
       setProperty(data, "actorData.name", newName);
     }
 
-    if (["dnd5e", "dcc"].includes(game.data.system.id)) {
+    if (/dnd5e|dcc/.exec(game.data.system.id) !== null) {
       if (this.data.hp.use) this._rollHP(data, actor);
     }
 
@@ -999,7 +999,7 @@ class TokenMoldForm extends FormApplication {
     data.displayModes = CONST.TOKEN_DISPLAY_MODES;
     data.dispositions = CONST.TOKEN_DISPOSITIONS;
     data.defaultIcons = this.defaultIcons;
-    data.showHP = ["dnd5e", "dcc"].includes(game.data.system.id);
+    data.showHP = /dnd5e|dcc/.exec(game.data.system.id) !== null
     data.showSystem = this.object.systemSupported;
     data.languages = this.languages;
     data.rollTableList = this.object._rollTableList;
