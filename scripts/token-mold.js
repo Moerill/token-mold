@@ -14,7 +14,7 @@ export default class TokenMold {
 
     this.registerSettings();
     this.loadSettings();
-    this.systemSupported = /dnd5e|pf2e/.exec(game.data.system.id) !== null;
+    this.systemSupported = /dnd5e|pf2e|dcc/.exec(game.data.system.id) !== null;
 
     Hooks.on("hoverToken", (token, hovered) => {
       if (!token || !token.actor) return;
