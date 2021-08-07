@@ -183,7 +183,7 @@ export default class TokenMold {
             }><span><span class='checkmark'></span>&nbsp;Name</span>
         </label>
         ${
-          game.data.system.id === "dnd5e"
+          game.data.system.id in [ "dnd5e", "dcc" ] 
             ? `
         <label class='label-inp' title='(De-)activate Hit Point rolling'>
             <input class='hp rollable' type='checkbox' name='hp.use' ${
