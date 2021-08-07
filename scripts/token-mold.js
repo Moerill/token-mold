@@ -275,7 +275,7 @@ export default class TokenMold {
       setProperty(data, "actorData.name", newName);
     }
 
-    if (game.data.system.id === "dnd5e") {
+    if (game.data.system.id in ["dnd5e", "dcc"] ) {
       if (this.data.hp.use) this._rollHP(data, actor);
     }
 
@@ -327,7 +327,12 @@ export default class TokenMold {
   }
 
   _rollHP(data, actor) {
-    const formula = actor.data.data.attributes.hp.formula;
+    const hpProperties = {
+      "dnd5e": "data.data.attributes.hp.formula",
+      "dcc": "data.data.attributes.hitDice"
+    }
+
+    const formula = getProperty(actor, hpProperties[game.data.system.id]);
     if (formula) {
       const r = new Roll(formula.replace(" ", ""));
       r.roll();
