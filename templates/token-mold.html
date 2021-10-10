@@ -129,7 +129,7 @@
                     {{#each @root.actorAttributes as |v  k|}}
                     <optgroup label="{{k}}">
                         {{#each v}}
-                        <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.entity}}]</option>
+                        <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
                         {{/each}}
                     </optgroup>
                     {{/each}}
@@ -241,7 +241,7 @@
         </div>
         <div class="form-group">
             <label>
-                {{ localize "TOKEN.CharDisposition"}}:</label>
+                {{ localize "TOKEN.Disposition"}}:</label>
                 <div class="flexcol">
                     <section>
                     <input type='checkbox' name='config.disposition.use' id='dispositionUse' {{checked data.config.vision.use
@@ -338,7 +338,7 @@
                 {{#each @root.actorAttributes as |v  k|}}
                 <optgroup label="{{k}}">
                     {{#each v}}
-                    <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.entity}}]</option>
+                    <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
                     {{/each}}
                 </optgroup>
                 {{/each}}
@@ -359,7 +359,7 @@
                 {{#each @root.actorAttributes as |v  k|}}
                 <optgroup label="{{k}}">
                     {{#each v}}
-                    <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.entity}}]</option>
+                    <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
                     {{/each}}
                 </optgroup>
                 {{/each}}
