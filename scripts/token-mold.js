@@ -120,16 +120,16 @@ export default class TokenMold {
   }
 
   async _loadTable() {
-    let entity;
+    let document;
     try {
-      entity = await fromUuid(this.data.name.prefix.table);
+      document = await fromUuid(this.data.name.prefix.table);
     } catch (error) {
       // Reset if table not found..
-      entity = await fromUuid(this.defaultSettings().name.prefix.table);
+      document = await fromUuid(this.defaultSettings().name.prefix.table);
       this.data.name.prefix.table = this.defaultSettings().name.prefix.table;
     }
 
-    this.adjectives = entity;
+    this.adjectives = document;
   }
 
   // Gets a list of all Rollable Tables available to choose adjectives from.
@@ -290,7 +290,7 @@ export default class TokenMold {
     for (const token of selected)
       udata.push(this._setTokenData(canvas.scene, duplicate(token.data)));
 
-    canvas.scene.updateEmbeddedEntity("Token", udata);
+    canvas.scene.updateEmbeddedDocuments("Token", udata);
   }
 
   _overwriteConfig(data, actor) {
@@ -1162,7 +1162,7 @@ class TokenMoldForm extends FormApplication {
         });
       }
 
-      canvas.scene.updateEmbeddedEntity("Token", udata);
+      canvas.scene.updateEmbeddedDocuments("Token", udata);
     });
 
     html.on("click", ".reset-counter", async (ev) => {
@@ -1215,11 +1215,11 @@ class TokenMoldForm extends FormApplication {
     let groups = {};
     for (var attr of barAttributes) {
       const split = attr[1].split(".");
-      const entity = attr[0];
+      const document = attr[0];
       const group = split[0];
       if (groups[group] === undefined) groups[group] = [];
       groups[group].push({
-        entity: entity,
+        document: document,
         attribute: split.splice(1).join("."),
       });
     }
@@ -1232,13 +1232,13 @@ class TokenMoldForm extends FormApplication {
       };
       for (let skill of Object.keys(game.system.model.Actor["npc"].skills)) {
         groups["skills"].push({
-          entity: "character, npc",
+          document: "character, npc",
           attribute: `${skill}.passive`,
         });
       }
       groups["skills"].sort(sortFun);
       groups["attributes"].push({
-        entity: "character, npc",
+        document: "character, npc",
         attribute: "ac.value",
       });
       groups["attributes"].sort(sortFun);
