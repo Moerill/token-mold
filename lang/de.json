@@ -35,6 +35,7 @@
   "tmold.name.baseNameNothing": "Nichts tun",
   "tmold.name.baseNameRemove": "Entfernen",
   "tmold.name.baseNameReplace": "Durch zufälligen Namen ersetzen",
+  "tmold.name.baseNameOverride": "Hold Shift to override name removal or replacement and always add the base name",
   "tmold.name.replaceHelp": "Für weitere Informationen wie das Funktioniert, kannst du auf der Modul Homepage schauen.",
   "tmold.name.replaceInfo1": "Die ausgewählte Option wird den Namen der Figur mit einem generierten ersetzen.",
   "tmold.name.replaceInfo2": "Du kannst eine Reihe an Attributen auswählen. Für jedes Attribut kannst du mögliche Werte setzen und ihnen eine Sprache zuweisen. Bei der Erstellung der Figur wird der erste passende Wert verwendet. Wenn kein passender Wert gefunden wurde, wird der Standardwert verwendet.",
