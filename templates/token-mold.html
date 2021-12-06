@@ -244,8 +244,7 @@
                 {{ localize "TOKEN.Disposition"}}:</label>
                 <div class="flexcol">
                     <section>
-                    <input type='checkbox' name='config.disposition.use' id='dispositionUse' {{checked data.config.vision.use
-                }}><label for='dispositionUse'>{{ localize "tmold.default.overwrite" }}</label>
+                    <input type='checkbox' name='config.disposition.use' id='dispositionUse' {{checked data.config.disposition.use}}><label for='dispositionUse'>{{ localize "tmold.default.overwrite" }}</label>
                 </section>
                 <select name="config.disposition.value" data-dtype="Number">
                     {{#select data.config.disposition.value}}
