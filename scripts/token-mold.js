@@ -639,7 +639,7 @@ export default class TokenMold {
     //  5 ft => normal size
     // 10 ft => double
     // etc.
-    if (/(ft)|eet/.exec(scene.data.gridUnits) !== null)
+    if (scene.data.gridType && /(ft)|eet/.exec(scene.data.gridUnits) !== null)
       tSize *= 5 / scene.data.gridDistance;
 
     if (tSize < 1) {
