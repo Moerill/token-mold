@@ -965,7 +965,14 @@ class TokenMoldForm extends FormApplication {
     formData["name.options.min"] = min;
     formData["name.options.max"] = max;
 
+    // For name prefix and suffix, if the value is only a space the formData doesn't pick it up, so check and manually set prior to merge.
+    let prefix = $(this.form).find("input[name='name.number.prefix']").val();
+    let suffix = $(this.form).find("input[name='name.number.suffix']").val();
+    formData["name.number.prefix"] = formData["name.number.prefix"] !== prefix ? prefix : formData["name.number.prefix"];
+    formData["name.number.suffix"] = formData["name.number.suffix"] !== suffix ? suffix : formData["name.number.suffix"];
+
     this.object.data = mergeObject(this.data, formData);
+
     if (this._resetOptions === true) {
       // this.object.data.name.options = this.object.dndDefaultNameOptions;
 
