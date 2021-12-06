@@ -1,3 +1,12 @@
+# v2.14.0
+- Geekswordsman is the new Maintainer while Moerill conquers Earth (or at least, IRL stuff!)
+- Added Starfinder to supported systems
+- Merged Spanish localization, with thanks to lozalojo!
+- Merged Japanese localization, with thanks to BrotherSharper!
+- **Fix** Added support for Foundry v9
+- **Fix** Corrected a bug where Disposition was not properly getting saved ( Issue #60 )
+- **Fix** Corrected a bug where token scaling could be set to extremely tiny numbers in certain situations ( Issue #75 ) 
+
 # v2.13.1
 
 - **Fix** Barattributes not using the correct actor types....

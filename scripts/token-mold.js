@@ -14,7 +14,7 @@ export default class TokenMold {
 
     this.registerSettings();
     this.loadSettings();
-    this.systemSupported = /dnd5e|pf2e/.exec(game.data.system.id) !== null;
+    this.systemSupported = /dnd5e|pf2e|sfrpg/.exec(game.data.system.id) !== null;
 
     Hooks.on("hoverToken", (token, hovered) => {
       if (!token || !token.actor) return;
@@ -120,16 +120,16 @@ export default class TokenMold {
   }
 
   async _loadTable() {
-    let entity;
+    let document;
     try {
-      entity = await fromUuid(this.data.name.prefix.table);
+      document = await fromUuid(this.data.name.prefix.table);
     } catch (error) {
       // Reset if table not found..
-      entity = await fromUuid(this.defaultSettings().name.prefix.table);
+      document = await fromUuid(this.defaultSettings().name.prefix.table);
       this.data.name.prefix.table = this.defaultSettings().name.prefix.table;
     }
 
-    this.adjectives = entity;
+    this.adjectives = document;
   }
 
   // Gets a list of all Rollable Tables available to choose adjectives from.
@@ -290,7 +290,7 @@ export default class TokenMold {
     for (const token of selected)
       udata.push(this._setTokenData(canvas.scene, duplicate(token.data)));
 
-    canvas.scene.updateEmbeddedEntity("Token", udata);
+    canvas.scene.updateEmbeddedDocuments("Token", udata);
   }
 
   _overwriteConfig(data, actor) {
@@ -330,7 +330,7 @@ export default class TokenMold {
     const formula = actor.data.data.attributes.hp.formula;
     if (formula) {
       const r = new Roll(formula.replace(" ", ""));
-      r.roll();
+      r.roll({async: false});
       if (this.data.hp.toChat)
         r.toMessage({
           rollMode: "gmroll",
@@ -639,7 +639,7 @@ export default class TokenMold {
     //  5 ft => normal size
     // 10 ft => double
     // etc.
-    if (/(ft)|eet/.exec(scene.data.gridUnits) !== null)
+    if (scene.data.gridType && /(ft)|eet/.exec(scene.data.gridUnits) !== null)
       tSize *= 5 / scene.data.gridDistance;
 
     if (tSize < 1) {
@@ -965,7 +965,14 @@ class TokenMoldForm extends FormApplication {
     formData["name.options.min"] = min;
     formData["name.options.max"] = max;
 
+    // For name prefix and suffix, if the value is only a space the formData doesn't pick it up, so check and manually set prior to merge.
+    let prefix = $(this.form).find("input[name='name.number.prefix']").val();
+    let suffix = $(this.form).find("input[name='name.number.suffix']").val();
+    formData["name.number.prefix"] = formData["name.number.prefix"] !== prefix ? prefix : formData["name.number.prefix"];
+    formData["name.number.suffix"] = formData["name.number.suffix"] !== suffix ? suffix : formData["name.number.suffix"];
+
     this.object.data = mergeObject(this.data, formData);
+
     if (this._resetOptions === true) {
       // this.object.data.name.options = this.object.dndDefaultNameOptions;
 
@@ -1162,7 +1169,7 @@ class TokenMoldForm extends FormApplication {
         });
       }
 
-      canvas.scene.updateEmbeddedEntity("Token", udata);
+      canvas.scene.updateEmbeddedDocuments("Token", udata);
     });
 
     html.on("click", ".reset-counter", async (ev) => {
@@ -1215,11 +1222,11 @@ class TokenMoldForm extends FormApplication {
     let groups = {};
     for (var attr of barAttributes) {
       const split = attr[1].split(".");
-      const entity = attr[0];
+      const document = attr[0];
       const group = split[0];
       if (groups[group] === undefined) groups[group] = [];
       groups[group].push({
-        entity: entity,
+        document: document,
         attribute: split.splice(1).join("."),
       });
     }
@@ -1232,13 +1239,13 @@ class TokenMoldForm extends FormApplication {
       };
       for (let skill of Object.keys(game.system.model.Actor["npc"].skills)) {
         groups["skills"].push({
-          entity: "character, npc",
+          document: "character, npc",
           attribute: `${skill}.passive`,
         });
       }
       groups["skills"].sort(sortFun);
       groups["attributes"].push({
-        entity: "character, npc",
+        document: "character, npc",
         attribute: "ac.value",
       });
       groups["attributes"].sort(sortFun);
