@@ -1,5 +1,5 @@
 # v2.14.0
-- Geekswordsman is the new Maintainer while Moerill conquers Earth (or at least, IRL stuff!)
+- Geekswordsman is now maintaining Token Mold while Moerill conquers Earth (or at least, IRL stuff!)
 - Added Starfinder to supported systems
 - Merged Spanish localization, with thanks to lozalojo!
 - Merged Japanese localization, with thanks to BrotherSharper!
