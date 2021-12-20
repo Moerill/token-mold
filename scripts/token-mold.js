@@ -14,7 +14,7 @@ export default class TokenMold {
 
     this.registerSettings();
     this.loadSettings();
-    this.systemSupported = /dnd5e|pf2e/.exec(game.data.system.id) !== null;
+    this.systemSupported = /dnd5e|pf2e|sfrpg/.exec(game.data.system.id) !== null;
 
     Hooks.on("hoverToken", (token, hovered) => {
       if (!token || !token.actor) return;
@@ -330,7 +330,7 @@ export default class TokenMold {
     const formula = actor.data.data.attributes.hp.formula;
     if (formula) {
       const r = new Roll(formula.replace(" ", ""));
-      r.roll();
+      r.roll({async: false});
       if (this.data.hp.toChat)
         r.toMessage({
           rollMode: "gmroll",
@@ -640,7 +640,7 @@ export default class TokenMold {
     //  5 ft => normal size
     // 10 ft => double
     // etc.
-    if (/(ft)|eet/.exec(scene.data.gridUnits) !== null)
+    if (scene.data.gridType && /(ft)|eet/.exec(scene.data.gridUnits) !== null)
       tSize *= 5 / scene.data.gridDistance;
 
     if (tSize < 1) {
@@ -967,7 +967,14 @@ class TokenMoldForm extends FormApplication {
     formData["name.options.min"] = min;
     formData["name.options.max"] = max;
 
+    // For name prefix and suffix, if the value is only a space the formData doesn't pick it up, so check and manually set prior to merge.
+    let prefix = $(this.form).find("input[name='name.number.prefix']").val();
+    let suffix = $(this.form).find("input[name='name.number.suffix']").val();
+    formData["name.number.prefix"] = formData["name.number.prefix"] !== prefix ? prefix : formData["name.number.prefix"];
+    formData["name.number.suffix"] = formData["name.number.suffix"] !== suffix ? suffix : formData["name.number.suffix"];
+
     this.object.data = mergeObject(this.data, formData);
+
     if (this._resetOptions === true) {
       // this.object.data.name.options = this.object.dndDefaultNameOptions;
 
