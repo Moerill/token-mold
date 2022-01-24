@@ -24,7 +24,7 @@ export default class TokenMold {
 
     this.registerSettings();
     this.loadSettings();
-    this.systemSupported = /dnd5e|pf2e|sfrpg|dcc/.exec(game.data.system.id) !== null;
+    this.systemSupported = /dnd5e|pf2e|sfrpg|sw5e|dcc/.exec(game.data.system.id) !== null;
 
     Hooks.on("hoverToken", (token, hovered) => {
       if (!token || !token.actor) return;
@@ -193,7 +193,7 @@ export default class TokenMold {
             }><span><span class='checkmark'></span>&nbsp;Name</span>
         </label>
         ${
-          [ "dnd5e", "dcc" ] .includes(game.data.system.id)
+          [ "dnd5e", "dcc", "sw5e" ].includes(game.data.system.id)
             ? `
         <label class='label-inp' title='(De-)activate Hit Point rolling'>
             <input class='hp rollable' type='checkbox' name='hp.use' ${
@@ -801,7 +801,8 @@ export default class TokenMold {
     )
       delete this.data.name.options.attributes;
     this.data = mergeObject(this.defaultSettings(), this.data);
-    if (game.data.system.id === "dnd5e") {
+
+    if (/dnd5e|sw5e/.exec(game.data.system.id) !== null) {
       if (this.data.name.options === undefined) {
         const dndOptions = this.dndDefaultNameOptions;
         this.data.name.options.default = dndOptions.default;
@@ -1019,7 +1020,7 @@ class TokenMoldForm extends FormApplication {
     data.dispositions = CONST.TOKEN_DISPOSITIONS;
     data.defaultIcons = this.defaultIcons;
     data.showCreatureSize = /dnd5e|pf2e/.exec(game.data.system.id) !== null
-    data.showHP = /dnd5e|dcc/.exec(game.data.system.id) !== null
+    data.showHP = /dnd5e|dcc|sw5e/.exec(game.data.system.id) !== null
     data.showSystem = this.object.systemSupported;
     data.languages = this.languages;
     data.rollTableList = this.object._rollTableList;
@@ -1028,7 +1029,7 @@ class TokenMoldForm extends FormApplication {
   }
 
   static get defaultAttrs() {
-    if (game.data.system.id === "dnd5e") {
+    if (/dnd5e|sw5e/.exec(game.data.system.id) !== null) {
       return [
         {
           value: "data.attributes.ac.value",
@@ -1249,7 +1250,7 @@ class TokenMoldForm extends FormApplication {
       });
     }
     // also populate with some calculated data for dnd5e, that is not in the template.json
-    if (game.data.system.id === "dnd5e") {
+    if (/dnd5e|sw5e/.exec(game.data.system.id) !== null) {
       let sortFun = function (a, b) {
         if (a.attribute > b.attribute) return 1;
         else if (a.attribute < b.attribute) return -1;
