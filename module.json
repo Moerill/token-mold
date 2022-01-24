@@ -16,7 +16,7 @@
   "flags": {},
   "version": "2.14.0",
   "minimumCoreVersion": "0.8.4",
-  "compatibleCoreVersion": "9.233",
+  "compatibleCoreVersion": "9",
   "scripts": [],
   "esmodules": ["scripts/index.js"],
   "styles": ["token-mold.css"],
