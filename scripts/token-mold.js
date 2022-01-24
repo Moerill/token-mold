@@ -1,10 +1,20 @@
 import { TokenMoldOverlay } from "./overlay.js";
 export default class TokenMold {
+  static MODULEID = 'token-mold';
+
   constructor() {
     this.counter = {};
     this._rollTableList = {};
     this.dict = null;
     this.initHooks();
+  }
+
+  static log(force, ...args) {
+    const shouldLog = force || game.modules.get('_dev-mode')?.api?.getPackageDebugValue(TokenMold.MODULEID);
+
+    if (shouldLog) {
+      console.debug("Token Mold", '|', ...args);
+    }
   }
 
   initHooks() {
@@ -158,7 +168,7 @@ export default class TokenMold {
       }
     }
 
-    console.debug("Token Mold | Rollable Tables found", this._rollTableList);
+    TokenMold.log(false, "Rollable Tables found", this._rollTableList);
   }
 
   async _hookActorDirectory(html) {
@@ -245,7 +255,7 @@ export default class TokenMold {
   _hookPreTokenCreate() {
     Hooks.on("preCreateToken", (token, data, options, userId) => {
       const scene = token.parent;
-      console.log(token, token.data, data);
+      TokenMold.log(false, token, token.data, data);
       this._setTokenData(scene, data);
       token.data.update(data);
     });
@@ -295,7 +305,7 @@ export default class TokenMold {
 
   _overwriteConfig(data, actor) {
     // data = mergeObject(data, this.data.config);
-    console.log(data, this.data.config);
+    TokenMold.log(false, data, this.data.config);
     for (let [key, value] of Object.entries(this.data.config)) {
       if (value.use !== true) continue;
       if (value.value !== undefined) {
@@ -673,7 +683,7 @@ export default class TokenMold {
   }
 
   defaultSettings() {
-    console.log("Token Mold | Loading default Settings");
+    TokenMold.log(true, "Loading default Settings");
     return {
       unlinkedOnly: true,
       name: {
@@ -792,7 +802,7 @@ export default class TokenMold {
       }
     }
     this._loadDicts();
-    console.log("Token Mold | Loading Settings", this.data);
+    TokenMold.log(true, "Loading Settings", this.data);
   }
 
   get dndDefaultNameOptions() {
@@ -856,7 +866,7 @@ export default class TokenMold {
 
     await game.settings.set("Token-Mold", "everyone", this.data);
     this._loadDicts();
-    console.log("Token Mold | Saving Settings", this.data);
+    TokenMold.log(false, "Saving Settings", this.data);
   }
 
   async _getBarAttributes() {
@@ -1005,7 +1015,7 @@ class TokenMoldForm extends FormApplication {
     data.showSystem = this.object.systemSupported;
     data.languages = this.languages;
     data.rollTableList = this.object._rollTableList;
-    console.debug("Token Mold | Prepared data", data, this._rollTableList);
+    TokenMold.log(false, "Prepared data", data, this._rollTableList);
     return data;
   }
 

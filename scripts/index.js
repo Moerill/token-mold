@@ -1,5 +1,10 @@
 import TokenMold from "./token-mold.js";
 
+/*Enable Debug Module */
+Hooks.once('devModeReady', ({ registerPackageDebugFlag }) => {
+  registerPackageDebugFlag(TokenMold.MODULEID);
+});
+
 Hooks.on("init", () => {
   game["token-mold"] = new TokenMold();
 });
