@@ -1,3 +1,9 @@
+# v2.15.0
+- Added support for DCC and SW5E systems, thanks to adotor and burndaflame respectively!
+- Added integration with the Developer Mode module, greatly reducing the clutter in the console log.
+- Corrected the 'compatible core version' as pointed out by Dawidlzydor as Token Mold is currently compatible with all versions of Foundry v9
+- Added option to override name replacement if you hold SHIFT when dragging (with thanks to Kenster421 for this change!)
+
 # v2.14.0
 - Geekswordsman is now maintaining Token Mold while Moerill conquers Earth (or at least, IRL stuff!)
 - Added Starfinder to supported systems

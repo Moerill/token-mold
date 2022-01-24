@@ -1,10 +1,20 @@
 import { TokenMoldOverlay } from "./overlay.js";
 export default class TokenMold {
+  static MODULEID = 'token-mold';
+
   constructor() {
     this.counter = {};
     this._rollTableList = {};
     this.dict = null;
     this.initHooks();
+  }
+
+  static log(force, ...args) {
+    const shouldLog = force || game.modules.get('_dev-mode')?.api?.getPackageDebugValue(TokenMold.MODULEID);
+
+    if (shouldLog) {
+      console.debug("Token Mold", '|', ...args);
+    }
   }
 
   initHooks() {
@@ -14,7 +24,7 @@ export default class TokenMold {
 
     this.registerSettings();
     this.loadSettings();
-    this.systemSupported = /dnd5e|pf2e|sfrpg|dcc/.exec(game.data.system.id) !== null;
+    this.systemSupported = /dnd5e|pf2e|sfrpg|sw5e|dcc/.exec(game.data.system.id) !== null;
 
     Hooks.on("hoverToken", (token, hovered) => {
       if (!token || !token.actor) return;
@@ -158,7 +168,7 @@ export default class TokenMold {
       }
     }
 
-    console.debug("Token Mold | Rollable Tables found", this._rollTableList);
+    TokenMold.log(false, "Rollable Tables found", this._rollTableList);
   }
 
   async _hookActorDirectory(html) {
@@ -183,7 +193,7 @@ export default class TokenMold {
             }><span><span class='checkmark'></span>&nbsp;Name</span>
         </label>
         ${
-          [ "dnd5e", "dcc" ] .includes(game.data.system.id)
+          [ "dnd5e", "dcc", "sw5e" ].includes(game.data.system.id)
             ? `
         <label class='label-inp' title='(De-)activate Hit Point rolling'>
             <input class='hp rollable' type='checkbox' name='hp.use' ${
@@ -245,7 +255,7 @@ export default class TokenMold {
   _hookPreTokenCreate() {
     Hooks.on("preCreateToken", (token, data, options, userId) => {
       const scene = token.parent;
-      console.log(token, token.data, data);
+      TokenMold.log(false, token, token.data, data);
       this._setTokenData(scene, data);
       token.data.update(data);
     });
@@ -295,7 +305,7 @@ export default class TokenMold {
 
   _overwriteConfig(data, actor) {
     // data = mergeObject(data, this.data.config);
-    console.log(data, this.data.config);
+    TokenMold.log(false, data, this.data.config);
     for (let [key, value] of Object.entries(this.data.config)) {
       if (value.use !== true) continue;
       if (value.value !== undefined) {
@@ -679,7 +689,7 @@ export default class TokenMold {
   }
 
   defaultSettings() {
-    console.log("Token Mold | Loading default Settings");
+    TokenMold.log(true, "Loading default Settings");
     return {
       unlinkedOnly: true,
       name: {
@@ -791,7 +801,8 @@ export default class TokenMold {
     )
       delete this.data.name.options.attributes;
     this.data = mergeObject(this.defaultSettings(), this.data);
-    if (game.data.system.id === "dnd5e") {
+
+    if (/dnd5e|sw5e/.exec(game.data.system.id) !== null) {
       if (this.data.name.options === undefined) {
         const dndOptions = this.dndDefaultNameOptions;
         this.data.name.options.default = dndOptions.default;
@@ -799,7 +810,7 @@ export default class TokenMold {
       }
     }
     this._loadDicts();
-    console.log("Token Mold | Loading Settings", this.data);
+    TokenMold.log(true, "Loading Settings", this.data);
   }
 
   get dndDefaultNameOptions() {
@@ -863,7 +874,7 @@ export default class TokenMold {
 
     await game.settings.set("Token-Mold", "everyone", this.data);
     this._loadDicts();
-    console.log("Token Mold | Saving Settings", this.data);
+    TokenMold.log(false, "Saving Settings", this.data);
   }
 
   async _getBarAttributes() {
@@ -1009,16 +1020,16 @@ class TokenMoldForm extends FormApplication {
     data.dispositions = CONST.TOKEN_DISPOSITIONS;
     data.defaultIcons = this.defaultIcons;
     data.showCreatureSize = /dnd5e|pf2e/.exec(game.data.system.id) !== null
-    data.showHP = /dnd5e|dcc/.exec(game.data.system.id) !== null
+    data.showHP = /dnd5e|dcc|sw5e/.exec(game.data.system.id) !== null
     data.showSystem = this.object.systemSupported;
     data.languages = this.languages;
     data.rollTableList = this.object._rollTableList;
-    console.debug("Token Mold | Prepared data", data, this._rollTableList);
+    TokenMold.log(false, "Prepared data", data, this._rollTableList);
     return data;
   }
 
   static get defaultAttrs() {
-    if (game.data.system.id === "dnd5e") {
+    if (/dnd5e|sw5e/.exec(game.data.system.id) !== null) {
       return [
         {
           value: "data.attributes.ac.value",
@@ -1239,7 +1250,7 @@ class TokenMoldForm extends FormApplication {
       });
     }
     // also populate with some calculated data for dnd5e, that is not in the template.json
-    if (game.data.system.id === "dnd5e") {
+    if (/dnd5e|sw5e/.exec(game.data.system.id) !== null) {
       let sortFun = function (a, b) {
         if (a.attribute > b.attribute) return 1;
         else if (a.attribute < b.attribute) return -1;
