@@ -80,6 +80,9 @@
                 {{/select}}
             </select>
         </div>
+        <div class="form-group">
+            <input type='checkbox' name='name.baseNameOverride' id='baseNameOverride' {{checked data.name.baseNameOverride}} data-dtype="Boolean"><label for='baseNameOverride'>{{ localize "tmold.name.baseNameOverride" }}</label>
+        </div>
         <div class="form-group name-randomizer-options">
             <span title="{{ localize "tmold.name.replaceHelp" }}">
                 {{ localize "tmold.name.replaceInfo1" }}<br>{{ localize "tmold.name.replaceInfo2" }}<br><em>{{ localize "tmold.name.replaceInfo3" }}</em>

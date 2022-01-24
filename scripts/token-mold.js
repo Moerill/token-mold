@@ -348,8 +348,9 @@ export default class TokenMold {
   _modifyName(data, actor, sceneId) {
     let name = actor.data.token.name;
 
-    if (this.data.name.replace !== "" && this.data.name.replace !== "nothing")
+    if (["remove", "replace"].includes(this.data.name.replace) && !(this.data.name.baseNameOverride && event.getModifierState("Shift"))) {
       name = "";
+    }
 
     let numberSuffix = "";
     if (this.data.name.number.use) {
@@ -704,6 +705,7 @@ export default class TokenMold {
           min: 3,
           max: 9,
         },
+        baseNameOverride: false,
       },
       hp: {
         use: true,
