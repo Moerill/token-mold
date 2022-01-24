@@ -166,9 +166,11 @@
             <input data-dtype="Boolean" type='checkbox' name='hp.toChat' id='hp_to_Chat' {{checked data.hp.toChat}}><label for='hp_to_Chat'>{{ localize "tmold.system.sendToChat" }}</label>
         </div>
         {{/if}}
+        {{#if showCreatureSize}}
         <div class="form-group" title="{{ localize "tmold.system.setTokenSizeHelp" }}">
             <input data-dtype="Boolean" type='checkbox' name='size.use' id='sizeUse' {{checked data.size.use}}/><label for='sizeUse'>{{ localize "tmold.system.setTokenSize" }}</label>
         </div>
+        {{/if}}
     </div>
 
     <div class="tab" data-tab="config" data-group='sections'>
