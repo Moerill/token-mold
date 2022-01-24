@@ -35,6 +35,7 @@
   "tmold.name.baseNameNothing": "不动",
   "tmold.name.baseNameRemove": "消除",
   "tmold.name.baseNameReplace": "替换为随机的名称",
+  "tmold.name.baseNameOverride": "Hold Shift to override name removal or replacement and always add the base name",
   "tmold.name.replaceHelp": "有关该功能如何工作的更多信息，请查看模块主页。",
   "tmold.name.replaceInfo1": "所选选项将用生成的名称替换指示物的基础名称。",
   "tmold.name.replaceInfo2": "您可以选择多个属性。 对于每个属性，可以选择可能的值并为其指定语言。在指示物创建时，将选择第一个适合的值。如果没有找到合适的值，将使用默认值。",
