@@ -14,7 +14,7 @@
   "url": "https://github.com/Moerill/token-mold",
   "bugs": "https://github.com/Moerill/token-mold/issues",
   "flags": {},
-  "version": "2.14.0",
+  "version": "2.15.0",
   "minimumCoreVersion": "0.8.4",
   "compatibleCoreVersion": "9",
   "scripts": [],
