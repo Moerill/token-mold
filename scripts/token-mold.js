@@ -1,6 +1,7 @@
 import { TokenMoldOverlay } from "./overlay.js";
 export default class TokenMold {
   static MODULEID = 'token-mold';
+  static FOUNDRYVERSION = 0;
 
   constructor() {
     this.counter = {};
@@ -22,6 +23,7 @@ export default class TokenMold {
       if (game.user.isGM) this._hookActorDirectory(html);
     });
 
+    TokenMold.FOUNDRYVERSION = game.release?.generation ? game.release.generation : game.data.version;
     this.registerSettings();
     this.loadSettings();
     this.systemSupported = /dnd5e|pf2e|sfrpg|sw5e|dcc/.exec(game.data.system.id) !== null;
@@ -30,7 +32,11 @@ export default class TokenMold {
       if (!token || !token.actor) return;
 
       // Don't show for permission lvl lower than observer
-      if (token.actor.permission < CONST.ENTITY_PERMISSIONS.OBSERVER) return;
+      if (TokenMold.FOUNDRYVERSION <= 9) {
+        if (token.actor.permission < CONST.ENTITY_PERMISSIONS.OBSERVER) return;
+      } else {
+        if (token.actor.permission < CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER) return;
+      }
 
       if (
         canvas.hud.TokenMold === undefined ||
@@ -255,9 +261,15 @@ export default class TokenMold {
   _hookPreTokenCreate() {
     Hooks.on("preCreateToken", (token, data, options, userId) => {
       const scene = token.parent;
-      TokenMold.log(false, token, token.data, data);
-      this._setTokenData(scene, data);
-      token.data.update(data);
+      if (TokenMold.FOUNDRYVERSION <= 9) { 
+        TokenMold.log(false, token, token.data, data); 
+        this._setTokenData(scene, data);
+        token.data.update(data);
+      } else { 
+        TokenMold.log(false, token, data); 
+        this._setTokenData(scene, data);
+        token.update(data);
+        }
     });
   }
 
@@ -297,14 +309,21 @@ export default class TokenMold {
   async _refreshSelected() {
     const selected = canvas.tokens.controlled;
     let udata = [];
-    for (const token of selected)
-      udata.push(this._setTokenData(canvas.scene, duplicate(token.data)));
+    for (const token of selected) {
+      if (TokenMold.FOUNDRYVERSION <= 9) {
+        udata.push(this._setTokenData(canvas.scene, duplicate(token.data)));
+      } else {
+        udata.push(this._setTokenData(canvas.scene, duplicate(token.document)));
+      }
+    }
 
+    console.log("Updates:", udata);
     canvas.scene.updateEmbeddedDocuments("Token", udata);
   }
 
   _overwriteConfig(data, actor) {
     // data = mergeObject(data, this.data.config);
+    console.log("OverwriteConfig", data, this.data.config);
     TokenMold.log(false, data, this.data.config);
     for (let [key, value] of Object.entries(this.data.config)) {
       if (value.use !== true) continue;
@@ -320,9 +339,8 @@ export default class TokenMold {
           100;
       } else if (
         value.attribute !== undefined &&
-        (value.attribute === "" ||
-          getProperty(actor, "data.data." + value.attribute) !== undefined)
-      ) {
+        (value.attribute === "" || TokenMold.FOUNDRYVERSION <= 9 ? getProperty(actor, "data.data." + value.attribute) !== undefined : getProperty(actor, value.attribute)))
+      {
         data[key].attribute = value.attribute;
       } else if (
         value.attribute === undefined &&
@@ -342,26 +360,35 @@ export default class TokenMold {
       "dcc": "data.data.attributes.hitDice.value"
     }
 
+    if (TokenMold.FOUNDRYVERSION >= 10) {
+      hpProperties.dnd5e = "system.attributes.hp.formula";
+      hpProperties.dcc = "system.attributes.hitDice.value";
+    }
+
     const formula = getProperty(actor, hpProperties[game.data.system.id]);
     if (formula) {
       const r = new Roll(formula.replace(" ", ""));
       r.roll({async: false});
       if (this.data.hp.toChat)
         r.toMessage({
-          rollMode: "gmroll",
-          flavor: data.name + " rolls for hp!",
-        });
+          flavor: data.name + " rolls for hp!"
+        }, {rollMode: CONST.DICE_ROLL_MODES.PRIVATE});
       // Make sure hp is at least 1
       const val = Math.max(r.total, 1);
-      setProperty(data, "actorData.data.attributes.hp.value", val);
-      setProperty(data, "actorData.data.attributes.hp.max", val);
-    } else
+      if (TokenMold.FOUNDRYVERSION <= 9) {
+        setProperty(data, "actorData.data.attributes.hp.value", val);
+        setProperty(data, "actorData.data.attributes.hp.max", val);
+      } else {
+        setProperty(data, "actorData.system.attributes.hp.value", val);
+        setProperty(data, "actorData.system.attributes.hp.max", val);
+      }
+    } else 
       ui.notifications.warn("Can not randomize hp. HP formula is not set.");
     return;
   }
 
   _modifyName(data, actor, sceneId) {
-    let name = actor.data.token.name;
+    let name = TokenMold.FOUNDRYVERSION <= 9 ? actor.data.token.name : actor.prototypeToken.name;
 
     if (["remove", "replace"].includes(this.data.name.replace) && !(this.data.name.baseNameOverride && event.getModifierState("Shift"))) {
       name = "";
@@ -375,10 +402,8 @@ export default class TokenMold {
         number = this.counter[sceneId][data.actorId];
       else {
         // Extract number from last created token with the same actor ID
-        const sameTokens =
-          game.scenes
-            .get(sceneId)
-            .data.tokens.filter((e) => e.actorId === data.actorId) || [];
+        const scene = game.scenes.get(sceneId);
+        const sameTokens = TokenMold.FOUNDRYVERSION <= 9 ? scene.data.tokens.filter((e) => e.actorId === data.actorId) || [] : scene.tokens.filter((e) => e.actorId === data.actorId) || [];
         if (sameTokens.length !== 0) {
           const lastTokenName = sameTokens[sameTokens.length - 1].name;
           // Split by prefix and take last element
@@ -486,9 +511,7 @@ export default class TokenMold {
     let lang;
     for (let attribute of attributes) {
       const langs = attribute.languages;
-      const val = String(
-        getProperty(actor.data, attribute.attribute)
-      ).toLowerCase();
+      const val = TokenMold.FOUNDRYVERSION <= 9 ? String(getProperty(actor.data, attribute.attribute)).toLowerCase() : String(getProperty(actor.system, attribute.attribute)).toLowerCase();
 
       lang = langs[val];
 
@@ -643,7 +666,7 @@ export default class TokenMold {
       huge: 3,
       grg: 4,
     };
-    const aSize = actor.data.data.traits.size;
+    const aSize = TokenMold.FOUNDRYVERSION <= 9 ? actor.data.data.traits.size : actor.system.traits.size;
     let tSize = sizes[aSize];
 
     // if size could not be found return
@@ -655,8 +678,11 @@ export default class TokenMold {
     //  5 ft => normal size
     // 10 ft => double
     // etc.
-    if (scene.data.gridType && /(ft)|eet/.exec(scene.data.gridUnits) !== null)
-      tSize *= 5 / scene.data.gridDistance;
+    const gridType = TokenMold.FOUNDRYVERSION <= 9 ? scene.data.gridType : scene.grid.type;
+    const gridUnits = TokenMold.FOUNDRYVERSION <= 9 ? scene.data.gridUnits : scene.grid.units;
+    const gridDistance = TokenMold.FOUNDRYVERSION <= 9 ? scene.data.gridDistance : scene.grid.distance;
+    if (gridType && /(ft)|eet/.exec(gridUnits) !== null)
+      tSize *= 5 / gridDistance;
 
     if (tSize < 1) {
       data.scale = tSize;
@@ -1180,7 +1206,7 @@ class TokenMoldForm extends FormApplication {
       const tokens = canvas.tokens.controlled;
       let udata = [];
       for (let token of tokens) {
-        const newName = this.object._pickNewName(token.actor.data);
+        const newName = TokenMold.FOUNDRYVERSION <= 9 ? this.object._pickNewName(token.actor.data) : this.object._pickNewName(token.actor);
         udata.push({
           _id: token.id,
           name: newName,
