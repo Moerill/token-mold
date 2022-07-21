@@ -646,6 +646,8 @@ export default class TokenMold {
     const aSize = actor.data.data.traits.size;
     let tSize = sizes[aSize];
 
+    debugger;
+
     // if size could not be found return
     if (tSize === undefined) return;
 
