@@ -258,21 +258,16 @@ export default class TokenMold {
   }
 
   _hookPreTokenCreate() {
-    if (TokenMold.FOUNDRY_VERSION >= 10) {
-      Hooks.on("preCreateToken", (token, data, options, userId) => {
-        const scene = token.parent;
-        this._setTokenData(scene, data);
-        TokenMold.log(true, "Update Token", token, data);
-        token.update(data);
-      });
-    } else {
-      Hooks.on("preCreateToken", (token, data, options, userId) => {
-        const scene = token.parent;
-        this._setTokenData(scene, data);
-        TokenMold.log(true, "Update Token", token, data);
+    Hooks.on("preCreateToken", (token, data, options, userId) => {
+      const scene = token.parent;
+      this._setTokenData(scene, data);
+      TokenMold.log(true, "Update Token", token, data);
+      if (TokenMold.FOUNDRY_VERSION >= 10) {
+        token.updateSource(data);
+      } else {
         token.data.update(data);
-      });
-    }
+      }
+    });
   }
 
   /**
