@@ -1,3 +1,12 @@
+# v2.15.2
+ - ***IMPORTANT*** Token Mold no longer supports v8 of Foundry.
+ - FoundryVTT v10 Compatibility Update!
+ - Updated Portugese adjectives, thanks to @Kingdorugha!
+ - **Fix** Scaling issue with scenes that have large grid units
+ - **Fix** You can no longer configure Token Mold to completely remove names, resulting in errors
+ - **Fix** Updated compendium information
+ - Various minor fixes and improvements to logging, updated documentation.
+
 # v2.15.0
 - Added support for DCC and SW5E systems, thanks to adotor and burndaflame respectively!
 - Added integration with the Developer Mode module, greatly reducing the clutter in the console log.

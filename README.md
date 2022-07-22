@@ -114,7 +114,7 @@ Don't like names at all? You can just let *Token-Mold* delete the tokens name so
 Don't like how you set up all your tokens? Or you dislike the default settings set for a compendium? Then you got the perfect module! Set your wanted configuration in the menu and it will automatically get applied to every token you from now on create!
 
 ## Hit Point Rolling
-(DnD5e only)
+(DnD5e/DCC only)
 To lazy to roll your minions hit points yourself? Don't worry, *Token-Mold* automates that for you!
 If you have a hit dice formula defined for your NPC, your token will automatically roll and set the hp, as well as notify you (if set to).  
 ![HP Rolling](doc/hp_rolling.webp)  
