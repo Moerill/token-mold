@@ -1,12 +1,16 @@
 import { TokenMoldOverlay } from "./overlay.js";
 export default class TokenMold {
   static MODULEID = 'token-mold';
+  static FOUNDRY_VERSION = 0;
+  static GAME_SYSTEM = null;
 
   constructor() {
     this.counter = {};
     this._rollTableList = {};
     this.dict = null;
     this.initHooks();
+
+    TokenMold.FOUNDRY_VERSION = game.version ?? game.data.version;
   }
 
   static log(force, ...args) {
@@ -24,13 +28,14 @@ export default class TokenMold {
 
     this.registerSettings();
     this.loadSettings();
-    this.systemSupported = /dnd5e|pf2e|sfrpg|sw5e|dcc/.exec(game.data.system.id) !== null;
+    TokenMold.GAME_SYSTEM = game.system?.id ?? game.data.system.id;
+    this.systemSupported = /dnd5e|pf2e|sfrpg|sw5e|dcc/.exec(TokenMold.GAME_SYSTEM) !== null;
 
     Hooks.on("hoverToken", (token, hovered) => {
       if (!token || !token.actor) return;
 
       // Don't show for permission lvl lower than observer
-      if (token.actor.permission < CONST.ENTITY_PERMISSIONS.OBSERVER) return;
+      if (token.actor.permission < (TokenMold.FOUNDRY_VERSION < 9 ? CONST.ENTITY_PERMISSIONS.OBSERVER : CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER)) return;
 
       if (
         canvas.hud.TokenMold === undefined ||
@@ -193,7 +198,7 @@ export default class TokenMold {
             }><span><span class='checkmark'></span>&nbsp;Name</span>
         </label>
         ${
-          [ "dnd5e", "dcc", "sw5e" ].includes(game.data.system.id)
+          [ "dnd5e", "dcc", "sw5e" ].includes(TokenMold.GAME_SYSTEM)
             ? `
         <label class='label-inp' title='(De-)activate Hit Point rolling'>
             <input class='hp rollable' type='checkbox' name='hp.use' ${
@@ -253,12 +258,21 @@ export default class TokenMold {
   }
 
   _hookPreTokenCreate() {
-    Hooks.on("preCreateToken", (token, data, options, userId) => {
-      const scene = token.parent;
-      TokenMold.log(false, token, token.data, data);
-      this._setTokenData(scene, data);
-      token.data.update(data);
-    });
+    if (TokenMold.FOUNDRY_VERSION >= 10) {
+      Hooks.on("preCreateToken", (token, data, options, userId) => {
+        const scene = token.parent;
+        this._setTokenData(scene, data);
+        TokenMold.log(true, "Update Token", token, data);
+        token.update(data);
+      });
+    } else {
+      Hooks.on("preCreateToken", (token, data, options, userId) => {
+        const scene = token.parent;
+        this._setTokenData(scene, data);
+        TokenMold.log(true, "Update Token", token, data);
+        token.data.update(data);
+      });
+    }
   }
 
   /**
@@ -274,7 +288,7 @@ export default class TokenMold {
       return data;
 
     // Do this for all tokens, even player created ones
-    if (this.data.size.use && /dnd5e|pf2e/.exec(game.data.system.id) !== null)
+    if (this.data.size.use && /dnd5e|pf2e/.exec(TokenMold.GAME_SYSTEM) !== null)
       this._setCreatureSize(data, actor, scene.id);
 
     if (this.counter[scene.id] === undefined) this.counter[scene.id] = {};
@@ -285,7 +299,7 @@ export default class TokenMold {
       setProperty(data, "actorData.name", newName);
     }
 
-    if (/dnd5e|dcc/.exec(game.data.system.id) !== null) {
+    if (/dnd5e|dcc/.exec(TokenMold.GAME_SYSTEM) !== null) {
       if (this.data.hp.use) this._rollHP(data, actor);
     }
 
@@ -297,15 +311,18 @@ export default class TokenMold {
   async _refreshSelected() {
     const selected = canvas.tokens.controlled;
     let udata = [];
-    for (const token of selected)
-      udata.push(this._setTokenData(canvas.scene, duplicate(token.data)));
+    for (const token of selected) {
+      if (TokenMold.FOUNDRY_VERSION >= 10) {
+        udata.push(this._setTokenData(canvas.scene, duplicate(token)));
+      } else {
+        udata.push(this._setTokenData(canvas.scene, duplicate(token.data)));
+      }
+    }
 
     canvas.scene.updateEmbeddedDocuments("Token", udata);
   }
 
   _overwriteConfig(data, actor) {
-    // data = mergeObject(data, this.data.config);
-    TokenMold.log(false, data, this.data.config);
     for (let [key, value] of Object.entries(this.data.config)) {
       if (value.use !== true) continue;
       if (value.value !== undefined) {
@@ -318,11 +335,7 @@ export default class TokenMold {
               (Math.random() * (value.max - value.min) + value.min) * 100
             )) /
           100;
-      } else if (
-        value.attribute !== undefined &&
-        (value.attribute === "" ||
-          getProperty(actor, "data.data." + value.attribute) !== undefined)
-      ) {
+      } else if (value.attribute !== undefined && (value.attribute === "" || (TokenMold.FOUNDRY_VERSION >= 10 && getProperty(actor, value.attribute) !== undefined)) || (TokenMold.FOUNDRY_VERSION < 10 && getProperty(actor, "data.data." + value.attribute) !== undefined)) {
         data[key].attribute = value.attribute;
       } else if (
         value.attribute === undefined &&
@@ -338,11 +351,11 @@ export default class TokenMold {
 
   _rollHP(data, actor) {
     const hpProperties = {
-      "dnd5e": "data.data.attributes.hp.formula",
-      "dcc": "data.data.attributes.hitDice.value"
+      "dnd5e": TokenMold.FOUNDRY_VERSION >= 10 ? "system.attributes.hp.formula" : "data.data.attributes.hp.formula",
+      "dcc": TokenMold.FOUNDRY_VERSION >= 10 ? "system.attributes.hitDice.value" : "data.data.attributes.hitDice.value"
     }
 
-    const formula = getProperty(actor, hpProperties[game.data.system.id]);
+    const formula = getProperty(actor, hpProperties[TokenMold.GAME_SYSTEM]);
     if (formula) {
       const r = new Roll(formula.replace(" ", ""));
       r.roll({async: false});
@@ -353,15 +366,16 @@ export default class TokenMold {
         });
       // Make sure hp is at least 1
       const val = Math.max(r.total, 1);
-      setProperty(data, "actorData.data.attributes.hp.value", val);
-      setProperty(data, "actorData.data.attributes.hp.max", val);
+      setProperty(data, TokenMold.FOUNDRY_VERSION >= 10 ? "actorData.system.attributes.hp.value" : "actorData.data.attributes.hp.value", val);
+      setProperty(data, TokenMold.FOUNDRY_VERSION >= 10 ? "actorData.system.attributes.hp.max" : "actorData.data.attributes.hp.max", val);
     } else
       ui.notifications.warn("Can not randomize hp. HP formula is not set.");
     return;
   }
 
   _modifyName(data, actor, sceneId) {
-    let name = actor.data.token.name;
+    TokenMold.log(false, "Modify Name!", data, actor, sceneId);
+    let name = TokenMold.FOUNDRY_VERSION >= 10 ? actor.prototypeToken.name : actor.data.token.name;
 
     if (["remove", "replace"].includes(this.data.name.replace) && !(this.data.name.baseNameOverride && event.getModifierState("Shift"))) {
       name = "";
@@ -375,10 +389,9 @@ export default class TokenMold {
         number = this.counter[sceneId][data.actorId];
       else {
         // Extract number from last created token with the same actor ID
-        const sameTokens =
-          game.scenes
-            .get(sceneId)
-            .data.tokens.filter((e) => e.actorId === data.actorId) || [];
+        const sameTokens = (TokenMold.FOUNDRY_VERSION >= 10 ? 
+          game.scenes.get(sceneId).tokens.filter((e) => e.actorId === data.actorId) : 
+          game.scenes.get(sceneId).data.tokens.filter((e) => e.actorId === data.actorId)) || [];
         if (sameTokens.length !== 0) {
           const lastTokenName = sameTokens[sameTokens.length - 1].name;
           // Split by prefix and take last element
@@ -486,9 +499,7 @@ export default class TokenMold {
     let lang;
     for (let attribute of attributes) {
       const langs = attribute.languages;
-      const val = String(
-        getProperty(actor.data, attribute.attribute)
-      ).toLowerCase();
+      const val = TokenMold.FOUNDRY_VERSION >= 10 ? String(getProperty(actor.system, attribute.attribute)).toLowerCase() : String(getProperty(actor.data, attribute.attribute)).toLowerCase();
 
       lang = langs[val];
 
@@ -643,10 +654,8 @@ export default class TokenMold {
       huge: 3,
       grg: 4,
     };
-    const aSize = actor.data.data.traits.size;
+    const aSize = TokenMold.FOUNDRY_VERSION >= 10 ? actor.system.traits.size : actor.data.data.traits.size;
     let tSize = sizes[aSize];
-
-    debugger;
 
     // if size could not be found return
     if (tSize === undefined) return;
@@ -657,8 +666,13 @@ export default class TokenMold {
     //  5 ft => normal size
     // 10 ft => double
     // etc.
-    if (scene.data.gridType && /(ft)|eet/.exec(scene.data.gridUnits) !== null)
+    if (TokenMold.FOUNDRY_VERSION >= 10) {
+      if (scene.grid.type && /(ft)|eet/.exec(scene.grid.units) !== null)
+      tSize *= 5 / scene.grid.distance;
+    } else {
+      if (scene.data.gridType && /(ft)|eet/.exec(scene.data.gridUnits) !== null)
       tSize *= 5 / scene.data.gridDistance;
+    }
 
     if (tSize < 1) {
       data.scale = tSize;
@@ -804,7 +818,7 @@ export default class TokenMold {
       delete this.data.name.options.attributes;
     this.data = mergeObject(this.defaultSettings(), this.data);
 
-    if (/dnd5e|sw5e/.exec(game.data.system.id) !== null) {
+    if (/dnd5e|sw5e/.exec(TokenMold.GAME_SYSTEM) !== null) {
       if (this.data.name.options === undefined) {
         const dndOptions = this.dndDefaultNameOptions;
         this.data.name.options.default = dndOptions.default;
@@ -830,7 +844,7 @@ export default class TokenMold {
         },
         // Uncomment this section if races get implemented in FVTT
         // {
-        //     attribute: "data.details.race",
+        //     attribute: TokenMold.FOUNDRY_VERSION >= 10 ? "system.details.race" :"data.details.race",
         //     languages: {
         //         "dragonborn": "norwegian",
         //         "dwarf": "welsh",
@@ -845,7 +859,7 @@ export default class TokenMold {
         // },
         // NPC Types
         {
-          attribute: "data.details.type",
+          attribute: TokenMold.FOUNDRY_VERSION >= 10 ? "system.details.type" : "data.details.type",
           languages: {
             humanoid: "irish",
             aberration: "icelandic",
@@ -887,9 +901,9 @@ export default class TokenMold {
       else obj[key] = val;
     };
     for (const type of types) {
-      const { bar, value } = TokenDocument.getTrackedAttributes(
-        new CONFIG.Actor.documentClass({ type: type, name: "tmp" }).data.data
-      );
+      const { bar, value } = TokenMold.FOUNDRY_VERSION >= 10 ? 
+        TokenDocument.getTrackedAttributes(new CONFIG.Actor.documentClass({ type: type, name: "tmp" })) :
+        TokenDocument.getTrackedAttributes(new CONFIG.Actor.documentClass({ type: type, name: "tmp" }).data.data);
       for (const val of bar) {
         addElement(barData.bar, val.join("."), type);
       }
