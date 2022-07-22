@@ -79,5 +79,7 @@
   "tmold.stat.attributeNone": "None",
   "tmold.stat.attributeName": "Name",
   "tmold.stat.attributeDelete": "Delete",
-  "tmold.stat.attributeAdd": "Add Attribute"
+  "tmold.stat.attributeAdd": "Add Attribute",
+
+  "tmold.warn.removeName": "Can not configure Token Mold to completely remove name."
 }

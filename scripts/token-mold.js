@@ -911,6 +911,12 @@ export default class TokenMold {
     )
       this._loadTable();
 
+    if (this.data.name.replace === "remove" && (!this.data.name.number.use && !this.data.name.prefix.use)) {
+      this.data.name.replace = "nothing";
+      TokenMold.log(true, TokenMold.LOG_LEVEL.Warn, game.i18n.localize("tmold.warn.removeName"));
+      ui.notifications.warn(game.i18n.localize("tmold.warn.removeName"))
+    }
+
     await game.settings.set("Token-Mold", "everyone", this.data);
     this._loadDicts();
     TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "Saving Settings", this.data);
