@@ -1069,6 +1069,7 @@ class TokenMoldForm extends FormApplication {
     data.showSystem = this.object.systemSupported;
     data.languages = this.languages;
     data.rollTableList = this.object._rollTableList;
+    data.visionLabel = TokenMold.FOUNDRY_VERSION >= 10 ? game.i18n.localize("TOKEN.VisionEnabled") : game.i18n.localize("TOKEN.VisionHas");
     TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "Prepared data", data, this._rollTableList);
     return data;
   }

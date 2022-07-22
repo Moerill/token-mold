@@ -1,4 +1,5 @@
 {
+  "id": "token-mold",
   "name": "token-mold",
   "title": "Token Mold",
   "description": "<p>Gives the option to cast your tokens into a mold of your choosing.</p> <p>Possible options for your mold include:</p> <ul><li>Adding incrementing number suffixes.</li><li>Name generation for tokens.</li><li>Random adjective prefixes. (Examples: angry, calm, bloodthirsty, ...)</li><li>Rolling Hit Points by formula (dnd5e only)</li><li>Set token configuration on placement.</li><li>Providing an overlay to quickly check some stats on token hover.</li><li>Automatic creature size scaling (dnd5e only)</li></ul><hr>",
@@ -15,7 +16,7 @@
   "bugs": "https://github.com/Moerill/token-mold/issues",
   "flags": {},
   "version": "2.15.2",
-  "minimumCoreVersion": "0.8.4",
+  "minimumCoreVersion": "9",
   "compatibleCoreVersion": "10",
   "compatibility": {
     "minimum": "9",
@@ -58,7 +59,7 @@
       "label": "Adjectives",
       "module": "token-mold",
       "path": "assets/adjectives.db",
-      "entity": "RollTable",
+      "type": "RollTable",
       "private": false
     }
   ],
