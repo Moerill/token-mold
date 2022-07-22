@@ -3,6 +3,12 @@ export default class TokenMold {
   static MODULEID = 'token-mold';
   static FOUNDRY_VERSION = 0;
   static GAME_SYSTEM = null;
+  static LOG_LEVEL = {
+    Debug: 0,
+    Info: 1,
+    Warn: 2,
+    Error: 3
+  }
 
   constructor() {
     this.counter = {};
@@ -13,11 +19,25 @@ export default class TokenMold {
     TokenMold.FOUNDRY_VERSION = game.version ?? game.data.version;
   }
 
-  static log(force, ...args) {
+  static log(force, level, ...args) {
     const shouldLog = force || game.modules.get('_dev-mode')?.api?.getPackageDebugValue(TokenMold.MODULEID);
 
     if (shouldLog) {
-      console.debug("Token Mold", '|', ...args);
+      switch (level) {
+        case TokenMold.LOG_LEVEL.Error:
+          console.error("Token Mold", '|', ...args);
+          break;
+        case TokenMold.LOG_LEVEL.Warn:
+          console.warn("Token Mold", '|', ...args);
+          break;
+        case TokenMold.LOG_LEVEL.Info:
+          console.info("Token Mold", '|', ...args);
+          break;
+        case TokenMold.LOG_LEVEL.Debug:
+        default:
+          console.debug("Token Mold", '|', ...args);
+          break;
+      }
     }
   }
 
@@ -173,7 +193,7 @@ export default class TokenMold {
       }
     }
 
-    TokenMold.log(false, "Rollable Tables found", this._rollTableList);
+    TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "Rollable Tables found", this._rollTableList);
   }
 
   async _hookActorDirectory(html) {
@@ -261,6 +281,7 @@ export default class TokenMold {
     Hooks.on("preCreateToken", (token, data, options, userId) => {
       const scene = token.parent;
       this._setTokenData(scene, data);
+      TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "preCreateToken", token, data);
       if (TokenMold.FOUNDRY_VERSION >= 10) {
         token.updateSource(data);
       } else {
@@ -368,7 +389,6 @@ export default class TokenMold {
   }
 
   _modifyName(data, actor, sceneId) {
-    TokenMold.log(false, "Modify Name!", data, actor, sceneId);
     let name = TokenMold.FOUNDRY_VERSION >= 10 ? actor.prototypeToken.name : actor.data.token.name;
 
     if (["remove", "replace"].includes(this.data.name.replace) && !(this.data.name.baseNameOverride && event.getModifierState("Shift"))) {
@@ -669,7 +689,11 @@ export default class TokenMold {
     }
 
     if (tSize < 1) {
-      data.scale = tSize;
+      if (TokenMold.FOUNDRY_VERSION >= 10) {
+        data.texture.scaleX = data.texture.scaleY = tSize < 0.2 ? 0.2 : Math.floor(tSize * 10)/10;
+      } else {
+        data.scale = tSize < 0.2 ? 0.2 : Math.floor(tSize * 10)/10;
+      }
       data.width = data.height = 1;
     } else {
       const int = Math.floor(tSize);
@@ -677,9 +701,14 @@ export default class TokenMold {
       // Make sure to only have integers
       data.width = data.height = int;
       // And scale accordingly
-      data.scale = tSize / int;
-      // Set minimum scale 0.25
-      data.scale = Math.max(data.scale, 0.25);
+      if (TokenMold.FOUNDRY_VERSION >= 10) {
+        tSize = Math.max((tSize / int), 0.2);
+        data.texture.scaleX = data.texture.scaleY = tSize;
+      } else {
+        data.scale = tSize / int;
+        // Set minimum scale 0.25
+        data.scale = Math.max(data.scale, 0.25);
+      }
     }
   }
 
@@ -699,7 +728,7 @@ export default class TokenMold {
   }
 
   defaultSettings() {
-    TokenMold.log(true, "Loading default Settings");
+    TokenMold.log(true, TokenMold.LOG_LEVEL.Info, "Loading default Settings");
     return {
       unlinkedOnly: true,
       name: {
@@ -820,7 +849,7 @@ export default class TokenMold {
       }
     }
     this._loadDicts();
-    TokenMold.log(false, "Loading Settings", this.data);
+    TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "Loading Settings", this.data);
   }
 
   get dndDefaultNameOptions() {
@@ -884,7 +913,7 @@ export default class TokenMold {
 
     await game.settings.set("Token-Mold", "everyone", this.data);
     this._loadDicts();
-    TokenMold.log(false, "Saving Settings", this.data);
+    TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "Saving Settings", this.data);
   }
 
   async _getBarAttributes() {
@@ -1034,7 +1063,7 @@ class TokenMoldForm extends FormApplication {
     data.showSystem = this.object.systemSupported;
     data.languages = this.languages;
     data.rollTableList = this.object._rollTableList;
-    TokenMold.log(false, "Prepared data", data, this._rollTableList);
+    TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "Prepared data", data, this._rollTableList);
     return data;
   }
 
