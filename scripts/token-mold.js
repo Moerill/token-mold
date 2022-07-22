@@ -261,7 +261,6 @@ export default class TokenMold {
     Hooks.on("preCreateToken", (token, data, options, userId) => {
       const scene = token.parent;
       this._setTokenData(scene, data);
-      TokenMold.log(true, "Update Token", token, data);
       if (TokenMold.FOUNDRY_VERSION >= 10) {
         token.updateSource(data);
       } else {
@@ -821,7 +820,7 @@ export default class TokenMold {
       }
     }
     this._loadDicts();
-    TokenMold.log(true, "Loading Settings", this.data);
+    TokenMold.log(false, "Loading Settings", this.data);
   }
 
   get dndDefaultNameOptions() {
