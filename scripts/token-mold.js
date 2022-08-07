@@ -515,6 +515,14 @@ export default class TokenMold {
       const langs = attribute.languages;
       const val = TokenMold.FOUNDRY_VERSION >= 10 ? String(getProperty(actor.system, attribute.attribute)).toLowerCase() : String(getProperty(actor.data, attribute.attribute)).toLowerCase();
 
+      // Allow for regex to match attributes
+      for (var key in langs) {
+        if (key.match(val)) {
+          val = key;
+          break;
+        }
+      }
+
       lang = langs[val];
 
       if (lang !== undefined) break;
