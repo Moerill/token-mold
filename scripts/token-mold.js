@@ -517,13 +517,10 @@ export default class TokenMold {
 
       // Allow for regex to match attributes
       for (var key in langs) {
-        if (key.match(val)) {
-          val = key;
-          break;
-        }
+        if (val.match(key)) break;
       }
 
-      lang = langs[val];
+      lang = langs[key];
 
       if (lang !== undefined) break;
     }
