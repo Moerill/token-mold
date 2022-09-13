@@ -1071,6 +1071,7 @@ class TokenMoldForm extends FormApplication {
     data.languages = this.languages;
     data.rollTableList = this.object._rollTableList;
     data.visionLabel = TokenMold.FOUNDRY_VERSION >= 10 ? game.i18n.localize("TOKEN.VisionEnabled") : game.i18n.localize("TOKEN.VisionHas");
+    data.isV9 = !(TokenMold.FOUNDRY_VERSION >= 10);
     TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "Prepared data", data, this._rollTableList);
     return data;
   }
@@ -1079,12 +1080,12 @@ class TokenMoldForm extends FormApplication {
     if (/dnd5e|sw5e/.exec(game.data.system.id) !== null) {
       return [
         {
-          value: "data.attributes.ac.value",
+          value: TokenMold.FOUNDRY_VERSION >= 10 ? "system.attributes.ac.value" : "data.attributes.ac.value",
           label: "Armor Class",
           icon: '<i class="fas fa-eye"></i>',
         },
         {
-          value: "data.skills.prc.passive",
+          value: TokenMold.FOUNDRY_VERSION >= 10 ? "system.skills.prc.passive" : "data.skills.prc.passive",
           label: "Passive Perception",
           icon: '<i class="fas fa-shield-alt"></i>',
         },

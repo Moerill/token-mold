@@ -342,7 +342,11 @@
                 {{#each @root.actorAttributes as |v  k|}}
                 <optgroup label="{{k}}">
                     {{#each v}}
+                    {{#if ../../isV9}}
                     <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
+                    {{else}}
+                    <option value="system.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
+                    {{/if}}
                     {{/each}}
                 </optgroup>
                 {{/each}}
@@ -363,7 +367,11 @@
                 {{#each @root.actorAttributes as |v  k|}}
                 <optgroup label="{{k}}">
                     {{#each v}}
+                    {{#if ../../isV9}}
                     <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
+                    {{else}}
+                    <option value="system.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
+                    {{/if}}
                     {{/each}}
                 </optgroup>
                 {{/each}}
