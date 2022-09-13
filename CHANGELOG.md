@@ -1,3 +1,8 @@
+# v2.15.3
+ - Corrected an issue where a conflict with certain game systems such as PF2E and a core Foundry v10 method that Token Mold utilizes could cause an infinite recursion error.  ( Issue #138)
+ - Corrected an issue where overlays may not get displayed due in Foundry v10 due to deprecated data retrieval methods ( Issue #137 )
+ - Added a new option to enable or disable the overlay for Linked Tokens ( Issue # 134 )
+
 # v2.15.2
  - ***IMPORTANT*** Token Mold no longer supports v8 of Foundry.
  - FoundryVTT v10 Compatibility Update!

@@ -318,6 +318,10 @@
         </div>
     </div>
     <div class="tab overlay" data-tab="overlay" >
+        <div class="form-group class unlinked">
+            <input type='checkbox' name='enableOverlayForLinked' id='enableOverlayForLinked' {{checked data.enableOverlayForLinked}} data-dtype="Boolean">
+            <label for='enableOverlayForLinked'>{{ localize "tmold.config.enableOverlayFor" }}&nbsp;<em>{{ localize "tmold.config.linkedTokens" }}</em>.</label>
+        </div>
         <div class="form-group">
             <h3>{{ localize "tmold.stat.attributeChooseDisplay" }}</h3>
         </div>
@@ -342,7 +346,11 @@
                 {{#each @root.actorAttributes as |v  k|}}
                 <optgroup label="{{k}}">
                     {{#each v}}
+                    {{#if ../../isV9}}
                     <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
+                    {{else}}
+                    <option value="system.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
+                    {{/if}}
                     {{/each}}
                 </optgroup>
                 {{/each}}
@@ -363,7 +371,11 @@
                 {{#each @root.actorAttributes as |v  k|}}
                 <optgroup label="{{k}}">
                     {{#each v}}
+                    {{#if ../../isV9}}
                     <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
+                    {{else}}
+                    <option value="system.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
+                    {{/if}}
                     {{/each}}
                 </optgroup>
                 {{/each}}

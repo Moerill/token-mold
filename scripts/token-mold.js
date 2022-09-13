@@ -59,7 +59,8 @@ export default class TokenMold {
 
       if (
         canvas.hud.TokenMold === undefined ||
-        this.data.overlay.attrs.length === 0
+        this.data.overlay.attrs.length === 0 ||
+        (token.document.actorLink && !this.data.enableOverlayForLinked)
       )
         return;
 
@@ -923,16 +924,17 @@ export default class TokenMold {
   }
 
   async _getBarAttributes() {
-    const types = CONFIG.Actor.documentClass.metadata.types;
+    const types = TokenMold.FOUNDRY_VERSION >= 10 ? CONFIG.Actor.documentClass.TYPES : CONFIG.Actor.documentClass.metadata.types;
     let barData = { bar: {}, value: {} };
     let addElement = (obj, key, val) => {
       if (obj[key]) obj[key] += ", " + val;
       else obj[key] = val;
     };
     for (const type of types) {
-      const { bar, value } = TokenMold.FOUNDRY_VERSION >= 10 ? 
-        TokenDocument.getTrackedAttributes(new CONFIG.Actor.documentClass({ type: type, name: "tmp" })) :
-        TokenDocument.getTrackedAttributes(new CONFIG.Actor.documentClass({ type: type, name: "tmp" }).data.data);
+      const docClass = TokenMold.FOUNDRY_VERSION >= 10 ? 
+        JSON.parse(JSON.stringify(new CONFIG.Actor.documentClass({ type: type, name: "tmp"}))) :
+        new CONFIG.Actor.documentClass({ type: type, name: "tmp" }).data.data;
+      const { bar, value } = TokenDocument.getTrackedAttributes(docClass);
       for (const val of bar) {
         addElement(barData.bar, val.join("."), type);
       }
@@ -1070,6 +1072,7 @@ class TokenMoldForm extends FormApplication {
     data.languages = this.languages;
     data.rollTableList = this.object._rollTableList;
     data.visionLabel = TokenMold.FOUNDRY_VERSION >= 10 ? game.i18n.localize("TOKEN.VisionEnabled") : game.i18n.localize("TOKEN.VisionHas");
+    data.isV9 = !(TokenMold.FOUNDRY_VERSION >= 10);
     TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "Prepared data", data, this._rollTableList);
     return data;
   }
@@ -1078,12 +1081,12 @@ class TokenMoldForm extends FormApplication {
     if (/dnd5e|sw5e/.exec(game.data.system.id) !== null) {
       return [
         {
-          value: "data.attributes.ac.value",
+          value: TokenMold.FOUNDRY_VERSION >= 10 ? "system.attributes.ac.value" : "data.attributes.ac.value",
           label: "Armor Class",
           icon: '<i class="fas fa-eye"></i>',
         },
         {
-          value: "data.skills.prc.passive",
+          value: TokenMold.FOUNDRY_VERSION >= 10 ? "system.skills.prc.passive" : "data.skills.prc.passive",
           label: "Passive Perception",
           icon: '<i class="fas fa-shield-alt"></i>',
         },
