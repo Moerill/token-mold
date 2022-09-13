@@ -59,7 +59,8 @@ export default class TokenMold {
 
       if (
         canvas.hud.TokenMold === undefined ||
-        this.data.overlay.attrs.length === 0
+        this.data.overlay.attrs.length === 0 ||
+        (token.document.actorLink && !this.data.enableOverlayForLinked)
       )
         return;
 

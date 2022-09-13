@@ -6,6 +6,9 @@
   "tmold.config.applySettings": "Apply settings to",
   "tmold.config.unlinkedOnly": "unlinked tokens only",
 
+  "tmold.config.enableOverlayFor": "Enable Overlay for",
+  "tmold.config.linkedTokens": "linked tokens",
+
   "tmold.tab.infoHelp": "Info/Help",
   "tmold.tab.name": "Name",
   "tmold.tab.systemSpecific": "System Specific",
