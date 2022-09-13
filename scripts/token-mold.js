@@ -923,16 +923,17 @@ export default class TokenMold {
   }
 
   async _getBarAttributes() {
-    const types = CONFIG.Actor.documentClass.metadata.types;
+    const types = TokenMold.FOUNDRY_VERSION >= 10 ? CONFIG.Actor.documentClass.TYPES : CONFIG.Actor.documentClass.metadata.types;
     let barData = { bar: {}, value: {} };
     let addElement = (obj, key, val) => {
       if (obj[key]) obj[key] += ", " + val;
       else obj[key] = val;
     };
     for (const type of types) {
-      const { bar, value } = TokenMold.FOUNDRY_VERSION >= 10 ? 
-        TokenDocument.getTrackedAttributes(new CONFIG.Actor.documentClass({ type: type, name: "tmp" })) :
-        TokenDocument.getTrackedAttributes(new CONFIG.Actor.documentClass({ type: type, name: "tmp" }).data.data);
+      const docClass = TokenMold.FOUNDRY_VERSION >= 10 ? 
+        JSON.parse(JSON.stringify(new CONFIG.Actor.documentClass({ type: type, name: "tmp"}))) :
+        new CONFIG.Actor.documentClass({ type: type, name: "tmp" }).data.data;
+      const { bar, value } = TokenDocument.getTrackedAttributes(docClass);
       for (const val of bar) {
         addElement(barData.bar, val.join("."), type);
       }
