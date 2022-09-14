@@ -260,7 +260,11 @@ export default class TokenMold {
     this.section
       .querySelector(".token-rand-form-btn")
       .addEventListener("click", (ev) => {
-        if (this.form === undefined) this.form = new TokenMoldForm(this);
+        if (this.form === undefined) { 
+          this.form = new TokenMoldForm(this);
+        } else {
+          this.form.data = this.data;
+        }
         this.form.render(true);
       });
   }

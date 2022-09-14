@@ -1,3 +1,8 @@
+# v2.15.4
+ - Adjusted resolutions to #137 & #138
+ - Corrected an issue where refreshing selected tokens was causing a circular reference error ( [#141](https://github.com/Moerill/token-mold/issues/141) ).
+ - Corrected an issue where the overlay could get disabled in certain cirucmstances ( [#51](https://github.com/Moerill/token-mold/issues/51) )
+
 # v2.15.3
  - Corrected an issue where a conflict with certain game systems such as PF2E and a core Foundry v10 method that Token Mold utilizes could cause an infinite recursion error.  ( Issue #138)
  - Corrected an issue where overlays may not get displayed due in Foundry v10 due to deprecated data retrieval methods ( Issue #137 )
