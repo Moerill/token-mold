@@ -260,7 +260,11 @@ export default class TokenMold {
     this.section
       .querySelector(".token-rand-form-btn")
       .addEventListener("click", (ev) => {
-        if (this.form === undefined) this.form = new TokenMoldForm(this);
+        if (this.form === undefined) { 
+          this.form = new TokenMoldForm(this);
+        } else {
+          this.form.data = this.data;
+        }
         this.form.render(true);
       });
   }
@@ -329,7 +333,7 @@ export default class TokenMold {
     let udata = [];
     for (const token of selected) {
       if (TokenMold.FOUNDRY_VERSION >= 10) {
-        udata.push(this._setTokenData(canvas.scene, duplicate(token)));
+        udata.push(this._setTokenData(canvas.scene, token.document.toObject()));
       } else {
         udata.push(this._setTokenData(canvas.scene, duplicate(token.data)));
       }
@@ -932,7 +936,7 @@ export default class TokenMold {
     };
     for (const type of types) {
       const docClass = TokenMold.FOUNDRY_VERSION >= 10 ? 
-        JSON.parse(JSON.stringify(new CONFIG.Actor.documentClass({ type: type, name: "tmp"}))) :
+        new CONFIG.Actor.documentClass({ type: type, name: "tmp"}).system :
         new CONFIG.Actor.documentClass({ type: type, name: "tmp" }).data.data;
       const { bar, value } = TokenDocument.getTrackedAttributes(docClass);
       for (const val of bar) {
