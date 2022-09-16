@@ -743,7 +743,7 @@ export default class TokenMold {
         prefix: {
           use: true,
           position: "front",
-          table: "Compendium.token-mold.adjectives.BGNM2VPUyFfA5ZMJ", // English
+          table: "Compendium.token-mold.adjectives.BGNM2VPUyFfA5ZMJ", // English  48rohurXXemyhCC4
         },
         replace: "",
         options: {

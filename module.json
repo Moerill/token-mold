@@ -25,7 +25,7 @@
 },
 "scripts": [],
   "esmodules": ["scripts/index.js"],
-  "styles": ["token-mold.css"],
+  "styles": ["styles/token-mold.css"],
   "languages": [
     {
       "lang": "en",
