@@ -3,6 +3,41 @@
 
   "Token Mold": "Token Mold",
 
+  "tmold": {
+    "ABOUT": {
+      "About": "About Token Mold",
+      "CreatedBy": "Created By",
+      "Help": "Help",
+      "LiveSupport": "For live support of Token Mold, join the Foundry VTT Discord and post any questions in #module-troubleshooting!",
+      "ProjectPage": "View the Project Page to report issues or comment on this Project at: ",
+      "SupportTheCreator": "If you enjoy Token, please consider donating to the creator at: ",
+      "Title": "Token Mold",
+      "Wiki": "View the Token Mold wiki at: "
+    },
+    "CONFIG": {
+      "Save": "Save and Close"
+    },
+    "LABELS": {
+      "Config": "Config",
+      "HP": "HP",
+      "Name": "Name",
+      "Overlay": "Overlay",
+      "Settings": "Settings"
+    },
+    "SETTINGS": {
+      "Config": "Token Mold Configuration",
+      "ConfigHint": "Configure Settings for Token Mold.  Also available at the top of the Actor Tab.",
+      "ConfigLabel": "Configure Token Mold"
+    },
+    "SIDEBAR": {
+      "HP": "(De-)activate Hit Point rolling",
+      "Name": "(De-)activate Name randomizing",
+      "Overlay": "(De-)activate Stat Overlay On Hover",
+      "Reapply": "Reapplies all settings to selected tokens as if those were replaced onto the scene.",
+      "Token": "(De-)activate Token Config Overwrite"
+    }
+  },
+
   "tmold.config.applySettings": "Apply settings to",
   "tmold.config.unlinkedOnly": "unlinked tokens only",
 

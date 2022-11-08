@@ -7,7 +7,7 @@ async function randomizeHealth(doc, opts, _userId) {
 	if (opts.temporary) return; // don't care about temporaries
 
 	const classes = doc.actor.itemTypes.class;
-	const formula = game.settings.get(module, 'formula');
+	const formula = `(@hdCount)d(@hdSize)`;
 	const hpconf = game.settings.get('pf1', 'healthConfig').hitdice;
 
 	if (hpconf.NPC.auto || hpconf.Racial.auto) {

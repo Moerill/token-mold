@@ -15,16 +15,14 @@
   "url": "https://github.com/Moerill/token-mold",
   "bugs": "https://github.com/Moerill/token-mold/issues",
   "flags": {},
-  "version": "2.15.2",
-  "minimumCoreVersion": "9",
-  "compatibleCoreVersion": "10",
+  "version": "3.0.0",
   "compatibility": {
-    "minimum": "9",
+    "minimum": "10",
     "verified": "10",
     "maximum": "10"
 },
 "scripts": [],
-  "esmodules": ["scripts/index.js"],
+  "esmodules": ["modules/main.mjs"],
   "styles": ["styles/token-mold.css"],
   "languages": [
     {
