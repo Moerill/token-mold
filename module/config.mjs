@@ -10,6 +10,7 @@ CONFIG.SETTINGS = {};
 CONFIG.BAR_ATTRIBUTES = [];
 CONFIG.ADJECTIVES = null;
 CONFIG.DICTIONARY = null;
+CONFIG.ROLLTABLES = null;
 CONFIG.LANGUAGES = [
     "afrikaans",
     "albanian",

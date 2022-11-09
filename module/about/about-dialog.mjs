@@ -38,6 +38,7 @@ export class AboutDialog extends FormApplication {
             "supportCreator": game.i18n.localize(`${moduleID}.ABOUT.SupportTheCreator`),
             "live_support": game.i18n.localize(`${moduleID}.ABOUT.LiveSupport`),
             module_title,
+            "originally_created_by": game.i18n.localize(`${moduleID}.ABOUT.OriginallyCreatedBy`),
             "project_page": game.i18n.localize(`${moduleID}.ABOUT.ProjectPage`),
             "url": game.modules.get(AboutDialog.MODULE_ID).url,
             "version": this.#version,

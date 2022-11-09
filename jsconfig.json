@@ -1,8 +1,0 @@
-{
-	"compilerOptions": {		
-    "types": ["foundry-pc-types"],
-    "target": "es2020",
-    "module": "es6"
-  },
-  "exclude": ["node_modules", "scripts/dict"]
-}

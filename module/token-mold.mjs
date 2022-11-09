@@ -2,6 +2,7 @@ import { CONFIG } from "./config.mjs";
 import { API } from "./utils/api.mjs";
 import { TokenMoldConfigurationDialog } from "./forms/token-mold-configuration-dialog.mjs";
 import { Logger } from "./logger/logger.mjs";
+import { NameGenerator } from "./utils/namegenerator.mjs";
 
 export class TokenMold {
     #section = null;
@@ -152,6 +153,27 @@ export class TokenMold {
         this.#loadSettings();
     }
 
+    async onReady() {
+        // Hooks.on("renderHeadsUpDisplay", async (app, html, data) => {
+        //     html.append('<template id="token-mold-overlay"></template>');
+        //     canvas.hud.TokenMold = new TokenMoldOverlay();
+        // });
+
+        if (!game.user.isGM) return;
+
+        //   Hooks.on("deleteToken", (...args) => {
+        //     if (!canvas.hud.TokenMold) return;
+        //     canvas.hud.TokenMold.clear();
+        //   });
+
+        //   this._hookPreTokenCreate();
+        //   this.barAttributes = await this._getBarAttributes();
+        TokenMold.LoadDicts();
+
+        await this.#getRollTables();
+        await TokenMold.LoadTable();
+    }
+
     hookActorDirectory(html) {
         this.#section = document.createElement("section");
         this.#section.classList.add("token-mold");
@@ -163,8 +185,60 @@ export class TokenMold {
         if (CONFIG.SETTINGS !== undefined) this.#renderActorDirectoryMenu();
     }
 
-    #loadSettings() {
+    async #getRollTables() {
+        const rollTablePacks = game.packs.filter((e) => e.documentName === "RollTable");
 
+        CONFIG.ROLLTABLES = {};
+        if (game.tables.size > 0) CONFIG.ROLLTABLES["World"] = [];
+        for (const table of game.tables) {
+            CONFIG.ROLLTABLES["World"].push({name: table.name, uuid: `RollTable.${table.id}`});
+        }
+
+        for (const pack of rollTablePacks) {
+            const idx = await pack.getIndex();
+            CONFIG.ROLLTABLES[pack.metadata.label] = [];
+            const tableString = `Compendium.${pack.collection}.`;
+            for (let table of idx) {
+                CONFIG.ROLLTABLES[pack.metadata.label].push({name: table.name, uuid: tableString + table._id });
+            }
+        }
+
+        Logger.debug(false, "Rollable Tables found", CONFIG.ROLLTABLES);
+    }
+
+    #loadSettings() {
+        CONFIG.SETTINGS = game.settings.get("Token-Mold", "everyone");
+        // Check for old data
+        if (CONFIG.SETTINGS.config.data !== undefined) {
+            for (let [key, value] of Object.entries(CONFIG.SETTINGS.config.data)) {
+                CONFIG.SETTINGS.config[key] = {
+                    use: true,
+                    value: value,
+                };
+            }
+            delete CONFIG.SETTINGS.config.data;
+            TokenMold.SaveSettings();
+        }
+
+        if (getProperty(CONFIG.SETTINGS, "overlay.attrs") && CONFIG.SETTINGS.overlay.attrs.length === 0) {
+            delete CONFIG.SETTINGS.overlay.attrs;
+        }
+
+        if (getProperty(CONFIG.SETTINGS, "name.options.attributes") && CONFIG.SETTINGS.name.options.attributes.length === 0) {
+            delete CONFIG.SETTINGS.name.options.attributes;
+        }
+
+        CONFIG.SETTINGS = mergeObject(TokenMold.DefaultSettings(), CONFIG.SETTINGS);
+
+        if (/dnd5e|sw5e/.exec(TokenMold.GAME_SYSTEM) !== null) {
+            if (CONFIG.SETTINGS.name.options === undefined) {
+                const dndOptions = NameGenerator.dndDefaultNameOptions();
+                CONFIG.SETTINGS.name.options.default = dndOptions.default;
+                CONFIG.SETTINGS.name.options.attributes = dndOptions.attributes;
+            }
+        }
+        TokenMold.LoadDicts();
+        Logger.debug(false, "Loading Settings", CONFIG.SETTINGS);
     }
 
     #registerSettings() {

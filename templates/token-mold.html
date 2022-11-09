@@ -10,367 +10,369 @@
         <a class="item" data-tab="config" data-group='sections'>{{ localize "tmold.tab.defaultConfig" }}</a>
         <a class="item" data-tab="overlay" data-group='sections'>{{ localize "tmold.tab.statOverlay" }}</a>
     </nav>
-    <div class='tab info' data-tab='Info' data-group='sections'>
-      <!-- <h2>General</h2> -->
-      <ul>
-        <li><a href="https://github.com/Moerill/token-mold#token-mold">{{ localize "tmold.info.featureOverview" }}</a></li>
-        <li><a href="https://github.com/Moerill/token-mold/issues">{{ localize "tmold.info.bugsOrSuggestions" }}</a></li>
-        <li><a href="https://github.com/Moerill/token-mold/blob/master/CHANGELOG.md">{{ localize "tmold.info.changelog" }}</a></li>
-      </ul>
+    <section class="content">
+        <div class='tab info' data-tab='Info' data-group='sections'>
+            <!-- <h2>General</h2> -->
+            <ul>
+              <li><a href="https://github.com/Moerill/token-mold#token-mold">{{ localize "tmold.info.featureOverview" }}</a></li>
+              <li><a href="https://github.com/Moerill/token-mold/issues">{{ localize "tmold.info.bugsOrSuggestions" }}</a></li>
+              <li><a href="https://github.com/Moerill/token-mold/blob/master/CHANGELOG.md">{{ localize "tmold.info.changelog" }}</a></li>
+            </ul>
+            
+            <h2 style="margin:0;"></h2>
+            <p class='token-mold-support'>{{ localize "tmold.info.support" }}&nbsp;<a href="https://ko-fi.com/geekswordsman">{{ localize "tmold.info.clickHere" }}</a></p>
+          </div>
+          <div class="tab" data-tab="names" data-group='sections'>
+              <div class="form-group">
+                  <input type='checkbox' name='name.number.use' id='use_number' {{checked data.name.number.use}} data-dtype="Boolean"><label for='use_number'>{{ localize "tmold.name.addNumbers" }}</label>
+              </div>
+              <p>{{ localize "tmold.name.numberStyle" }}</p>
+              <div class="form-group">
+                  <input type='text' style='text-align:right' class='inp-small' value="{{data.name.number.prefix}}" title="{{ localize "tmold.name.prefix" }}" name="name.number.prefix" data-dtype="String">
+                  <select class='number-type' name="name.number.type" data-dtype="String">
+                      {{#select data.name.number.type}}
+                      {{#each numberStyles as |label key|}}
+                          <option value="{{key}}">{{label}}</option>
+                      {{/each}}
+                      {{/select}}
+                  </select>
+                  <input type='text' class='inp-small' value="{{data.name.number.suffix}}" title="{{ localize "tmold.name.suffix" }}" name="name.number.suffix" data-dtype="String">
+              </div>
+              <div class="form-group" title="{{ localize "tmold.name.increaseIndexHelp" }}">
+                  <label>{{ localize "tmold.name.increaseIndex" }}&nbsp;</label><input type="text" data-dtype="Number" name="name.number.range" value="{{#if data.name.number.range}}{{data.name.number.range}}{{else}}1{{/if}}"/>
+              </div>
+              <div class="form-group">
+                  <a class='reset-counter' title='{{ localize "tmold.name.resetCounterHelp" }}'><i class="fas fa-undo"></i>&nbsp;{{ localize "tmold.name.resetCounter" }}</a>
+              </div>
+              <div class="form-group">
+                  <input type='checkbox' name='name.prefix.use' id='use_prefix'  data-dtype="Boolean" {{checked data.name.prefix.use}}><label for='use_prefix'>{{ localize "tmold.name.addAdjective" }}</label>
+              </div>
       
-      <h2 style="margin:0;"></h2>
-      <p class='token-mold-support'>{{ localize "tmold.info.support" }}&nbsp;<a href="https://github.com/Moerill/token-mold#support-the-development">{{ localize "tmold.info.clickHere" }}</a></p>
-    </div>
-    <div class="tab" data-tab="names" data-group='sections'>
-        <div class="form-group">
-            <input type='checkbox' name='name.number.use' id='use_number' {{checked data.name.number.use}} data-dtype="Boolean"><label for='use_number'>{{ localize "tmold.name.addNumbers" }}</label>
-        </div>
-        <p>{{ localize "tmold.name.numberStyle" }}</p>
-        <div class="form-group">
-            <input type='text' style='text-align:right' class='inp-small' value="{{data.name.number.prefix}}" title="{{ localize "tmold.name.prefix" }}" name="name.number.prefix" data-dtype="String">
-            <select class='number-type' name="name.number.type" data-dtype="String">
-                {{#select data.name.number.type}}
-                {{#each numberStyles as |label key|}}
-                    <option value="{{key}}">{{label}}</option>
-                {{/each}}
-                {{/select}}
-            </select>
-            <input type='text' class='inp-small' value="{{data.name.number.suffix}}" title="{{ localize "tmold.name.suffix" }}" name="name.number.suffix" data-dtype="String">
-        </div>
-        <div class="form-group" title="{{ localize "tmold.name.increaseIndexHelp" }}">
-            <label>{{ localize "tmold.name.increaseIndex" }}&nbsp;</label><input type="text" data-dtype="Number" name="name.number.range" value="{{#if data.name.number.range}}{{data.name.number.range}}{{else}}1{{/if}}"/>
-        </div>
-        <div class="form-group">
-            <a class='reset-counter' title='{{ localize "tmold.name.resetCounterHelp" }}'><i class="fas fa-undo"></i>&nbsp;{{ localize "tmold.name.resetCounter" }}</a>
-        </div>
-        <div class="form-group">
-            <input type='checkbox' name='name.prefix.use' id='use_prefix'  data-dtype="Boolean" {{checked data.name.prefix.use}}><label for='use_prefix'>{{ localize "tmold.name.addAdjective" }}</label>
-        </div>
-
-        <div class="form-group">
-            <label>{{ localize "tmold.name.chooseRolltable" }}</label>
-            <select name="name.prefix.table" data-dtype="String">
-                {{#select data.name.prefix.table}}
-                {{#each rollTableList as |array group|}}
-                    <optgroup label="{{group}}">
-                        {{#each array}}
-                        <option value="{{this.uuid}}">{{this.name}}</option>
-                        {{/each}}
-                    </optgroup>
-                {{/each}}
-                {{/select}}
-            </select>
-        </div>
-        <div class="form-group">
-            <label>{{ localize "tmold.name.adjectivePlacement" }}</label>
-            <select name="name.prefix.position" data-dtype="String">
-                {{#select data.name.prefix.position}}
-                <option value="front">{{ localize "tmold.name.adjectivePlacementFront" }}</option>
-                <option value="back">{{ localize "tmold.name.adjectivePlacementBack" }}</option>
-                {{/select}}
-            </select>
-        </div>
-        <div class="form-group">
-            <label for='name.replace'>{{ localize "tmold.name.baseName" }}</label>
-            <select class='name-replace' name='name.replace' data-dtype="String">
-                {{#select data.name.replace}}
-                <option value="nothing">{{ localize "tmold.name.baseNameNothing" }}</option>
-                    <option value="remove">{{ localize "tmold.name.baseNameRemove" }}</option>
-                    <option value="replace">{{ localize "tmold.name.baseNameReplace" }}</option>
-                {{/select}}
-            </select>
-        </div>
-        <div class="form-group">
-            <input type='checkbox' name='name.baseNameOverride' id='baseNameOverride' {{checked data.name.baseNameOverride}} data-dtype="Boolean"><label for='baseNameOverride'>{{ localize "tmold.name.baseNameOverride" }}</label>
-        </div>
-        <div class="form-group name-randomizer-options">
-            <span title="{{ localize "tmold.name.replaceHelp" }}">
-                {{ localize "tmold.name.replaceInfo1" }}<br>{{ localize "tmold.name.replaceInfo2" }}<br><em>{{ localize "tmold.name.replaceInfo3" }}</em>
-            </span>
-
-            <div class="form-group">
-                <label>{{ localize "tmold.name.generateLength" }}</label>
-                <div class="flexrow">
-                    <section>
-                        <label>{{ localize "tmold.name.minimum" }}</label>
-                        <input type='text' name='name.options.min' value='{{data.name.options.min}}' data-dtype='Number'/>
-                    </section>
-                    <section>
-                        <label>{{ localize "tmold.name.maximum" }}</label>
-                        <input type='text' name='name.options.max' value='{{data.name.options.max}}' data-dtype='Number'/>
-                    </section>
-                </div>
-            </div>
-            <div class="form-group">
-                <a class='reroll-names'><i class="fas fa-dice"></i>&nbsp;{{ localize "tmold.name.regenerate" }}</a>
-            </div>
-            <div class="form-group language-selection header">
-                <h4 class='attribute'>{{ localize "tmold.name.attribute" }}</h4>
-                <h4 class='value'>{{ localize "tmold.name.value" }}</h4>
-                <h4 class='language'>{{ localize "tmold.name.language" }}</h4>
-                <a class='reset' title="{{ localize "tmold.name.reset" }}"></a>
-            </div>
-            <div class="form-group language-selection language-group default-group">
-                <span class='attribute default' value='default'>{{ localize "tmold.name.default" }}</span>
-                <span class='value'></span>
-                <select class='language'>
-                    {{#select data.name.options.default}}
-                    <option value="random">{{ localize "tmold.name.random" }}</option>
-                    {{#each @root.languages}}
-                        <option value="{{this}}">{{this}}</option>
-                    {{/each}}
-                    {{/select}}
-                </select>
-                <a class='remove' title="{{ localize "tmold.name.delete" }}"></a>
-            </div>
-            {{#each data.name.options.attributes as |attrs idx|}}
-            <div class="form-group attribute-selection attribute-group">
-                <select data-dtype='String' class='attribute'>
-                    {{#select this.attribute}}
-                    <option value="">{{ localize "tmold.stat.none" }}</option>
-                    <option value="name">{{ localize "tmold.stat.name" }}</option>
-                    {{#each @root.actorAttributes as |v  k|}}
-                    <optgroup label="{{k}}">
-                        {{#each v}}
-                        <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
-                        {{/each}}
-                    </optgroup>
-                    {{/each}}
-                    {{/select}}
-                </select>
-                <div class=' language-selection '>
-                    {{#each this.languages as |lang attr|}}
-                    <div class="form-group language-group">
-                        <input type='text' class='value' value='{{attr}}'/>
-                        <select class='language'>
-                            {{#select lang}}
-                            <option value="random">{{ localize "tmold.name.random" }}</option>
-                            {{#each @root.languages}}
-                                <option value="{{this}}">{{this}}</option>
-                            {{/each}}
-                            {{/select}}
-                        </select>
-                        <a class='lang-remove' title="{{ localize "tmold.name.delete" }}"><i class="fas fa-times"></i></a>
-                    </div>
-                    {{/each}}
-                <a class='add-language-value'><i class="fas fa-plus"></i>&nbsp;{{ localize "tmold.name.addValue" }}</a>
-                </div>
-            </div>
-            {{/each}}
-        <a class='add-language-attribute'><i class="fas fa-plus"></i>&nbsp;{{ localize "tmold.name.addAttribute" }}</a>
-        </div>
-    </div>
-    <div class="tab" data-tab="hp" data-group='sections'>
-        {{#if showHP}}
-        <div class="form-group">
-            <input data-dtype="Boolean" type='checkbox' name='hp.toChat' id='hp_to_Chat' {{checked data.hp.toChat}}><label for='hp_to_Chat'>{{ localize "tmold.system.sendToChat" }}</label>
-        </div>
-        {{/if}}
-        {{#if showCreatureSize}}
-        <div class="form-group" title="{{ localize "tmold.system.setTokenSizeHelp" }}">
-            <input data-dtype="Boolean" type='checkbox' name='size.use' id='sizeUse' {{checked data.size.use}}/><label for='sizeUse'>{{ localize "tmold.system.setTokenSize" }}</label>
-        </div>
-        {{/if}}
-    </div>
-
-    <div class="tab" data-tab="config" data-group='sections'>
-        <div class="form-group">
-            <label>{{ localize "TOKEN.ResourceDisplay" }}: </label>
-            <div class="flexcol">
-                <section>
-                <input type='checkbox' name='config.displayBars.use' id='displayBarsUse' {{checked data.config.displayBars.use}}><label for='displayBarsUse'>{{ localize "tmold.default.overwrite" }}</label>
-                </section>
-                <select name="config.displayBars.value" data-dtype="Number">
-                    {{#select data.config.displayBars.value}}
-                    {{#each displayModes as |label key|}}
-                        <option value="{{label}}">{{key}}</option>
-                    {{/each}}
-                    {{/select}}
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>{{ localize "TOKEN.ResourceBar1A" }}: </label>
-            <div class="flexcol">
-                <section>
-                <input type='checkbox' name='config.bar1.use' id='bar1Use' {{checked data.config.bar1.use}}><label for='bar1Use'>{{ localize "tmold.default.overwrite" }}</label>
-                </section>
-                <select name="config.bar1.attribute" data-dtype="String">
-                    {{#select data.config.bar1.attribute}}
-                        <option value="">None</option>
-                        {{#each barAttributes as |attrs label|}}
-                            <optgroup label="{{label}}">
-                                {{#each attrs as |types attr|}}
-                                    <option value="{{attr}}">{{attr}} [{{types}}]</option>
-                                {{/each}}
-                            </optgroup>
-                        {{/each}}
-                    {{/select}}
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>{{ localize "TOKEN.ResourceBar2A" }}: </label>
-            <div class="flexcol">
-                <section>
-                <input type='checkbox' name='config.bar2.use' id='bar2' {{checked data.config.bar2.use}}><label for='bar2Use'>{{ localize "tmold.default.overwrite" }}</label>
-                </section>
-                <select name="config.bar2.attribute" data-dtype="String">
-                    {{#select data.config.bar2.attribute}}
-                        <option value="">None</option>
-                        {{#each barAttributes as |attrs label|}}
-                            <optgroup label="{{label}}">
-                                {{#each attrs as |types attr|}}
-                                    <option value="{{attr}}">{{attr}} [{{types}}]</option>
-                                {{/each}}
-                            </optgroup>
-                        {{/each}}
-                    {{/select}}
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>{{ localize "TOKEN.CharShowNameplate"}}: </label>
-            <div class="flexcol">
-                <section>
-                <input type='checkbox' name='config.displayName.use' id='displayNameUse' {{checked data.config.displayName.use}}><label for='displayNameUse'>{{ localize "tmold.default.overwrite" }}</label>
-                </section>
-                <select name="config.displayName.value" data-dtype="Number">
-                    {{#select data.config.displayName.value}}
-                    {{#each displayModes as |label key|}}
-                        <option value="{{label}}">{{key}}</option>
-                    {{/each}}
-                    {{/select}}
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>
-                {{ localize "TOKEN.Disposition"}}:</label>
-                <div class="flexcol">
-                    <section>
-                    <input type='checkbox' name='config.disposition.use' id='dispositionUse' {{checked data.config.disposition.use}}><label for='dispositionUse'>{{ localize "tmold.default.overwrite" }}</label>
-                </section>
-                <select name="config.disposition.value" data-dtype="Number">
-                    {{#select data.config.disposition.value}}
-                    {{#each dispositions as |label key|}}
-                    <option value="{{label}}">{{key}}</option>
-                    {{/each}}
-                    {{/select}}
-                </select>
-</div>
-            </div>
-        <div class="form-group">
-            <label>{{ localize "tmold.default.vision" }}</label>
-            <div class="flexcol">
-                <section>
-                <input type='checkbox' name='config.vision.use' {{checked data.config.vision.use}}><label for='vision'>{{ localize "tmold.default.overwrite" }}</label>
-                </section>
-                <section>
-                    <input type='checkbox' name='config.vision.value' {{checked data.config.vision.value}}><label for='vision'>{{visionLabel}}</label>
-                </section>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>{{ localize "tmold.default.randScale" }}</label>
-            <div class="flexcol">
-                <section>
-                <input type='checkbox' name='config.scale.use' id='scaleUse' {{checked data.config.scale.use}}><label for='scaleUse'>{{ localize "tmold.default.active" }}</label>
-                </section>
-                <section>
-                    {{ localize "tmold.default.min" }}
-                    <input type='text' name='config.scale.min' value='{{data.config.scale.min}}' data-dtype='Number' />
-                </section>
-                <section>
-                    {{ localize "tmold.default.max" }}
-                    <input type='text' name='config.scale.max' value='{{data.config.scale.max}}' data-dtype='Number' />
-                </section>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>{{ localize "tmold.default.randRotation" }}</label>
-            <div class="flexcol">
-                <section>
-                <input type='checkbox' name='config.rotation.use' id='rotationUse' {{checked data.config.rotation.use}}><label for='rotationUse'>{{ localize "tmold.default.overwrite" }}</label>
-                </section>
-                <section>
-                    {{ localize "tmold.default.minAngle" }}
-                    <input type='text' name='config.rotation.min' value='{{data.config.rotation.min}}' data-dtype='Number' />
-                </section>
-                <section>
-                    {{ localize "tmold.default.maxAngle" }}
-                    <input type='text' name='config.rotation.max' value='{{data.config.rotation.max}}' data-dtype='Number' />
-                </section>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>{{ localize "tmold.default.randMirroring" }}</label>
-            <div class="flexcol">
-                <section>
-                    <input type='checkbox' name='config.mirrorX.use' {{checked data.config.mirrorX.use}} data-dtype='Boolean' />
-                    {{ localize "tmold.default.horizontal" }}
-                </section>
-                <section>
-                    <input type='checkbox' name='config.mirrorY.use' {{checked data.config.mirrorY.use}} data-dtype='Boolean' />
-                    {{ localize "tmold.default.vertical" }}
-                </section>
-            </div>
-        </div>
-    </div>
-    <div class="tab overlay" data-tab="overlay" >
-        <div class="form-group">
-            <h3>{{ localize "tmold.stat.attributeChooseDisplay" }}</h3>
-        </div>
-        <div class="form-group attributes header">
-            <h4 class='icon'>{{ localize "tmold.stat.attributeIcon" }}</h4>
-            <h4 class='attribute'>{{ localize "tmold.stat.attribute" }}</h4>
-            <a class='remove' title="{{ localize "tmold.stat.attributeDelete" }}"></a>
-        </div>
-        {{#each data.overlay.attrs}}
-        <div class="form-group attributes">
-            <select class='icon fas fa'>
-                {{#select this.icon}}
-                {{#each @root.defaultIcons}}
-                <option class='fas fa' value="{{this}}">{{{this}}}</option>
-                {{/each}}
-                {{/select}}
-            </select>
-            <select class='value' data-dtype='String'>
-                {{#select this.path}}
-                <option value="">{{ localize "tmold.stat.attributeNone" }}</option>
-                <option value="name">{{ localize "tmold.stat.attributeName" }}</option>
-                {{#each @root.actorAttributes as |v  k|}}
-                <optgroup label="{{k}}">
-                    {{#each v}}
-                    <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
-                    {{/each}}
-                </optgroup>
-                {{/each}}
-                {{/select}}
-            </select>
-            <a class='remove' title="{{ localize "tmold.stat.attributeDelete" }}"><i class="fas fa-times"></i></a>
-        </div>
-        {{else}}
-        <div class="form-group attributes">
-            <select class='icon fas fa'>
-                {{#each @root.defaultIcons}}
-                <option class='fas fa' value="{{this}}">{{{this}}}</option>
-                {{/each}}
-            </select>
-            <select class='value' data-dtype='String'>
-                <option value="">{{ localize "tmold.stat.attributeNone" }}</option>
-                <option value="name">{{ localize "tmold.stat.attributeName" }}</option>
-                {{#each @root.actorAttributes as |v  k|}}
-                <optgroup label="{{k}}">
-                    {{#each v}}
-                    <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
-                    {{/each}}
-                </optgroup>
-                {{/each}}
-            </select>
-            <a class='remove' title="{{ localize "tmold.stat.attributeDelete" }}"><i class="fas fa-times"></i></a>
-        </div>
-        {{/each}}
-    <a class='add-attribute'><i class="fas fa-plus"></i>&nbsp;{{ localize "tmold.stat.attributeAdd" }}</a>
-    </div>
+              <div class="form-group">
+                  <label>{{ localize "tmold.name.chooseRolltable" }}</label>
+                  <select name="name.prefix.table" data-dtype="String">
+                      {{#select data.name.prefix.table}}
+                      {{#each rollTableList as |array group|}}
+                          <optgroup label="{{group}}">
+                              {{#each array}}
+                              <option value="{{this.uuid}}">{{this.name}}</option>
+                              {{/each}}
+                          </optgroup>
+                      {{/each}}
+                      {{/select}}
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label>{{ localize "tmold.name.adjectivePlacement" }}</label>
+                  <select name="name.prefix.position" data-dtype="String">
+                      {{#select data.name.prefix.position}}
+                      <option value="front">{{ localize "tmold.name.adjectivePlacementFront" }}</option>
+                      <option value="back">{{ localize "tmold.name.adjectivePlacementBack" }}</option>
+                      {{/select}}
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for='name.replace'>{{ localize "tmold.name.baseName" }}</label>
+                  <select class='name-replace' name='name.replace' data-dtype="String">
+                      {{#select data.name.replace}}
+                      <option value="nothing">{{ localize "tmold.name.baseNameNothing" }}</option>
+                          <option value="remove">{{ localize "tmold.name.baseNameRemove" }}</option>
+                          <option value="replace">{{ localize "tmold.name.baseNameReplace" }}</option>
+                      {{/select}}
+                  </select>
+              </div>
+              <div class="form-group">
+                  <input type='checkbox' name='name.baseNameOverride' id='baseNameOverride' {{checked data.name.baseNameOverride}} data-dtype="Boolean"><label for='baseNameOverride'>{{ localize "tmold.name.baseNameOverride" }}</label>
+              </div>
+              <div class="form-group name-randomizer-options">
+                  <span title="{{ localize "tmold.name.replaceHelp" }}">
+                      {{ localize "tmold.name.replaceInfo1" }}<br>{{ localize "tmold.name.replaceInfo2" }}<br><em>{{ localize "tmold.name.replaceInfo3" }}</em>
+                  </span>
+      
+                  <div class="form-group">
+                      <label>{{ localize "tmold.name.generateLength" }}</label>
+                      <div class="flexrow">
+                          <section>
+                              <label>{{ localize "tmold.name.minimum" }}</label>
+                              <input type='text' name='name.options.min' value='{{data.name.options.min}}' data-dtype='Number'/>
+                          </section>
+                          <section>
+                              <label>{{ localize "tmold.name.maximum" }}</label>
+                              <input type='text' name='name.options.max' value='{{data.name.options.max}}' data-dtype='Number'/>
+                          </section>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <a class='reroll-names'><i class="fas fa-dice"></i>&nbsp;{{ localize "tmold.name.regenerate" }}</a>
+                  </div>
+                  <div class="form-group language-selection header">
+                      <h4 class='attribute'>{{ localize "tmold.name.attribute" }}</h4>
+                      <h4 class='value'>{{ localize "tmold.name.value" }}</h4>
+                      <h4 class='language'>{{ localize "tmold.name.language" }}</h4>
+                      <a class='reset' title="{{ localize "tmold.name.reset" }}"></a>
+                  </div>
+                  <div class="form-group language-selection language-group default-group">
+                      <span class='attribute default' value='default'>{{ localize "tmold.name.default" }}</span>
+                      <span class='value'></span>
+                      <select class='language'>
+                          {{#select data.name.options.default}}
+                          <option value="random">{{ localize "tmold.name.random" }}</option>
+                          {{#each @root.languages}}
+                              <option value="{{this}}">{{this}}</option>
+                          {{/each}}
+                          {{/select}}
+                      </select>
+                      <a class='remove' title="{{ localize "tmold.name.delete" }}"></a>
+                  </div>
+                  {{#each data.name.options.attributes as |attrs idx|}}
+                  <div class="form-group attribute-selection attribute-group">
+                      <select data-dtype='String' class='attribute'>
+                          {{#select this.attribute}}
+                          <option value="">{{ localize "tmold.stat.none" }}</option>
+                          <option value="name">{{ localize "tmold.stat.name" }}</option>
+                          {{#each @root.actorAttributes as |v  k|}}
+                          <optgroup label="{{k}}">
+                              {{#each v}}
+                              <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
+                              {{/each}}
+                          </optgroup>
+                          {{/each}}
+                          {{/select}}
+                      </select>
+                      <div class=' language-selection '>
+                          {{#each this.languages as |lang attr|}}
+                          <div class="form-group language-group">
+                              <input type='text' class='value' value='{{attr}}'/>
+                              <select class='language'>
+                                  {{#select lang}}
+                                  <option value="random">{{ localize "tmold.name.random" }}</option>
+                                  {{#each @root.languages}}
+                                      <option value="{{this}}">{{this}}</option>
+                                  {{/each}}
+                                  {{/select}}
+                              </select>
+                              <a class='lang-remove' title="{{ localize "tmold.name.delete" }}"><i class="fas fa-times"></i></a>
+                          </div>
+                          {{/each}}
+                      <a class='add-language-value'><i class="fas fa-plus"></i>&nbsp;{{ localize "tmold.name.addValue" }}</a>
+                      </div>
+                  </div>
+                  {{/each}}
+              <a class='add-language-attribute'><i class="fas fa-plus"></i>&nbsp;{{ localize "tmold.name.addAttribute" }}</a>
+              </div>
+          </div>
+          <div class="tab" data-tab="hp" data-group='sections'>
+              {{#if showHP}}
+              <div class="form-group">
+                  <input data-dtype="Boolean" type='checkbox' name='hp.toChat' id='hp_to_Chat' {{checked data.hp.toChat}}><label for='hp_to_Chat'>{{ localize "tmold.system.sendToChat" }}</label>
+              </div>
+              {{/if}}
+              {{#if showCreatureSize}}
+              <div class="form-group" title="{{ localize "tmold.system.setTokenSizeHelp" }}">
+                  <input data-dtype="Boolean" type='checkbox' name='size.use' id='sizeUse' {{checked data.size.use}}/><label for='sizeUse'>{{ localize "tmold.system.setTokenSize" }}</label>
+              </div>
+              {{/if}}
+          </div>
+      
+          <div class="tab" data-tab="config" data-group='sections'>
+              <div class="form-group">
+                  <label>{{ localize "TOKEN.ResourceDisplay" }}: </label>
+                  <div class="flexcol">
+                      <section>
+                      <input type='checkbox' name='config.displayBars.use' id='displayBarsUse' {{checked data.config.displayBars.use}}><label for='displayBarsUse'>{{ localize "tmold.default.overwrite" }}</label>
+                      </section>
+                      <select name="config.displayBars.value" data-dtype="Number">
+                          {{#select data.config.displayBars.value}}
+                          {{#each displayModes as |label key|}}
+                              <option value="{{label}}">{{key}}</option>
+                          {{/each}}
+                          {{/select}}
+                      </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label>{{ localize "TOKEN.ResourceBar1A" }}: </label>
+                  <div class="flexcol">
+                      <section>
+                      <input type='checkbox' name='config.bar1.use' id='bar1Use' {{checked data.config.bar1.use}}><label for='bar1Use'>{{ localize "tmold.default.overwrite" }}</label>
+                      </section>
+                      <select name="config.bar1.attribute" data-dtype="String">
+                          {{#select data.config.bar1.attribute}}
+                              <option value="">None</option>
+                              {{#each barAttributes as |attrs label|}}
+                                  <optgroup label="{{label}}">
+                                      {{#each attrs as |types attr|}}
+                                          <option value="{{attr}}">{{attr}} [{{types}}]</option>
+                                      {{/each}}
+                                  </optgroup>
+                              {{/each}}
+                          {{/select}}
+                      </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label>{{ localize "TOKEN.ResourceBar2A" }}: </label>
+                  <div class="flexcol">
+                      <section>
+                      <input type='checkbox' name='config.bar2.use' id='bar2' {{checked data.config.bar2.use}}><label for='bar2Use'>{{ localize "tmold.default.overwrite" }}</label>
+                      </section>
+                      <select name="config.bar2.attribute" data-dtype="String">
+                          {{#select data.config.bar2.attribute}}
+                              <option value="">None</option>
+                              {{#each barAttributes as |attrs label|}}
+                                  <optgroup label="{{label}}">
+                                      {{#each attrs as |types attr|}}
+                                          <option value="{{attr}}">{{attr}} [{{types}}]</option>
+                                      {{/each}}
+                                  </optgroup>
+                              {{/each}}
+                          {{/select}}
+                      </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label>{{ localize "TOKEN.CharShowNameplate"}}: </label>
+                  <div class="flexcol">
+                      <section>
+                      <input type='checkbox' name='config.displayName.use' id='displayNameUse' {{checked data.config.displayName.use}}><label for='displayNameUse'>{{ localize "tmold.default.overwrite" }}</label>
+                      </section>
+                      <select name="config.displayName.value" data-dtype="Number">
+                          {{#select data.config.displayName.value}}
+                          {{#each displayModes as |label key|}}
+                              <option value="{{label}}">{{key}}</option>
+                          {{/each}}
+                          {{/select}}
+                      </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label>
+                      {{ localize "TOKEN.Disposition"}}:</label>
+                      <div class="flexcol">
+                          <section>
+                          <input type='checkbox' name='config.disposition.use' id='dispositionUse' {{checked data.config.disposition.use}}><label for='dispositionUse'>{{ localize "tmold.default.overwrite" }}</label>
+                      </section>
+                      <select name="config.disposition.value" data-dtype="Number">
+                          {{#select data.config.disposition.value}}
+                          {{#each dispositions as |label key|}}
+                          <option value="{{label}}">{{key}}</option>
+                          {{/each}}
+                          {{/select}}
+                      </select>
+      </div>
+                  </div>
+              <div class="form-group">
+                  <label>{{ localize "tmold.default.vision" }}</label>
+                  <div class="flexcol">
+                      <section>
+                      <input type='checkbox' name='config.vision.use' {{checked data.config.vision.use}}><label for='vision'>{{ localize "tmold.default.overwrite" }}</label>
+                      </section>
+                      <section>
+                          <input type='checkbox' name='config.vision.value' {{checked data.config.vision.value}}><label for='vision'>{{visionLabel}}</label>
+                      </section>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label>{{ localize "tmold.default.randScale" }}</label>
+                  <div class="flexcol">
+                      <section>
+                      <input type='checkbox' name='config.scale.use' id='scaleUse' {{checked data.config.scale.use}}><label for='scaleUse'>{{ localize "tmold.default.active" }}</label>
+                      </section>
+                      <section>
+                          {{ localize "tmold.default.min" }}
+                          <input type='text' name='config.scale.min' value='{{data.config.scale.min}}' data-dtype='Number' />
+                      </section>
+                      <section>
+                          {{ localize "tmold.default.max" }}
+                          <input type='text' name='config.scale.max' value='{{data.config.scale.max}}' data-dtype='Number' />
+                      </section>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label>{{ localize "tmold.default.randRotation" }}</label>
+                  <div class="flexcol">
+                      <section>
+                      <input type='checkbox' name='config.rotation.use' id='rotationUse' {{checked data.config.rotation.use}}><label for='rotationUse'>{{ localize "tmold.default.overwrite" }}</label>
+                      </section>
+                      <section>
+                          {{ localize "tmold.default.minAngle" }}
+                          <input type='text' name='config.rotation.min' value='{{data.config.rotation.min}}' data-dtype='Number' />
+                      </section>
+                      <section>
+                          {{ localize "tmold.default.maxAngle" }}
+                          <input type='text' name='config.rotation.max' value='{{data.config.rotation.max}}' data-dtype='Number' />
+                      </section>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label>{{ localize "tmold.default.randMirroring" }}</label>
+                  <div class="flexcol">
+                      <section>
+                          <input type='checkbox' name='config.mirrorX.use' {{checked data.config.mirrorX.use}} data-dtype='Boolean' />
+                          {{ localize "tmold.default.horizontal" }}
+                      </section>
+                      <section>
+                          <input type='checkbox' name='config.mirrorY.use' {{checked data.config.mirrorY.use}} data-dtype='Boolean' />
+                          {{ localize "tmold.default.vertical" }}
+                      </section>
+                  </div>
+              </div>
+          </div>
+          <div class="tab overlay" data-tab="overlay" >
+              <div class="form-group">
+                  <h3>{{ localize "tmold.stat.attributeChooseDisplay" }}</h3>
+              </div>
+              <div class="form-group attributes header">
+                  <h4 class='icon'>{{ localize "tmold.stat.attributeIcon" }}</h4>
+                  <h4 class='attribute'>{{ localize "tmold.stat.attribute" }}</h4>
+                  <a class='remove' title="{{ localize "tmold.stat.attributeDelete" }}"></a>
+              </div>
+              {{#each data.overlay.attrs}}
+              <div class="form-group attributes">
+                  <select class='icon fas fa'>
+                      {{#select this.icon}}
+                      {{#each @root.defaultIcons}}
+                      <option class='fas fa' value="{{this}}">{{{this}}}</option>
+                      {{/each}}
+                      {{/select}}
+                  </select>
+                  <select class='value' data-dtype='String'>
+                      {{#select this.path}}
+                      <option value="">{{ localize "tmold.stat.attributeNone" }}</option>
+                      <option value="name">{{ localize "tmold.stat.attributeName" }}</option>
+                      {{#each @root.actorAttributes as |v  k|}}
+                      <optgroup label="{{k}}">
+                          {{#each v}}
+                          <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
+                          {{/each}}
+                      </optgroup>
+                      {{/each}}
+                      {{/select}}
+                  </select>
+                  <a class='remove' title="{{ localize "tmold.stat.attributeDelete" }}"><i class="fas fa-times"></i></a>
+              </div>
+              {{else}}
+              <div class="form-group attributes">
+                  <select class='icon fas fa'>
+                      {{#each @root.defaultIcons}}
+                      <option class='fas fa' value="{{this}}">{{{this}}}</option>
+                      {{/each}}
+                  </select>
+                  <select class='value' data-dtype='String'>
+                      <option value="">{{ localize "tmold.stat.attributeNone" }}</option>
+                      <option value="name">{{ localize "tmold.stat.attributeName" }}</option>
+                      {{#each @root.actorAttributes as |v  k|}}
+                      <optgroup label="{{k}}">
+                          {{#each v}}
+                          <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
+                          {{/each}}
+                      </optgroup>
+                      {{/each}}
+                  </select>
+                  <a class='remove' title="{{ localize "tmold.stat.attributeDelete" }}"><i class="fas fa-times"></i></a>
+              </div>
+              {{/each}}
+          <a class='add-attribute'><i class="fas fa-plus"></i>&nbsp;{{ localize "tmold.stat.attributeAdd" }}</a>
+          </div>
+    </section>
 </form>

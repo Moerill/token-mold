@@ -10,7 +10,8 @@
     },
     {
       "name": "Geekswordsman",
-      "discord": "@Geekswordsman#3085"
+      "discord": "@Geekswordsman#3085",
+      "ko-fi": "geekswordsman"
     }],
   "url": "https://github.com/Moerill/token-mold",
   "bugs": "https://github.com/Moerill/token-mold/issues",
@@ -22,7 +23,7 @@
     "maximum": "10"
 },
 "scripts": [],
-  "esmodules": ["modules/main.mjs"],
+  "esmodules": ["module/main.mjs"],
   "styles": ["styles/token-mold.css"],
   "languages": [
     {
@@ -61,8 +62,6 @@
       "private": false
     }
   ],
-  "system": [],
-  "dependencies": [],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/Moerill/token-mold/master/module.json",
   "download": "https://github.com/Moerill/token-mold/releases/download/v2.15.2/v2.15.2.zip",

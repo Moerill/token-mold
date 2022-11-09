@@ -11,7 +11,8 @@ Hooks.once('devModeReady', ({ registerPackageDebugFlag }) => {
     registerPackageDebugFlag(CONFIG.ID);
 });
 
-Hooks.once("init", () => { CONFIG.TOKENMOLD.initialize() });
+Hooks.once("init", () => { CONFIG.TOKENMOLD.initialize(); });
+Hooks.on("ready", () => { CONFIG.TOKENMOLD.onReady(); });
 
 Hooks.on("renderActorDirectory", (app, html, data) => {
     if (game.user.isGM) CONFIG.TOKENMOLD.hookActorDirectory(html);

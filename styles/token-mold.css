@@ -22,6 +22,11 @@
 .token-mold a[href] {
   color: #4a52ca;
 }
+.token-mold section.content {
+  height: 340px;
+  overflow-y: auto;
+  padding-right: 0.5em;  
+}
 .token-mold .form-group section {
   display: flex;
   flex-flow: row nowrap;
@@ -38,7 +43,7 @@
 .token-mold .info.active {
   display: flex;
   flex-flow: column nowrap;
-  height: 82%;
+  height: 100%;
 }
 .token-mold .info.active ul {
   flex: 1;

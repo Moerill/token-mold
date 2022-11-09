@@ -2,18 +2,21 @@
   "I18N.MAINTAINERS": [ "Moerill" ],
 
   "Token Mold": "Token Mold",
-
-  "tmold": {
+  "TOKEN-MOLD": {
     "ABOUT": {
       "About": "About Token Mold",
-      "CreatedBy": "Created By",
+      "CreatedBy": "Maintained By",
       "Help": "Help",
       "LiveSupport": "For live support of Token Mold, join the Foundry VTT Discord and post any questions in #module-troubleshooting!",
+      "OriginallyCreatedBy": "Originally Created By",
       "ProjectPage": "View the Project Page to report issues or comment on this Project at: ",
       "SupportTheCreator": "If you enjoy Token, please consider donating to the creator at: ",
       "Title": "Token Mold",
       "Wiki": "View the Token Mold wiki at: "
-    },
+    }
+  },
+
+  "tmold": {
     "CONFIG": {
       "Save": "Save and Close"
     },

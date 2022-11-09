@@ -1,9 +1,13 @@
+import { HelpFormApplication } from "../about/help-form-application.mjs";
 import { CONFIG } from "../config.mjs";
 import { Logger } from "../logger/logger.mjs";
 import { TokenMold } from "../token-mold.mjs";
 
-export class TokenMoldConfigurationDialog extends FormApplication {
+export class TokenMoldConfigurationDialog extends HelpFormApplication {
     constructor(object, options) {
+        if (!object) { object = { } }
+        object.enableAboutButton = true;
+        
         super(object, options);
         this.data = CONFIG.SETTINGS;
         this.barAttributes = CONFIG.BAR_ATTRIBUTES || [];
@@ -13,13 +17,14 @@ export class TokenMoldConfigurationDialog extends FormApplication {
         const options = super.defaultOptions;
         options.template = "modules/token-mold/templates/token-mold.html";
         options.width = 420;
-        options.height = 461;
-        options.resizable = true;
+        options.height = 460;
+        options.resizable = false;
         options.classes = ["token-mold"];
         options.title = "Token Mold";
         options.closeOnSubmit = false;
         options.submitOnClose = true;
         options.submitOnChange = false;
+        options.scrollY = ["section.content"]
         options.tabs = [
           {
             navSelector: ".tabs",
@@ -27,12 +32,14 @@ export class TokenMoldConfigurationDialog extends FormApplication {
             initial: "Info",
           },
         ];
+
         return options;
       }
     
       _getHeaderButtons() {
         let btns = super._getHeaderButtons();
-        btns[0].label = game.i18n.localize("tmold.CONFIG.Save");
+        Logger.debug(false, "HEADER BUTTONS!", btns);
+        btns.find(b => b.class === "close").label = game.i18n.localize("tmold.CONFIG.Save");
         return btns;
       }
     
@@ -125,12 +132,12 @@ export class TokenMoldConfigurationDialog extends FormApplication {
         data.defaultIcons = this.defaultIcons;
         data.showCreatureSize = /dnd5e|pf2e/.exec(game.data.system.id) !== null
         data.showHP = CONFIG.HP_SUPPORTED;
-        data.showSystem = this.object.systemSupported;
-        data.languages = this.languages;
-        data.rollTableList = this.object._rollTableList;
+        data.showSystem = CONFIG.SYSTEM_SUPPORTED;
+        data.languages = CONFIG.LANGUAGES;
+        data.rollTableList = CONFIG.ROLLTABLES;
         data.visionLabel = game.i18n.localize("TOKEN.VisionEnabled")
 
-        Logger.debug(false, "Prepared data", data, this._rollTableList);
+        Logger.debug(false, "Prepared data", data, CONFIG.ROLLTABLES);
         return data;
       }
     
