@@ -1,5 +1,5 @@
 {
-  "I18N.MAINTAINERS": [ "Moerill" ],
+  "I18N.MAINTAINERS": [ "Moerill", "Geekswordsman" ],
 
   "Token Mold": "Token Mold",
   "TOKEN-MOLD": {
@@ -13,12 +13,14 @@
       "SupportTheCreator": "If you enjoy Token, please consider donating to the creator at: ",
       "Title": "Token Mold",
       "Wiki": "View the Token Mold wiki at: "
-    }
-  },
-
-  "tmold": {
+    },
     "CONFIG": {
-      "Save": "Save and Close"
+      "Friendly": "Friendly",
+      "Hostile": "Hostile",
+      "Linked": "Linked",
+      "Neutral": "Neutral",
+      "Save": "Save and Close",
+      "Unlinked": "Unlinked"
     },
     "LABELS": {
       "Config": "Config",
@@ -38,24 +40,18 @@
       "Overlay": "(De-)activate Stat Overlay On Hover",
       "Reapply": "Reapplies all settings to selected tokens as if those were replaced onto the scene.",
       "Token": "(De-)activate Token Config Overwrite"
+    },
+    "TAB": {
+      "Name": "Name",
+      "SystemSpecific": "System Specific",
+      "TokenConfig": "Token Config",
+      "TokenOverlay": "Token Overlay"
+    },
+    "TOOLTIPS": {
+      "NewConfig": "Creates a new Config Rule"
     }
   },
-
-  "tmold.config.applySettings": "Apply settings to",
-  "tmold.config.unlinkedOnly": "unlinked tokens only",
-
-  "tmold.tab.infoHelp": "Info/Help",
-  "tmold.tab.name": "Name",
-  "tmold.tab.systemSpecific": "System Specific",
-  "tmold.tab.defaultConfig": "Modify Default Config",
-  "tmold.tab.statOverlay": "Stat Overlay",
-
-  "tmold.info.featureOverview": "Feature Overview / Read me!",
-  "tmold.info.bugsOrSuggestions": "Bugs or feature suggestion? Create an issue here.",
-  "tmold.info.changelog": "Changelog",
-  "tmold.info.support": "Want to support development?",
-  "tmold.info.clickHere": "Click here",
-
+  
   "tmold.name.addNumbers": "Add counting numbers to name as Suffix.",
   "tmold.name.numberStyle": "Choose number style. The first field may not be empty!",
   "tmold.name.prefix": "Prefix",

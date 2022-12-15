@@ -17,6 +17,8 @@
 		"gulp-concat": "^2.6.1",
 		"gulp-git": "^2.10.1",
 		"gulp-less": "^4.0.1",
+		"gulp-sass": "^5.1.0",
+		"json-stringify-pretty-compact": "^4.0.0",
 		"yargs": "^15.4.1"
 	}
 }

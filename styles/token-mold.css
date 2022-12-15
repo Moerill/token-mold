@@ -19,13 +19,11 @@
   background-color: rgba(0, 0, 0, 0.6);
   grid-column: 0.66666667;
 }
+.token-mold {
+  /* Config */
+}
 .token-mold a[href] {
   color: #4a52ca;
-}
-.token-mold section.content {
-  height: 340px;
-  overflow-y: auto;
-  padding-right: 0.5em;  
 }
 .token-mold .form-group section {
   display: flex;
@@ -43,7 +41,7 @@
 .token-mold .info.active {
   display: flex;
   flex-flow: column nowrap;
-  height: 100%;
+  height: 82%;
 }
 .token-mold .info.active ul {
   flex: 1;
@@ -54,6 +52,51 @@
 }
 .token-mold .token-mold-support {
   text-align: right;
+}
+.token-mold nav {
+  background: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #666;
+  padding: 6px;
+  margin: 0;
+}
+.token-mold nav .item {
+  flex: 1 auto;
+}
+.token-mold ul.token-mold-config-tabs {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0 0 0 4px;
+  position: relative;
+  top: -1px;
+}
+.token-mold ul.token-mold-config-tabs li {
+  display: inline-block;
+  margin: 0px;
+  padding: 2px 6px;
+  border-left: 1px solid;
+  border-bottom: 1px solid;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-left: -4px;
+  min-width: 1rem;
+  text-align: center;
+  cursor: pointer;
+  color: gray;
+}
+.token-mold ul.token-mold-config-tabs li:last-child {
+  border-right: 1px solid;
+}
+.token-mold ul.token-mold-config-tabs li:hover {
+  border-right: 1px solid;
+  padding: 2px 5px 2px 6px;
+  text-shadow: 0 0 8px var(--color-shadow-primary);
+}
+.token-mold ul.token-mold-config-tabs li:hover:last-child {
+  padding: 2px 6px;
+}
+.token-mold ul.token-mold-config-tabs li.token-mod-active-config {
+  color: black;
+  text-shadow: 0 0 8px var(--color-shadow-primary);
 }
 .window-app.token-mold {
   min-width: 540px;
@@ -67,12 +110,6 @@
 .token-mold .unlinked > * {
   flex: 0 auto;
 }
-.token-mold nav {
-  background: rgba(0, 0, 0, 0.05);
-  padding: 6px;
-  margin: 0;
-  margin-bottom: 3px;
-}
 .token-mold .item {
   color: #555;
 }
@@ -83,13 +120,6 @@
   flex: 0 100%;
   margin: 3px;
   text-align: center;
-}
-.token-mold nav {
-  border-bottom: 1px solid #666;
-  margin: 0 0 6px 0;
-}
-.token-mold nav .item {
-  flex: 1 auto;
 }
 section.token-mold {
   flex: 0 auto;

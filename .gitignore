@@ -3,3 +3,5 @@ foundryconfig.json
 package-lock.json
 yarn-error.log
 .vs
+.vscode
+*.lock

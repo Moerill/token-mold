@@ -1,7 +1,7 @@
 const gulp = require("gulp");
 const fs = require("fs-extra");
 const path = require("path");
-const stringify = require("json-stringify-pretty-compact");
+/* const stringify = require("json-stringify-pretty-compact"); */
 const less = require("gulp-less");
 const git = require("gulp-git");
 const concat = require("gulp-concat");
@@ -47,7 +47,7 @@ function buildLess() {
     .src("less/*.less")
     .pipe(concat(moduleName + ".css"))
     .pipe(less())
-    .pipe(gulp.dest("."))
+    .pipe(gulp.dest("styles/"))
     .pipe(browserSync.stream());
 }
 
@@ -227,3 +227,9 @@ exports.build = gulp.series(execBuild);
 exports.watch = buildWatch;
 exports.update = updateManifest;
 exports.publish = gulp.series(updateManifest, execBuild, execGit);
+
+gulp.task('less', buildLess);
+gulp.task('default', gulp.series('less', function(cb) {
+  gulp.watch('*.less', gulp.series('less'));
+  cb();
+}));

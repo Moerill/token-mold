@@ -13,7 +13,8 @@
       flex: 0 200px;
       margin-left: auto;
     }
-    > * {
+
+    >* {
       margin: 3px;
     }
   }
@@ -22,9 +23,11 @@
     display: flex;
     flex-flow: column nowrap;
     height: 82%;
+
     ul {
       flex: 1;
     }
+
     h2,
     .token-mold-support {
       flex: 0;
@@ -33,6 +36,60 @@
 
   .token-mold-support {
     text-align: right;
+  }
+
+  nav {
+    background: rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid #666;
+    padding: 6px;
+    margin: 0;
+
+    .item {
+      flex: 1 auto;
+    }
+  }
+
+  /* Config */
+  ul.token-mold-config-tabs {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0 0 0 4px;
+    position: relative;
+    top: -1px;
+
+    li {
+      display: inline-block;
+      margin: 0px;
+      padding: 2px 6px;
+      border-left: 1px solid;
+      border-bottom: 1px solid;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      margin-left: -4px;
+      min-width: 1rem;
+      text-align: center;
+      cursor: pointer;
+      color: gray;
+    }
+
+    li:last-child {
+      border-right: 1px solid;
+    }
+
+    li:hover {
+      border-right: 1px solid;
+      padding: 2px 5px 2px 6px;
+      text-shadow: 0 0 8px var(--color-shadow-primary);
+    }
+
+    li:hover:last-child {
+      padding: 2px 6px;
+    }
+
+    li.token-mod-active-config {
+      color: black;
+      text-shadow: 0 0 8px var(--color-shadow-primary);
+    }
   }
 }
 
@@ -47,14 +104,8 @@
   padding: 3px;
 }
 
-.token-mold .unlinked > * {
+.token-mold .unlinked>* {
   flex: 0 auto;
-}
-.token-mold nav {
-  background: rgba(0, 0, 0, 0.05);
-  padding: 6px;
-  margin: 0;
-  margin-bottom: 3px;
 }
 
 .token-mold .item {
@@ -71,14 +122,6 @@
   text-align: center;
 }
 
-.token-mold nav {
-  border-bottom: 1px solid #666;
-  margin: 0 0 6px 0;
-}
-
-.token-mold nav .item {
-  flex: 1 auto;
-}
 
 section.token-mold {
   flex: 0 auto;
@@ -100,14 +143,12 @@ section.token-mold label.label-inp {
   margin: 0 auto;
 }
 
-section.token-mold input[type="checkbox"]:checked ~ span {
+section.token-mold input[type="checkbox"]:checked~span {
   color: #eee;
   /*text-shadow: 0px 0px 5px #FF0000;*/
 }
-section.token-mold
-  input[type="checkbox"]:checked
-  ~ span
-  span.checkmark::before {
+
+section.token-mold input[type="checkbox"]:checked~span span.checkmark::before {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   content: "\f00c";
@@ -117,6 +158,7 @@ section.token-mold span.checkmark {
   width: 10px;
   text-shadow: none;
 }
+
 section.token-mold span.checkmark::before {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
@@ -143,6 +185,7 @@ section.token-mold {
 .token-mold .inp-small {
   flex: 0 20px;
 }
+
 .token-mold select {
   flex: 0 auto;
 }
@@ -197,6 +240,7 @@ section.token-mold {
   border-top: 1px solid rgba(102, 102, 102, 1);
   border-bottom: 1px solid rgba(102, 102, 102, 1);
 }
+
 .token-mold .language-selection.header h4,
 .token-mold .attributes h4 {
   margin: 3px;
@@ -265,6 +309,7 @@ section.token-mold {
 .token-mold .loading {
   animation: token-mold-spinner 2s linear infinite;
 }
+
 @keyframes token-mold-spinner {
   0% {
     transform: rotate(0deg);
