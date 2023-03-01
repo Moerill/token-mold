@@ -62,6 +62,9 @@
 .token-mold nav .item {
   flex: 1 auto;
 }
+.token-mold .tmold_custom_word_label {
+  flex: 8;
+}
 .token-mold ul.token-mold-config-tabs {
   list-style-type: none;
   margin: 0px;
@@ -94,7 +97,7 @@
 .token-mold ul.token-mold-config-tabs li:hover:last-child {
   padding: 2px 6px;
 }
-.token-mold ul.token-mold-config-tabs li.token-mod-active-config {
+.token-mold ul.token-mold-config-tabs li.token-mold-active-config {
   color: black;
   text-shadow: 0 0 8px var(--color-shadow-primary);
 }

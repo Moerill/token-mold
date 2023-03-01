@@ -2,33 +2,15 @@
     <header>
         <nav class="sheet-tabs tabs" data-group="sections">
             <a class="item" data-tab="name" data-group="sections">{{localize "TOKEN-MOLD.TAB.Name"}}</a>
-            <a class="item" data-tab="system-specific" data-group="sections">{{localize "TOKEN-MOLD.TAB.SystemSpecific"}}</a>
-            <a class="item" data-tab="token" data-group="sections">{{localize "TOKEN-MOLD.TAB.TokenConfig"}}</a>
-            <a class="item" data-tab="overlay" data-group="sections">{{localize "TOKEN-MOLD.TAB.TokenOverlay"}}</a>
+            <a class="item" data-tab="hp" data-group="sections">{{localize "TOKEN-MOLD.TAB.HP"}}</a>
         </nav>
-        <ul class="token-mold-config-tabs">
-            {{#each data.CONFIGURATIONS}}
-            <li data-action="change-config-tab" data-key="{{key}}" {{#if (eq key ../activeConfig)}}class="token-mod-active-config"{{/if}}>{{#if localizeKey}}{{localize key}}{{else}}{{key}}{{/if}}</li>
-            {{/each}}
-            <li data-action="new-config-tab" title="{{localize "TOKEN-MOLD.TOOLTIPS.NewConfig"}}">+</li>
-        </ul>
     </header>
-    <section>
-        <div class="config-rule">
-            This is where the rule is configured.
+    <section class="content">
+        <div class="tab tmold_name" data-tab="name" data-group="sections">
+           {{> "modules/token-mold/templates/partials/name-tab.hbs"}}
         </div>
-        <hr />
-        <div class="tab name" data-tab="name" data-group="sections">
-
-        </div>
-        <div class="tab system-specific" data-tab="system-specific" data-group="sections">
-            
-        </div>
-        <div class="tab token" data-tab="token" data-group="sections">
-            
-        </div>
-        <div class="tab overlay" data-tab="overlay" data-group="sections">
-            
+        <div class="tab tmold_hp" data-tab="hp" data-group="sections">
+            {{> "modules/token-mold/templates/partials/hp-tab.hbs"}}
         </div>
     </section>
     <footer>

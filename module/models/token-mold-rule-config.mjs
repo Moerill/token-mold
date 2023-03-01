@@ -1,33 +1,21 @@
 import { TokenMoldConfigurationDialog } from "../forms/token-mold-configuration-dialog.mjs";
 
-export class TokenMoldConfig {
-    #key = "";
-    #isLocked = true;
+export class TokenMoldRuleConfig {
+    id = null;
 
-    localizeKey = true;
-    active = false;
-    config = {
-        prototypeTokenLinked: true,
-        disposition: null,
-        name: null,
-        custom: null
-    };
-
-    unlinkedOnly = true;
     name = {
-        use: true,
+        adjective: {
+            use: false,
+            position: "front",
+            table: "Compendium.token-mold.adjectives.BGNM2VPUyFfA5ZMJ" // English
+        },
         number: {
             use: true,
-            prefix: " (",
+            prefix: "(",
             suffix: ")",
             type: "ar",
         },
         remove: false,
-        prefix: {
-            use: true,
-            position: "front",
-            table: "Compendium.token-mold.adjectives.BGNM2VPUyFfA5ZMJ", // English
-        },
         replace: "",
         options: {
             default: "random",
@@ -42,16 +30,29 @@ export class TokenMoldConfig {
             min: 3,
             max: 9,
         },
+        prefix: {
+            addCustomWord: false,
+            addAdjective: true,
+            customWord: "The",
+            table: "Compendium.token-mold.adjectives.BGNM2VPUyFfA5ZMJ" // English
+        },
+        suffix: {
+            addCustomWord: false,
+            addAdjective: false,
+            customWord: "the",
+            table: "Compendium.token-mold.adjectives.BGNM2VPUyFfA5ZMJ" // English
+        },
         baseNameOverride: false,
     };
     hp = {
         use: true,
         toChat: true,
+        ruleSet: null
     };
     size = {
         use: true,
     };
-    config = {
+    properties = {
         use: false,
         vision: {
             use: false,
@@ -87,30 +88,12 @@ export class TokenMoldConfig {
         },
     };
     overlay = {
-        use: true,
+        use: false,
         attrs: TokenMoldConfigurationDialog.defaultAttrs,
     };
 
-    constructor({key = "Unlinked", localize = true, active = true, isLocked = false}) {
-        this.#key = key;
-        this.localizeKey = localize;
-        this.active = active;
-        this.#isLocked = isLocked;
-    }
-
-    get key() {
-        return game.i18n.localize(`TOKEN-MOLD.CONFIG.${this.#key}`);
-    }
-
-    get locked() {
-        return this.#isLocked;
-    }
-
-    cloneFromSettings(settings) {
-        if (settings.name) { this.name = settings.name; }
-        if (settings.hp) { this.hp = settings.hp; }
-        if (settings.size) { this.size = settings.size; }
-        if (settings.config) { this.config = settings.config; }
-        if (settings.overlay) { this.overlay = settings.overlay; }
+    constructor(defaults = {}) {
+        mergeObject(this, defaults, {insertKeys: false});
+        if (!this.id) { this.id = foundry.utils.randomID(); }
     }
 }

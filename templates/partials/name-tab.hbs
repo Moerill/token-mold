@@ -1,0 +1,184 @@
+<div class="form-group">
+    <a class='reroll-names'><i class="fas fa-dice"></i>&nbsp;{{ localize "TOKEN-MOLD.NAME.Regenerate" }}</a>
+</div>
+<h2 title="{{ localize "TOKEN-MOLD.NAME.PrefixHelp" }}">{{localize "TOKEN-MOLD.NAME.PrefixOptions"}}</h2>
+<div class="form-group">
+    <input type='checkbox' name='name.prefix.addCustomWord' id='tmold_custom_prefix' {{checked activeConfig.name.prefix.addCustomWord}}
+        data-dtype="Boolean"><label class="tmold_custom_word_label" for='tmold_custom_prefix'>{{ localize "TOKEN-MOLD.NAME.AddCustomPrefix" }}</label>
+    <input type="text" name="name.prefix.customWord" value="{{activeConfig.name.prefix.customWord}}" {{#unless activeConfig.name.prefix.addCustomWord}}disabled{{/unless}} />
+</div>
+<div class="form-group">
+    <input type='checkbox' name='name.prefix.addAdjective' id='tmold_use_prefix' data-dtype="Boolean" {{checked activeConfig.name.prefix.addAdjective}}><label for='tmold_use_prefix'>{{ localize "TOKEN-MOLD.NAME.AddAdjective" }}</label>
+</div>
+{{#if activeConfig.name.prefix.addAdjective}}
+<div class="form-group">
+    <label>{{ localize "TOKEN-MOLD.NAME.ChooseRolltable" }}</label>
+    <select name="name.prefix.table" data-dtype="String">
+        {{#select activeConfig.name.prefix.table}}
+        {{#each rollTableList as |array group|}}
+            <optgroup label="{{group}}">
+                {{#each array}}
+                    <option value="{{this.uuid}}">{{this.name}}</option>
+                {{/each}}
+            </optgroup>
+        {{/each}}
+        {{/select}}
+    </select>
+</div>
+{{/if}}
+<h2>{{localize "TOKEN-MOLD.NAME.NameOptions"}}</h2>
+<div class="form-group">
+    <input type='checkbox' name='name.baseNameOverride' id='tmold_baseNameOverride' {{checked activeConfig.name.baseNameOverride}} data-dtype="Boolean">
+    <label for='tmold_baseNameOverride'>{{localize "TOKEN-MOLD.NAME.BaseNameOverride" }}</label>
+</div>
+<div class="form-group">
+    <label>{{ localize "TOKEN-MOLD.NAME.BaseName" }}</label>
+    <select class='name-replace' name='name.replace' data-dtype="String">
+        {{#select activeConfig.name.replace}}
+        <option value="nothing">{{ localize "TOKEN-MOLD.NAME.BaseNameNothing" }}</option>
+        <option value="remove">{{ localize "TOKEN-MOLD.NAME.BaseNameRemove" }}</option>
+        <option value="replace">{{ localize "TOKEN-MOLD.NAME.BaseNameReplace" }}</option>
+        {{/select}}
+    </select>
+</div>
+{{#if (eq activeConfig.name.replace 'replace')}}
+<div class="form-group name-randomizer-options">
+    <span title="{{ localize "TOKEN-MOLD.NAME.ReplaceHelp" }}">
+        {{ localize "TOKEN-MOLD.NAME.ReplaceInfo1" }}<br>{{ localize "TOKEN-MOLD.NAME.ReplaceInfo2" }}<br><em>{{localize "TOKEN-MOLD.NAME.ReplaceInfo3" }}</em>
+    </span>
+</div>
+<div class="form-group">
+    <label>{{ localize "TOKEN-MOLD.NAME.GenerateLength" }}</label>
+    <div class="flexrow">
+        <section>
+            <label>{{ localize "TOKEN-MOLD.NAME.Minimum" }}</label>
+            <input type='text' name='name.options.min' value='{{activeConfig.name.options.min}}' data-dtype='Number' />
+        </section>
+        <section>
+            <label>{{ localize "TOKEN-MOLD.NAME.Maximum" }}</label>
+            <input type='text' name='name.options.max' value='{{activeConfig.name.options.max}}' data-dtype='Number' />
+        </section>
+    </div>
+</div>
+<div class="form-group language-selection header">
+    <h4 class='attribute'>{{ localize "TOKEN-MOLD.NAME.Attribute" }}</h4>
+    <h4 class='value'>{{ localize "TOKEN-MOLD.NAME.Value" }}</h4>
+    <h4 class='language'>{{ localize "TOKEN-MOLD.NAME.LanguageOrTable" }}</h4>
+    <a class='reset' title="{{ localize " TOKEN-MOLD.NAME.Reset" }}"></a>
+</div>
+<div class="form-group language-selection language-group default-group">
+    <span class='attribute default' value='default'>{{ localize "TOKEN-MOLD.NAME.Default" }}</span>
+    <span class='value'></span>
+    <select class='language'>
+        {{#select activeConfig.name.options.default}}
+        <option value="random">{{ localize "TOKEN-MOLD.NAME.Random" }}</option>
+        <optgroup label="{{localize "TOKEN-MOLD.NAME.Language"}}">
+            {{#each @root.languages}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </optgroup>
+        {{#each @root.rollTableList as |array group|}}
+        <optgroup label="{{group}}">
+            {{#each array}}
+            <option value="{{this.uuid}}">{{this.name}}</option>
+            {{/each}}
+        </optgroup>
+        {{/each}}
+        {{/select}}
+    </select>
+    <a class='remove' title="{{ localize "TOKEN-MOLD.NAME.Delete" }}"></a>
+</div>
+{{#each activeConfig.name.options.attributes as |attrs idx|}}
+    <div class="form-group attribute-selection attribute-group">
+        <select data-dtype='String' class='attribute'>
+            {{#select this.attribute}}
+            <option value="">{{ localize "TOKEN-MOLD.STAT.None" }}</option>
+            <option value="name">{{ localize "TOKEN-MOLD.STAT.Name" }}</option>
+            {{#each @root.actorAttributes as |v k|}}
+                <optgroup label="{{k}}">
+                    {{#each v}}
+                    <option value="data.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
+                    {{/each}}
+                </optgroup>
+            {{/each}}
+            {{/select}}
+        </select>
+        <div class='language-selection '>
+                {{#each this.languages as |lang attr|}}
+                <div class="form-group language-group">
+                    <input type='text' class='value' value='{{attr}}' />
+                    <select class='language'>
+                        {{#select lang}}
+                        <option value="random">{{ localize "TOKEN-MOLD.NAME.Random" }}</option>
+                        <optgroup label="{{localize "TOKEN-MOLD.NAME.Language"}}">
+                            {{#each @root.languages}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                        </optgroup>
+                        {{#each @root.rollTableList as |array group|}}
+                        <optgroup label="{{group}}">
+                            {{#each array}}
+                            <option value="{{this.uuid}}">{{this.name}}</option>
+                            {{/each}}
+                        </optgroup>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                    <a data-action="delete-attribute" data-index="{{idx}}" class='lang-remove' title="{{ localize "TOKEN-MOLD.NAME.Delete" }}"><i class="fas fa-times"></i></a>
+                </div>
+                {{/each}}
+            <a class='add-language-value'><i class="fas fa-plus"></i>&nbsp;{{ localize "TOKEN-MOLD.NAME.AddValue"}}</a>
+        </div>
+    </div>
+{{/each}}
+<a data-action="add-attribute" class='add-language-attribute'><i class="fas fa-plus"></i>&nbsp;{{ localize "TOKEN-MOLD.NAME.AddAttribute"}}</a>
+{{/if}}
+<h2>{{localize "TOKEN-MOLD.NAME.SuffixOptions"}}</h2>
+<div class="form-group">
+    <input type='checkbox' name='name.suffix.addCustomWord' id='tmold_suffix_custom' {{checked activeConfig.name.suffix.addCustomWord}}
+        data-dtype="Boolean"><label class="tmold_custom_word_label" for='tmold_suffix_custom'>{{ localize "TOKEN-MOLD.NAME.AddCustomSuffix" }}</label>
+    <input type="text" name="name.suffix.customWord" value="{{activeConfig.name.suffix.customWord}}" {{#unless activeConfig.name.suffix.addCustomWord}}disabled{{/unless}} />
+</div>
+<div class="form-group">
+    <input type='checkbox' name='name.suffix.addAdjective' id='tmold_use_suffix' data-dtype="Boolean" {{checked activeConfig.name.suffix.addAdjective}}><label for='tmold_use_suffix'>{{ localize "TOKEN-MOLD.NAME.AddAdjective" }}</label>
+</div>
+{{#if activeConfig.name.suffix.addAdjective}}
+<div class="form-group">
+    <label>{{ localize "TOKEN-MOLD.NAME.ChooseRolltable" }}</label>
+    <select name="name.suffix.table" data-dtype="String">
+        {{#select activeConfig.name.suffix.table}}
+        {{#each rollTableList as |array group|}}
+            <optgroup label="{{group}}">
+                {{#each array}}
+                <option value="{{this.uuid}}">{{this.name}}</option>
+                {{/each}}
+            </optgroup>
+        {{/each}}
+        {{/select}}
+    </select>
+</div>
+{{/if}}
+<div class="form-group">
+    <input type='checkbox' name='name.number.use' id='tmold_use_number' {{checked activeConfig.name.number.use}}
+        data-dtype="Boolean"><label for='tmold_use_number'>{{ localize "TOKEN-MOLD.NAME.AddNumbers"}}</label>
+</div>
+{{#if activeConfig.name.number.use}}
+<p>{{localize "TOKEN-MOLD.NAME.NumberStyle"}}</p>
+<div class="form-group">
+    <input type='text' style='text-align:right' class='inp-small' value="{{activeConfig.name.number.prefix}}" title="{{localize "TOKEN-MOLD.NAME.Prefix"}}" name="name.number.prefix" data-dtype="String">
+    <select class='number-type' name="name.number.type" data-dtype="String">
+        {{#select activeConfig.name.number.type}}
+        {{#each numberStyles as |label key|}}
+            <option value="{{key}}">{{label}}</option>
+        {{/each}}
+        {{/select}}
+    </select>
+    <input type='text' class='inp-small' value="{{activeConfig.name.number.suffix}}" title="{{localize "TOKEN-MOLD.NAME.Suffix"}}" name="name.number.suffix" data-dtype="String">
+</div>
+<div class="form-group" title="{{localize "TOKEN-MOLD.NAME.IncreaseIndexHelp"}}">
+    <label>{{localize "TOKEN-MOLD.NAME.IncreaseIndex"}}&nbsp;</label><input type="text" data-dtype="Number" name="name.number.range" value="{{#if activeConfig.name.number.range}}{{activeConfig.name.number.range}}{{else}}1{{/if}}"/>
+</div>
+<div class="form-group">
+    <a class='reset-counter' title='{{localize "TOKEN-MOLD.NAME.ResetCounterHelp"}}'><i class="fas fa-undo"></i>&nbsp;{{localize "TOKEN-MOLD.NAME.ResetCounter"}}</a>
+</div>
+{{/if}}
