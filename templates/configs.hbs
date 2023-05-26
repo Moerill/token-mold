@@ -1,0 +1,24 @@
+<form autocomplete="off">
+    <ul class="token-mold-list token-mold-list-header">
+        <li>
+            <span>Configuration Name</span>
+            <span>Options</span>
+        </li>
+    </ul>
+    <hr />
+    <ul class="token-mold-list">
+        {{#each configs}}
+        <li data-id="{{id}}">
+            <span><input type="text" name="configName" value="{{configName}}" /></span>
+            <span class="token-mold-manage-options">
+                <a data-action="edit" title="{{localize "TOKEN-MOLD.TOOLTIPS.Edit"}}"><i class="fas fa-pencil"></i></a>
+                <a data-action="clone" title="{{localize "TOKEN-MOLD.TOOLTIPS.Clone"}}"><i class="fas fa-clone"></i></a>
+                <a data-action="delete" title="{{localize "TOKEN-MOLD.TOOLTIPS.Delete"}}"><i class="fas fa-trash"></i></a>
+            </span>
+        </li>
+        {{/each}}
+    </ul>
+    <div class="token-mold-manage-header-button">
+        <button type="button" data-action="new"><i class="fas fa-plus"></i>{{localize "TOKEN-MOLD.MANAGE.NewConfiguration"}}</button>
+    </div>
+</form>

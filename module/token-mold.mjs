@@ -5,21 +5,24 @@ import { Logger } from "./logger/logger.mjs";
 import { TokenMoldNameGenerator } from "./utils/namegenerator.mjs";
 import { TokenMoldRule } from "./models/token-mold-rule.mjs";
 import { TokenMoldRuleConfig } from "./models/token-mold-rule-config.mjs";
+import { TokenMoldRulesDialog } from "./forms/token-mold-rules-dialog.mjs";
+import { TokenMoldManageConfigsDialog } from "./forms/token-mold-manage-configs-dialog.mjs";
 
 export class TokenMold {
     #section = null;
     #configForm = null;
-    #counters = [];
+    #ruleForm = null;
 
     static DefaultSettings() {
         Logger.info(true, "Loading default Settings");
 
         const defaults = {
             GLOBAL: {
-                Name: true,
-                HP: true,
                 Config: false,
-                Overlay: true
+                HP: true,
+                Name: true,
+                Overlay: true,
+                PreloadTables: false,
             },
             RULES: new Set(),
             CONFIGURATIONS: new Set([new TokenMoldRuleConfig()])
@@ -53,9 +56,10 @@ export class TokenMold {
         }
     }
 
-    static async LoadTable() {
-        //TODO: Make preloading of tables a global setting for performance reasons
+    static async LoadTables() {
         CONFIG.ADJECTIVES = {};
+        if (!CONFIG.SETTINGS.GLOBAL.PreloadTables) { return; }
+
         for (let config of CONFIG.SETTINGS.CONFIGURATIONS) {
             let document;
         
@@ -87,7 +91,7 @@ export class TokenMold {
     }
 
     static async SaveSettings() {
-        TokenMold.LoadTable();
+        TokenMold.LoadTables();
 
         //TODO: This warning needs to be in the CONFIG section, not here.
         /*
@@ -102,7 +106,7 @@ export class TokenMold {
         //Sets can't be saved to flags, so convert them to objects for now
         if (CONFIG.SETTINGS.RULES instanceof Set) { CONFIG.SETTINGS.RULES = CONFIG.SETTINGS.RULES.toObject(); }
         if (CONFIG.SETTINGS.CONFIGURATIONS instanceof Set) { CONFIG.SETTINGS.CONFIGURATIONS = CONFIG.SETTINGS.CONFIGURATIONS.toObject(); }
-        await game.settings.set("Token-Mold", "everyone", CONFIG.SETTINGS);
+        await game.settings.set("token-mold", "everyone", CONFIG.SETTINGS);
         //Convert them back
         if (!(CONFIG.SETTINGS.RULES instanceof Set)) { CONFIG.SETTINGS.RULES = new Set(Object.values(CONFIG.SETTINGS.RULES)); }
         if (!(CONFIG.SETTINGS.CONFIGURATIONS instanceof Set)) { CONFIG.SETTINGS.CONFIGURATIONS = new Set(Object.values(CONFIG.SETTINGS.CONFIGURATIONS)); }
@@ -127,6 +131,12 @@ export class TokenMold {
     }
 
     async onReady() {
+        if (CONFIG.OLD_SETTINGS) {
+            await TokenMold.SaveSettings();
+            await game.settings.set("Token-Mold", "everyone", null);
+            CONFIG.OLD_SETTINGS = null;
+        }
+
         // Hooks.on("renderHeadsUpDisplay", async (app, html, data) => {
         //     html.append('<template id="token-mold-overlay"></template>');
         //     canvas.hud.TokenMold = new TokenMoldOverlay();
@@ -144,7 +154,7 @@ export class TokenMold {
         TokenMold.LoadDicts();
 
         await this.#getRollTables();
-        await TokenMold.LoadTable();
+        await TokenMold.LoadTables();
     }
 
     preloadHandlebarTemplates = async function() {
@@ -188,53 +198,15 @@ export class TokenMold {
     }
 
     #loadSettings() {
-        CONFIG.SETTINGS = game.settings.get("Token-Mold", "everyone");
+        let oldSettings = game.settings.get("Token-Mold", "everyone");
+        if (oldSettings) {
+            this.#migrateOldSettiongs(oldSettings);
+            CONFIG.SETTINGS = mergeObject(CONFIG.OLD_SETTINGS, game.settings.get("token-mold", "everyone"));
+        } else {
+            CONFIG.SETTINGS = game.settings.get("token-mold", "everyone");
+        }
 
         Logger.debug(false, "Loading Settings, start are: ", CONFIG.SETTINGS);
-        // Check for old data
-        if (CONFIG.SETTINGS.config?.data !== undefined) {
-            for (let [key, value] of Object.entries(CONFIG.SETTINGS.config.data)) {
-                CONFIG.SETTINGS.config[key] = {
-                    use: true,
-                    value: value,
-                };
-            }
-            delete CONFIG.SETTINGS.config.data;
-            TokenMold.SaveSettings();
-        }
-
-        if (getProperty(CONFIG.SETTINGS, "overlay.attrs") && CONFIG.SETTINGS.overlay.attrs.length === 0) {
-            delete CONFIG.SETTINGS.overlay.attrs;
-        }
-
-        if (getProperty(CONFIG.SETTINGS, "name.options.attributes") && CONFIG.SETTINGS.name.options.attributes.length === 0) {
-            delete CONFIG.SETTINGS.name.options.attributes;
-        }
-
-        //Migrate to new configuration
-        if (!CONFIG.SETTINGS.CONFIGURATIONS) {
-            const settings = TokenMold.DefaultSettings();
-
-            let defaultSettings = settings.CONFIGURATIONS.first();
-
-            defaultSettings.name = mergeObject(defaultSettings.name, CONFIG.SETTINGS.name);
-            defaultSettings.name.number.prefix = defaultSettings.name.number.prefix.trim();
-            defaultSettings.hp = mergeObject(defaultSettings.hp, CONFIG.SETTINGS.hp);
-            defaultSettings.size = mergeObject(defaultSettings.size, CONFIG.SETTINGS.size);
-            defaultSettings.properties = mergeObject(defaultSettings.properties, CONFIG.SETTINGS.config);
-            defaultSettings.overlay = mergeObject(defaultSettings.overlay, CONFIG.SETTINGS.overlay);
-
-            if (!CONFIG.SETTINGS.unlinkedOnly) {
-                //Utilize both linked and unlinked
-                settings.RULES.add(new TokenMoldRule({name: "Linked Tokens", priority: 1, affectLinked: true, configID: CONFIG.SETTINGS.CONFIGURATIONS.first().id}));
-
-                settings.RULES = new Set([...settings.RULES.values()].sort((a, b) => b.priority - a.priority));
-            }
-
-            //TODO: Delete old settings
-
-            CONFIG.SETTINGS = settings;
-        }
 
         CONFIG.SETTINGS = mergeObject(TokenMold.DefaultSettings(), CONFIG.SETTINGS);
 
@@ -256,21 +228,35 @@ export class TokenMold {
         }
         */
         TokenMold.LoadDicts();
-        Logger.debug(false, "Loading Settings", CONFIG.SETTINGS);
+        Logger.debug(false, "Loaded Settings", CONFIG.SETTINGS);
     }
 
     #registerSettings() {
-        game.settings.register("Token-Mold", "everyone", {
+        game.settings.register("token-mold", "everyone", {
             name: "Token Mold Settings",
             hint: "Settings definitions for the Token Mold Module",
             default: TokenMold.DefaultSettings(),
             type: Object,
             scope: "world",
             onChange: (data) => {
-                this.data = data;
+                this.#loadSettings();
                 this.#updateCheckboxes();
             },
         });
+
+        game.settings.register("token-mold", "preloadTables", {
+            name: game.i18n.localize("TOKEN-MOLD.SETTINGS.PreloadTablesLabel"),
+            hint: game.i18n.localize("TOKEN-MOLD.SETTINGS.PreloadTablesHint"),
+            scope: "world",
+            restricted: true,
+            config: true,
+            type: Boolean,
+            default: false,
+            onChange: (value) => {
+                CONFIG.SETTINGS.GLOBAL.PreloadTables = value;
+                TokenMold.LoadTables();
+            }
+        })
 
         game.settings.registerMenu("token-mold", "ModuleConfiguration", {
             name: game.i18n.localize("TOKEN-MOLD.SETTINGS.Config"),
@@ -280,6 +266,68 @@ export class TokenMold {
             icon: 'fas fa-cogs',
             type: TokenMoldConfigurationDialog
         });
+
+        //Deprecated - this was for old settings, and used the wrong ID to register.
+        game.settings.register("Token-Mold", "everyone", {
+            name: "Token Mold Settings",
+            hint: "Deprecated settings definitions for the Token Mold Module",
+            default: null,
+            type: Object,
+            scope: "world",
+        });
+    }
+
+    async #migrateOldSettiongs(oldSettings) {
+        Logger.debug(false, "Migrating Old Settings", oldSettings);
+
+        if (oldSettings.config?.data !== undefined) {
+            for (let [key, value] of Object.entries(CONFIG.SETTINGS.config.data)) {
+                oldSettings.config[key] = {
+                    use: true,
+                    value: value,
+                };
+            }
+            delete oldSettings.config.data;
+        }
+
+        if (getProperty(oldSettings, "overlay.attrs") && oldSettings.overlay.attrs.length === 0) {
+            delete oldSettings.overlay.attrs;
+        }
+
+        if (getProperty(oldSettings, "name.options.attributes") && oldSettings.name.options.attributes.length === 0) {
+            delete oldSettings.name.options.attributes;
+        }
+
+        //Migrate to new configuration
+        if (!oldSettings.CONFIGURATIONS) {
+            const settings = TokenMold.DefaultSettings();
+
+            let defaultSettings = settings.CONFIGURATIONS.first();
+
+            defaultSettings.name = mergeObject(defaultSettings.name, oldSettings.name);
+            defaultSettings.name.number.prefix = defaultSettings.name.number.prefix.trim();
+            defaultSettings.hp = mergeObject(defaultSettings.hp, oldSettings.hp);
+            defaultSettings.size = mergeObject(defaultSettings.size, oldSettings.size);
+            defaultSettings.properties = mergeObject(defaultSettings.properties, oldSettings.config);
+            defaultSettings.overlay = mergeObject(defaultSettings.overlay, oldSettings.overlay);
+
+            if (!oldSettings.unlinkedOnly) {
+                //Utilize both linked and unlinked
+                settings.RULES.add(new TokenMoldRule({name: "Linked Tokens", priority: 1, affectLinked: true, configID: settings.CONFIGURATIONS.first().id}));
+
+                settings.RULES = new Set([...settings.RULES.values()].sort((a, b) => b.priority - a.priority));
+            }
+
+            oldSettings = mergeObject(oldSettings, settings);
+        }
+
+        if (oldSettings.name) {
+            delete oldSettings.name;
+        }
+
+        Logger.debug(false, "Old Settings", oldSettings);
+
+        CONFIG.OLD_SETTINGS = oldSettings;
     }
 
     #renderActorDirectoryMenu() {
@@ -287,7 +335,13 @@ export class TokenMold {
         section.insertAdjacentHTML(
             "afterbegin",
             `
-            <h3>${game.i18n.localize("TOKEN-MOLD.ABOUT.Title")}</h3>
+            <div class="token-mold-actor-directory-header">
+                <h3>${game.i18n.localize("TOKEN-MOLD.ABOUT.Title")}</h3>
+                <div class="token-mold-directory-icons">
+                    <a class="token-mold-manage-rules-button" title='${game.i18n.localize("TOKEN-MOLD.TOOLTIPS.ManageRules")}'><i class="fas fa-list"></i></a>
+                    <a class="token-mold-manage-configs-button" title='${game.i18n.localize("TOKEN-MOLD.TOOLTIPS.ManageConfigs")}'><i class="fas fa-cog"></i></a>
+                </div>
+            </div>
             <label class='label-inp' title='${game.i18n.localize("TOKEN-MOLD.SIDEBAR.Name")}'>
                 <input class='name rollable' type='checkbox' name='name.use' ${CONFIG.SETTINGS.GLOBAL.Name ? "checked" : ""
             }><span><span class='checkmark'></span>&nbsp;${game.i18n.localize("TOKEN-MOLD.LABELS.Name")}</span>
@@ -310,10 +364,10 @@ export class TokenMold {
     
     
             <a class='refresh-selected' title="${game.i18n.localize("TOKEN-MOLD.SIDEBAR.Reapply")}"><i class="fas fa-sync-alt"></i></a>
-            <a class='token-rand-form-btn' title='${game.i18n.localize("TOKEN-MOLD.LABELS.Settings")}'><i class="fa fa-cog"></i></a>
             <h2></h2>
             `
         );
+//            <a class='token-rand-form-btn' title='${game.i18n.localize("TOKEN-MOLD.LABELS.Settings")}'><i class="fa fa-cog"></i></a>
 
         const inputs = section.querySelectorAll('input[type="checkbox"]');
         for (let checkbox of inputs) {
@@ -323,15 +377,21 @@ export class TokenMold {
             });
         }
 
-        this.#section
-            .querySelector(".refresh-selected")
-            .addEventListener("click", (ev) => this.#refreshSelected());
-        this.#section
-            .querySelector(".token-rand-form-btn")
-            .addEventListener("click", (ev) => {
-                if (!this.#configForm) { this.#configForm = new TokenMoldConfigurationDialog(this); }
-                this.#configForm.render(true);
-            });
+        this.#section.querySelector(".refresh-selected").addEventListener("click", (ev) => this.#refreshSelected());
+        this.#section.querySelector(".token-mold-manage-rules-button").addEventListener("click", (ev) => {
+            if (!this.#ruleForm) { this.#ruleForm = new TokenMoldRulesDialog(this); }
+            this.#ruleForm.render(true);
+        });
+        this.#section.querySelector(".token-mold-manage-configs-button").addEventListener("click", (ev) => {
+            if (!this.#configForm) { this.#configForm = new TokenMoldManageConfigsDialog(); }
+            this.#configForm.render(true);
+        });
+        // this.#section
+        //     .querySelector(".token-rand-form-btn")
+        //     .addEventListener("click", (ev) => {
+        //         if (!this.#configForm) { this.#configForm = new TokenMoldConfigurationDialog(this); }
+        //         this.#configForm.render(true);
+        //     });
     }
 
     #refreshSelected() {

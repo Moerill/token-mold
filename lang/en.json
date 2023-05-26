@@ -31,6 +31,9 @@
       "Overlay": "Overlay",
       "Settings": "Settings"
     },
+    "MANAGE": {
+      "NewConfiguration": "Create New Configuration"
+    },
     "NAME": {
       "AddAdjective": "Add random adjective from dictionary",
       "AddAttribute": "Add Attribute",
@@ -80,7 +83,9 @@
     "SETTINGS": {
       "Config": "Token Mold Configuration",
       "ConfigHint": "Configure Settings for Token Mold.  Also available at the top of the Actor Tab.",
-      "ConfigLabel": "Configure Token Mold"
+      "ConfigLabel": "Configure Token Mold",
+      "PreloadTablesHint": "Preloading tables used in the name/adjective generation can increase performance, however there is a balance between this and the number and size of tables being loaded - too many or too large and it could have a negative impact as they are kept in memory even when not being used.",
+      "PreloadTablesLabel": "Preload Name/Adjective Generation Tables?"
     },
     "SIDEBAR": {
       "HP": "(De-)activate Hit Point rolling",
@@ -101,6 +106,11 @@
       "TokenOverlay": "Token Overlay"
     },
     "TOOLTIPS": {
+      "Clone": "Clone",
+      "Delete": "Delete",
+      "Edit": "Edit",
+      "ManageConfigs": "Manage Configurations",
+      "ManageRules": "Manage Rules",
       "NewConfig": "Creates a new Config Rule"
     }
   },

@@ -96,8 +96,24 @@ export class TokenMoldNameGenerator {
         return name;
     }
 
-    static #GetAdjective(tableName) {
-        const adj = CONFIG.ADJECTIVES[tableName].results._source[Math.floor(CONFIG.ADJECTIVES[tableName].results.size * Math.random())].text;
+    static async #GetAdjective(tableName) {
+        let adj;
+
+        if (!CONFIG.SETTINGS.GLOBAL.PreloadTables) {
+            let document;
+        
+            try {
+                document = await fromUuid(tableName);
+            } catch (error) {
+                Logger.error(true, `Unable to find table: ${tableName}!`);
+                return "";
+            }
+
+            adj = document.results._source[Math.floor(document.results.size * Math.random())].text;
+        } else {
+            adj = CONFIG.ADJECTIVES[tableName].results._source[Math.floor(CONFIG.ADJECTIVES[tableName].results.size * Math.random())].text;
+        }
+
         return adj;
     }
 

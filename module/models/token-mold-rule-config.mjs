@@ -2,6 +2,7 @@ import { TokenMoldConfigurationDialog } from "../forms/token-mold-configuration-
 
 export class TokenMoldRuleConfig {
     id = null;
+    configName = "Default Config";
 
     name = {
         adjective: {

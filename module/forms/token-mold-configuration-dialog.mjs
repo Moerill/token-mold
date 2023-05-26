@@ -292,12 +292,12 @@ export class TokenMoldConfigurationDialog extends HelpFormApplication {
 		if (/dnd5e|sw5e/.exec(game.data.system.id) !== null) {
 			return [
 				{
-					value: "data.attributes.ac.value",
+					value: "system.attributes.ac.value",
 					label: "Armor Class",
 					icon: '<i class="fas fa-eye"></i>',
 				},
 				{
-					value: "data.skills.prc.passive",
+					value: "system.skills.prc.passive",
 					label: "Passive Perception",
 					icon: '<i class="fas fa-shield-alt"></i>',
 				},

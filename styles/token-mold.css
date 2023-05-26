@@ -101,6 +101,43 @@
   color: black;
   text-shadow: 0 0 8px var(--color-shadow-primary);
 }
+.token-mold .token-mold-actor-directory-header {
+  display: flex;
+  justify-content: space-between;
+  flex: 0 0 100%;
+  align-items: center;
+}
+.token-mold .token-mold-actor-directory-header div.token-mold-directory-icons {
+  flex: 0 0 11%;
+}
+.token-mold.token-mold-manage-dialog .token-mold-manage-header-button {
+  display: flex;
+  justify-content: end;
+}
+.token-mold.token-mold-manage-dialog .token-mold-manage-header-button button {
+  width: auto;
+}
+.token-mold.token-mold-manage-dialog .token-mold-list {
+  list-style-type: none;
+  padding: 0 0.25rem;
+}
+.token-mold.token-mold-manage-dialog .token-mold-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.token-mold.token-mold-manage-dialog .token-mold-list li .token-mold-manage-options a {
+  padding: 0 0.15rem;
+}
+.token-mold.token-mold-manage-dialog .token-mold-list li span:first-child {
+  flex-grow: 1;
+}
+.token-mold.token-mold-manage-dialog .token-mold-list li[data-id] {
+  margin-bottom: 0.5rem;
+}
+.token-mold.token-mold-manage-dialog .token-mold-list-header {
+  font-weight: bold;
+}
 .window-app.token-mold {
   min-width: 540px;
 }
