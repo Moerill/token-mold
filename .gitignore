@@ -1,5 +1,6 @@
 node_modules
 foundryconfig.json
 package-lock.json
+token-mold.lock
 yarn-error.log
 .vs

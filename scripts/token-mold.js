@@ -317,7 +317,11 @@ export default class TokenMold {
     if (this.data.name.use) {
       const newName = this._modifyName(newData, data, actor, scene.id);
       newData.name = newName;
-      setProperty(newData, "actorData.name", newName);
+      if (TokenMold.FOUNDRY_VERSION >= 11) {
+        setProperty(newData, "delta.name", newName);
+      } else {
+        setProperty(newData, "actorData.name", newName);
+      }
     }
 
     if (/dnd5e|dcc/.exec(TokenMold.GAME_SYSTEM) !== null) {
@@ -387,8 +391,9 @@ export default class TokenMold {
         });
       // Make sure hp is at least 1
       const val = Math.max(r.total, 1);
-      setProperty(newData, TokenMold.FOUNDRY_VERSION >= 10 ? "actorData.system.attributes.hp.value" : "actorData.data.attributes.hp.value", val);
-      setProperty(newData, TokenMold.FOUNDRY_VERSION >= 10 ? "actorData.system.attributes.hp.max" : "actorData.data.attributes.hp.max", val);
+
+      setProperty(newData, TokenMold.FOUNDRY_VERSION >= 11 ? "delta.system.attributes.hp.value" : TokenMold.FOUNDRY_VERSION >= 10 ? "actorData.system.attributes.hp.value" : "actorData.data.attributes.hp.value", val);
+      setProperty(newData, TokenMold.FOUNDRY_VERSION >= 11 ? "delta.system.attributes.hp.max" : TokenMold.FOUNDRY_VERSION >= 10 ? "actorData.system.attributes.hp.max" : "actorData.data.attributes.hp.max", val);
     } else
       ui.notifications.warn("Can not randomize hp. HP formula is not set.");
     return;
