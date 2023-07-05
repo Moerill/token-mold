@@ -1,3 +1,8 @@
+# v2.5.0
+ - Foundry v11 Compatibility Update ( [#167](https://github.com/Moerill/token-mold/issues/167))
+ - Corrected bug that caused Token Mold to conflict with other modules due to overwriting certain data within the token ([#150](https://github.com/Moerill/token-mold/issues/150))
+ - Corrected issue where bar attributes were being retrieved from the base Token Document, causing a problem if that document was overriden by the system ([#160](https://github.com/Moerill/token-mold/issues/160))
+ 
 # v2.15.4
  - Adjusted resolutions to #137 & #138
  - Corrected an issue where refreshing selected tokens was causing a circular reference error ( [#141](https://github.com/Moerill/token-mold/issues/141) ).
