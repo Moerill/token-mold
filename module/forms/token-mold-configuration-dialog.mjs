@@ -39,6 +39,10 @@ export class TokenMoldConfigurationDialog extends HelpFormApplication {
 		return options;
 	}
 
+	get title() {
+		return `Token Mold - ${this.#ruleConfig.configName}`
+	}
+
 	async close(options={}) {
 		super.close({force: true});
 	}

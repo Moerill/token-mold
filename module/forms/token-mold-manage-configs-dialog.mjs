@@ -47,8 +47,13 @@ export class TokenMoldManageConfigsDialog extends HelpFormApplication {
 
 	async _updateObject(event, formData) {
 		Logger.debug(false, event, formData);
+        if (!event.currentTarget) { return; }
         let configID = $(event.currentTarget).parents("[data-id]")?.data()?.id;
-        CONFIG.SETTINGS.CONFIGURATIONS.find(c => c.id === configID)[event.currentTarget.name] = formData[event.currentTarget.name];
+        for (let key of Object.keys(formData)) {
+            let keyData = key.split("-");
+            if (keyData[1] !== configID) { continue; }
+            CONFIG.SETTINGS.CONFIGURATIONS.find(c => c.id === configID)[keyData[0]] = formData[key];
+        }
         await TokenMold.SaveSettings();
     }
 
@@ -63,12 +68,38 @@ export class TokenMoldManageConfigsDialog extends HelpFormApplication {
             case "clone":
                 let newConfig = new TokenMoldRuleConfig(config);
                 newConfig.configName += ` (${game.i18n.localize("TOKEN-MOLD.TOOLTIPS.Clone")})`;
+                newConfig.id = foundry.utils.randomID();
                 CONFIG.SETTINGS.CONFIGURATIONS.add(newConfig);
 
                 await TokenMold.SaveSettings();
                 await this.render(true);
                 break;
             case "delete":
+                let content = `${game.i18n.localize("TOKEN-MOLD.DIALOG.DeleteConfigConfirm")} ${config.configName}?`;
+                new Dialog({
+                    title: game.i18n.localize("TOKEN-MOLD.TOOLTIPS.Delete"),
+                    content: content,
+                    buttons: {
+                        yes: {
+                            icon: "<i class='fas fa-check'></i>",
+                            label: game.i18n.localize("TOKEN-MOLD.TOOLTIPS.Delete"),
+                            callback: async (html) => {
+                                CONFIG.SETTINGS.CONFIGURATIONS.delete(config);
+
+                                if (CONFIG.SETTINGS.CONFIGURATIONS.size === 0) {
+                                    CONFIG.SETTINGS.CONFIGURATIONS.add(new TokenMoldRuleConfig());
+                                }
+                                await TokenMold.SaveSettings();
+                                await this.render(true);
+                            }
+                        },
+                        no: {
+                            icon: "<i class='fas fa-times'></i>",
+                            label: game.i18n.localize("Cancel")
+                        }
+                    },
+                    default: "no"
+                }).render(true);
                 break;
             case "edit":
                 dialog = new TokenMoldConfigurationDialog({ruleConfig: config});

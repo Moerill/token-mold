@@ -1,23 +1,14 @@
-#token-mold-overlay {
-  color: #f1f1f1;
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-auto-rows: auto;
-  align-content: center;
-  justify-content: flex-end;
-  padding: 3px 0;
-  width: 100%;
+.token-mold.token-mold-layer::before {
+  content: "";
+  height: 28px;
+  width: 28px;
+  display: block;
+  background: var(--color-text-light-heading);
+  mask: url("/modules/token-mold/assets/sword-mold.svg");
+  mask-size: contain;
 }
-#token-mold-overlay span {
-  padding: 0 3px;
-}
-#token-mold-overlay .value {
-  background-color: rgba(0, 0, 0, 0.6);
-  grid-column: 0.5;
-}
-#token-mold-overlay .icon {
-  background-color: rgba(0, 0, 0, 0.6);
-  grid-column: 0.66666667;
+.scene-control.active .token-mold.token-mold-layer::before {
+  background: var(--color-text-light-highlight);
 }
 .token-mold {
   /* Config */

@@ -1,3 +1,15 @@
+.token-mold.token-mold-layer::before {
+  content: "";
+  height: 28px;
+  width: 28px;
+  display: block;
+  background: var(--color-text-light-heading);
+  mask: url("/modules/token-mold/assets/sword-mold.svg");
+  mask-size: contain;
+}
+.scene-control.active .token-mold.token-mold-layer::before {
+  background: var(--color-text-light-highlight);
+}
 .token-mold {
   a[href] {
     color: #4a52ca;

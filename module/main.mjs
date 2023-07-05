@@ -17,3 +17,7 @@ Hooks.on("ready", () => { CONFIG.TOKENMOLD.onReady(); });
 Hooks.on("renderActorDirectory", (app, html, data) => {
     if (game.user.isGM) CONFIG.TOKENMOLD.hookActorDirectory(html);
 });
+
+Hooks.on("getSceneControlButtons", (buttons) => {
+    CONFIG.TOKENMOLD.configureCanvasButtons(buttons);
+});

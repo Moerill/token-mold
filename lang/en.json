@@ -24,6 +24,9 @@
       "Save": "Save and Close",
       "Unlinked": "Unlinked"
     },
+    "DIALOG": {
+      "DeleteConfigConfirm": "Are you sure you wish to delete the following configuration:"
+    },
     "LABELS": {
       "Config": "Config",
       "HP": "HP",

@@ -173,7 +173,100 @@ export class TokenMold {
         const dirHeader = html[0].querySelector(".directory-header");
         dirHeader.parentNode.insertBefore(this.#section, dirHeader);
 
-        if (CONFIG.SETTINGS !== undefined) this.#renderActorDirectoryMenu();
+        // if (CONFIG.SETTINGS !== undefined) this.#renderActorDirectoryMenu();
+    }
+
+    configureCanvasButtons(buttons) {
+        const tool = {
+            activeTool: "select",
+            icon: "token-mold token-mold-layer",
+            layer: "controls",
+            name: "token-mold",
+            title: "Token Mold",
+            tools: [],
+            visible: true
+        };
+    
+        tool.tools.push({
+            name: "token-mold-config",
+            icon: "fa-solid fa-gear",
+            title: "TOKEN-MOLD.TOOLTIPS.ManageConfigs",
+            button: true,
+            visible: true,
+            onClick: () => {
+                if (!this.#configForm) { this.#configForm = new TokenMoldManageConfigsDialog(); }
+                this.#configForm.render(true);
+            }
+        });
+    
+        tool.tools.push({
+            name: "token-mold-refresh",
+            icon: "fa-solid fa-arrows-rotate",
+            title: "TOKEN-MOLD.SIDEBAR.Reapply",
+            button: true,
+            visible: true,
+            onClick: () => {
+                this.#refreshSelected()    
+            }
+        });
+    
+        tool.tools.push({
+            name: "token-mold-name",
+            icon: "fa-solid fa-signature",
+            title: "TOKEN-MOLD.SIDEBAR.Name",
+            button: false,
+            visible: true,
+            toggle: true,
+            active: CONFIG.SETTINGS.GLOBAL.Name,
+            onClick: (state) => {
+                CONFIG.SETTINGS.GLOBAL.Name = state;
+                TokenMold.SaveSettings();
+            }
+        });
+    
+        tool.tools.push({
+            name: "token-mold-hp",
+            icon: "fa-solid fa-heart",
+            title: "TOKEN-MOLD.SIDEBAR.HP",
+            button: false,
+            visible: CONFIG.HP_SUPPORTED,
+            toggle: true,
+            active: CONFIG.SETTINGS.GLOBAL.HP,
+            onClick: (state) => {
+                CONFIG.SETTINGS.GLOBAL.HP = state;
+                TokenMold.SaveSettings();
+            }
+        });
+    
+        tool.tools.push({
+            name: "token-mold-token",
+            icon: "fa-solid fa-circle-user",
+            title: "TOKEN-MOLD.SIDEBAR.Token",
+            button: false,
+            visible: true,
+            toggle: true,
+            active: CONFIG.SETTINGS.GLOBAL.Config,
+            onClick: (state) => {
+                CONFIG.SETTINGS.GLOBAL.Config = state;
+                TokenMold.SaveSettings();
+            }
+        });
+    
+        tool.tools.push({
+            name: "token-mold-overlay",
+            icon: "fa-solid fa-language",
+            title: "TOKEN-MOLD.SIDEBAR.Overlay",
+            button: false,
+            visible: true,
+            toggle: true,
+            active: CONFIG.SETTINGS.GLOBAL.Overlay,
+            onClick: (state) => {
+                CONFIG.SETTINGS.GLOBAL.Overlay = state;
+                TokenMold.SaveSettings();
+            }
+        });
+    
+        buttons.push(tool);        
     }
 
     async #getRollTables() {
