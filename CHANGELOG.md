@@ -1,3 +1,6 @@
+# V2.20.2
+ - Corrected bug where certain systems define types of Actors not meant to be instantiated, breaking DocumentClass reading ( [#176](https://github.com/Moerill/token-mold/issues/176) )
+ 
 # v2.20.1
  - Corrected bug with HP not rolling correctly ( [#173](https://github.com/Moerill/token-mold/issues/173)) )
 
