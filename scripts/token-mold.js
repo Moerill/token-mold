@@ -943,15 +943,19 @@ export default class TokenMold {
       else obj[key] = val;
     };
     for (const type of types) {
-      const docClass = TokenMold.FOUNDRY_VERSION >= 10 ? 
+      try {
+        const docClass = TokenMold.FOUNDRY_VERSION >= 10 ? 
         new CONFIG.Actor.documentClass({ type: type, name: "tmp"}).system :
         new CONFIG.Actor.documentClass({ type: type, name: "tmp" }).data.data;
-      const { bar, value } = CONFIG.Token.documentClass.getTrackedAttributes(docClass);
-      for (const val of bar) {
-        addElement(barData.bar, val.join("."), type);
-      }
-      for (const val of value) {
-        addElement(barData.value, val.join("."), type);
+        const { bar, value } = CONFIG.Token.documentClass.getTrackedAttributes(docClass);
+        for (const val of bar) {
+          addElement(barData.bar, val.join("."), type);
+        }
+        for (const val of value) {
+          addElement(barData.value, val.join("."), type);
+        }
+      } catch (e) {
+        TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "Error navigating document class type!", type, e);
       }
     }
     return barData;
