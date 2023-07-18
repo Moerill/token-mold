@@ -406,6 +406,10 @@ export default class TokenMold {
       name = "";
     }
 
+    if ("prefix" === this.data.name.replace && !(this.data.name.baseNameOverride && event.getModifierState("Shift"))) {
+      name = name.substring(0, 2);
+    }
+
     let numberSuffix = "";
     if (this.data.name.number.use) {
       let number = 0;
