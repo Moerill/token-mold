@@ -35,6 +35,7 @@
     "tmold.name.baseNameNothing": "何もしない",
     "tmold.name.baseNameRemove": "削除する",
     "tmold.name.baseNameReplace": "ランダムな名前に置き換える",
+    "tmold.name.baseNamePrefix": "俳優名の最初の2文字に置き換えます",
     "tmold.name.replaceHelp": "これがどのように機能するか？ 詳細については､モジュールのホームページをご覧ください。",
     "tmold.name.replaceInfo1": "選択したオプションにより､トークンの元々の名前が自動生成された名前に置き換えられます。",
     "tmold.name.replaceInfo2": "いくつかの特性を選択できます。特性ごとに､可能な値を選択して言語に割り当てることができます。トークンの作成時に適合する最初の値が選択されます。適切な値が見つからなかった場合､デフォルトが使用されます。",
