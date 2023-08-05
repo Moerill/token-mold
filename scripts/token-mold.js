@@ -49,7 +49,7 @@ export default class TokenMold {
     this.registerSettings();
     this.loadSettings();
     TokenMold.GAME_SYSTEM = game.system?.id ?? game.data.system.id;
-    this.systemSupported = /dnd5e|pf2e|sfrpg|sw5e|dcc/.exec(TokenMold.GAME_SYSTEM) !== null;
+    this.systemSupported = /dnd5e|pf2e|sfrpg|sw5e|dcc|ose/.exec(TokenMold.GAME_SYSTEM) !== null;
 
     Hooks.on("hoverToken", (token, hovered) => {
       if (!token || !token.actor) return;
@@ -219,7 +219,7 @@ export default class TokenMold {
             }><span><span class='checkmark'></span>&nbsp;Name</span>
         </label>
         ${
-          [ "dnd5e", "dcc", "sw5e" ].includes(TokenMold.GAME_SYSTEM)
+          [ "dnd5e", "dcc", "sw5e", "ose" ].includes(TokenMold.GAME_SYSTEM)
             ? `
         <label class='label-inp' title='(De-)activate Hit Point rolling'>
             <input class='hp rollable' type='checkbox' name='hp.use' ${
@@ -324,7 +324,7 @@ export default class TokenMold {
       }
     }
 
-    if (/dnd5e|dcc/.exec(TokenMold.GAME_SYSTEM) !== null) {
+    if (/dnd5e|dcc|ose/.exec(TokenMold.GAME_SYSTEM) !== null) {
       if (this.data.hp.use) this._rollHP(newData, data, actor);
     }
 
@@ -377,7 +377,8 @@ export default class TokenMold {
   _rollHP(newData, data, actor) {
     const hpProperties = {
       "dnd5e": TokenMold.FOUNDRY_VERSION >= 10 ? "system.attributes.hp.formula" : "data.data.attributes.hp.formula",
-      "dcc": TokenMold.FOUNDRY_VERSION >= 10 ? "system.attributes.hitDice.value" : "data.data.attributes.hitDice.value"
+      "dcc": TokenMold.FOUNDRY_VERSION >= 10 ? "system.attributes.hitDice.value" : "data.data.attributes.hitDice.value",
+      "ose": TokenMold.FOUNDRY_VERSION >= 10? "system.hp.hd" : "data.hp.hd"
     }
 
     const formula = getProperty(actor, hpProperties[TokenMold.GAME_SYSTEM]);
@@ -394,6 +395,10 @@ export default class TokenMold {
 
       setProperty(newData, TokenMold.FOUNDRY_VERSION >= 11 ? "delta.system.attributes.hp.value" : TokenMold.FOUNDRY_VERSION >= 10 ? "actorData.system.attributes.hp.value" : "actorData.data.attributes.hp.value", val);
       setProperty(newData, TokenMold.FOUNDRY_VERSION >= 11 ? "delta.system.attributes.hp.max" : TokenMold.FOUNDRY_VERSION >= 10 ? "actorData.system.attributes.hp.max" : "actorData.data.attributes.hp.max", val);
+      if (/ose/.exec(TokenMold.GAME_SYSTEM) !== null) {
+        setProperty(newData, TokenMold.FOUNDRY_VERSION >= 11? "delta.system.hp.max" : "data.hp.hd", val);
+        setProperty(newData, TokenMold.FOUNDRY_VERSION >= 11? "delta.system.hp.value" : "data.hp.hd", val);
+      }
     } else
       ui.notifications.warn("Can not randomize hp. HP formula is not set.");
     return;
@@ -1083,7 +1088,7 @@ class TokenMoldForm extends FormApplication {
     data.dispositions = CONST.TOKEN_DISPOSITIONS;
     data.defaultIcons = this.defaultIcons;
     data.showCreatureSize = /dnd5e|pf2e/.exec(game.data.system.id) !== null
-    data.showHP = /dnd5e|dcc|sw5e/.exec(game.data.system.id) !== null
+    data.showHP = /dnd5e|dcc|sw5e|ose/.exec(game.data.system.id) !== null
     data.showSystem = this.object.systemSupported;
     data.languages = this.languages;
     data.rollTableList = this.object._rollTableList;
