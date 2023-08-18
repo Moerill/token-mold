@@ -1,3 +1,6 @@
+# v2.20.3
+ - Corrected bug that prevented refresh tokens from functioning ( [[#181](https://github.com/Moerill/token-mold/issues/181)])
+ 
 # V2.20.2
  - Corrected bug where certain systems define types of Actors not meant to be instantiated, breaking DocumentClass reading ( [#176](https://github.com/Moerill/token-mold/issues/176) )
  

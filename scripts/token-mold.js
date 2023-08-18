@@ -302,7 +302,7 @@ export default class TokenMold {
    */
   _setTokenData(scene, data) {
     const actor = game.actors.get(data.actorId);
-    const newData = {};
+    const newData = {_id: data._id };
 
     if (!actor || (data.actorLink && this.data.unlinkedOnly))
       // Don't for linked token
