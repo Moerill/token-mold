@@ -396,7 +396,7 @@ export default class TokenMold {
     }
 
     if ("prefix" === this.data.name.replace && !(this.data.name.baseNameOverride && event.getModifierState("Shift"))) {
-      name = name.substring(0, 2).toUpperCase();
+      name = this._makeShortenedAvraeName(name);
     }
 
     let numberSuffix = "";
@@ -477,6 +477,23 @@ export default class TokenMold {
     name += numberSuffix;
 
     return name;
+  }
+
+  _makeShortenedAvraeName(originalName) {
+    const replacedName = originalName.replace("'"," ");
+    const splitName = replacedName.split(" ");
+    if (splitName.length === 1) {
+      // If there is just a single word, do the first two letters of that word
+      return replacedName.substring(0, 2).toUpperCase();
+    }
+    else {
+      let firstLetterOfEachWordArray = [];
+      for (let word of splitName)
+      {
+        firstLetterOfEachWordArray.push(word.substring(0, 1));
+      }
+      return firstLetterOfEachWordArray.join("");
+    }
   }
 
   _chooseWeighted(items) {
