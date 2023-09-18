@@ -35,6 +35,7 @@
   "tmold.name.baseNameNothing": "Nichts tun",
   "tmold.name.baseNameRemove": "Entfernen",
   "tmold.name.baseNameReplace": "Durch zufälligen Namen ersetzen",
+  "tmold.name.baseNamePrefix": "Avrae-Benennungsschema: Ersetzen Sie es durch die ersten beiden Buchstaben des Namens des Schauspielers oder den ersten Buchstaben jedes Wortes.",
   "tmold.name.baseNameOverride": "Hold Shift to override name removal or replacement and always add the base name",
   "tmold.name.replaceHelp": "Für weitere Informationen wie das Funktioniert, kannst du auf der Modul Homepage schauen.",
   "tmold.name.replaceInfo1": "Die ausgewählte Option wird den Namen der Figur mit einem generierten ersetzen.",

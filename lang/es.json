@@ -36,6 +36,7 @@
   "tmold.name.baseNameNothing": "No hacer nada",
   "tmold.name.baseNameRemove": "Quitar",
   "tmold.name.baseNameReplace": "Reemplazar con un nombre al azar",
+  "tmold.name.baseNamePrefix": "Esquema de nombres de Avrae: Reemplace con las primeras 2 letras del nombre del actor o la primera letra de cada palabra.",
   "tmold.name.replaceHelp": "Más información en cómo funciona en la página del módulo",
   "tmold.name.replaceInfo1": "Lo que se elija reemplazará el nombre base del icono con uno generado",
   "tmold.name.replaceInfo2": "Puede elegir una serie de atributos. Para cada atributo podrá escoger entre los valores posibles y asignarles un idioma. Al crear el icono se escogerá el primer valor válido. Si no hay ninguno, se usarán los valores por defecto",

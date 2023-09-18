@@ -35,6 +35,7 @@
   "tmold.name.baseNameNothing": "不动",
   "tmold.name.baseNameRemove": "消除",
   "tmold.name.baseNameReplace": "替换为随机的名称",
+  "tmold.name.baseNamePrefix": "Avrae 命名方案：替换为演员姓名的前 2 个字母或每个单词的第一个字母。",
   "tmold.name.baseNameOverride": "Hold Shift to override name removal or replacement and always add the base name",
   "tmold.name.replaceHelp": "有关该功能如何工作的更多信息，请查看模块主页。",
   "tmold.name.replaceInfo1": "所选选项将用生成的名称替换指示物的基础名称。",
