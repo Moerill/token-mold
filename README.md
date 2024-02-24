@@ -60,10 +60,6 @@ Thanks to @NickEast for his ![foundry project creator](https://gitlab.com/foundr
 
 This work is licensed under Foundry Virtual Tabletop [EULA - Limited License Agreement for module development](https://foundryvtt.com/article/license/).
 
-## Support the development
-I'm doing this project mostly alone (with partial help of some wonderful people mentioned above) in my spare time and for free.  
-If you want to encourage me to keep doing this, i am happy about all kind of tokens of appreciation. (Like some nice words, recommending this project, contributions to the project or even a small donation over at my [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FYZ294SP2JBGS&source=url)).  
-
 # FAQ
 ### Why are there so many confusing attributes to choose from?
 To allow *Token-Mold* to be usable for all kind of systems the module generates a list of possible attribute values dependend on the systems default data model. Since the module can not decide which are useful to use or which are not all possible values are shown. Although this may be kind of confusing or annoying this is a decision made to ensure that most *Token-Mold* features are universally usable.
