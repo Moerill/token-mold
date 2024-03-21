@@ -1321,18 +1321,18 @@ class TokenMoldForm extends FormApplication {
         else if (a.attribute < b.attribute) return -1;
         return 0;
       };
-      for (let skill of Object.keys(game.system.model.Actor["npc"].skills)) {
-        groups["skills"].push({
-          document: "character, npc",
-          attribute: `${skill}.passive`,
-        });
-      }
-      groups["skills"].sort(sortFun);
-      groups["attributes"].push({
-        document: "character, npc",
-        attribute: "ac.value",
-      });
-      groups["attributes"].sort(sortFun);
+      // for (let skill of Object.keys(game.system.model.Actor["npc"].skills)) {
+      //   groups["skills"].push({
+      //     document: "character, npc",
+      //     attribute: `${skill}.passive`,
+      //   });
+      // }
+      // groups["skills"].sort(sortFun);
+      // groups["attributes"].push({
+      //   document: "character, npc",
+      //   attribute: "ac.value",
+      // });
+      // groups["attributes"].sort(sortFun);
     }
     return groups;
   }
