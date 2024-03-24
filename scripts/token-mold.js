@@ -1078,7 +1078,7 @@ class TokenMoldForm extends FormApplication {
       ro: "roman numerals",
     };
     data.barAttributes = this.barAttributes;
-    data.actorAttributes = this._actorAttributes;
+    data.actorAttributes = this.actorAttributes;
     data.displayModes = CONST.TOKEN_DISPLAY_MODES;
     data.dispositions = CONST.TOKEN_DISPOSITIONS;
     data.defaultIcons = this.defaultIcons;
