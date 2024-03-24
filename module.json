@@ -68,8 +68,8 @@
   "system": [],
   "dependencies": [],
   "socket": false,
-  "manifest": "https://raw.githubusercontent.com/chrisjbrown/token-mold/master/module.json",
-  "download": "https://github.com/chrisjbrown/token-mold/releases/download/v2.20.4/v2.20.4.zip",
+  "manifest": "https://raw.githubusercontent.com/Moerill/token-mold/master/module.json",
+  "download": "https://github.com/Moerill/token-mold/releases/download/v2.20.4/v2.20.4.zip",
   "protected": false,
   "coreTranslation": false
 }
