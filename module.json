@@ -11,6 +11,9 @@
     {
       "name": "Geekswordsman",
       "discord": "@Geekswordsman#3085"
+    },
+    {
+      "name": "BeardedGnome"
     }
   ],
   "url": "https://github.com/Moerill/token-mold",
@@ -74,8 +77,8 @@
     "requires": []
   },
   "socket": false,
-  "manifest": "https://raw.githubusercontent.com/Moerill/token-mold/master/module.json",
-  "download": "https://github.com/Moerill/token-mold/releases/download/v2.21.0/v2.21.0.zip",
+  "manifest": "https://raw.githubusercontent.com/BeardedGnome/token-mold/master/module.json",
+  "download": "https://github.com/BeardedGnome/token-mold/releases/download/v2.21.0/v2.21.0.zip",
   "protected": false,
   "coreTranslation": false
 }
