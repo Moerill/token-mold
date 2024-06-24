@@ -9,6 +9,9 @@ export default class TokenMold {
     Warn: 2,
     Error: 3,
   };
+  static FORCE_DEBUG = true;
+
+  static TWIST = new foundry.dice.MersenneTwister(Date.now());
 
   constructor() {
     this.counter = {};
@@ -21,8 +24,9 @@ export default class TokenMold {
   }
 
   static log(force, level, ...args) {
+    // NOTE: Developer Mode doesn't work in Foundry v12
     const shouldLog =
-      force ||
+      force || TokenMold.FORCE_DEBUG ||
       game.modules
         .get("_dev-mode")
         ?.api?.getPackageDebugValue(TokenMold.MODULEID);
@@ -66,15 +70,11 @@ export default class TokenMold {
       }
 
       // Don't show for permission lvl lower than observer
-      if (token.actor.permission < CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER) {
+      if (token.actor.permission < CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER) {
         return;
       }
 
-      if (
-        canvas.hud.TokenMold === undefined ||
-        this.data.overlay.attrs.length === 0 ||
-        (token.document.actorLink && !this.data.enableOverlayForLinked)
-      ) {
+      if (canvas.hud.TokenMold === undefined || this.data.overlay.attrs.length === 0 || (token.document.actorLink && !this.data.enableOverlayForLinked)) {
         return;
       }
 
@@ -102,6 +102,7 @@ export default class TokenMold {
       });
 
       this._hookPreTokenCreate();
+      this._hookTokenCreate();
       this.barAttributes = await this._getBarAttributes();
       this._loadDicts();
 
@@ -189,9 +190,7 @@ export default class TokenMold {
 
   // Gets a list of all Rollable Tables available to choose adjectives from.
   async _getRolltables() {
-    const rollTablePacks = game.packs.filter(
-      (e) => e.documentName === "RollTable",
-    );
+    const rollTablePacks = game.packs.filter((e) => e.documentName === "RollTable", );
 
     this._rollTableList = {};
     if (game.tables.size > 0) {
@@ -215,12 +214,7 @@ export default class TokenMold {
       }
     }
 
-    TokenMold.log(
-      false,
-      TokenMold.LOG_LEVEL.Debug,
-      "Rollable Tables found",
-      this._rollTableList,
-    );
+    TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "Rollable Tables found", this._rollTableList,);
   }
 
   async _hookActorDirectory(html) {
@@ -268,7 +262,7 @@ export default class TokenMold {
     const inputs = section.querySelectorAll('input[type="checkbox"]');
     for (let checkbox of inputs) {
       checkbox.addEventListener("change", (ev) => {
-        setProperty(this.data, ev.target.name, ev.target.checked);
+        foundry.utils.setProperty(this.data, ev.target.name, ev.target.checked);
         this.saveSettings();
       });
     }
@@ -297,7 +291,7 @@ export default class TokenMold {
     const inputs = document.querySelectorAll("section.token-mold input");
     inputs.forEach((el) => {
       const name = el.name;
-      el.checked = getProperty(this.data, name);
+      el.checked = foundry.utils.getProperty(this.data, name);
     });
   }
 
@@ -305,15 +299,33 @@ export default class TokenMold {
     Hooks.on("preCreateToken", (token, data, options, userId) => {
       const scene = token.parent;
       const newData = this._setTokenData(scene, data);
-      TokenMold.log(
-        false,
-        TokenMold.LOG_LEVEL.Debug,
-        "preCreateToken",
-        token,
-        data,
-        newData,
-      );
+      TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "preCreateToken", token, data, newData, );
       token.updateSource(newData);
+    });
+  }
+
+  _hookTokenCreate() {
+    Hooks.on("createToken", (token, options, userId) => {
+      if (userId !== game.userId) {
+        // filter to single user
+        return;
+      }
+      const actor = game.actors.get(token.actorId);
+      if (!actor || (token.actorLink && this.data.unlinkedOnly)) {
+        // Don't for linked token
+        return;
+      }
+
+      //const scene = token.parent;
+      //const newData = this._setTokenData(scene, data);
+      TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "createToken", token, );
+      //token.updateSource(newData);
+
+      if (/dnd5e|dcc/.exec(TokenMold.GAME_SYSTEM) !== null) {
+        if (this.data.hp.use) {
+          this._rollHP(token, actor);
+        }
+      }
     });
   }
 
@@ -332,10 +344,7 @@ export default class TokenMold {
     }
 
     // Do this for all tokens, even player created ones
-    if (
-      this.data.size.use &&
-      /dnd5e|pf2e/.exec(TokenMold.GAME_SYSTEM) !== null
-    ) {
+    if (this.data.size.use && /dnd5e|pf2e/.exec(TokenMold.GAME_SYSTEM) !== null) {
       this._setCreatureSize(newData, data, actor, scene.id);
     }
 
@@ -346,12 +355,12 @@ export default class TokenMold {
     if (this.data.name.use) {
       const newName = this._modifyName(newData, data, actor, scene.id);
       newData.name = newName;
-      setProperty(newData, "delta.name", newName);
+      foundry.utils.setProperty(newData, "delta.name", newName);
     }
 
     if (/dnd5e|dcc/.exec(TokenMold.GAME_SYSTEM) !== null) {
       if (this.data.hp.use) {
-        this._rollHP(newData, data, actor);
+        this._rollHPSync(newData, data, actor);
       }
     }
 
@@ -381,51 +390,86 @@ export default class TokenMold {
         data[key] = value.value;
       } else if (value.min !== undefined && value.max !== undefined) {
         let val = data[key] || 1;
-        data[key] =
-          (val *
-            Math.floor(
-              (Math.random() * (value.max - value.min) + value.min) * 100,
-            )) /
-          100;
-      } else if (
-        value.attribute !== undefined &&
-        (value.attribute === "" ||
-          getProperty(actor, value.attribute) !== undefined)
-      ) {
+        data[key] = (val * Math.floor((Math.random() * (value.max - value.min) + value.min) * 100, )) / 100;
+      } else if (value.attribute !== undefined && (value.attribute === "" || foundry.utils.getProperty(actor, value.attribute) !== undefined) ) {
         data[key].attribute = value.attribute;
-      } else if (
-        value.attribute === undefined &&
-        value.min === undefined &&
-        value.max === undefined &&
-        value.value === undefined
-      ) {
+      } else if ( value.attribute === undefined && value.min === undefined && value.max === undefined && value.value === undefined ) {
         // Random mirroring
         data[key] = Boolean(Math.round(Math.random()));
       }
     }
   }
 
-  _rollHP(newData, data, actor) {
+  async _rollHP(token, actor) {
     const hpProperties = {
       dnd5e: "system.attributes.hp.formula",
       dcc: "system.attributes.hitDice.value",
     };
 
-    const formula = getProperty(actor, hpProperties[TokenMold.GAME_SYSTEM]);
+    const formula = foundry.utils.getProperty(actor, hpProperties[TokenMold.GAME_SYSTEM]);
     if (formula) {
-      const r = new Roll(formula.replace(" ", ""));
-      r.roll({ async: false });
+      TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "_rollHP.formula", formula );
+
+      const constant = new Roll(formula.replace(" ", ""));
+      constant.evaluateSync({strict: false}); // calculate the constant portion
+      TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "_rollHP.constant.evaluateSync.total", constant.total );
+
+      const roll = new Roll(formula.replace(" ", ""));
+      await roll.evaluate();
+      TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "_rollHP.roll.evaluate.total", roll.total );
+
       if (this.data.hp.toChat) {
-        r.toMessage({
+        roll.toMessage({
+          rollMode: "gmroll",
+          flavor: token.name + " rolls (async) for hp!",
+        });
+      }
+      // Make sure hp is at least 1 or the number of dice + constant value
+      const min = Math.max(roll.dice[0].number + constant.total, 1);
+      TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "_rollHP.min", min );
+      const val = Math.max(roll.total, min);
+
+      token.actor.update({'system.attributes.hp': {value: val, max: val}});
+    } else {
+      ui.notifications.warn("Can not randomize hp. HP formula is not set.");
+    }
+    return;
+  }
+
+  _rollHPSync(newData, data, actor) {
+    const hpProperties = {
+      dnd5e: "system.attributes.hp.formula",
+      dcc: "system.attributes.hitDice.value",
+    };
+
+    const formula = foundry.utils.getProperty(actor, hpProperties[TokenMold.GAME_SYSTEM]);
+    if (formula) {
+      TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "_rollHPSync.formula", formula );
+
+      const roll = new Roll(formula.replace(" ", ""));
+      roll.evaluateSync({strict: false}); // calculate the constant portion
+      TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "_rollHPSync.roll.evaluateSync.total", roll.total );
+
+      // TODO: handle multiple size dice
+      // manually rolling dice:
+      let total = Array(roll.dice[0].number).fill(roll.dice[0].faces).reduce((acc,f) => acc+Math.ceil(TokenMold.TWIST.random()*f), roll.total);
+      TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "_rollHPSync.total", total );
+
+      if (this.data.hp.toChat) {
+        // TODO: rewrite this
+        roll.toMessage({
           rollMode: "gmroll",
           flavor: data.name + " rolls for hp!",
         });
       }
-      // Make sure hp is at least 1
-      const val = Math.max(r.total, 1);
+      // TODO: handle multiple size dice
+      // Make sure hp is at least 1 or the number of dice + constant value
+      const min = Math.max(roll.dice[0].number + roll.total, 1);
+      TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "_rollHPSync.min", min );
+      const val = Math.max(total, min);
 
-      setProperty(newData, "delta.system.attributes.hp.value", val);
-      setProperty(newData, "delta.system.attributes.hp.max", val);
+      foundry.utils.setProperty(newData, "delta.system.attributes.hp.value", val);
+      foundry.utils.setProperty(newData, "delta.system.attributes.hp.max", val);
     } else {
       ui.notifications.warn("Can not randomize hp. HP formula is not set.");
     }
@@ -435,10 +479,7 @@ export default class TokenMold {
   _modifyName(newData, data, actor, sceneId) {
     let name = actor.prototypeToken.name;
 
-    if (
-      ["remove", "replace"].includes(this.data.name.replace) &&
-      !(this.data.name.baseNameOverride && event.getModifierState("Shift"))
-    ) {
+    if (["remove", "replace"].includes(this.data.name.replace) && !(this.data.name.baseNameOverride && event.getModifierState("Shift"))) {
       name = "";
     }
 
@@ -568,9 +609,7 @@ export default class TokenMold {
     let lang;
     for (let attribute of attributes) {
       const langs = attribute.languages;
-      const val = String(
-        getProperty(actor.system, attribute.attribute),
-      ).toLowerCase();
+      const val = String(foundry.utils.getProperty(actor.system, attribute.attribute), ).toLowerCase();
 
       lang = langs[val];
 
@@ -611,13 +650,7 @@ export default class TokenMold {
       newName = newName + this._chooseWeighted(c3);
     }
 
-    newName =
-      newName[0] +
-      this._chgCase(
-        newName.slice(1),
-        this.dict[lang].upper,
-        this.dict[lang].lower,
-      );
+    newName = newName[0] + this._chgCase(newName.slice(1), this.dict[lang].upper, this.dict[lang].lower, );
     return newName;
   }
 
@@ -899,19 +932,13 @@ export default class TokenMold {
       }
       delete this.data.config.data;
     }
-    if (
-      getProperty(this.data, "overlay.attrs") &&
-      this.data.overlay.attrs.length === 0
-    ) {
+    if (foundry.utils.getProperty(this.data, "overlay.attrs") && this.data.overlay.attrs.length === 0) {
       delete this.data.overlay.attrs;
     }
-    if (
-      getProperty(this.data, "name.options.attributes") &&
-      this.data.name.options.attributes.length === 0
-    ) {
+    if (foundry.utils.getProperty(this.data, "name.options.attributes") && this.data.name.options.attributes.length === 0) {
       delete this.data.name.options.attributes;
     }
-    this.data = mergeObject(this.defaultSettings(), this.data);
+    this.data = foundry.utils.mergeObject(this.defaultSettings(), this.data);
 
     if (/dnd5e|sw5e/.exec(TokenMold.GAME_SYSTEM) !== null) {
       if (this.data.name.options === undefined) {
@@ -921,12 +948,7 @@ export default class TokenMold {
       }
     }
     this._loadDicts();
-    TokenMold.log(
-      false,
-      TokenMold.LOG_LEVEL.Debug,
-      "Loading Settings",
-      this.data,
-    );
+    TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "Loading Settings", this.data, );
   }
 
   get dndDefaultNameOptions() {
@@ -982,35 +1004,19 @@ export default class TokenMold {
   }
 
   async saveSettings() {
-    if (
-      !this.adjectives ||
-      this.adjectives.uuid !== this.data.name.prefix.table
-    ) {
+    if (this.adjectives || this.adjectives.uuid !== this.data.name.prefix.table) {
       this._loadTable();
     }
 
-    if (
-      this.data.name.replace === "remove" &&
-      !this.data.name.number.use &&
-      !this.data.name.prefix.use
-    ) {
+    if (this.data.name.replace === "remove" && !this.data.name.number.use && !this.data.name.prefix.use) {
       this.data.name.replace = "nothing";
-      TokenMold.log(
-        true,
-        TokenMold.LOG_LEVEL.Warn,
-        game.i18n.localize("tmold.warn.removeName"),
-      );
+      TokenMold.log(true, TokenMold.LOG_LEVEL.Warn, game.i18n.localize("tmold.warn.removeName"), );
       ui.notifications.warn(game.i18n.localize("tmold.warn.removeName"));
     }
 
     await game.settings.set("Token-Mold", "everyone", this.data);
     this._loadDicts();
-    TokenMold.log(
-      false,
-      TokenMold.LOG_LEVEL.Debug,
-      "Saving Settings",
-      this.data,
-    );
+    TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "Saving Settings", this.data, );
   }
 
   async _getBarAttributes() {
@@ -1022,6 +1028,7 @@ export default class TokenMold {
     };
     for (const type of types) {
       try {
+        // FIXME: DAE throws on 'base' type
         const docClass = new CONFIG.Actor.documentClass({
           type: type,
           name: "tmp",
@@ -1035,13 +1042,7 @@ export default class TokenMold {
           addElement(barData.value, val.join("."), type);
         }
       } catch (e) {
-        TokenMold.log(
-          false,
-          TokenMold.LOG_LEVEL.Debug,
-          "Error navigating document class type!",
-          type,
-          e,
-        );
+        TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "Error navigating document class type!", type, e, );
       }
     }
     return barData;
@@ -1149,7 +1150,7 @@ class TokenMoldForm extends FormApplication {
         ? suffix
         : formData["name.number.suffix"];
 
-    this.object.data = mergeObject(this.data, formData);
+    this.object.data = foundry.utils.mergeObject(this.data, formData);
 
     if (this._resetOptions === true) {
       const dndOptions = this.object.dndDefaultNameOptions;
@@ -1183,13 +1184,7 @@ class TokenMoldForm extends FormApplication {
     data.languages = this.languages;
     data.rollTableList = this.object._rollTableList;
     data.visionLabel = game.i18n.localize("TOKEN.VisionEnabled");
-    TokenMold.log(
-      false,
-      TokenMold.LOG_LEVEL.Debug,
-      "Prepared data",
-      data,
-      this._rollTableList,
-    );
+    TokenMold.log(false, TokenMold.LOG_LEVEL.Debug, "Prepared data", data, this._rollTableList, );
     return data;
   }
 
@@ -1265,25 +1260,17 @@ class TokenMoldForm extends FormApplication {
     html.on("click", ".remove", (ev) => {
       const container = $(ev.currentTarget).closest(".form-group");
 
-      if (
-        container.prev('.form-group:not(".header")').length > 0 ||
-        container.next(".form-group").length > 0
-      ) {
+      if (container.prev('.form-group:not(".header")').length > 0 || container.next(".form-group").length > 0) {
         container.remove();
       }
     });
 
     html.find(".overlay").on("change keyup", "input.icon", (ev) => {
-      ev.target.parentNode.parentNode.getElementsByClassName(
-        "prev",
-      )[0].innerHTML = "17&nbsp;" + ev.target.value;
+      ev.target.parentNode.parentNode.getElementsByClassName("prev", )[0].innerHTML = "17&nbsp;" + ev.target.value;
     });
 
     html.find(".name-replace").on("change", (ev) => {
-      const nameRandomizer =
-        ev.currentTarget.parentNode.parentNode.querySelector(
-          ".name-randomizer-options",
-        );
+      const nameRandomizer = ev.currentTarget.parentNode.parentNode.querySelector(".name-randomizer-options", );
       if (ev.currentTarget.value === "replace") {
         nameRandomizer.style.display = "block";
       } else {
@@ -1326,10 +1313,7 @@ class TokenMoldForm extends FormApplication {
       } else {
         // alternatively delete whole attribute
         const parentContainer = container.closest(".attribute-group");
-        if (
-          parentContainer.prev('.attribute-group:not(".default")').length > 0 ||
-          parentContainer.next('.attribute-group:not(".default")').length > 0
-        ) {
+        if (parentContainer.prev('.attribute-group:not(".default")').length > 0 || parentContainer.next('.attribute-group:not(".default")').length > 0) {
           parentContainer.remove();
         }
       }
@@ -1352,7 +1336,7 @@ class TokenMoldForm extends FormApplication {
         udata.push({
           _id: token.id,
           name: newName,
-          "actorData.name": newName,
+          "delta.name": newName,
         });
       }
 
@@ -1393,23 +1377,20 @@ class TokenMoldForm extends FormApplication {
     let barAttributes = [];
 
     const types = Actor.implementation.TYPES;
-    const shellMap = new Map(
-      types.map((t) => [t, new Actor.implementation({ name: t, type: t })]),
-    );
+    // FIXME: DAE throws on 'base' type
+    const shellMap = new Map( types.map((t) => [t, new Actor.implementation({ name: t, type: t })]), );
     shellMap.forEach((value, key, map) => {
-      const newAttributes = getAttributes(value.toObject().system).map((e) =>
-        e.join("."),
-      );
-      // find duplicates
+      const newAttributes = getAttributes(value.toObject().system).map((e) => e.join("."), );
+      // find dups
       for (let attr of newAttributes) {
         // Search if attribute already found
-        let duplicate = barAttributes.find((el) => el[1].includes(attr));
+        let dup = barAttributes.find((el) => el[1].includes(attr));
         // If not found,  add to attributes
-        if (duplicate === undefined) {
+        if (dup === undefined) {
           barAttributes.push([key].concat(attr));
         } else {
           // if found add actor type to list
-          duplicate[0] += ", " + key;
+          dup[0] += ", " + key;
         }
       }
     });

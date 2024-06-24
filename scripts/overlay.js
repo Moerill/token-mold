@@ -19,7 +19,7 @@ export class TokenMoldOverlay extends BasePlaceableHUD {
         const ret = {
           icon: e.icon,
           path: e.path,
-          value: getProperty(this.object.actor, e.path),
+          value: foundry.utils.getProperty(this.object.actor, e.path),
         };
         if (ret.value === "" || ret.value === null || ret.value === undefined)
           return null;

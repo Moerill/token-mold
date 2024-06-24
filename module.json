@@ -1,9 +1,7 @@
 {
   "id": "token-mold",
-  "name": "token-mold",
   "title": "Token Mold",
   "description": "<p>Gives the option to cast your tokens into a mold of your choosing.</p> <p>Possible options for your mold include:</p> <ul><li>Adding incrementing number suffixes.</li><li>Name generation for tokens.</li><li>Random adjective prefixes. (Examples: angry, calm, bloodthirsty, ...)</li><li>Rolling Hit Points by formula (dnd5e only)</li><li>Set token configuration on placement.</li><li>Providing an overlay to quickly check some stats on token hover.</li><li>Automatic creature size scaling (dnd5e only)</li></ul><hr>",
-  "author": "Moerill",
   "authors": [
     {
       "name": "Moerill"
@@ -18,16 +16,12 @@
   ],
   "url": "https://github.com/Moerill/token-mold",
   "bugs": "https://github.com/Moerill/token-mold/issues",
-  "flags": {},
-  "version": "2.21.0",
-  "minimumCoreVersion": "11",
-  "compatibleCoreVersion": "11",
+  "version": "2.22.0",
   "compatibility": {
     "minimum": "11",
-    "verified": "11",
-    "maximum": "11"
+    "verified": "12",
+    "maximum": "12"
   },
-  "scripts": [],
   "esmodules": [
     "scripts/index.js"
   ],
@@ -72,13 +66,7 @@
       "private": false
     }
   ],
-  "relationships": {
-    "systems": [],
-    "requires": []
-  },
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/BeardedGnome/token-mold/master/module.json",
-  "download": "https://github.com/BeardedGnome/token-mold/releases/download/v2.21.0/v2.21.0.zip",
-  "protected": false,
-  "coreTranslation": false
+  "download": "https://github.com/BeardedGnome/token-mold/releases/download/v2.22.0/v2.22.0.zip"
 }
