@@ -7,7 +7,7 @@ export default class TokenMold {
     Warn: 2,
     Error: 3,
   });
-  static CURRENT_LOG_LEVEL = TokenMold.LOG_LEVEL.Debug; //TokenMold.LOG_LEVEL.Info;
+  static CURRENT_LOG_LEVEL = TokenMold.LOG_LEVEL.Info;
 
   static SUPPORTED_SYSTEMS = ["dnd5e", "pf2e", "sfrpg", "sw5e", "dcc"];
   static SUPPORTED_ROLLHP = ["dnd5e", "sw5e", "dcc"];
@@ -114,19 +114,8 @@ export default class TokenMold {
           // filter to single user
           return;
         }
-        const actor = game.actors.get(token.actorId);
-        if (!actor || (token.actorLink && this.data.unlinkedOnly)) {
-          // Don't for linked token
-          return;
-        }
-
         TokenMold.log(TokenMold.LOG_LEVEL.Debug, "createToken", token, );
-
-        if (TokenMold.SUPPORTED_ROLLHP.includes(game.system.id)) {
-          if (this.data.hp.use) {
-            this._rollHP(token, actor);
-          }
-        }
+        this._setHP(token);
       });
 
       this.barAttributes = await this._getBarAttributes();
@@ -365,27 +354,48 @@ export default class TokenMold {
     return newData;
   }
 
+  async _setHP(token) {
+    TokenMold.log(TokenMold.LOG_LEVEL.Debug, "_setHP");
+
+    if (!token.actor || (token.actorLink && this.data.unlinkedOnly)) {
+      // Don't for linked token
+      return;
+    }
+
+    if (TokenMold.SUPPORTED_ROLLHP.includes(game.system.id)) {
+      if (this.data.hp.use) {
+        const val = await this._rollHP(token);
+        token.actor.update({'system.attributes.hp': {value: val, max: val}});
+      }
+    }
+  }
+
+  // Probably not required, but I implemented it before I understood
+  async _setDeltaHP(token, data) {
+    TokenMold.log(TokenMold.LOG_LEVEL.Debug, "_setDeltaHP");
+
+    if (!token.actor || (token.actorLink && this.data.unlinkedOnly)) {
+      // Don't for linked token
+      return;
+    }
+
+    if (TokenMold.SUPPORTED_ROLLHP.includes(game.system.id)) {
+      if (this.data.hp.use) {
+        const val = await this._rollHP(token);
+        foundry.utils.setProperty(data, "delta.system.attributes.hp.value", val);
+        foundry.utils.setProperty(data, "delta.system.attributes.hp.max", val);
+      }
+    }
+  }
+
   async _refreshSelected() {
     TokenMold.log(TokenMold.LOG_LEVEL.Debug, "_refreshSelected");
     const selected = canvas.tokens.controlled;
     let udata = [];
     for (const token of selected) {
-      newData = this._setTokenData(canvas.scene, token.document.toObject());
+      const newData = this._setTokenData(canvas.scene, token.document.toObject());
 
-      // FIXME implement this
-      // begin this is wrong.
-      // TODO: Reroll HP Async
-      const actor = game.actors.get(token.actorId);
-      if (!actor || (token.actorLink && this.data.unlinkedOnly)) {
-        // Don't for linked token
-        return;
-      }
-      if (TokenMold.SUPPORTED_ROLLHP.includes(game.system.id)) {
-        if (this.data.hp.use) {
-          this._rollHP(token, actor);
-        }
-      }
-      // end this is wrong.
+      await this._setDeltaHP(token.document, newData);
 
       udata.push(newData);
     }
@@ -413,12 +423,7 @@ export default class TokenMold {
     }
   }
 
-  async _setHP(token, actor) {
-    // FIXME implement this
-  }
-
-  // TODO change this to return val;
-  async _rollHP(token, actor) {
+  async _rollHP(token) {
     TokenMold.log(TokenMold.LOG_LEVEL.Debug, "_rollHP");
     const hpProperties = {
       dnd5e: "system.attributes.hp.formula",
@@ -426,7 +431,7 @@ export default class TokenMold {
       dcc: "system.attributes.hitDice.value",
     };
 
-    const formula = foundry.utils.getProperty(actor, hpProperties[game.system.id]);
+    const formula = foundry.utils.getProperty(token.actor, hpProperties[game.system.id]);
     if (formula) {
       TokenMold.log(TokenMold.LOG_LEVEL.Debug, "_rollHP.formula", formula );
 
@@ -449,9 +454,11 @@ export default class TokenMold {
       TokenMold.log(TokenMold.LOG_LEVEL.Debug, "_rollHP.min", min );
       const val = Math.max(roll.total, min);
 
-      token.actor.update({'system.attributes.hp': {value: val, max: val}});
+      //token.actor.update({'system.attributes.hp': {value: val, max: val}});
+      return val;
     } else {
       ui.notifications.warn("Can not randomize hp. HP formula is not set.");
+      return system.attributes.hp.value;
     }
     return;
   }
