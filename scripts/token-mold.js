@@ -14,8 +14,6 @@ export default class TokenMold {
   static SUPPORTED_CREATURESIZE = ["dnd5e", "pf2e"];
   static SUPPORTED_5ESKILLS = ["dnd5e", "sw5e"];
 
-  static TWIST = new foundry.dice.MersenneTwister(Date.now());
-
   constructor() {
     TokenMold.log(TokenMold.LOG_LEVEL.Debug, "TokenMold");
     this.counter = {};
@@ -462,46 +460,6 @@ export default class TokenMold {
     }
     return;
   }
-
-  // _rollHPSync(newData, data, actor) {
-  //   const hpProperties = {
-  //     dnd5e: "system.attributes.hp.formula",
-  //     dcc: "system.attributes.hitDice.value",
-  //   };
-
-  //   const formula = foundry.utils.getProperty(actor, hpProperties[TokenMold.GAME_SYSTEM]);
-  //   if (formula) {
-  //     TokenMold.log(TokenMold.LOG_LEVEL.Debug, "_rollHPSync.formula", formula );
-
-  //     const roll = new Roll(formula.replace(" ", ""));
-  //     roll.evaluateSync({strict: false}); // calculate the constant portion
-  //     TokenMold.log(TokenMold.LOG_LEVEL.Debug, "_rollHPSync.roll.evaluateSync.total", roll.total );
-
-  //     // TODO: handle multiple size dice
-  //     // manually rolling dice:
-  //     let total = Array(roll.dice[0].number).fill(roll.dice[0].faces).reduce((acc,f) => acc+Math.ceil(TokenMold.TWIST.random()*f), roll.total);
-  //     TokenMold.log(TokenMold.LOG_LEVEL.Debug, "_rollHPSync.total", total );
-
-  //     if (this.data.hp.toChat) {
-  //       // TODO: rewrite this
-  //       roll.toMessage({
-  //         rollMode: "gmroll",
-  //         flavor: data.name + " rolls for hp!",
-  //       });
-  //     }
-  //     // TODO: handle multiple size dice
-  //     // Make sure hp is at least 1 or the number of dice + constant value
-  //     const min = Math.max(roll.dice[0].number + roll.total, 1);
-  //     TokenMold.log(TokenMold.LOG_LEVEL.Debug, "_rollHPSync.min", min );
-  //     const val = Math.max(total, min);
-
-  //     foundry.utils.setProperty(newData, "delta.system.attributes.hp.value", val);
-  //     foundry.utils.setProperty(newData, "delta.system.attributes.hp.max", val);
-  //   } else {
-  //     ui.notifications.warn("Can not randomize hp. HP formula is not set.");
-  //   }
-  //   return;
-  // }
 
   _modifyName(newData, data, actor, sceneId) {
     TokenMold.log(TokenMold.LOG_LEVEL.Debug, "_modifyName");
