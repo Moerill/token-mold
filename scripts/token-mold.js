@@ -220,17 +220,14 @@ export default class TokenMold {
       });
     }
     for (const pack of rollTablePacks) {
-      const idx = await pack.getIndex();
       this._rollTableList[pack.metadata.label] = [];
-      const tableString = `Compendium.${pack.collection}.`;
-      for (let table of idx) {
+      for (let table of pack.index) {
         this._rollTableList[pack.metadata.label].push({
           name: table.name,
-          uuid: tableString + table._id,
+          uuid: table.uuid,
         });
       }
     }
-
     TokenMold.log(TokenMold.LOG_LEVEL.Debug, "Rollable Tables found", this._rollTableList,);
   }
 
@@ -839,7 +836,7 @@ export default class TokenMold {
         prefix: {
           use: true,
           position: "front",
-          table: "Compendium.token-mold.adjectives.BGNM2VPUyFfA5ZMJ", // English
+          table: "Compendium.token-mold.adjectives.RollTable.BGNM2VPUyFfA5ZMJ", // English
         },
         replace: "",
         options: {

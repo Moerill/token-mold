@@ -1,6 +1,7 @@
 # v2.22.0
 - Updated to support Foundry v12
    - NOTE: Due to V12 no longer supporing synchronous dice rolling HP are now set post token creation. That means you'll see the HP change displayed briefly (a small number with the delta will float over the token for a moment).
+- The code for the adjective table has been simplified. That might mean the table you previously select to choose adjectives from got reset.
 
 # v2.21.0
 - Updated to support DnD5e 3.x and Foundry v11
