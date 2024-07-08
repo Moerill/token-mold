@@ -1,9 +1,6 @@
 export class TokenMoldOverlay extends BasePlaceableHUD {
-  static FOUNDRY_VERSION = 0;
 
   static get defaultOptions() {
-    TokenMoldOverlay.FOUNDRY_VERSION = game.version ?? game.data.version;
-
     const options = super.defaultOptions;
     options.classes = options.classes.concat(["token-mold-overlay"]);
     options.template = "modules/token-mold/templates/overlay.html";
@@ -19,7 +16,7 @@ export class TokenMoldOverlay extends BasePlaceableHUD {
         const ret = {
           icon: e.icon,
           path: e.path,
-          value: getProperty(this.object.actor, e.path),
+          value: foundry.utils.getProperty(this.object.actor, e.path),
         };
         if (ret.value === "" || ret.value === null || ret.value === undefined)
           return null;
