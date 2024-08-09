@@ -449,11 +449,10 @@ export default class TokenMold {
       TokenMold.log(TokenMold.LOG_LEVEL.Debug, "_rollHP.min", min );
       const val = Math.max(roll.total, min);
 
-      //token.actor.update({'system.attributes.hp': {value: val, max: val}});
       return val;
     } else {
       ui.notifications.warn("Can not randomize hp. HP formula is not set.");
-      return system.attributes.hp.value;
+      return foundry.utils.getProperty(token.actor, "system.attributes.hp.value");
     }
     return;
   }
@@ -879,9 +878,11 @@ export default class TokenMold {
         },
         bar1: {
           use: false,
+          attribute: "",
         },
         bar2: {
           use: false,
+          attribute: "",
         },
         displayName: {
           use: false,
@@ -1016,7 +1017,7 @@ export default class TokenMold {
 
   async _getBarAttributes() {
     TokenMold.log(TokenMold.LOG_LEVEL.Debug, "_getBarAttributes");
-    const types = CONFIG.Actor.documentClass.TYPES;
+    const types = CONFIG.Actor.documentClass.TYPES.filter(x => x !== 'base');
     let barData = { bar: {}, value: {} };
     let addElement = (obj, key, val) => {
       if (obj[key]) obj[key] += ", " + val;
@@ -1024,7 +1025,6 @@ export default class TokenMold {
     };
     for (const type of types) {
       try {
-        // FIXME: DAE throws on 'base' type
         const docClass = new CONFIG.Actor.documentClass({
           type: type,
           name: "tmp",
@@ -1088,8 +1088,8 @@ class TokenMoldForm extends FormApplication {
     let attrs = [];
     attrGroups.each((idx, e) => {
       const el = $(e);
-      const icon = el.find(".icon").val(),
-        value = el.find(".value").val();
+      const icon = el.find(".icon").val();
+      const value = el.find(".value").val();
       if (icon !== "" && value !== "") {
         attrs.push({
           icon: icon,
@@ -1195,23 +1195,16 @@ class TokenMoldForm extends FormApplication {
     if (TokenMold.SUPPORTED_5ESKILLS.includes(game.system.id)) {
       return [
         {
-          value: "system.attributes.ac.value",
-          label: "Armor Class",
-          icon: '<i class="fas fa-eye"></i>',
+          icon: '&#xf06e;', // eye
+          path: 'system.skills.prc.passive',
         },
         {
-          value: "system.skills.prc.passive",
-          label: "Passive Perception",
-          icon: '<i class="fas fa-shield-alt"></i>',
+          icon: '&#xf3ed;', // shield-alt
+          path: 'system.attributes.ac.value',
         },
       ];
     } else {
-      return [
-        {
-          icon: '<i class="fas fa-eye"></i>',
-          value: "",
-        },
-      ];
+      return [];
     }
   }
 
@@ -1219,18 +1212,18 @@ class TokenMoldForm extends FormApplication {
     TokenMold.log(TokenMold.LOG_LEVEL.Debug, "defaultIcons");
     return [
       "&#xf06e;", // eye
-      "&#xf3ed; ", //fas fa-shield-alt"></i>',
-      "&#xf6cf; ", //fas fa-dice-d20"></i>',
-      "&#xf21e; ", //fas fa-heartbeat"></i>',
-      "&#xf6e8; ", //fas fa-hat-wizard"></i>',
-      "&#xf54b; ", //fas fa-shoe-prints"></i>',
-      "&#xf554; ", //fas fa-walking"></i>',
-      "&#xf70c; ", //fas fa-running"></i>',
-      "&#xf51e; ", //fas fa-coins"></i>',
-      "&#xf619; ", //fas fa-poop"></i>',
-      "&#xf290; ", //fas fa-shopping-bag"></i>',
+      "&#xf3ed;", //fas fa-shield-alt"></i>',
+      "&#xf6cf;", //fas fa-dice-d20"></i>',
+      "&#xf21e;", //fas fa-heartbeat"></i>',
+      "&#xf6e8;", //fas fa-hat-wizard"></i>',
+      "&#xf54b;", //fas fa-shoe-prints"></i>',
+      "&#xf554;", //fas fa-walking"></i>',
+      "&#xf70c;", //fas fa-running"></i>',
+      "&#xf51e;", //fas fa-coins"></i>',
+      "&#xf619;", //fas fa-poop"></i>',
+      "&#xf290;", //fas fa-shopping-bag"></i>',
       "&#xf53a;", //fas fa-money-bill-wave"></i>',
-      "&#xf0f2;", // fas fa-suitcase"></i>',
+      "&#xf0f2;", //fas fa-suitcase"></i>',
       "&#xf06d;", //fas fa-fire"></i>',
       "&#xf1b0;", //fas fa-paw"></i>',
       "&#xf787;", //fas fa-carrot"></i>',
@@ -1383,8 +1376,7 @@ class TokenMoldForm extends FormApplication {
 
     let barAttributes = [];
 
-    const types = Actor.implementation.TYPES;
-    // FIXME: DAE throws on 'base' type
+    const types = Actor.implementation.TYPES.filter(x => x !== 'base');
     const shellMap = new Map( types.map((t) => [t, new Actor.implementation({ name: t, type: t })]), );
     shellMap.forEach((value, key, map) => {
       const newAttributes = getAttributes(value.toObject().system).map((e) => e.join("."), );

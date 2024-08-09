@@ -34,27 +34,3 @@ jobs:
           prerelease: false
           files: ${{ steps.get_version.outputs.VERSION }}.zip
 
-      # - name: Create Release
-      #   id: create_release
-      #   # https://github.com/actions/create-release
-      #   # unmaintained
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     tag_name: ${{ github.ref }}
-      #     release_name: Release ${{ github.ref }}
-      #     draft: false
-      #     prerelease: false
-      # - name: Upload Release Asset
-      #   id: upload-release-asset
-      #   # https://github.com/actions/upload-release-asset
-      #   # unmaintained
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
-      #     asset_path: ./${{ steps.get_version.outputs.VERSION }}.zip
-      #     asset_name: ${{ steps.get_version.outputs.VERSION }}.zip
-      #     asset_content_type: application/zip
