@@ -16,7 +16,7 @@
   ],
   "url": "https://github.com/Moerill/token-mold",
   "bugs": "https://github.com/Moerill/token-mold/issues",
-  "version": "2.22.1",
+  "version": "2.22.2",
   "compatibility": {
     "minimum": "12",
     "verified": "12",
@@ -68,5 +68,5 @@
   ],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/BeardedGnome/token-mold/master/module.json",
-  "download": "https://github.com/BeardedGnome/token-mold/releases/download/v2.22.1/v2.22.1.zip"
+  "download": "https://github.com/BeardedGnome/token-mold/releases/download/v2.22.2/v2.22.2.zip"
 }

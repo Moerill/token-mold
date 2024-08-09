@@ -1,3 +1,9 @@
+# v2.22.2
+- Fix exception on 'base'
+- Fix exception on promise when no hp formula
+- Fix localization of hover titles in configuration
+- Maybe fixed default overlay
+
 # v2.22.1
 - Supporting v12 required removing v11 support.
 
