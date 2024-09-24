@@ -1,3 +1,7 @@
+# v2.21.0
+- Updated to support DnD5e 3.x and Foundry v11
+- Dropped support for Foundry V9 and V10
+
 # v2.20.3
  - Corrected bug that prevented refresh tokens from functioning ( [[#181](https://github.com/Moerill/token-mold/issues/181)])
  

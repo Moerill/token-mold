@@ -11,21 +11,26 @@
     {
       "name": "Geekswordsman",
       "discord": "@Geekswordsman#3085"
-    }],
+    }
+  ],
   "url": "https://github.com/Moerill/token-mold",
   "bugs": "https://github.com/Moerill/token-mold/issues",
   "flags": {},
-  "version": "2.20.3",
-  "minimumCoreVersion": "9",
+  "version": "2.21.0",
+  "minimumCoreVersion": "11",
   "compatibleCoreVersion": "11",
   "compatibility": {
-    "minimum": "9",
+    "minimum": "11",
     "verified": "11",
     "maximum": "11"
-},
-"scripts": [],
-  "esmodules": ["scripts/index.js"],
-  "styles": ["token-mold.css"],
+  },
+  "scripts": [],
+  "esmodules": [
+    "scripts/index.js"
+  ],
+  "styles": [
+    "token-mold.css"
+  ],
   "languages": [
     {
       "lang": "en",
@@ -64,11 +69,13 @@
       "private": false
     }
   ],
-  "system": [],
-  "dependencies": [],
+  "relationships": {
+    "systems": [],
+    "requires": []
+  },
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/Moerill/token-mold/master/module.json",
-  "download": "https://github.com/Moerill/token-mold/releases/download/v2.20.3/v2.20.3.zip",
+  "download": "https://github.com/Moerill/token-mold/releases/download/v2.21.0/v2.21.0.zip",
   "protected": false,
   "coreTranslation": false
 }
