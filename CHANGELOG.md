@@ -1,13 +1,27 @@
+# v2.22.2
+- Fix exception on 'base'
+- Fix exception on promise when no hp formula
+- Fix localization of hover titles in configuration
+- Maybe fixed default overlay
+
+# v2.22.1
+- Supporting v12 required removing v11 support.
+
+# v2.22.0
+- Updated to support Foundry v12
+   - NOTE: Due to V12 no longer supporing synchronous dice rolling HP are now set post token creation. That means you'll see the HP change displayed briefly (a small number with the delta will float over the token for a moment).
+- The code for the adjective table has been simplified. That might mean the table you previously select to choose adjectives from got reset.
+
 # v2.21.0
 - Updated to support DnD5e 3.x and Foundry v11
 - Dropped support for Foundry V9 and V10
 
 # v2.20.3
  - Corrected bug that prevented refresh tokens from functioning ( [[#181](https://github.com/Moerill/token-mold/issues/181)])
- 
+
 # V2.20.2
  - Corrected bug where certain systems define types of Actors not meant to be instantiated, breaking DocumentClass reading ( [#176](https://github.com/Moerill/token-mold/issues/176) )
- 
+
 # v2.20.1
  - Corrected bug with HP not rolling correctly ( [#173](https://github.com/Moerill/token-mold/issues/173)) )
 
@@ -15,7 +29,7 @@
  - Foundry v11 Compatibility Update ( [#167](https://github.com/Moerill/token-mold/issues/167))
  - Corrected bug that caused Token Mold to conflict with other modules due to overwriting certain data within the token ([#150](https://github.com/Moerill/token-mold/issues/150))
  - Corrected issue where bar attributes were being retrieved from the base Token Document, causing a problem if that document was overriden by the system ([#160](https://github.com/Moerill/token-mold/issues/160))
- 
+
 # v2.15.4
  - Adjusted resolutions to #137 & #138
  - Corrected an issue where refreshing selected tokens was causing a circular reference error ( [#141](https://github.com/Moerill/token-mold/issues/141) ).
@@ -48,7 +62,7 @@
 - Merged Japanese localization, with thanks to BrotherSharper!
 - **Fix** Added support for Foundry v9
 - **Fix** Corrected a bug where Disposition was not properly getting saved ( Issue #60 )
-- **Fix** Corrected a bug where token scaling could be set to extremely tiny numbers in certain situations ( Issue #75 ) 
+- **Fix** Corrected a bug where token scaling could be set to extremely tiny numbers in certain situations ( Issue #75 )
 
 # v2.13.1
 

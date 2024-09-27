@@ -12,30 +12,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        # https://github.com/marketplace/actions/checkout
+        # https://github.com/actions/checkout
+        uses: actions/checkout@v4
       - name: Get version
         id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/*/}
+        run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
       - name: Zip files
         run: |
           zip -r ${{ steps.get_version.outputs.VERSION }}.zip *.css module.json LICENSE scripts templates assets lang
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
+      - name: Create and Upload Release
+        # https://github.com/marketplace/actions/gh-release
+        # https://github.com/softprops/action-gh-release
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          name: Release ${{ github.ref }}
           draft: false
           prerelease: false
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1.0.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./${{ steps.get_version.outputs.VERSION }}.zip
-          asset_name: ${{ steps.get_version.outputs.VERSION }}.zip
-          asset_content_type: application/zip
+          files: ${{ steps.get_version.outputs.VERSION }}.zip
+
