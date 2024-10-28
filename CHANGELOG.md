@@ -1,3 +1,9 @@
+# v2.22.3
+- Split up files into smaller files
+- Rename the duplicate 'data' members into separate names for readability (created form, consts, and log js files)
+- Fix config override for: vision, mirroring, and scale
+- 'Temporarily' remove "Hold Shift to override name" as shift-drag doesn't work
+
 # v2.22.2
 - Fix exception on 'base'
 - Fix exception on promise when no hp formula
