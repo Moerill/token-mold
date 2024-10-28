@@ -1,4 +1,4 @@
-export class TokenMoldOverlay extends BasePlaceableHUD {
+export default class TokenMoldOverlay extends BasePlaceableHUD {
 
   static get defaultOptions() {
     const options = super.defaultOptions;
