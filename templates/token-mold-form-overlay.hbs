@@ -1,0 +1,43 @@
+<div class="tab scrollable{{#if tab.active}} active{{/if}}" data-group="{{tab.group}}" data-tab="{{tab.id}}">
+    <div class="form-group class unlinked">
+        <input type='checkbox' name='enableOverlayForLinked' id='enableOverlayForLinked' {{checked settings.enableOverlayForLinked}} data-dtype="Boolean">
+        <label for='enableOverlayForLinked'>{{ localize "tmold.config.enableOverlayFor" }}&nbsp;<em>{{ localize "tmold.config.linkedTokens" }}</em>.</label>
+    </div>
+    <div class="form-group">
+        <h3>{{ localize "tmold.stat.attributeChooseDisplay" }}</h3>
+    </div>
+    <div class="form-group attributes header">
+        <h4>{{ localize "tmold.stat.attributeIcon" }}</h4>
+        <h4>{{ localize "tmold.stat.attribute" }}</h4>
+        <!-- <a class='remove' title='{{ localize "tmold.stat.attributeDelete" }}'></a> -->
+    </div>
+    {{#each settings.overlay.attrs}}
+    <div class="form-group attributes">
+        <select class='icon fa-solid' name='overlay.attributes.icon'>
+            {{#select this.icon}}
+            {{#each @root.defaultIcons}}
+            <option class='fa-solid' value="{{this}}">{{{this}}}</option>
+            {{/each}}
+            {{/select}}
+            <!--  selectOptions @root.defaultIcons selected=this.icon -->
+        </select>
+        <select class='value' data-dtype='String' name='overlay.attributes.name'>
+            {{ selectOptions @root.actorAttributes selected=this.path }}
+        </select>
+        <a class='attribute-remove' title='{{ localize "tmold.stat.attributeDelete" }}'><i class="fa-solid fa-xmark"></i></a>
+    </div>
+    {{else}}
+    <div class="form-group attributes">
+        <select class='icon fa-solid' name='overlay.attributes.icon.default'>
+            {{#each @root.defaultIcons}}
+            <option class='fa-solid' value="{{this}}">{{{this}}}</option>
+            {{/each}}
+        </select>
+        <select class='value' data-dtype='String' name='overlay.attributes.name.default'>
+            {{ selectOptions @root.actorAttributes }}
+        </select>
+        <a class='attribute-remove' title='{{ localize "tmold.stat.attributeDelete" }}'><i class="fa-solid fa-xmark"></i></a>
+    </div>
+    {{/each}}
+    <a class='add-attribute'><i class="fa-solid fa-plus"></i>&nbsp;{{ localize "tmold.stat.attributeAdd" }}</a>
+</div>

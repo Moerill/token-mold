@@ -1,73 +1,183 @@
 import  TokenConsts  from "./token-consts.js"
 import  TokenLog  from "./token-log.js";
 
-export default class TokenMoldForm extends FormApplication {
+const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
+
+export default class TokenMoldForm extends HandlebarsApplicationMixin(ApplicationV2) {
+
+    // TODO Add a hook for getHeaderControlsTokenMoldForm ???
+    // TODO Add a hook for renderTokenMoldForm ???
 
     /**
-     *
+     * Applications are constructed by providing an object of configuration options.
      * @param {any}    object
-     * @param {object} options
-     *
+     * @param {Partial<Configuration>} [options]    Options used to configure the Application instance
      */
     constructor(object, options) {
       TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: constructor");
-      super(object, options);
+      super(options);
+      this.object = object; // FIXME temporary while I figure out V2
       this.settings = object.settings;
       this.barAttributes = object.barAttributes || [];
     }
 
-   /**
-     *
-     * @return {ApplicationOptions}
+    /**
+     * The default configuration options which are assigned to every instance of this Application class.
+     * @type {Partial<Configuration>}
      */
-    static get defaultOptions() {
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: defaultOptions");
-      const options = super.defaultOptions;
-      options.template = "modules/token-mold/templates/token-mold.html";
-      options.width = 420;
-      options.height = 461;
-      options.resizable = true;
-      options.classes = ["token-mold"];
-      options.title = "Token Mold";
-      options.closeOnSubmit = false;
-      options.submitOnClose = true;
-      options.submitOnChange = false;
-      options.tabs = [
-        {
-          navSelector: ".tabs",
-          contentSelector: "form",
-          initial: "Info",
-        },
-      ];
-      return options;
-    }
+    static DEFAULT_OPTIONS = {
+      id: "token-mold-form",
+      classes: ["token-mold"],
+      tag: "form",
+      window: {
+        title: "Token Mold",
+        icon: "fa-solid fa-gears",
+        resizable: true,
+        contentClasses: ["standard-form"]
+      },
+      form: {
+        handler: TokenMoldForm.#onSubmit,
+        submitOnChange: false,
+        closeOnSubmit: true
+      },
+      position: {
+        width: 565,
+        height: 565
+      }
+    };
 
     /**
-     *
-     * @return {HeaderButton[]}
+     * Configure a registry of template parts which are supported for this application for partial rendering.
+     * @type {Record<string, HandlebarsTemplatePart>}
      */
-    _getHeaderButtons() {
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: _getHeaderButtons");
-      let btns = super._getHeaderButtons();
-      btns[0].label = "Save & Close";
-      return btns;
-    }
+    static PARTS = {
+      tabs: {template: "templates/generic/tab-navigation.hbs"},
+      infoHelp: {template: "modules/token-mold/templates/token-mold-form-info.hbs"},
+      name: {template: "modules/token-mold/templates/token-mold-form-names.hbs"},
+      systemSpecific: {template: "modules/token-mold/templates/token-mold-form-systemSpecific.hbs"},
+      defaultConfig: {template: "modules/token-mold/templates/token-mold-form-config.hbs"},
+      statOverlay: {template: "modules/token-mold/templates/token-mold-form-overlay.hbs"},
+      footer: {template: "templates/generic/form-footer.hbs"}
+    };
+    // header: {template: "modules/token-mold/templates/token-mold-form-header.hbs"},
 
     /**
-     *
-     * @param {object}  options
-     *
-     * @return {Promise<FormApplication>}
+     * Configuration of application tabs, with an entry per tab group.
+     * @type {Record<string, ApplicationTabsConfiguration>}
      */
-    async _onSubmit(options) {
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: _onSubmit");
-      const attrGroups = $(this.form).find(".attributes");
+    static TABS = {
+      sections: {
+        tabs: [
+          {id: "infoHelp"},
+          {id: "name"},
+          {id: "systemSpecific"},
+          {id: "defaultConfig"},
+          {id: "statOverlay"}
+        ],
+        initial: "infoHelp",
+        labelPrefix: "tmold.tab"
+      }
+    };
+
+    /**
+     * Array of icons for overlay
+     * @private
+     */
+    static #DEFAULT_ICONS = Object.freeze([
+      "&#xf06e;", // <i class="fa-solid fa-eye"></i>
+      "&#xf3ed;", // <i class="fa-solid fa-shield-halved"></i>
+      "&#xf6cf;", // <i class="fa-solid fa-dice-d20"></i>
+      "&#xf21e;", // <i class="fa-solid fa-heart-pulse"></i>
+      "&#xf6e8;", // <i class="fa-solid fa-hat-wizard"></i>
+      "&#xf54b;", // <i class="fa-solid fa-shoe-prints"></i>
+      "&#xf554;", // <i class="fa-solid fa-person-walking"></i>
+      "&#xf70c;", // <i class="fa-solid fa-person-running"></i>
+      "&#xf51e;", // <i class="fa-solid fa-coins"></i>
+      "&#xf619;", // <i class="fa-solid fa-poop"></i>
+      "&#xf290;", // <i class="fa-solid fa-bag-shopping"></i>
+      "&#xf53a;", // <i class="fa-solid fa-money-bill-wave"></i>
+      "&#xf0f2;", // <i class="fa-solid fa-suitcase"></i>
+      "&#xf06d;", // <i class="fa-solid fa-fire"></i>
+      "&#xf1b0;", // <i class="fa-solid fa-paw"></i>
+      "&#xf787;", // <i class="fa-solid fa-carrot"></i>
+      "&#xf5d7;", // <i class="fa-solid fa-bone"></i>
+      "&#xf6d7;", // <i class="fa-solid fa-drumstick-bite"></i>
+      "&#xf5d1;", // <i class="fa-solid fa-apple-whole"></i>
+      "&#xf6de;", // <i class="fa-solid fa-hand-fist"></i>
+      "&#xf669;", // <i class="fa-solid fa-jedi"></i>
+      "&#xf753;", // <i class="fa-solid fa-meteor"></i>
+      "&#xf186;", // <i class="fa-solid fa-moon"></i>
+      "&#xf135;", // <i class="fa-solid fa-rocket"></i>
+      "&#xf5dc;", // <i class="fa-solid fa-brain"></i>
+      "&#xf1ae;", // <i class="fa-solid fa-child"></i>
+    ]);
+
+    /**
+     * Style of number to append
+     * @private
+     */
+    static #NUMBER_SYTLES = Object.freeze({
+      ar: "arabic numerals",
+      alu: "alphabetic UPPER",
+      all: "alphabetic LOWER",
+      ro: "roman numerals",
+    });
+
+    /**
+     * Adjactive prefix positions
+     * @private
+     */
+    static #PREFIX_POSITIONS = Object.freeze({
+      front: "tmold.name.adjectivePlacementFront",
+      back: "tmold.name.adjectivePlacementBack"
+    });
+
+    /**
+     * Base name replacement options
+     * @private
+     */
+    static #NAME_REPLACE_OPTIONS = Object.freeze({
+      nothing: "tmold.name.baseNameNothing",
+      remove: "tmold.name.baseNameRemove",
+      replace: "tmold.name.baseNameReplace"
+    });
+
+    // /**
+    //  * ApplicationV1 -- what's the V2 version?
+    //  * @return {HeaderButton[]}
+    //  */
+    // _getHeaderButtons() {
+    //   TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: _getHeaderButtons");
+    //   let btns = super._getHeaderButtons();
+    //   btns[0].label = "Save & Close";
+    //   return btns;
+    // }
+
+    /**
+     * Process form submission for the sheet
+     * @this {TokenMoldForm}                      The handler is called with the application as its bound scope
+     * @param {SubmitEvent} event                   The originating form submission event
+     * @param {HTMLFormElement} form                The form element that was submitted
+     * @param {FormDataExtended} formData           Processed data for the submitted form
+     * @param {object} [options]
+     * @returns {Promise<*>}
+     * @private
+     */
+    static async #onSubmit(event, form, formData, options) {
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: #onSubmit");
+
+      // I have some questions about what this is doing.
+
+      // TODO: replace jQuery
+      const attrGroups = $(form).find(".attributes");
       let attrs = [];
       attrGroups.each((idx, e) => {
+        // TODO: replace jQuery
         const el = $(e);
         const icon = el.find(".icon").val();
         const value = el.find(".value").val();
-        if (icon !== "" && value !== "") {
+        //if (icon !== "" && value !== "") {
+        if (icon && value) {
           attrs.push({
             icon: icon,
             path: value,
@@ -76,12 +186,12 @@ export default class TokenMoldForm extends FormApplication {
       });
       this.settings.overlay.attrs = attrs;
 
-      this.settings.name.options.default = this.form
+      this.settings.name.options.default = form
         .querySelector(".default-group")
         .querySelector(".language").value;
       const attributes = [];
 
-      const langAttrGroups = this.form.querySelectorAll(".attribute-selection");
+      const langAttrGroups = form.querySelectorAll(".attribute-selection");
 
       langAttrGroups.forEach((el) => {
         let ret = { languages: {} };
@@ -94,20 +204,10 @@ export default class TokenMoldForm extends FormApplication {
       });
 
       this.settings.name.options.attributes = attributes;
-      super._onSubmit(options);
-    }
+      //super._onSubmit(options);
 
-    /**
-     *
-     * @param {Event}   event
-     * @param {object}  formData
-     *
-     * @return {Promise<any>}
-     */
-    async _updateObject(event, formData) {
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: _updateObject");
-      let min = formData["name.options.min"],
-        max = formData["name.options.max"];
+      let min = formData.object["name.options.min"],
+        max = formData.object["name.options.max"];
       if (min < 0) {
         min = 0;
       }
@@ -120,22 +220,24 @@ export default class TokenMoldForm extends FormApplication {
         (min = max), (max = tmp);
       }
 
-      formData["name.options.min"] = min;
-      formData["name.options.max"] = max;
+      formData.object["name.options.min"] = min;
+      formData.object["name.options.max"] = max;
 
       // For name prefix and suffix, if the value is only a space the formData doesn't pick it up, so check and manually set prior to merge.
+      // TODO: replace jQuery
       let prefix = $(this.form).find("input[name='name.number.prefix']").val();
+      // TODO: replace jQuery
       let suffix = $(this.form).find("input[name='name.number.suffix']").val();
-      formData["name.number.prefix"] =
-        formData["name.number.prefix"] !== prefix
+      formData.object["name.number.prefix"] =
+        formData.object["name.number.prefix"] !== prefix
           ? prefix
-          : formData["name.number.prefix"];
-      formData["name.number.suffix"] =
-        formData["name.number.suffix"] !== suffix
+          : formData.object["name.number.prefix"];
+      formData.object["name.number.suffix"] =
+        formData.object["name.number.suffix"] !== suffix
           ? suffix
-          : formData["name.number.suffix"];
+          : formData.object["name.number.suffix"];
 
-      this.object.settings = foundry.utils.mergeObject(this.settings, formData);
+      this.object.settings = foundry.utils.mergeObject(this.settings, formData.object);
 
       if (this._resetOptions === true) {
         const dndOptions = this.object.dndDefaultNameOptions;
@@ -148,120 +250,162 @@ export default class TokenMoldForm extends FormApplication {
       this.object.saveSettings();
     }
 
+
+    // /**
+    //  * Actions performed before closing the Application.
+    //  * Pre-close steps are awaited by the close process.
+    //  * @param {RenderOptions} options                 Provided render options
+    //  * @returns {Promise<void>}
+    //  * @protected
+    //  * @override
+    //  */
+    // async _preClose(options) {
+    //   TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: _preClose");
+    //   // Manual implementation of submitOnClose
+    //   await this.submit();
+    // }
+
     /**
-     *
-     * @return {object}
+     * Prepare application rendering context data for a given render request. If exactly one tab group is configured for
+     * this application, it will be prepared automatically.
+     * @param {RenderOptions} options                 Options which configure application rendering behavior
+     * @returns {Promise<ApplicationRenderContext>}   Context data for the render operation
+     * @protected
+     * @override
      */
-    getData() {
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: getData");
-      let data = {
-        settings: this.settings,
-      };
-      data.numberStyles = {
-        ar: "arabic numerals",
-        alu: "alphabetic UPPER",
-        all: "alphabetic LOWER",
-        ro: "roman numerals",
-      };
-      data.barAttributes = this.barAttributes;
-      data.actorAttributes = this._actorAttributes;
-      data.displayModes = CONST.TOKEN_DISPLAY_MODES;
-      data.dispositions = CONST.TOKEN_DISPOSITIONS;
-      data.defaultIcons = this.defaultIcons;
-      data.showCreatureSize = TokenConsts.SUPPORTED_CREATURESIZE.includes(game.system.id);
-      data.showHP = TokenConsts.SUPPORTED_ROLLHP.includes(game.system.id);
-      data.showSystem = this.object.systemSupported;
-      data.languages = this.languages;
-      data.rollTableList = this.object._rollTableList;
-      data.visionLabel = game.i18n.localize("TOKEN.VisionEnabled");
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: Prepared data", data, this._rollTableList, );
-      return data;
+    async _prepareContext(options) {
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: _prepareContext");
+      const context = await super._prepareContext(options);
+
+      // used in multiple tabs
+      context.actorAttributes = this.#actorAttributes;
+      context.settings = this.settings;
+
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: Prepared Context", context, );
+      return context;
     }
 
     /**
+     * Prepare context that is specific to only a single rendered part.
      *
-     * @return {object[]}
+     * It is recommended to augment or mutate the shared context so that downstream methods like _onRender have
+     * visibility into the data that was used for rendering. It is acceptable to return a different context object
+     * rather than mutating the shared context at the expense of this transparency.
+     *
+     * @param {string} partId                         The part being rendered
+     * @param {ApplicationRenderContext} context      Shared context provided by _prepareContext
+     * @param {HandlebarsRenderOptions} options       Options which configure application rendering behavior
+     * @returns {Promise<ApplicationRenderContext>}   Context data for a specific part
+     * @protected
+     * @override
      */
-    static get defaultAttrs() {
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: defaultAttrs");
-      if (TokenConsts.SUPPORTED_5ESKILLS.includes(game.system.id)) {
-        return [
-          {
-            icon: '&#xf06e;', // eye
-            path: 'system.skills.prc.passive',
-          },
-          {
-            icon: '&#xf3ed;', // shield-alt
-            path: 'system.attributes.ac.value',
-          },
-        ];
-      } else {
-        return [];
+    async _preparePartContext(partId, context, options) {
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: _preparePartContext", partId);
+      const partContext = await super._preparePartContext(partId, context, options);
+      if ( partId in partContext.tabs ) {
+        partContext.tab = partContext.tabs[partId];
       }
+      switch (partId) {
+        case "infoHelp":
+          break;
+        case "name":
+          // probably not the smartest way
+          let langs = {};
+          Object.assign(langs, {["random"]:game.i18n.localize("tmold.name.random")});
+          partContext.languages = TokenConsts.LANGUAGES.reduce((languages, language) => Object.assign(languages, {[language]: language}), langs);
+          partContext.numberStyles = TokenMoldForm.#NUMBER_SYTLES;
+          partContext.prefixPositions = TokenMoldForm.#PREFIX_POSITIONS;
+          partContext.nameReplaceOptions = TokenMoldForm.#NAME_REPLACE_OPTIONS;
+          partContext.rollTableList = this.object._rollTableList;
+          break;
+        case "systemSpecific":
+          partContext.showCreatureSize = TokenConsts.SUPPORTED_CREATURESIZE.includes(game.system.id);
+          partContext.showHP = TokenConsts.SUPPORTED_ROLLHP.includes(game.system.id);
+          break;
+        case "defaultConfig":
+          const PrototypeTokenConfig = foundry.applications.sheets.PrototypeTokenConfig;
+          partContext.barAttributes = this.barAttributes;
+          partContext.displayModes = PrototypeTokenConfig.DISPLAY_MODES;
+          partContext.dispositions = PrototypeTokenConfig.TOKEN_DISPOSITIONS;
+          break;
+        case "statOverlay":
+          partContext.defaultIcons = TokenMoldForm.#DEFAULT_ICONS.reduce((icons, icon) => Object.assign(icons, {[icon]: icon}), {});
+          break;
+        case "footer":
+          partContext.buttons = this.#prepareButtons();
+          break;
+      }
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: Prepared Part Context", partContext, );
+      return partContext;
     }
 
     /**
-     *
-     * @return {object[]}
+     * Configure the sheet's pair of footer buttons.
+     * type, name, cssClass, action, disabled, icon, label (label is localized)
+     * @returns {FormFooterButton[]}
+     * @private
      */
-    get defaultIcons() {
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: defaultIcons");
+    #prepareButtons() {
       return [
-        "&#xf06e;", // eye
-        "&#xf3ed;", //fas fa-shield-alt"></i>',
-        "&#xf6cf;", //fas fa-dice-d20"></i>',
-        "&#xf21e;", //fas fa-heartbeat"></i>',
-        "&#xf6e8;", //fas fa-hat-wizard"></i>',
-        "&#xf54b;", //fas fa-shoe-prints"></i>',
-        "&#xf554;", //fas fa-walking"></i>',
-        "&#xf70c;", //fas fa-running"></i>',
-        "&#xf51e;", //fas fa-coins"></i>',
-        "&#xf619;", //fas fa-poop"></i>',
-        "&#xf290;", //fas fa-shopping-bag"></i>',
-        "&#xf53a;", //fas fa-money-bill-wave"></i>',
-        "&#xf0f2;", //fas fa-suitcase"></i>',
-        "&#xf06d;", //fas fa-fire"></i>',
-        "&#xf1b0;", //fas fa-paw"></i>',
-        "&#xf787;", //fas fa-carrot"></i>',
-        "&#xf5d7;", //fas fa-bone"></i>',
-        "&#xf6d7;", //fas fa-drumstick-bite"></i>',
-        "&#xf5d1;", //fas fa-apple-alt"></i>',
-        "&#xf6de;", //fas fa-fist-raised"></i>',
-        "&#xf669;", //fas fa-jedi"></i>',
-        "&#xf753;", //fas fa-meteor"></i>',
-        "&#xf186;", //fas fa-moon"></i>',
-        "&#xf135;", //fas fa-rocket"></i>'
-        "&#xf5dc;", // brain
-        "&#xf1ae;", // child
+        {type: "submit", icon: "fa-solid fa-floppy-disk", label: "Save & Close"}
       ];
     }
 
     /**
-     *
-     * @return {any}
+     * Modify the provided options passed to a render request.
+     * @param {RenderOptions} options                 Options which configure application rendering behavior
+     * @protected
+     * @override
      */
-    get languages() {
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: languages");
-      return this.object.languages;
+    _configureRenderOptions(options) {
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: _configureRenderOptions", options);
+      super._configureRenderOptions(options);
+
+      // Remove system specific tab when not supported
+      if ( !TokenConsts.SUPPORTED_SYSTEMS.includes(game.system.id) ) {
+        const index = options.parts.indexOf("systemSpecific");
+        if (index > -1) { // only splice array when item is found
+          options.parts.splice(index, 1); // 2nd parameter means remove one item only
+        }
+      }
     }
 
+
+
+    //
+    // Should this be all converted to actions??
+    // Requires adding data-action="" to anchors
+    //
+
     /**
-     *
-     * @param {jQuery}  html
-     *
+     * Actions performed after any render of the Application.
+     * @param {ApplicationRenderContext} context      Prepared context data
+     * @param {RenderOptions} options                 Provided render options
+     * @returns {Promise<void>}
+     * @protected
+     * @override
      */
-    activateListeners(html) {
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: activateListeners");
-      super.activateListeners(html);
+    async _onRender(context, options) {
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: _onRender");
+
+      await super._onRender(context, options);
+
+      // TODO fix: .parentNode.parentNode
+      // TODO: replace jQuery
+      const html = $(this.element);
 
       html.find(".add-attribute").on("click", (ev) => {
+        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.add-attribute");
+        // TODO: replace jQuery
         const addBtn = $(ev.target);
         const clone = addBtn.prev().clone();
         clone.find("select").val("");
         addBtn.before(clone);
       });
 
-      html.on("click", ".remove", (ev) => {
+      html.on("click", ".attribute-remove", (ev) => {
+        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.attribute-remove");
+        // TODO: replace jQuery
         const container = $(ev.currentTarget).closest(".form-group");
 
         if (container.prev('.form-group:not(".header")').length > 0 || container.next(".form-group").length > 0) {
@@ -273,8 +417,9 @@ export default class TokenMoldForm extends FormApplication {
         ev.target.parentNode.parentNode.getElementsByClassName("prev", )[0].innerHTML = "17&nbsp;" + ev.target.value;
       });
 
+      // TODO fix: .parentNode.parentNode.parentNode
       html.find(".name-replace").on("change", (ev) => {
-        const nameRandomizer = ev.currentTarget.parentNode.parentNode.querySelector(".name-randomizer-options", );
+        const nameRandomizer = ev.currentTarget.parentNode.parentNode.parentNode.querySelector(".name-randomizer-options", );
         if (ev.currentTarget.value === "replace") {
           nameRandomizer.style.display = "block";
         } else {
@@ -284,6 +429,8 @@ export default class TokenMoldForm extends FormApplication {
       html.find(".name-replace").change();
 
       html.on("click", ".add-language-value", (ev) => {
+        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.add-language-value");
+        // TODO: replace jQuery
         const addBtn = $(ev.target);
         const clone = addBtn.prev().clone();
         clone.find("input").val("");
@@ -292,6 +439,8 @@ export default class TokenMoldForm extends FormApplication {
       });
 
       html.on("click", ".add-language-attribute", (ev) => {
+        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.add-language-attribute");
+        // TODO: replace jQuery
         const addBtn = $(ev.target);
         const clone = addBtn.prev().clone();
         clone.children(".attribute").val("");
@@ -308,6 +457,8 @@ export default class TokenMoldForm extends FormApplication {
       });
 
       html.on("click", ".lang-remove", (ev) => {
+        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.lang-remove");
+        // TODO: replace jQuery
         const container = $(ev.currentTarget).closest(".form-group");
 
         let prev = container.prev(".form-group");
@@ -325,19 +476,20 @@ export default class TokenMoldForm extends FormApplication {
 
       if (game.system.id === "dnd5e") {
         const resetBtn = html.find(".reset");
-        resetBtn[0].innerHTML = '<i class="fas fa-undo"></i>';
-        resetBtn.on("click", (ev) => {
+        resetBtn[0].innerHTML = '<i class="fa-solid fa-rotate-left"></i>';
+        resetBtn.on("click", async (ev) => {
+          TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.reset");
           this._resetOptions = true;
-          this._onSubmit(ev);
+          await this.submit();
         });
       }
 
-      html[0].querySelector(".reroll-names").addEventListener("click", (ev) => {
+      this.element.querySelector(".reroll-names").addEventListener("click", (ev) => {
         const selected = canvas.tokens.controlled;
         let udata = [];
         for (const token of selected) {
           // Should this be checking for actorLink && unlinkedOnly?
-          const newName = this.object._pickNewName(token.actor);
+          const newName = this.object.pickNewName(token.actor);
           udata.push({
             _id: token.id,
             name: newName
@@ -348,6 +500,7 @@ export default class TokenMoldForm extends FormApplication {
       });
 
       html.on("click", ".reset-counter", async (ev) => {
+        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.reset-counter");
         const sceneId = canvas.scene.id;
 
         this.object.counter[sceneId] = {};
@@ -366,9 +519,10 @@ export default class TokenMoldForm extends FormApplication {
     /**
      *
      * @return {object[][]}
+     * @private
      */
-    get _actorAttributes() {
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: _actorAttributes");
+    get #actorAttributes() {
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: #actorAttributes");
       let getAttributes = function (data, parent) {
         parent = parent || [];
         let valid = [];
@@ -402,44 +556,41 @@ export default class TokenMoldForm extends FormApplication {
           }
         }
       });
+
       // Sort in groups by first element
-      let groups = {};
+      let newGroups = [];
+
+      newGroups.push({group:"", value:"", label: game.i18n.localize("tmold.stat.attributeNone")});
+      newGroups.push({group:"", value:"name", label: game.i18n.localize("tmold.stat.attributeName")});
+
+      //let groups = {};
       for (var attr of attributeList) {
         const split = attr[1].split(".");
         const document = attr[0];
         const group = split[0];
-        if (groups[group] === undefined) {
-          groups[group] = [];
-        }
-        groups[group].push({
-          document: document,
-          attribute: split.splice(1).join("."),
-        });
+
+        let attribute = split.splice(1).join(".");
+        newGroups.push({group:group, value:`system.${group}.${attribute}`, label: `${attribute} [${document}]`});
       }
+
       // also populate with some calculated data for dnd5e, that is not in the template.json
       if (TokenConsts.SUPPORTED_5ESKILLS.includes(game.system.id)) {
-        let sortFun = function (a, b) {
-          if (a.attribute > b.attribute) {
-            return 1;
-          } else if (a.attribute < b.attribute) {
-            return -1;
-          }
-          return 0;
-        };
         const npc = shellMap.get("npc");
         for (let skill of Object.keys(npc.toObject().system.skills)) {
-          groups["skills"].push({
-            document: "character, npc",
-            attribute: `${skill}.passive`,
-          });
+          newGroups.push({group:"skills", value:`system.skills.${skill}.passive`, label: `${skill}.passive [character, npc]`});
         }
-        groups["skills"].sort(sortFun);
-        groups["attributes"].push({
-          document: "character, npc",
-          attribute: "ac.value",
-        });
-        groups["attributes"].sort(sortFun);
+        newGroups.push({group:"attributes", value:"system.attributes.ac.value", label: "ac.value [character, npc]"});
       }
-      return groups;
+
+      let sortFn = function (a, b) {
+        let compare = a.group.localeCompare(b.group);
+        if (compare == 0) {
+          return a.value.localeCompare(b.value);
+        }
+        return compare;
+      };
+      newGroups.sort(sortFn);
+
+      return newGroups;
     }
   }
