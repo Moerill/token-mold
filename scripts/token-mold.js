@@ -45,7 +45,7 @@ export default class TokenMold {
         return;
       }
 
-      if (canvas.hud.TokenMoldHUD === undefined || this.settings.overlay.attrs.length === 0 || (token.document.actorLink && !this.settings.enableOverlayForLinked)) {
+      if (canvas.hud.TokenMoldHUD === undefined || this.settings.overlay.attrs.length === 0 || (token.document.actorLink && !this.settings.overlay.enableOverlayForLinked)) {
         return;
       }
 
@@ -112,7 +112,11 @@ export default class TokenMold {
       await this.#getRolltables();
 
       await this.#loadTable();
+
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "ready Complete");
     });
+
+    TokenLog.log(TokenLog.LOG_LEVEL.Debug, "initHooks Complete");
   }
 
   // /**
@@ -150,6 +154,7 @@ export default class TokenMold {
       }
       this.dict[lang] = (await import(`./dict/${lang}.js`)).lang;
     }
+    TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#loadDicts Complete");
   }
 
   /**
@@ -177,6 +182,7 @@ export default class TokenMold {
     }
 
     this.adjectives = document;
+    TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#loadTable Complete");
   }
 
   /**
@@ -243,6 +249,7 @@ export default class TokenMold {
     if (this.settings !== undefined) {
       this._renderActorDirectoryMenu(options);
     }
+    TokenLog.log(TokenLog.LOG_LEVEL.Debug, "_hookActorDirectory Complete");
   }
 
   /**
@@ -273,9 +280,8 @@ export default class TokenMold {
         <label class='label-inp' title='(De-)activate Stat Overlay On Hover'>
             <input class='config rollable' type='checkbox' name='overlay.use' ${this.settings.overlay.use ? "checked" : ""}><span><span class='checkmark'></span>&nbsp;Overlay</span>
         </label>
-
         <a class='refresh-selected' title="Reapplies all settings to selected tokens as if those were replaced onto the scene."><i class="fa-solid fa-rotate"></i></a>
-        <a class='token-rand-form-btn' title='Settings'><i class="fa-solid fa-gear"></i></a>
+        <a class='token-mold-form-btn' title='Settings'><i class="fa-solid fa-gear"></i></a>
       `,
     );
 
@@ -291,7 +297,7 @@ export default class TokenMold {
       .querySelector(".refresh-selected")
       .addEventListener("click", (ev) => this._refreshSelected());
     this.section
-      .querySelector(".token-rand-form-btn")
+      .querySelector(".token-mold-form-btn")
       .addEventListener("click", (ev) => {
         if (this.form === undefined) {
           this.form = new TokenMoldForm(this);
@@ -705,17 +711,21 @@ export default class TokenMold {
     let lang;
     for (let attribute of attributes) {
       const langs = attribute.languages;
-      const val = String(foundry.utils.getProperty(actor.system, attribute.attribute), ).toLowerCase();
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, `pickNewName attribute.attribute=${attribute.attribute}`);
+      const val = String(foundry.utils.getProperty(actor, attribute.attribute), ).toLowerCase();
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, `pickNewName val=${val}`);
 
       lang = langs[val];
 
       if (lang !== undefined) {
+        TokenLog.log(TokenLog.LOG_LEVEL.Debug, `pickNewName found lang=${lang}`);
         break;
       }
     }
 
     if (lang === undefined) {
       lang = this.settings.name.options.default;
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, `pickNewName no lang=${lang}`);
     }
 
     if (lang === "random") {
@@ -989,6 +999,7 @@ export default class TokenMold {
           prefix: " (",
           suffix: ")",
           type: "ar",
+          range: 1,
         },
         remove: false,
         prefix: {
@@ -996,7 +1007,7 @@ export default class TokenMold {
           position: "front",
           table: "Compendium.token-mold.adjectives.RollTable.BGNM2VPUyFfA5ZMJ", // English
         },
-        replace: "",
+        replace: "nothing",
         options: {
           default: "random",
           attributes: [
@@ -1013,28 +1024,14 @@ export default class TokenMold {
         baseNameOverride: false,
       },
       hp: {
-        use: true,
         toChat: true,
+        use: true,
       },
       size: {
         use: true,
       },
       config: {
         use: false,
-        // data: {
-        //     vision: false,
-        //     displayBars: 40,
-        //     displayName: 40,
-        //     disposition: 0
-        // },
-        vision: {
-          use: false,
-          value: true,
-        },
-        displayBars: {
-          use: false,
-          value: 40,
-        },
         bar1: {
           use: false,
           attribute: "",
@@ -1043,6 +1040,10 @@ export default class TokenMold {
           use: false,
           attribute: "",
         },
+        displayBars: {
+          use: false,
+          value: 40,
+        },
         displayName: {
           use: false,
           value: 40,
@@ -1050,6 +1051,12 @@ export default class TokenMold {
         disposition: {
           use: false,
           value: 0,
+        },
+        mirrorX: {
+          use: false
+        },
+        mirrorY: {
+          use: false
         },
         rotation: {
           use: false,
@@ -1061,9 +1068,14 @@ export default class TokenMold {
           min: 0.8,
           max: 1.2,
         },
+        vision: {
+          use: false,
+          value: true,
+        },
       },
       overlay: {
         use: true,
+        enableOverlayForLinked: false,
         attrs: this.#defaultAttrs,
       },
     };
@@ -1123,71 +1135,13 @@ export default class TokenMold {
 
     if (TokenConsts.SUPPORTED_5ESKILLS.includes(game.system.id)) {
       if (this.settings.name.options === undefined) {
-        const dndOptions = this.dndDefaultNameOptions;
+        const dndOptions = TokenConsts.DND_DEFAULT_NAME_OPTIONS;
         this.settings.name.options.default = dndOptions.default;
         this.settings.name.options.attributes = dndOptions.attributes;
       }
     }
     this.#loadDicts();
-    TokenLog.log(TokenLog.LOG_LEVEL.Debug, "Loading Settings", this.settings, );
-  }
-
-  /**
-   *
-   * @return {object}
-   * @public
-   */
-  get dndDefaultNameOptions() {
-    TokenLog.log(TokenLog.LOG_LEVEL.Debug, "dndDefaultNameOptions");
-    return {
-      default: "random",
-      attributes: [
-        // Various named monsters
-        {
-          attribute: "name",
-          languages: {
-            orc: "turkish",
-            goblin: "indonesian",
-            kobold: "norwegian",
-          },
-        },
-        // Uncomment this section if races get implemented in FVTT
-        // {
-        //     attribute: "system.details.race",
-        //     languages: {
-        //         "dragonborn": "norwegian",
-        //         "dwarf": "welsh",
-        //         "elf": "irish",
-        //         "halfling": "english",
-        //         "half-elf": "finnish",
-        //         "half-orc": "turkish",
-        //         "human": "english",
-        //         "gnome": "dutch",
-        //         "tiefling": "spanish",
-        //     }
-        // },
-        // NPC Types
-        {
-          attribute: "system.details.type",
-          languages: {
-            humanoid: "irish",
-            aberration: "icelandic",
-            beast: "danish",
-            celestial: "albanian",
-            construct: "azeri",
-            dragon: "latvian",
-            elemental: "swedish",
-            fey: "romanian",
-            fiend: "sicilian",
-            giant: "german",
-            monstrosity: "slovenian",
-            ooze: "welsh",
-            plant: "zulu",
-            undead: "french",
-          },
-        },
-      ],
-    };
+    TokenLog.log(TokenLog.LOG_LEVEL.Debug, "Loaded Settings Complete", this.settings, );
   }
 
   /**
@@ -1209,7 +1163,7 @@ export default class TokenMold {
 
     await game.settings.set("Token-Mold", "everyone", this.settings);
     this.#loadDicts();
-    TokenLog.log(TokenLog.LOG_LEVEL.Debug, "Saving Settings", this.settings, );
+    TokenLog.log(TokenLog.LOG_LEVEL.Debug, "Saved Settings Complete", this.settings, );
   }
 
   /**
@@ -1255,6 +1209,7 @@ export default class TokenMold {
         TokenLog.log(TokenLog.LOG_LEVEL.Debug, "Error navigating document class type!", type, e, );
       }
     // }
+    TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#getBarAttributes Complete");
     return barData;
   }
 }

@@ -89,12 +89,12 @@
         <div class="form-group">
             <a class='reroll-names'><i class="fa-solid fa-dice"></i>&nbsp;{{ localize "tmold.name.regenerate" }}</a>
         </div>
-        <div class="form-group language-selection header">
-            <h4>{{ localize "tmold.name.attribute" }}</h4>
-            <h4>{{ localize "tmold.name.value" }}</h4>
-            <h4>{{ localize "tmold.name.language" }}</h4>
-            <a class='reset' title='{{ localize "tmold.name.reset" }}'></a>
-        </div>
+        <header class="table-header flexrow">
+            <label class="index">{{ localize "tmold.name.attribute" }}</label>
+            <label>{{ localize "tmold.name.value" }}</label>
+            <label>{{ localize "tmold.name.language" }}</label>
+            <a class='reset-lang' title='{{ localize "tmold.name.reset" }}'></a>
+        </header>
         <div class="form-group language-selection language-group default-group">
             <span class='attribute default' value='default'>{{ localize "tmold.name.default" }}</span>
             <span class='value'></span>
@@ -102,21 +102,12 @@
                 {{ selectOptions @root.languages selected=settings.name.options.default }}
             </select>
             <!-- <a class='remove' title='{{ localize "tmold.name.delete" }}'></a> -->
+            &nbsp;
         </div>
         {{#each settings.name.options.attributes as |attrs idx|}}
         <div class="form-group attribute-selection attribute-group">
             <select data-dtype='String' class='attribute' name='name.options.attributes.attribute'>
-                {{#select this.attribute}}
-                <option value="">{{ localize "tmold.stat.none" }}</option>
-                <option value="name">{{ localize "tmold.stat.name" }}</option>
-                {{#each @root.actorAttributes as |v k|}}
-                <optgroup label="{{k}}">
-                    {{#each v}}
-                    <option value="settings.{{k}}.{{this.attribute}}">{{this.attribute}} [{{this.document}}]</option>
-                    {{/each}}
-                </optgroup>
-                {{/each}}
-                {{/select}}
+                {{ selectOptions @root.actorAttributes selected=this.attribute }}
             </select>
             <div class=' language-selection '>
                 {{#each this.languages as |lang attr|}}
@@ -125,7 +116,7 @@
                     <select class='language' name='name.options.attributes.languages.language'>
                         {{ selectOptions @root.languages selected=lang }}
                     </select>
-                    <a class='lang-remove' title='{{ localize "tmold.name.delete" }}'><i class="fa-solid fa-xmark"></i></a>
+                    <a class='remove-language-value' title='{{ localize "tmold.name.delete" }}'><i class="fa-solid fa-xmark"></i></a>
                 </div>
                 {{/each}}
                 <a class='add-language-value'><i class="fa-solid fa-plus"></i>&nbsp;{{ localize "tmold.name.addValue" }}</a>

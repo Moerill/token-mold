@@ -46,7 +46,7 @@ export default class TokenMoldOverlay extends HandlebarsApplicationMixin(foundry
           path: e.path,
           value: foundry.utils.getProperty(this.object.actor, e.path),
         };
-        if (ret.value === "" || ret.value === null || ret.value === undefined) { return null; }
+        if (!ret.value) { return null; }
         return ret;
       })
       .filter((e) => e !== null);

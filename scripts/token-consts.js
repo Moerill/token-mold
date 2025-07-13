@@ -66,4 +66,55 @@ export default class TokenConsts {
     "welsh",
     "zulu",
   ]);
+
+  static DND_DEFAULT_NAME_OPTIONS = Object.freeze({
+    default: "random",
+    attributes: [
+      // Various named monsters
+      {
+        attribute: "name",
+        languages: {
+          orc: "turkish",
+          goblin: "indonesian",
+          kobold: "norwegian",
+        },
+      },
+      // Uncomment this section if races get implemented in FVTT
+      // {
+      //     attribute: "system.details.race",
+      //     languages: {
+      //         "dragonborn": "norwegian",
+      //         "dwarf": "welsh",
+      //         "elf": "irish",
+      //         "halfling": "english",
+      //         "half-elf": "finnish",
+      //         "half-orc": "turkish",
+      //         "human": "english",
+      //         "gnome": "dutch",
+      //         "tiefling": "spanish",
+      //     }
+      // },
+      // NPC Types
+      {
+        attribute: "system.details.type.value",
+        languages: {
+          humanoid: "irish",
+          aberration: "icelandic",
+          beast: "danish",
+          celestial: "albanian",
+          construct: "azeri",
+          dragon: "latvian",
+          elemental: "swedish",
+          fey: "romanian",
+          fiend: "sicilian",
+          giant: "german",
+          monstrosity: "slovenian",
+          ooze: "welsh",
+          plant: "zulu",
+          undead: "french",
+        },
+      },
+    ],
+  });
+
 }

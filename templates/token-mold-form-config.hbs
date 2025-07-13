@@ -1,21 +1,19 @@
 <div class="tab scrollable{{#if tab.active}} active{{/if}}" data-group="{{tab.group}}" data-tab="{{tab.id}}">
     <div class="form-group">
-        <label for='displayBarsUse'>{{ localize "TOKEN.FIELDS.displayBars.label" }}:</label>
-        <div class="flexcol">
-            <section>
-                <input type='checkbox' name='config.displayBars.use' id='displayBarsUse' {{checked settings.config.displayBars.use}}>
-                <label for='displayBarsUse'>{{ localize "tmold.default.overwrite" }}</label>
-            </section>
+        <label>{{ localize "TOKEN.FIELDS.displayBars.label" }}:</label>
+        <div class="form-fields">
+            <input type='checkbox' name='config.displayBars.use' id='displayBarsUse' {{checked settings.config.displayBars.use}} />
+            <label for='displayBarsUse'>{{ localize "tmold.default.overwrite" }}</label>
             <select name="config.displayBars.value" data-dtype="Number">
                 {{ selectOptions displayModes selected=settings.config.displayBars.value }}
             </select>
         </div>
     </div>
     <div class="form-group">
-        <label for='bar1Use'>{{ localize "TOKEN.FIELDS.bar1.attribute.label" }}:</label>
-        <div class="flexcol">
+        <label>{{ localize "TOKEN.FIELDS.bar1.attribute.label" }}:</label>
+        <div class="form-fields">
             <section>
-                <input type='checkbox' name='config.bar1.use' id='bar1Use' {{checked settings.config.bar1.use}}>
+                <input type='checkbox' name='config.bar1.use' id='bar1Use' {{checked settings.config.bar1.use}} />
                 <label for='bar1Use'>{{ localize "tmold.default.overwrite" }}</label>
             </section>
             <select name="config.bar1.attribute" data-dtype="String">
@@ -23,23 +21,21 @@
             </select>
         </div>
     </div>
-    <div class="form-group">
-        <label for='bar2Use'>{{ localize "TOKEN.FIELDS.bar2.attribute.label" }}:</label>
-        <div class="flexcol">
-            <section>
-                <input type='checkbox' name='config.bar2.use' id='bar2Use' {{checked settings.config.bar2.use}}>
-                <label for='bar2Use'>{{ localize "tmold.default.overwrite" }}</label>
-            </section>
+    <div class="form-group stacked">
+        <label>{{ localize "TOKEN.FIELDS.bar2.attribute.label" }}:</label>
+        <div class="form-fields">
+            <input type='checkbox' name='config.bar2.use' id='bar2Use' {{checked settings.config.bar2.use}} />
+            <label for='bar2Use'>{{ localize "tmold.default.overwrite" }}</label>
             <select name="config.bar2.attribute" data-dtype="String">
                 {{ selectOptions barAttributes selected=settings.config.bar2.attribute blank="None" localize=true }}
             </select>
         </div>
     </div>
     <div class="form-group">
-        <label for='displayNameUse'>{{ localize "TOKEN.FIELDS.displayName.label"}}:</label>
-        <div class="flexcol">
+        <label>{{ localize "TOKEN.FIELDS.displayName.label"}}:</label>
+        <div class="form-fields">
             <section>
-                <input type='checkbox' name='config.displayName.use' id='displayNameUse' {{checked settings.config.displayName.use}}>
+                <input type='checkbox' name='config.displayName.use' id='displayNameUse' {{checked settings.config.displayName.use}} />
                 <label for='displayNameUse'>{{ localize "tmold.default.overwrite" }}</label>
             </section>
             <select name="config.displayName.value" data-dtype="Number">
@@ -47,11 +43,11 @@
             </select>
         </div>
     </div>
-    <div class="form-group">
-        <label for='dispositionUse'>{{ localize "TOKEN.FIELDS.disposition.label"}}:</label>
-        <div class="flexcol">
+    <div class="form-group slim">
+        <label>{{ localize "TOKEN.FIELDS.disposition.label"}}:</label>
+        <div class="form-fields">
             <section>
-                <input type='checkbox' name='config.disposition.use' id='dispositionUse' {{checked settings.config.disposition.use}}>
+                <input type='checkbox' name='config.disposition.use' id='dispositionUse' {{checked settings.config.disposition.use}} />
                 <label for='dispositionUse'>{{ localize "tmold.default.overwrite" }}</label>
             </section>
             <select name="config.disposition.value" data-dtype="Number">
@@ -60,59 +56,51 @@
         </div>
     </div>
     <div class="form-group">
-        <label for='visionUse'>{{ localize "tmold.default.vision" }}</label>
-        <div class="flexcol">
+        <label>{{ localize "tmold.default.vision" }}</label>
+        <div class="form-fields">
             <section>
-                <input type='checkbox' name='config.vision.use' id='visionUse' {{checked settings.config.vision.use}}>
+                <input type='checkbox' name='config.vision.use' id='visionUse' {{checked settings.config.vision.use}} />
                 <label for='visionUse'>{{ localize "tmold.default.overwrite" }}</label>
             </section>
             <section>
-                <input type='checkbox' name='config.vision.value' id='visionValue' {{checked settings.config.vision.value}}>
+                <input type='checkbox' name='config.vision.value' id='visionValue' {{checked settings.config.vision.value}} />
                 <label for='visionValue'>{{ localize "TOKEN.FIELDS.sight.enabled.label" }}</label>
             </section>
         </div>
     </div>
-    <div class="form-group">
-        <label for='scaleUse'>{{ localize "tmold.default.randScale" }}</label>
-        <div class="flexcol">
-            <div class="form-fields">
-                <label for='scaleUse'>{{ localize "tmold.default.active" }}</label>
-                <input type='checkbox' name='config.scale.use' id='scaleUse' {{checked settings.config.scale.use}}>
-            </div>
-            <div class="form-fields">
-                <label for='scale_min'>{{ localize "tmold.default.min" }}</label>
-                <input type='number' name='config.scale.min' id='scale_min' value='{{settings.config.scale.min}}' data-dtype='Number' />
-                <label for='scale_max'>{{ localize "tmold.default.max" }}</label>
-                <input type='number' name='config.scale.max' id='scale_max' value='{{settings.config.scale.max}}' data-dtype='Number' />
-            </div>
+    <div class="form-group slim">
+        <label>{{ localize "tmold.default.randScale" }}</label>
+        <div class="form-fields">
+            <label for='scaleUse'>{{ localize "tmold.default.active" }}</label>
+            <input type='checkbox' name='config.scale.use' id='scaleUse' {{checked settings.config.scale.use}} />
+            <label for='scale_min'>{{ localize "tmold.default.min" }}</label>
+            <input type='number' name='config.scale.min' id='scale_min' value='{{settings.config.scale.min}}' data-dtype='Number' />
+            <label for='scale_max'>{{ localize "tmold.default.max" }}</label>
+            <input type='number' name='config.scale.max' id='scale_max' value='{{settings.config.scale.max}}' data-dtype='Number' />
         </div>
     </div>
-    <div class="form-group">
-        <label for='rotationUse'>{{ localize "tmold.default.randRotation" }}</label>
-        <div class="flexcol">
-            <div class="form-fields">
-                <label for='rotationUse'>{{ localize "tmold.default.overwrite" }}</label>
-                <input type='checkbox' name='config.rotation.use' id='rotationUse' {{checked settings.config.rotation.use}}>
-            </div>
-            <div class="form-fields">
-                <label for='rotation_min'>{{ localize "tmold.default.minAngle" }}</label>
-                <input type='number' name='config.rotation.min' id='rotation_min' value='{{settings.config.rotation.min}}' data-dtype='Number' />
-                <label for='rotation_max'>{{ localize "tmold.default.maxAngle" }}</label>
-                <input type='number' name='config.rotation.max' id='rotation_max' value='{{settings.config.rotation.max}}' data-dtype='Number' />
-            </div>
+    <div class="form-group slim">
+        <label>{{ localize "tmold.default.randRotation" }}</label>
+        <div class="form-fields">
+            <label for='rotationUse'>{{ localize "tmold.default.overwrite" }}</label>
+            <input type='checkbox' name='config.rotation.use' id='rotationUse' {{checked settings.config.rotation.use}} />
+            <label for='rotation_min'>{{ localize "tmold.default.minAngle" }}</label>
+            <input type='number' name='config.rotation.min' id='rotation_min' value='{{settings.config.rotation.min}}' data-dtype='Number' />
+            <label for='rotation_max'>{{ localize "tmold.default.maxAngle" }}</label>
+            <input type='number' name='config.rotation.max' id='rotation_max' value='{{settings.config.rotation.max}}' data-dtype='Number' />
         </div>
     </div>
-    <div class="form-group">
-        <label for='mirrorUse'>{{ localize "tmold.default.randMirroring" }}</label>
-        <div class="flexcol">
-            <section>
-                <input type='checkbox' name='config.mirrorX.use' id='mirrorUse' {{checked settings.config.mirrorX.use}} data-dtype='Boolean' />
+    <div class="form-group slim">
+        <label>{{ localize "tmold.default.randMirroring" }}</label>
+        <div class="form-fields">
+            <label  class="checkbox">
                 {{ localize "tmold.default.horizontal" }}
-            </section>
-            <section>
-                <input type='checkbox' name='config.mirrorY.use' {{checked settings.config.mirrorY.use}} data-dtype='Boolean' />
+                <input type='checkbox' name='config.mirrorX.use' {{checked settings.config.mirrorX.use}} data-dtype='Boolean' />
+            </label>
+            <label  class="checkbox">
                 {{ localize "tmold.default.vertical" }}
-            </section>
+                <input type='checkbox' name='config.mirrorY.use' {{checked settings.config.mirrorY.use}} data-dtype='Boolean' />
+            </label>
         </div>
     </div>
 </div>

@@ -43,6 +43,10 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
       position: {
         width: 565,
         height: 565
+      },
+      actions: {
+        addoverlayattribute: TokenMoldForm.#addOverlayAttribute,
+        removeoverlayattribute: TokenMoldForm.#removeOverlayAttribute,
       }
     };
 
@@ -168,14 +172,11 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
 
       // I have some questions about what this is doing.
 
-      // TODO: replace jQuery
-      const attrGroups = $(form).find(".attributes");
+      const attrGroups = form.querySelectorAll(".overlay.attributes");
       let attrs = [];
-      attrGroups.each((idx, e) => {
-        // TODO: replace jQuery
-        const el = $(e);
-        const icon = el.find(".icon").val();
-        const value = el.find(".value").val();
+      attrGroups.forEach((e) => {
+        const icon = e.querySelector(".icon.fa-solid").value;
+        const value = e.querySelector(".value").value;
         //if (icon !== "" && value !== "") {
         if (icon && value) {
           attrs.push({
@@ -237,10 +238,15 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
           ? suffix
           : formData.object["name.number.suffix"];
 
+      // FIXME!
+      // formData has the arrays for name.options.attributes merged
+      // HACK!! Remove data we don't want to merge
+
+
       this.object.settings = foundry.utils.mergeObject(this.settings, formData.object);
 
       if (this._resetOptions === true) {
-        const dndOptions = this.object.dndDefaultNameOptions;
+        const dndOptions = TokenConsts.DND_DEFAULT_NAME_OPTIONS;
         this.object.settings.name.options.default = dndOptions.default;
         this.object.settings.name.options.attributes = dndOptions.attributes;
         this._resetOptions = false;
@@ -335,7 +341,7 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
           partContext.buttons = this.#prepareButtons();
           break;
       }
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: Prepared Part Context", partContext, );
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: Prepared Part Context Complete", partContext, );
       return partContext;
     }
 
@@ -370,7 +376,48 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
       }
     }
 
+    /**
+     * Process action
+     * @this {TokenMoldForm}                      The handler is called with the application as its bound scope
+     * @param {PointerEvent} event - The originating click event
+     * @param {HTMLElement} target - the capturing HTML element which defined a [data-action]
+     * @returns {Promise<*>}
+     * @private
+     */
+    static #addOverlayAttribute(event, target) {
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: #addOverlayAttribute");
 
+      const clone = target.previousElementSibling.cloneNode(true);
+      const inputs = clone.querySelectorAll("select");
+      inputs.forEach((e) => {
+        e.value = "";
+      });
+
+      target.before(clone);
+    }
+
+    /**
+     * Process action
+     * @this {TokenMoldForm}                      The handler is called with the application as its bound scope
+     * @param {PointerEvent} event - The originating click event
+     * @param {HTMLElement} target - the capturing HTML element which defined a [data-action]
+     * @returns {Promise<*>}
+     * @private
+     */
+    static #removeOverlayAttribute(event, target) {
+        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: #removeOverlayAttribute");
+        // TODO: replace jQuery
+        //const container = $(ev.currentTarget).closest(".form-group");
+
+        // if (container.prev('.form-group:not(".header")').length > 0 || container.next(".form-group").length > 0) {
+        //   container.remove();
+        // }
+        //--
+        const container = target.closest(".form-group");
+        if (container.previousElementSibling.matches('.form-group:not(.table-header)') || container.nextElementSibling.matches(".form-group")) {
+          container.remove();
+        }
+    }
 
     //
     // Should this be all converted to actions??
@@ -394,24 +441,24 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
       // TODO: replace jQuery
       const html = $(this.element);
 
-      html.find(".add-attribute").on("click", (ev) => {
-        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.add-attribute");
-        // TODO: replace jQuery
-        const addBtn = $(ev.target);
-        const clone = addBtn.prev().clone();
-        clone.find("select").val("");
-        addBtn.before(clone);
-      });
+      // html.find(".add-overlay-attribute").on("click", (ev) => {
+      //   TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.add-overlay-attribute");
+      //   // TODO: replace jQuery
+      //   const addBtn = $(ev.target);
+      //   const clone = addBtn.prev().clone();
+      //   clone.find("select").val("");
+      //   addBtn.before(clone);
+      // });
 
-      html.on("click", ".attribute-remove", (ev) => {
-        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.attribute-remove");
-        // TODO: replace jQuery
-        const container = $(ev.currentTarget).closest(".form-group");
+      // html.on("click", ".remove-overlay-attribute", (ev) => {
+      //   TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.remove-overlay-attribute");
+      //   // TODO: replace jQuery
+      //   const container = $(ev.currentTarget).closest(".form-group");
 
-        if (container.prev('.form-group:not(".header")').length > 0 || container.next(".form-group").length > 0) {
-          container.remove();
-        }
-      });
+      //   if (container.prev('.form-group:not(".header")').length > 0 || container.next(".form-group").length > 0) {
+      //     container.remove();
+      //   }
+      // });
 
       html.find(".overlay").on("change keyup", "input.icon", (ev) => {
         ev.target.parentNode.parentNode.getElementsByClassName("prev", )[0].innerHTML = "17&nbsp;" + ev.target.value;
@@ -456,8 +503,8 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
         addBtn.before(clone);
       });
 
-      html.on("click", ".lang-remove", (ev) => {
-        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.lang-remove");
+      html.on("click", ".remove-language-value", (ev) => {
+        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.remove-language-value");
         // TODO: replace jQuery
         const container = $(ev.currentTarget).closest(".form-group");
 
@@ -475,10 +522,10 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
       });
 
       if (game.system.id === "dnd5e") {
-        const resetBtn = html.find(".reset");
+        const resetBtn = html.find(".reset-lang");
         resetBtn[0].innerHTML = '<i class="fa-solid fa-rotate-left"></i>';
         resetBtn.on("click", async (ev) => {
-          TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.reset");
+          TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.reset-lang");
           this._resetOptions = true;
           await this.submit();
         });
