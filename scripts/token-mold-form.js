@@ -47,6 +47,12 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
       actions: {
         addoverlayattribute: TokenMoldForm.#addOverlayAttribute,
         removeoverlayattribute: TokenMoldForm.#removeOverlayAttribute,
+        addlanguageattribute: TokenMoldForm.#addLanguageAttribute,
+        addlanguagevalue: TokenMoldForm.#addLanguageValue,
+        removelanguagevalue: TokenMoldForm.#removeLanguageValue,
+        rerollnames: TokenMoldForm.#rerollNames,
+        resetcounter: TokenMoldForm.#resetCounter,
+        resetlang: TokenMoldForm.#resetLanguages,
       }
     };
 
@@ -146,16 +152,6 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
       replace: "tmold.name.baseNameReplace"
     });
 
-    // /**
-    //  * ApplicationV1 -- what's the V2 version?
-    //  * @return {HeaderButton[]}
-    //  */
-    // _getHeaderButtons() {
-    //   TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: _getHeaderButtons");
-    //   let btns = super._getHeaderButtons();
-    //   btns[0].label = "Save & Close";
-    //   return btns;
-    // }
 
     /**
      * Process form submission for the sheet
@@ -177,7 +173,6 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
       attrGroups.forEach((e) => {
         const icon = e.querySelector(".icon.fa-solid").value;
         const value = e.querySelector(".value").value;
-        //if (icon !== "" && value !== "") {
         if (icon && value) {
           attrs.push({
             icon: icon,
@@ -205,10 +200,10 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
       });
 
       this.settings.name.options.attributes = attributes;
-      //super._onSubmit(options);
 
-      let min = formData.object["name.options.min"],
-        max = formData.object["name.options.max"];
+      // make sure min < max and both > 0
+      let min = formData.object["name.options.min"];
+      let max = formData.object["name.options.max"];
       if (min < 0) {
         min = 0;
       }
@@ -218,17 +213,16 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
 
       if (min > max) {
         const tmp = min;
-        (min = max), (max = tmp);
+        min = max;
+        max = tmp;
       }
 
       formData.object["name.options.min"] = min;
       formData.object["name.options.max"] = max;
 
       // For name prefix and suffix, if the value is only a space the formData doesn't pick it up, so check and manually set prior to merge.
-      // TODO: replace jQuery
-      let prefix = $(this.form).find("input[name='name.number.prefix']").val();
-      // TODO: replace jQuery
-      let suffix = $(this.form).find("input[name='name.number.suffix']").val();
+      let prefix = form.querySelector("input[name='name.number.prefix']").value;
+      let suffix = form.querySelector("input[name='name.number.suffix']").value;
       formData.object["name.number.prefix"] =
         formData.object["name.number.prefix"] !== prefix
           ? prefix
@@ -238,11 +232,7 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
           ? suffix
           : formData.object["name.number.suffix"];
 
-      // FIXME!
-      // formData has the arrays for name.options.attributes merged
-      // HACK!! Remove data we don't want to merge
-
-
+      // merges form elements with names
       this.object.settings = foundry.utils.mergeObject(this.settings, formData.object);
 
       if (this._resetOptions === true) {
@@ -255,21 +245,6 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
       }
       this.object.saveSettings();
     }
-
-
-    // /**
-    //  * Actions performed before closing the Application.
-    //  * Pre-close steps are awaited by the close process.
-    //  * @param {RenderOptions} options                 Provided render options
-    //  * @returns {Promise<void>}
-    //  * @protected
-    //  * @override
-    //  */
-    // async _preClose(options) {
-    //   TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: _preClose");
-    //   // Manual implementation of submitOnClose
-    //   await this.submit();
-    // }
 
     /**
      * Prepare application rendering context data for a given render request. If exactly one tab group is configured for
@@ -405,24 +380,149 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
      * @private
      */
     static #removeOverlayAttribute(event, target) {
-        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: #removeOverlayAttribute");
-        // TODO: replace jQuery
-        //const container = $(ev.currentTarget).closest(".form-group");
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: #removeOverlayAttribute");
 
-        // if (container.prev('.form-group:not(".header")').length > 0 || container.next(".form-group").length > 0) {
-        //   container.remove();
-        // }
-        //--
-        const container = target.closest(".form-group");
-        if (container.previousElementSibling.matches('.form-group:not(.table-header)') || container.nextElementSibling.matches(".form-group")) {
-          container.remove();
-        }
+      const container = target.closest(".form-group");
+      if (container.previousElementSibling.matches('.form-group:not(.table-header)') || container.nextElementSibling.matches(".form-group")) {
+        container.remove();
+      }
     }
 
-    //
-    // Should this be all converted to actions??
-    // Requires adding data-action="" to anchors
-    //
+    /**
+     * Process action
+     * @this {TokenMoldForm}                      The handler is called with the application as its bound scope
+     * @param {PointerEvent} event - The originating click event
+     * @param {HTMLElement} target - the capturing HTML element which defined a [data-action]
+     * @returns {Promise<*>}
+     * @private
+     */
+    static #addLanguageAttribute(event, target) {
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: #addLanguageAttribute");
+
+      const clone = target.previousElementSibling.cloneNode(true);
+      const attributes = clone.querySelectorAll(".attribute");
+      attributes.forEach((e) => {
+        e.value = "";
+      });
+      const groups = clone
+        .querySelector(".language-selection")
+        .querySelectorAll(".language-group");
+      groups.forEach((el, idx) => {
+          if (idx > 0) { el.remove(); }
+        });
+      const langSelection = clone.querySelector(".language-selection");
+      langSelection.querySelector("input").value = "";
+      langSelection.querySelector("select").value = "random";
+      target.before(clone);
+    }
+
+    /**
+     * Process action
+     * @this {TokenMoldForm}                      The handler is called with the application as its bound scope
+     * @param {PointerEvent} event - The originating click event
+     * @param {HTMLElement} target - the capturing HTML element which defined a [data-action]
+     * @returns {Promise<*>}
+     * @private
+     */
+    static #addLanguageValue(event, target) {
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: #addLanguageValue");
+
+      const clone = target.previousElementSibling.cloneNode(true);
+      clone.querySelector("input").value = "";
+      clone.querySelector("select").value = "random";
+      target.before(clone);
+    }
+
+    /**
+     * Process action
+     * @this {TokenMoldForm}                      The handler is called with the application as its bound scope
+     * @param {PointerEvent} event - The originating click event
+     * @param {HTMLElement} target - the capturing HTML element which defined a [data-action]
+     * @returns {Promise<*>}
+     * @private
+     */
+    static #removeLanguageValue(event, target) {
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: #removeLanguageValue");
+
+      const container = target.closest(".form-group");
+
+      let prev = (container.previousElementSibling !== null) && container.previousElementSibling.matches(".form-group");
+      // only delete if not last element
+      if (prev || container.nextElementSibling.matches(".form-group")) {
+        container.remove();
+      } else {
+        // alternatively delete whole attribute
+        const parentContainer = container.closest(".attribute-group");
+        if (parentContainer.previousElementSibling.matches('.attribute-group:not(.default)') || parentContainer.nextElementSibling.matches('.attribute-group:not(.default)')) {
+          parentContainer.remove();
+        }
+      }
+    }
+
+    /**
+     * Process action
+     * @this {TokenMoldForm}                      The handler is called with the application as its bound scope
+     * @param {PointerEvent} event - The originating click event
+     * @param {HTMLElement} target - the capturing HTML element which defined a [data-action]
+     * @returns {Promise<*>}
+     * @private
+     */
+    static #rerollNames(event, target) {
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: #rerollNames");
+
+      const selected = canvas.tokens.controlled;
+      let udata = [];
+      for (const token of selected) {
+        // Should this be checking for actorLink && unlinkedOnly?
+        const newName = this.object.pickNewName(token.actor);
+        udata.push({
+          _id: token.id,
+          name: newName
+        });
+      }
+
+      canvas.scene.updateEmbeddedDocuments("Token", udata);
+    }
+
+    /**
+     * Process action
+     * @this {TokenMoldForm}                      The handler is called with the application as its bound scope
+     * @param {PointerEvent} event - The originating click event
+     * @param {HTMLElement} target - the capturing HTML element which defined a [data-action]
+     * @returns {Promise<*>}
+     * @private
+     */
+    static #resetCounter(event, target) {
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: #resetCounter");
+
+      const sceneId = canvas.scene.id;
+
+      this.object.counter[sceneId] = {};
+      const tokens = canvas.scene.getEmbeddedCollection("Token");
+
+      for (const token of tokens) {
+        if (token.actorId) {
+          this.object.counter[sceneId][token.actorId] = 0;
+        }
+      }
+
+      ui.notifications.notify("Finished resetting counters");
+    }
+
+    /**
+     * Process action
+     * @this {TokenMoldForm}                      The handler is called with the application as its bound scope
+     * @param {PointerEvent} event - The originating click event
+     * @param {HTMLElement} target - the capturing HTML element which defined a [data-action]
+     * @returns {Promise<*>}
+     * @private
+     */
+    static async #resetLanguages(event, target) {
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: #resetLanguages");
+
+      this._resetOptions = true;
+      await this.submit();
+    }
 
     /**
      * Actions performed after any render of the Application.
@@ -437,35 +537,17 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
 
       await super._onRender(context, options);
 
-      // TODO fix: .parentNode.parentNode
       // TODO: replace jQuery
-      const html = $(this.element);
+      //const html = $(this.element);
 
-      // html.find(".add-overlay-attribute").on("click", (ev) => {
-      //   TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.add-overlay-attribute");
-      //   // TODO: replace jQuery
-      //   const addBtn = $(ev.target);
-      //   const clone = addBtn.prev().clone();
-      //   clone.find("select").val("");
-      //   addBtn.before(clone);
+      // I can't figure out what this is supposed to do
+      // // TODO fix: .parentNode.parentNode
+      // html.find(".overlay").on("change keyup", "input.icon", (ev) => {
+      //   ev.target.parentNode.parentNode.getElementsByClassName("prev", )[0].innerHTML = "17&nbsp;" + ev.target.value;
       // });
-
-      // html.on("click", ".remove-overlay-attribute", (ev) => {
-      //   TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.remove-overlay-attribute");
-      //   // TODO: replace jQuery
-      //   const container = $(ev.currentTarget).closest(".form-group");
-
-      //   if (container.prev('.form-group:not(".header")').length > 0 || container.next(".form-group").length > 0) {
-      //     container.remove();
-      //   }
-      // });
-
-      html.find(".overlay").on("change keyup", "input.icon", (ev) => {
-        ev.target.parentNode.parentNode.getElementsByClassName("prev", )[0].innerHTML = "17&nbsp;" + ev.target.value;
-      });
 
       // TODO fix: .parentNode.parentNode.parentNode
-      html.find(".name-replace").on("change", (ev) => {
+      this.element.querySelector(".name-replace").addEventListener("change", (ev) => {
         const nameRandomizer = ev.currentTarget.parentNode.parentNode.parentNode.querySelector(".name-randomizer-options", );
         if (ev.currentTarget.value === "replace") {
           nameRandomizer.style.display = "block";
@@ -473,94 +555,24 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(Applicatio
           nameRandomizer.style.display = "none";
         }
       });
-      html.find(".name-replace").change();
 
-      html.on("click", ".add-language-value", (ev) => {
-        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.add-language-value");
-        // TODO: replace jQuery
-        const addBtn = $(ev.target);
-        const clone = addBtn.prev().clone();
-        clone.find("input").val("");
-        clone.find("select").val("random");
-        addBtn.before(clone);
-      });
-
-      html.on("click", ".add-language-attribute", (ev) => {
-        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.add-language-attribute");
-        // TODO: replace jQuery
-        const addBtn = $(ev.target);
-        const clone = addBtn.prev().clone();
-        clone.children(".attribute").val("");
-        clone
-          .children(".language-selection")
-          .children(".language-group")
-          .each((idx, el) => {
-            if (idx > 0) el.remove();
-          });
-        const langSelection = clone.children(".language-selection");
-        langSelection.find("input").val("");
-        langSelection.find("select").val("random");
-        addBtn.before(clone);
-      });
-
-      html.on("click", ".remove-language-value", (ev) => {
-        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.remove-language-value");
-        // TODO: replace jQuery
-        const container = $(ev.currentTarget).closest(".form-group");
-
-        let prev = container.prev(".form-group");
-        // only delete if not last element
-        if (prev.length > 0 || container.next(".form-group").length > 0) {
-          container.remove();
-        } else {
-          // alternatively delete whole attribute
-          const parentContainer = container.closest(".attribute-group");
-          if (parentContainer.prev('.attribute-group:not(".default")').length > 0 || parentContainer.next('.attribute-group:not(".default")').length > 0) {
-            parentContainer.remove();
-          }
-        }
-      });
-
-      if (game.system.id === "dnd5e") {
-        const resetBtn = html.find(".reset-lang");
-        resetBtn[0].innerHTML = '<i class="fa-solid fa-rotate-left"></i>';
-        resetBtn.on("click", async (ev) => {
-          TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.reset-lang");
-          this._resetOptions = true;
-          await this.submit();
-        });
+      // might need to trigger this once to get the UI right?
+      //html.find(".name-replace").change();
+      // manually do it:
+      const nameReplace = this.element.querySelector(".name-replace");
+      const nameRandomizer = this.element.querySelector(".name-randomizer-options");
+      if (nameReplace.value === "replace") {
+        nameRandomizer.style.display = "block";
+      } else {
+        nameRandomizer.style.display = "none";
       }
 
-      this.element.querySelector(".reroll-names").addEventListener("click", (ev) => {
-        const selected = canvas.tokens.controlled;
-        let udata = [];
-        for (const token of selected) {
-          // Should this be checking for actorLink && unlinkedOnly?
-          const newName = this.object.pickNewName(token.actor);
-          udata.push({
-            _id: token.id,
-            name: newName
-          });
-        }
-
-        canvas.scene.updateEmbeddedDocuments("Token", udata);
-      });
-
-      html.on("click", ".reset-counter", async (ev) => {
-        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: click.reset-counter");
-        const sceneId = canvas.scene.id;
-
-        this.object.counter[sceneId] = {};
-        const tokens = canvas.scene.getEmbeddedCollection("Token");
-
-        for (const token of tokens) {
-          if (token.actorId) {
-            this.object.counter[sceneId][token.actorId] = 0;
-          }
-        }
-
-        ui.notifications.notify("Finished resetting counters");
-      });
+      // maybe find a better way to hide the button than by removing the icon?
+      // maybe style.display = "none"
+      if (game.system.id === "dnd5e") {
+        const resetBtn = this.element.querySelector(".reset-lang");
+        resetBtn.innerHTML = '<i class="fa-solid fa-rotate-left"></i>';
+      }
     }
 
     /**

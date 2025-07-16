@@ -25,7 +25,7 @@
     <div class="form-group slim">
         <span class="label">{{ localize "tmold.name.resetCounter" }}</span>
         <div class="form-fields" >
-            <span style='text-align:right'><a class='reset-counter'><i class="fa-solid fa-rotate-left"></i></a></span>
+            <span style='text-align:right'><a data-action='resetcounter'><i class="fa-solid fa-rotate-left"></i></a></span>
         </div>
         <p class="hint">{{ localize "tmold.name.resetCounterHelp" }}</p>
     </div>
@@ -87,18 +87,18 @@
             </div>
         </div>
         <div class="form-group">
-            <a class='reroll-names'><i class="fa-solid fa-dice"></i>&nbsp;{{ localize "tmold.name.regenerate" }}</a>
+            <a data-action='rerollnames'><i class="fa-solid fa-dice"></i>&nbsp;{{ localize "tmold.name.regenerate" }}</a>
         </div>
         <header class="table-header flexrow">
             <label class="index">{{ localize "tmold.name.attribute" }}</label>
             <label>{{ localize "tmold.name.value" }}</label>
             <label>{{ localize "tmold.name.language" }}</label>
-            <a class='reset-lang' title='{{ localize "tmold.name.reset" }}'></a>
+            <a class='reset-lang' data-action='resetlang' title='{{ localize "tmold.name.reset" }}'></a>
         </header>
         <div class="form-group language-selection language-group default-group">
             <span class='attribute default' value='default'>{{ localize "tmold.name.default" }}</span>
             <span class='value'></span>
-            <select class='language' name='name.options.default'>
+            <select class='language'>
                 {{ selectOptions @root.languages selected=settings.name.options.default }}
             </select>
             <!-- <a class='remove' title='{{ localize "tmold.name.delete" }}'></a> -->
@@ -106,24 +106,24 @@
         </div>
         {{#each settings.name.options.attributes as |attrs idx|}}
         <div class="form-group attribute-selection attribute-group">
-            <select data-dtype='String' class='attribute' name='name.options.attributes.attribute'>
+            <select data-dtype='String' class='attribute'>
                 {{ selectOptions @root.actorAttributes selected=this.attribute }}
             </select>
             <div class=' language-selection '>
                 {{#each this.languages as |lang attr|}}
                 <div class="form-group language-group">
-                    <input type='text' class='value' value='{{attr}}' name='name.options.attributes.languages.attribute' />
-                    <select class='language' name='name.options.attributes.languages.language'>
+                    <input type='text' class='value' value='{{attr}}' />
+                    <select class='language'>
                         {{ selectOptions @root.languages selected=lang }}
                     </select>
-                    <a class='remove-language-value' title='{{ localize "tmold.name.delete" }}'><i class="fa-solid fa-xmark"></i></a>
+                    <a data-action='removelanguagevalue' title='{{ localize "tmold.name.delete" }}'><i class="fa-solid fa-xmark"></i></a>
                 </div>
                 {{/each}}
-                <a class='add-language-value'><i class="fa-solid fa-plus"></i>&nbsp;{{ localize "tmold.name.addValue" }}</a>
+                <a data-action='addlanguagevalue'><i class="fa-solid fa-plus"></i>&nbsp;{{ localize "tmold.name.addValue" }}</a>
             </div>
         </div>
         {{/each}}
-        <a class='add-language-attribute'><i class="fa-solid fa-plus"></i>&nbsp;{{ localize "tmold.name.addAttribute" }}</a>
+        <a data-action='addlanguageattribute'><i class="fa-solid fa-plus"></i>&nbsp;{{ localize "tmold.name.addAttribute" }}</a>
 
     </fieldset>
 </div>

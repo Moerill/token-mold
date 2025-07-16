@@ -13,8 +13,6 @@ export default class TokenMold {
     this.initHooks();
   }
 
-
-
   /**
    *
    */
