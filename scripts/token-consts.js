@@ -1,10 +1,15 @@
 export default class TokenConsts {
-
   /**
    * All systems that support either rolling for HP or scaling token sizes
    * @internal
    */
-  static SUPPORTED_SYSTEMS = Object.freeze(["dnd5e", "pf2e", "sfrpg", "sw5e", "dcc"]);
+  static SUPPORTED_SYSTEMS = Object.freeze([
+    "dnd5e",
+    "pf2e",
+    "sfrpg",
+    "sw5e",
+    "dcc",
+  ]);
   // not sure about sfrpg - should that be listed?
 
   /**
@@ -116,5 +121,4 @@ export default class TokenConsts {
       },
     ],
   });
-
 }

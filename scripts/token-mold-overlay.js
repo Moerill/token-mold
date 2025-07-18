@@ -1,9 +1,10 @@
-import  TokenLog  from "./token-log.js";
+import TokenLog from "./token-log.js";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 
-export default class TokenMoldOverlay extends HandlebarsApplicationMixin(foundry.applications.hud.BasePlaceableHUD) {
-
+export default class TokenMoldOverlay extends HandlebarsApplicationMixin(
+  foundry.applications.hud.BasePlaceableHUD
+) {
   // TODO Add a hook for renderTokenMoldOverlay ???
   // TODO Add a hook for closeTokenMoldOverlay ???
 
@@ -18,13 +19,13 @@ export default class TokenMoldOverlay extends HandlebarsApplicationMixin(foundry
 
   static DEFAULT_OPTIONS = {
     id: "token-mold-overlay",
-    classes: ["token-mold-overlay"]
+    classes: ["token-mold-overlay"],
   };
 
   static PARTS = {
     HUD: {
-      template: "modules/token-mold/templates/overlay.hbs"
-    }
+      template: "modules/token-mold/templates/overlay.hbs",
+    },
   };
 
   /**
@@ -46,7 +47,9 @@ export default class TokenMoldOverlay extends HandlebarsApplicationMixin(foundry
           path: e.path,
           value: foundry.utils.getProperty(this.object.actor, e.path),
         };
-        if (!ret.value) { return null; }
+        if (!ret.value) {
+          return null;
+        }
         return ret;
       })
       .filter((e) => e !== null);
@@ -63,7 +66,9 @@ export default class TokenMoldOverlay extends HandlebarsApplicationMixin(foundry
    */
   _updatePosition(position) {
     TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldOverlay: _updatePosition");
-    if (!this.object) { return; }
+    if (!this.object) {
+      return;
+    }
 
     // mxzf @ module-development
     // Well, the thing you run into is that you're either needing
@@ -72,11 +77,17 @@ export default class TokenMoldOverlay extends HandlebarsApplicationMixin(foundry
     //  zooming (in which case you can just set a fixed size that
     //  makes it legible)
 
-    this.element.style.setProperty('font-size', canvas.grid.size / 5 + "px");
+    this.element.style.setProperty("font-size", canvas.grid.size / 5 + "px");
 
-    let {width, height, left, top, scale} = position;
+    let scale = position.scale;
     scale ??= 1.0;
 
-    return {width: this.object.w, height: this.object.h, left: this.object.x, top: this.object.y, scale: scale};
+    return {
+      width: this.object.w,
+      height: this.object.h,
+      left: this.object.x,
+      top: this.object.y,
+      scale: scale,
+    };
   }
 }

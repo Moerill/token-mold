@@ -1,7 +1,7 @@
-import  TokenConsts  from "./token-consts.js"
-import  TokenLog  from "./token-log.js";
-import  TokenMoldForm  from "./token-mold-form.js";
-import  TokenMoldOverlay  from "./token-mold-overlay.js";
+import TokenConsts from "./token-consts.js";
+import TokenLog from "./token-log.js";
+import TokenMoldForm from "./token-mold-form.js";
+import TokenMoldOverlay from "./token-mold-overlay.js";
 
 export default class TokenMold {
   constructor() {
@@ -19,19 +19,27 @@ export default class TokenMold {
   initHooks() {
     TokenLog.log(TokenLog.LOG_LEVEL.Debug, "initHooks");
 
-    // params: ActorDirectory, DOM, object, object
-    Hooks.on("renderActorDirectory", (app, element, context, options) => {
+    /**
+     * @param {ActorDirectory} app
+     * @param {DOM} element
+     * @param {object} context
+     * @param {object} [options]
+     */
+    Hooks.on("renderActorDirectory", (app, element) => {
       TokenLog.log(TokenLog.LOG_LEVEL.Debug, "renderActorDirectory");
       if (game.user.isGM) {
         //if (options.parts && !options.parts.includes("token-mold")) return;
-        this._hookActorDirectory(element, options);
+        this._hookActorDirectory(element);
       }
     });
 
     this.#registerSettings();
     this.#loadSettings();
 
-    // params: PlaceableObject, boolean
+    /**
+     * @param {Token} token
+     * @param {boolean} hovered
+     */
     Hooks.on("hoverToken", (token, hovered) => {
       TokenLog.log(TokenLog.LOG_LEVEL.Debug, "hoverToken");
       if (!token || !token.actor) {
@@ -43,7 +51,12 @@ export default class TokenMold {
         return;
       }
 
-      if (canvas.hud.TokenMoldHUD === undefined || this.settings.overlay.attrs.length === 0 || (token.document.actorLink && !this.settings.overlay.enableOverlayForLinked)) {
+      if (
+        canvas.hud.TokenMoldHUD === undefined ||
+        this.settings.overlay.attrs.length === 0 ||
+        (token.document.actorLink &&
+          !this.settings.overlay.enableOverlayForLinked)
+      ) {
         return;
       }
 
@@ -55,7 +68,13 @@ export default class TokenMold {
       }
     });
 
-    Hooks.on("renderHeadsUpDisplayContainer", (app, element, context, options) => {
+    /**
+     * @param {HeadsUpDisplayContainer} app
+     * @param {DOM} element
+     * @param {object} context
+     * @param {object} [options]
+     */
+    Hooks.on("renderHeadsUpDisplayContainer", () => {
       TokenLog.log(TokenLog.LOG_LEVEL.Debug, "renderHeadsUpDisplayContainer");
       //if (options.parts && !options.parts.includes("token-mold-overlay")) return;
       // We should be using options.parts for this, but I'm not sure how
@@ -72,35 +91,51 @@ export default class TokenMold {
 
     Hooks.once("ready", async () => {
       TokenLog.log(TokenLog.LOG_LEVEL.Debug, "ready");
-      // params: Application, DOM, object, object
-
-
       if (!game.user.isGM) {
         return;
       }
 
-      // params: Document, DatabaseDeleteOperation, string
-      Hooks.on("deleteToken", (token, options, userId) => {
+      /**
+       * @param {Document} token
+       * @param {DatabaseDeleteOperation} operation
+       * @param {string} userId
+       */
+      Hooks.on("deleteToken", () => {
         TokenLog.log(TokenLog.LOG_LEVEL.Debug, "deleteToken");
         if (!canvas.hud.TokenMoldHUD) return;
         canvas.hud.TokenMoldHUD.close();
       });
 
-      // params: Document, object, DatabaseCreateOperation, string
-      Hooks.on("preCreateToken", (token, data, options, userId) => {
+      /**
+       * @param {TokenDocument} token
+       * @param {object} data
+       * @param {DatabaseCreateOperation} operation
+       * @param {string} userId
+       */
+      Hooks.on("preCreateToken", (token, data) => {
         const scene = token.parent;
         const newData = this.#setTokenData(scene, data);
-        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "preCreateToken", token, data, newData, );
+        TokenLog.log(
+          TokenLog.LOG_LEVEL.Debug,
+          "preCreateToken",
+          token,
+          data,
+          newData
+        );
         token.updateSource(newData);
       });
 
-      // params: Document, DatabaseCreateOperation, string
+      /**
+       * @param {TokenDocument} token
+       * @param {DatabaseCreateOperation} operation
+       * @param {string} userId
+       */
       Hooks.on("createToken", (token, options, userId) => {
         if (userId !== game.userId) {
           // filter to single user
           return;
         }
-        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "createToken", token, );
+        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "createToken", token);
         this._setHP(token);
       });
 
@@ -137,7 +172,11 @@ export default class TokenMold {
   async #loadDicts() {
     TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#loadDicts");
     // Remove if replace is unset
-    if (!game.user || !game.user.isGM || this.settings.name.replace !== "replace") {
+    if (
+      !game.user ||
+      !game.user.isGM ||
+      this.settings.name.replace !== "replace"
+    ) {
       // Useful to free up memory? its "just" up to 17MB...
       // delete this.dict;
       return;
@@ -166,17 +205,23 @@ export default class TokenMold {
     try {
       document = await fromUuid(this.settings.name.prefix.table);
     } catch (error) {
+      TokenLog.log(
+        TokenLog.LOG_LEVEL.Error,
+        "Error getting document from UUID!",
+        error
+      );
       // Reset if table not found..
       document = await fromUuid(this.#defaultSettings().name.prefix.table);
-      this.settings.name.prefix.table = this.#defaultSettings().name.prefix.table;
+      this.settings.name.prefix.table =
+        this.#defaultSettings().name.prefix.table;
     }
 
     // if fromUuid() doesn't throw and document is still not valid; reset
-    if (!document)
-    {
+    if (!document) {
       // Reset if table not found..
       document = await fromUuid(this.#defaultSettings().name.prefix.table);
-      this.settings.name.prefix.table = this.#defaultSettings().name.prefix.table;
+      this.settings.name.prefix.table =
+        this.#defaultSettings().name.prefix.table;
     }
 
     this.adjectives = document;
@@ -192,7 +237,9 @@ export default class TokenMold {
   async #getRolltables() {
     TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#getRolltables");
     // Filter out everything except TokenMold tables
-    const rollTablePacks = game.packs.filter((e) => e.documentName === "RollTable" && e.title === "Adjectives", );
+    const rollTablePacks = game.packs.filter(
+      (e) => e.documentName === "RollTable" && e.title === "Adjectives"
+    );
     //const rollTablePacks = game.packs.filter((e) => e.documentName === "RollTable", );
 
     this._rollTableList = [];
@@ -216,36 +263,40 @@ export default class TokenMold {
         this._rollTableList.push({
           name: table.name,
           uuid: table.uuid,
-          group: optGroup
+          group: optGroup,
         });
       }
     }
-    TokenLog.log(TokenLog.LOG_LEVEL.Debug, "Rollable Tables found", this._rollTableList,);
+    TokenLog.log(
+      TokenLog.LOG_LEVEL.Debug,
+      "Rollable Tables found",
+      this._rollTableList
+    );
   }
 
   /**
    *
-   * @param {section#actors.tab.sidebar-tab.directory.flexcol.actors-sidebar}  html
+   * @param {DOM}  element
+   * @param {object} options
    *
    * @return {Promise<any>}
    */
-  async _hookActorDirectory(html, options) {
+  async _hookActorDirectory(element) {
     TokenLog.log(TokenLog.LOG_LEVEL.Debug, "_hookActorDirectory");
     // We should be using options.parts for this, but I'm not sure how
-    const existingMenu = html.querySelector(".token-mold");
-    if (existingMenu !== null)
-    {
+    const existingMenu = element.querySelector(".token-mold");
+    if (existingMenu !== null) {
       return;
     }
 
     this.section = document.createElement("section");
     this.section.classList.add("token-mold");
     // Add menu before directory header
-    const dirHeader = html.querySelector(".directory-header");
+    const dirHeader = element.querySelector(".directory-header");
     dirHeader.parentNode.insertBefore(this.section, dirHeader);
 
     if (this.settings !== undefined) {
-      this._renderActorDirectoryMenu(options);
+      this._renderActorDirectoryMenu();
     }
     TokenLog.log(TokenLog.LOG_LEVEL.Debug, "_hookActorDirectory Complete");
   }
@@ -255,48 +306,60 @@ export default class TokenMold {
    *
    * @returns {Promise<any>}
    */
-  async _renderActorDirectoryMenu(options) {
+  async _renderActorDirectoryMenu() {
     TokenLog.log(TokenLog.LOG_LEVEL.Debug, "_renderActorDirectoryMenu");
     const section = this.section;
     section.insertAdjacentHTML(
       "afterbegin",
       `
         <label class='label-inp' title='(De-)activate Name randomizing'>
-            <input class='name rollable' type='checkbox' name='name.use' ${this.settings.name.use ? "checked" : ""}><span><span class='checkmark'></span>&nbsp;Name</span>
+            <input class='name rollable' type='checkbox' name='name.use' ${
+              this.settings.name.use ? "checked" : ""
+            }><span><span class='checkmark'></span>&nbsp;Name</span>
         </label>
         ${
           TokenConsts.SUPPORTED_ROLLHP.includes(game.system.id)
             ? `
         <label class='label-inp' title='(De-)activate Hit Point rolling'>
-            <input class='hp rollable' type='checkbox' name='hp.use' ${this.settings.hp.use ? "checked" : ""}><span><span class='checkmark'></span>&nbsp;HP</span>
+            <input class='hp rollable' type='checkbox' name='hp.use' ${
+              this.settings.hp.use ? "checked" : ""
+            }><span><span class='checkmark'></span>&nbsp;HP</span>
         </label>`
             : ``
         }
         <label class='label-inp' title='(De-)activate Token Config Overwrite'>
-            <input class='config rollable' type='checkbox' name='config.use' ${this.settings.config.use ? "checked" : ""}><span><span class='checkmark'></span>&nbsp;Config</span>
+            <input class='config rollable' type='checkbox' name='config.use' ${
+              this.settings.config.use ? "checked" : ""
+            }><span><span class='checkmark'></span>&nbsp;Config</span>
         </label>
         <label class='label-inp' title='(De-)activate Stat Overlay On Hover'>
-            <input class='config rollable' type='checkbox' name='overlay.use' ${this.settings.overlay.use ? "checked" : ""}><span><span class='checkmark'></span>&nbsp;Overlay</span>
+            <input class='config rollable' type='checkbox' name='overlay.use' ${
+              this.settings.overlay.use ? "checked" : ""
+            }><span><span class='checkmark'></span>&nbsp;Overlay</span>
         </label>
         <a class='refresh-selected' title="Reapplies all settings to selected tokens as if those were replaced onto the scene."><i class="fa-solid fa-rotate"></i></a>
         <a class='token-mold-form-btn' title='Settings'><i class="fa-solid fa-gear"></i></a>
-      `,
+      `
     );
 
     const inputs = section.querySelectorAll('input[type="checkbox"]');
     for (let checkbox of inputs) {
       checkbox.addEventListener("change", (ev) => {
-        foundry.utils.setProperty(this.settings, ev.target.name, ev.target.checked);
+        foundry.utils.setProperty(
+          this.settings,
+          ev.target.name,
+          ev.target.checked
+        );
         this.saveSettings();
       });
     }
 
     this.section
       .querySelector(".refresh-selected")
-      .addEventListener("click", (ev) => this._refreshSelected());
+      .addEventListener("click", () => this._refreshSelected());
     this.section
       .querySelector(".token-mold-form-btn")
-      .addEventListener("click", (ev) => {
+      .addEventListener("click", () => {
         if (this.form === undefined) {
           this.form = new TokenMoldForm(this);
         } else {
@@ -342,7 +405,10 @@ export default class TokenMold {
     }
 
     // Do this for all tokens, even player created ones
-    if (this.settings.size.use && TokenConsts.SUPPORTED_CREATURESIZE.includes(game.system.id)) {
+    if (
+      this.settings.size.use &&
+      TokenConsts.SUPPORTED_CREATURESIZE.includes(game.system.id)
+    ) {
       this.#setCreatureSize(newData, actor, scene);
     }
 
@@ -380,7 +446,9 @@ export default class TokenMold {
     if (TokenConsts.SUPPORTED_ROLLHP.includes(game.system.id)) {
       if (this.settings.hp.use) {
         const val = await this.#rollHP(token);
-        token.actor.update({'system.attributes.hp': {value: val, max: val}});
+        token.actor.update({
+          "system.attributes.hp": { value: val, max: val },
+        });
       }
     }
   }
@@ -395,7 +463,10 @@ export default class TokenMold {
     const selected = canvas.tokens.controlled;
     let udata = [];
     for (const token of selected) {
-      const newData = this.#setTokenData(canvas.scene, token.document.toObject());
+      const newData = this.#setTokenData(
+        canvas.scene,
+        token.document.toObject()
+      );
 
       await this._setHP(token.document);
 
@@ -433,15 +504,14 @@ export default class TokenMold {
    * @returns {void}
    * @private
    */
-  #overwriteConfig(tokenData, actor) {
+  #overwriteConfig(tokenData) {
     TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#overwriteConfig");
     for (let [key, value] of Object.entries(this.settings.config)) {
       TokenLog.log(TokenLog.LOG_LEVEL.Debug, "Key: ", key, "; Value: ", value);
       if (value.use !== true) {
         continue;
       }
-      switch(key)
-      {
+      switch (key) {
         case "displayBars":
           tokenData[key] = value.value;
           break;
@@ -462,35 +532,49 @@ export default class TokenMold {
           //if (value.attribute === "" || foundry.utils.getProperty(actor, value.attribute) !== undefined) // ??
           tokenData["bar2.attribute"] = value.attribute;
           break;
-        case "scale":
+        case "scale": {
           let scaleX = tokenData["texture.scaleX"] || 1;
           let scaleY = tokenData["texture.scaleY"] || 1;
-          let scale = Math.floor((Math.random() * (value.max - value.min) + value.min) * 100, );
+          let scale = Math.floor(
+            (Math.random() * (value.max - value.min) + value.min) * 100
+          );
           tokenData["texture.scaleX"] = (scaleX * scale) / 100;
           tokenData["texture.scaleY"] = (scaleY * scale) / 100;
           break;
-        case "rotation":
+        }
+        case "rotation": {
           let rot = tokenData[key] || 1;
-          tokenData[key] = (rot * Math.floor((Math.random() * (value.max - value.min) + value.min) * 100, )) / 100;
+          tokenData[key] =
+            (rot *
+              Math.floor(
+                (Math.random() * (value.max - value.min) + value.min) * 100
+              )) /
+            100;
           break;
-        case "mirrorX":
+        }
+        case "mirrorX": {
           let mirrorX = Boolean(Math.round(Math.random()));
-          if (mirrorX)
-          {
+          if (mirrorX) {
             let scaleX = tokenData["texture.scaleX"] || 1;
             tokenData["texture.scaleX"] = -1 * scaleX;
           }
           break;
-        case "mirrorY":
+        }
+        case "mirrorY": {
           let mirrorY = Boolean(Math.round(Math.random()));
-          if (mirrorY)
-          {
+          if (mirrorY) {
             let scaleY = tokenData["texture.scaleY"] || 1;
             tokenData["texture.scaleY"] = -1 * scaleY;
           }
           break;
+        }
         default:
-          TokenLog.log(TokenLog.LOG_LEVEL.Error, "#overwriteConfig: Key: '", key, "' does not exist.");
+          TokenLog.log(
+            TokenLog.LOG_LEVEL.Error,
+            "#overwriteConfig: Key: '",
+            key,
+            "' does not exist."
+          );
           break;
       }
     }
@@ -511,17 +595,28 @@ export default class TokenMold {
       dcc: "system.attributes.hitDice.value",
     };
 
-    const formula = foundry.utils.getProperty(token.actor, hpProperties[game.system.id]);
+    const formula = foundry.utils.getProperty(
+      token.actor,
+      hpProperties[game.system.id]
+    );
     if (formula) {
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#rollHP.formula", formula );
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#rollHP.formula", formula);
 
       const constant = new Roll(formula.replace(" ", ""));
-      constant.evaluateSync({strict: false}); // calculate the constant portion
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#rollHP.constant.evaluateSync.total", constant.total );
+      constant.evaluateSync({ strict: false }); // calculate the constant portion
+      TokenLog.log(
+        TokenLog.LOG_LEVEL.Debug,
+        "#rollHP.constant.evaluateSync.total",
+        constant.total
+      );
 
       const roll = new Roll(formula.replace(" ", ""));
       await roll.evaluate();
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#rollHP.roll.evaluate.total", roll.total );
+      TokenLog.log(
+        TokenLog.LOG_LEVEL.Debug,
+        "#rollHP.roll.evaluate.total",
+        roll.total
+      );
 
       if (this.settings.hp.toChat) {
         roll.toMessage({
@@ -531,13 +626,16 @@ export default class TokenMold {
       }
       // Make sure hp is at least 1 or the number of dice + constant value
       const min = Math.max(roll.dice[0].number + constant.total, 1);
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#rollHP.min", min );
+      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#rollHP.min", min);
       const val = Math.max(roll.total, min);
 
       return val;
     } else {
       ui.notifications.warn("Can not randomize hp. HP formula is not set.");
-      return foundry.utils.getProperty(token.actor, "system.attributes.hp.value");
+      return foundry.utils.getProperty(
+        token.actor,
+        "system.attributes.hp.value"
+      );
     }
   }
 
@@ -557,7 +655,9 @@ export default class TokenMold {
     let name = actor.prototypeToken.name;
 
     // Temporarily removing baseNameOverride as shift-drag doesn't seem to work anymore
-    //if (["remove", "replace"].includes(this.settings.name.replace) && !(this.settings.name.baseNameOverride && getModifierState("Shift"))) {
+    //if (["remove", "replace"].includes(this.settings.name.replace)
+    //     && !(this.settings.name.baseNameOverride
+    //     && getModifierState("Shift"))) {
     if (["remove", "replace"].includes(this.settings.name.replace)) {
       name = "";
     }
@@ -624,7 +724,9 @@ export default class TokenMold {
       this.counter[scene.id][tokenData.actorId] = number;
 
       numberSuffix =
-        this.settings.name.number.prefix + number + this.settings.name.number.suffix;
+        this.settings.name.number.prefix +
+        number +
+        this.settings.name.number.suffix;
     }
 
     if (this.settings.name.replace === "replace") {
@@ -695,7 +797,8 @@ export default class TokenMold {
    * Base idea:
    *  - Choose a language (depending on settings chosen)
    *  - Choose a random starting trigram for the language, weighted by frequency used
-   *  - Go on choosing letters like before, using the previous found letter as starting letter of the trigram, until maximum is reached
+   *  - Go on choosing letters like before, using the previous found letter as starting letter of the trigram,
+   *    until maximum is reached
    *
    * @param {Actor} actor
    *
@@ -709,14 +812,22 @@ export default class TokenMold {
     let lang;
     for (let attribute of attributes) {
       const langs = attribute.languages;
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, `pickNewName attribute.attribute=${attribute.attribute}`);
-      const val = String(foundry.utils.getProperty(actor, attribute.attribute), ).toLowerCase();
+      TokenLog.log(
+        TokenLog.LOG_LEVEL.Debug,
+        `pickNewName attribute.attribute=${attribute.attribute}`
+      );
+      const val = String(
+        foundry.utils.getProperty(actor, attribute.attribute)
+      ).toLowerCase();
       TokenLog.log(TokenLog.LOG_LEVEL.Debug, `pickNewName val=${val}`);
 
       lang = langs[val];
 
       if (lang !== undefined) {
-        TokenLog.log(TokenLog.LOG_LEVEL.Debug, `pickNewName found lang=${lang}`);
+        TokenLog.log(
+          TokenLog.LOG_LEVEL.Debug,
+          `pickNewName found lang=${lang}`
+        );
         break;
       }
     }
@@ -754,7 +865,13 @@ export default class TokenMold {
       newName = newName + this.#chooseWeighted(c3);
     }
 
-    newName = newName[0] + this.#changeCase(newName.slice(1), this.dict[lang].upper, this.dict[lang].lower, );
+    newName =
+      newName[0] +
+      this.#changeCase(
+        newName.slice(1),
+        this.dict[lang].upper,
+        this.dict[lang].lower
+      );
     return newName;
   }
 
@@ -860,7 +977,7 @@ export default class TokenMold {
       roman = "",
       i = 3;
     while (i--) {
-      roman = (key[+digits.pop() + (i * 10)] || "") + roman;
+      roman = (key[+digits.pop() + i * 10] || "") + roman;
     }
     return Array(+digits.join("") + 1).join("M") + roman;
   }
@@ -906,7 +1023,6 @@ export default class TokenMold {
     }
     return num;
   }
-
 
   /**
    * Scale tokens according to set creature size
@@ -1051,10 +1167,10 @@ export default class TokenMold {
           value: 0,
         },
         mirrorX: {
-          use: false
+          use: false,
         },
         mirrorY: {
-          use: false
+          use: false,
         },
         rotation: {
           use: false,
@@ -1079,28 +1195,28 @@ export default class TokenMold {
     };
   }
 
-    /**
-     *
-     * @return {object[]}
-     * @private
-     */
-    get #defaultAttrs() {
-      TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#defaultAttrs");
-      if (TokenConsts.SUPPORTED_5ESKILLS.includes(game.system.id)) {
-        return [
-          {
-            icon: '&#xf06e;', // <i class="fa-solid fa-eye"></i>
-            path: 'system.skills.prc.passive',
-          },
-          {
-            icon: '&#xf3ed;', // <i class="fa-solid fa-shield-halved"></i>
-            path: 'system.attributes.ac.value',
-          },
-        ];
-      } else {
-        return [];
-      }
+  /**
+   *
+   * @return {object[]}
+   * @private
+   */
+  get #defaultAttrs() {
+    TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#defaultAttrs");
+    if (TokenConsts.SUPPORTED_5ESKILLS.includes(game.system.id)) {
+      return [
+        {
+          icon: "&#xf06e;", // <i class="fa-solid fa-eye"></i>
+          path: "system.skills.prc.passive",
+        },
+        {
+          icon: "&#xf3ed;", // <i class="fa-solid fa-shield-halved"></i>
+          path: "system.attributes.ac.value",
+        },
+      ];
+    } else {
+      return [];
     }
+  }
 
   /**
    *
@@ -1123,13 +1239,22 @@ export default class TokenMold {
       }
       delete this.settings.config.data;
     }
-    if (foundry.utils.getProperty(this.settings, "overlay.attrs") && this.settings.overlay.attrs.length === 0) {
+    if (
+      foundry.utils.getProperty(this.settings, "overlay.attrs") &&
+      this.settings.overlay.attrs.length === 0
+    ) {
       delete this.settings.overlay.attrs;
     }
-    if (foundry.utils.getProperty(this.settings, "name.options.attributes") && this.settings.name.options.attributes.length === 0) {
+    if (
+      foundry.utils.getProperty(this.settings, "name.options.attributes") &&
+      this.settings.name.options.attributes.length === 0
+    ) {
       delete this.settings.name.options.attributes;
     }
-    this.settings = foundry.utils.mergeObject(this.#defaultSettings(), this.settings);
+    this.settings = foundry.utils.mergeObject(
+      this.#defaultSettings(),
+      this.settings
+    );
 
     if (TokenConsts.SUPPORTED_5ESKILLS.includes(game.system.id)) {
       if (this.settings.name.options === undefined) {
@@ -1139,7 +1264,11 @@ export default class TokenMold {
       }
     }
     this.#loadDicts();
-    TokenLog.log(TokenLog.LOG_LEVEL.Debug, "Loaded Settings Complete", this.settings, );
+    TokenLog.log(
+      TokenLog.LOG_LEVEL.Debug,
+      "Loaded Settings Complete",
+      this.settings
+    );
   }
 
   /**
@@ -1149,19 +1278,33 @@ export default class TokenMold {
    */
   async saveSettings() {
     TokenLog.log(TokenLog.LOG_LEVEL.Debug, "saveSettings", this.settings);
-    if (!this.adjectives || this.adjectives.uuid !== this.settings.name.prefix.table) {
+    if (
+      !this.adjectives ||
+      this.adjectives.uuid !== this.settings.name.prefix.table
+    ) {
       this.#loadTable();
     }
 
-    if (this.settings.name.replace === "remove" && !this.settings.name.number.use && !this.settings.name.prefix.use) {
+    if (
+      this.settings.name.replace === "remove" &&
+      !this.settings.name.number.use &&
+      !this.settings.name.prefix.use
+    ) {
       this.settings.name.replace = "nothing";
-      TokenLog.log(TokenLog.LOG_LEVEL.Warn, game.i18n.localize("tmold.warn.removeName"), );
+      TokenLog.log(
+        TokenLog.LOG_LEVEL.Warn,
+        game.i18n.localize("tmold.warn.removeName")
+      );
       ui.notifications.warn(game.i18n.localize("tmold.warn.removeName"));
     }
 
     await game.settings.set("Token-Mold", "everyone", this.settings);
     this.#loadDicts();
-    TokenLog.log(TokenLog.LOG_LEVEL.Debug, "Saved Settings Complete", this.settings, );
+    TokenLog.log(
+      TokenLog.LOG_LEVEL.Debug,
+      "Saved Settings Complete",
+      this.settings
+    );
   }
 
   /**
@@ -1178,34 +1321,38 @@ export default class TokenMold {
     //   else obj[key] = val;
     // };
     // for (const type of types) {
-      try {
-        // const docClass = new CONFIG.Actor.documentClass({
-        //   type: type,
-        //   name: type + "_tmp",
-        // }).system;
-        // const { bar, value } =
-        //   CONFIG.Token.documentClass.getTrackedAttributes(docClass);
-        // for (const val of bar) {
-        //   addElement(barData.bar, val.join("."), type);
-        // }
-        // for (const val of value) {
-        //   addElement(barData.value, val.join("."), type);
-        // }
+    try {
+      // const docClass = new CONFIG.Actor.documentClass({
+      //   type: type,
+      //   name: type + "_tmp",
+      // }).system;
+      // const { bar, value } =
+      //   CONFIG.Token.documentClass.getTrackedAttributes(docClass);
+      // for (const val of bar) {
+      //   addElement(barData.bar, val.join("."), type);
+      // }
+      // for (const val of value) {
+      //   addElement(barData.value, val.join("."), type);
+      // }
 
-        // new?? from mixin.mjs async _prepareResourcesTab()
-        //const usesTrackableAttributes = !foundry.utils.isEmpty(CONFIG.Actor.trackableAttributes);
-        //const attributeSource = (this.actor?.system instanceof foundry.abstract.DataModel) && usesTrackableAttributes
-        //  ? this.actor?.type
-        //  : this.actor?.system;
-        //const attributeSource = type;
-        const TokenDocument = foundry.utils.getDocumentClass("Token");
-        const attributes = TokenDocument.getTrackedAttributes();
+      // new?? from mixin.mjs async _prepareResourcesTab()
+      //const usesTrackableAttributes = !foundry.utils.isEmpty(CONFIG.Actor.trackableAttributes);
+      //const attributeSource = (this.actor?.system instanceof foundry.abstract.DataModel) && usesTrackableAttributes
+      //  ? this.actor?.type
+      //  : this.actor?.system;
+      //const attributeSource = type;
+      const TokenDocument = foundry.utils.getDocumentClass("Token");
+      const attributes = TokenDocument.getTrackedAttributes();
 
-        const typeData = TokenDocument.getTrackedAttributeChoices(attributes);
-        barData = typeData;
-      } catch (e) {
-        TokenLog.log(TokenLog.LOG_LEVEL.Debug, "Error navigating document class type!", type, e, );
-      }
+      const typeData = TokenDocument.getTrackedAttributeChoices(attributes);
+      barData = typeData;
+    } catch (error) {
+      TokenLog.log(
+        TokenLog.LOG_LEVEL.Error,
+        "Error getting tracked attributes!",
+        error
+      );
+    }
     // }
     TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#getBarAttributes Complete");
     return barData;
