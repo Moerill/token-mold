@@ -11,32 +11,28 @@
     <header class="table-header flexrow">
         <label class="index">{{ localize "tmold.stat.attributeIcon" }}</label>
         <label>{{ localize "tmold.stat.attribute" }}</label>
-        <!-- <a class='remove' title='{{ localize "tmold.stat.attributeDelete" }}'></a> -->
-        <!-- &nbsp; -->
+        <label>&nbsp;</label>
     </header>
     {{#each settings.overlay.attrs}}
     <div class="form-group overlay attributes">
-        <select class='icon fa-solid'>
-            {{#select this.icon}}
+        <select class='overlay-icon fa-solid'>
             {{#each @root.defaultIcons}}
-            <option class='fa-solid' value="{{this}}">{{{this}}}</option>
+            <option class='fa-solid' value="{{this}}" {{#if (eq this ../icon)}}selected{{/if}}>{{{this}}}</option>
             {{/each}}
-            {{/select}}
-            <!--  selectOptions @root.defaultIcons selected=this.icon -->
         </select>
-        <select class='value' data-dtype='String'>
+        <select class='overlay-value' data-dtype='String'>
             {{ selectOptions @root.actorAttributes selected=this.path }}
         </select>
         <a data-action="removeoverlayattribute" title='{{ localize "tmold.stat.attributeDelete" }}'><i class="fa-solid fa-xmark"></i></a>
     </div>
     {{else}}
     <div class="form-group overlay attributes">
-        <select class='icon fa-solid'>
+        <select class='overlay-icon fa-solid'>
             {{#each @root.defaultIcons}}
             <option class='fa-solid' value="{{this}}">{{{this}}}</option>
             {{/each}}
         </select>
-        <select class='value' data-dtype='String'>
+        <select class='overlay-value' data-dtype='String'>
             {{ selectOptions @root.actorAttributes }}
         </select>
         <a data-action="removeoverlayattribute" title='{{ localize "tmold.stat.attributeDelete" }}'><i class="fa-solid fa-xmark"></i></a>

@@ -315,7 +315,7 @@ export default class TokenMold {
         <label class='label-inp' title='(De-)activate Name randomizing'>
             <input class='name rollable' type='checkbox' name='name.use' ${
               this.settings.name.use ? "checked" : ""
-            }><span><span class='checkmark'></span>&nbsp;Name</span>
+            }><span>Name</span>
         </label>
         ${
           TokenConsts.SUPPORTED_ROLLHP.includes(game.system.id)
@@ -323,19 +323,19 @@ export default class TokenMold {
         <label class='label-inp' title='(De-)activate Hit Point rolling'>
             <input class='hp rollable' type='checkbox' name='hp.use' ${
               this.settings.hp.use ? "checked" : ""
-            }><span><span class='checkmark'></span>&nbsp;HP</span>
+            }><span>HP</span>
         </label>`
             : ``
         }
         <label class='label-inp' title='(De-)activate Token Config Overwrite'>
             <input class='config rollable' type='checkbox' name='config.use' ${
               this.settings.config.use ? "checked" : ""
-            }><span><span class='checkmark'></span>&nbsp;Config</span>
+            }><span>Config</span>
         </label>
         <label class='label-inp' title='(De-)activate Stat Overlay On Hover'>
             <input class='config rollable' type='checkbox' name='overlay.use' ${
               this.settings.overlay.use ? "checked" : ""
-            }><span><span class='checkmark'></span>&nbsp;Overlay</span>
+            }><span>Overlay</span>
         </label>
         <a class='refresh-selected' title="Reapplies all settings to selected tokens as if those were replaced onto the scene."><i class="fa-solid fa-rotate"></i></a>
         <a class='token-mold-form-btn' title='Settings'><i class="fa-solid fa-gear"></i></a>

@@ -182,8 +182,8 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(
     const attrGroups = form.querySelectorAll(".overlay.attributes");
     let attrs = [];
     attrGroups.forEach((e) => {
-      const icon = e.querySelector(".icon.fa-solid").value;
-      const value = e.querySelector(".value").value;
+      const icon = e.querySelector(".overlay-icon.fa-solid").value;
+      const value = e.querySelector(".overlay-value").value;
       if (icon && value) {
         attrs.push({
           icon: icon,
@@ -619,9 +619,6 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(
     TokenLog.log(TokenLog.LOG_LEVEL.Debug, "TokenMoldForm: _onRender");
 
     await super._onRender(context, options);
-
-    // TODO: replace jQuery
-    //const html = $(this.element);
 
     // I can't figure out what this is supposed to do
     // // TODO fix: .parentNode.parentNode

@@ -97,12 +97,12 @@
         </header>
         <div class="form-group language-selection language-group default-group">
             <span class='attribute default' value='default'>{{ localize "tmold.name.default" }}</span>
-            <span class='value'></span>
+            <!-- <span></span> -->
             <select class='language'>
                 {{ selectOptions @root.languages selected=settings.name.options.default }}
             </select>
             <!-- <a class='remove' title='{{ localize "tmold.name.delete" }}'></a> -->
-            &nbsp;
+            <!-- &nbsp; -->
         </div>
         {{#each settings.name.options.attributes as |attrs idx|}}
         <div class="form-group attribute-selection attribute-group">
