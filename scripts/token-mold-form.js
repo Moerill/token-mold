@@ -194,18 +194,19 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(
     this.settings.overlay.attrs = attrs;
 
     this.settings.name.options.default = form
-      .querySelector(".default-group")
-      .querySelector(".language").value;
+      .querySelector(".language-default-group")
+      .querySelector(".name-language").value;
     const attributes = [];
 
-    const langAttrGroups = form.querySelectorAll(".attribute-selection");
+    const langAttrGroups = form.querySelectorAll(".language-attribute-group");
 
     langAttrGroups.forEach((el) => {
       let ret = { languages: {} };
-      ret.attribute = el.querySelector(".attribute").value;
+      ret.attribute = el.querySelector(".language-attribute").value;
       el.querySelectorAll(".language-group").forEach((langGroup) => {
-        ret.languages[langGroup.querySelector(".value").value.toLowerCase()] =
-          langGroup.querySelector(".language").value;
+        ret.languages[
+          langGroup.querySelector(".name-value").value.toLowerCase()
+        ] = langGroup.querySelector(".name-language").value;
       });
       attributes.push(ret);
     });
@@ -469,7 +470,7 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(
     );
 
     const clone = target.previousElementSibling.cloneNode(true);
-    const attributes = clone.querySelectorAll(".attribute");
+    const attributes = clone.querySelectorAll(".language-attribute");
     attributes.forEach((e) => {
       e.value = "";
     });
@@ -528,14 +529,12 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(
       container.remove();
     } else {
       // alternatively delete whole attribute
-      const parentContainer = container.closest(".attribute-group");
+      const parentContainer = container.closest(".language-attribute-group");
       if (
         parentContainer.previousElementSibling.matches(
-          ".attribute-group:not(.default)"
+          ".language-attribute-group"
         ) ||
-        parentContainer.nextElementSibling.matches(
-          ".attribute-group:not(.default)"
-        )
+        parentContainer.nextElementSibling.matches(".language-attribute-group")
       ) {
         parentContainer.remove();
       }
