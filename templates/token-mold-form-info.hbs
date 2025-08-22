@@ -1,0 +1,17 @@
+<div class="tab scrollable{{#if tab.active}} active{{/if}}" data-group="{{tab.group}}" data-tab="{{tab.id}}">
+    <h3>General Settings</h3>
+    <div class="form-group slim">
+        <label for='unlinked_only'>{{ localize "tmold.config.applySettings" }}&nbsp;<em>{{ localize "tmold.config.unlinkedOnly" }}</em>.</label>
+        <div class="form-fields">
+            <input data-dtype="Boolean" type='checkbox' name='unlinkedOnly' id='unlinked_only' {{checked settings.unlinkedOnly}}>
+        </div>
+    </div>
+    <h3>Help</h3>
+    <ul>
+        <li><a href="https://github.com/Moerill/token-mold#token-mold">{{ localize "tmold.info.featureOverview" }}</a></li>
+        <li><a href="https://github.com/Moerill/token-mold/issues">{{ localize "tmold.info.bugsOrSuggestions" }}</a></li>
+        <li><a href="https://github.com/Moerill/token-mold/blob/master/CHANGELOG.md">{{ localize "tmold.info.changelog" }}</a></li>
+    </ul>
+    <h3>Support</h3>
+    <p class='hint'>{{ localize "tmold.info.support" }}&nbsp;<a href="https://github.com/Moerill/token-mold">{{ localize "tmold.info.clickHere" }}</a></p>
+</div>

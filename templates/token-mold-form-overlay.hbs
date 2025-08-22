@@ -1,0 +1,41 @@
+<div class="tab scrollable{{#if tab.active}} active{{/if}}" data-group="{{tab.group}}" data-tab="{{tab.id}}">
+    <div class="form-group slim">
+        <label for='enableOverlayForLinked'>{{ localize "tmold.config.enableOverlayFor" }}&nbsp;<em>{{ localize "tmold.config.linkedTokens" }}</em>.</label>
+        <div class="form-fields">
+            <input type='checkbox' name='overlay.enableOverlayForLinked' id='enableOverlayForLinked' {{checked settings.overlay.enableOverlayForLinked}} data-dtype="Boolean">
+        </div>
+    </div>
+    <div>
+        <h3>{{ localize "tmold.stat.attributeChooseDisplay" }}</h3>
+    </div>
+    <header class="table-header flexrow">
+        <label class="overlay-index">{{ localize "tmold.stat.attributeIcon" }}</label>
+        <label>{{ localize "tmold.stat.attribute" }}</label>
+    </header>
+    {{#each settings.overlay.attrs}}
+    <div class="form-group overlay attributes">
+        <select class='overlay-icon fa-solid'>
+            {{#each @root.defaultIcons}}
+            <option class='fa-solid' value="{{this}}" {{#if (eq this ../icon)}}selected{{/if}}>{{{this}}}</option>
+            {{/each}}
+        </select>
+        <select class='overlay-value' data-dtype='String'>
+            {{ selectOptions @root.actorAttributes selected=this.path }}
+        </select>
+        <a data-action="removeoverlayattribute" title='{{ localize "tmold.stat.attributeDelete" }}'><i class="fa-solid fa-xmark"></i></a>
+    </div>
+    {{else}}
+    <div class="form-group overlay attributes">
+        <select class='overlay-icon fa-solid'>
+            {{#each @root.defaultIcons}}
+            <option class='fa-solid' value="{{this}}">{{{this}}}</option>
+            {{/each}}
+        </select>
+        <select class='overlay-value' data-dtype='String'>
+            {{ selectOptions @root.actorAttributes }}
+        </select>
+        <a data-action="removeoverlayattribute" title='{{ localize "tmold.stat.attributeDelete" }}'><i class="fa-solid fa-xmark"></i></a>
+    </div>
+    {{/each}}
+    <a data-action="addoverlayattribute"><i class="fa-solid fa-plus"></i>&nbsp;{{ localize "tmold.stat.attributeAdd" }}</a>
+</div>
