@@ -56,8 +56,7 @@
   "tmold.name.addValue": "Wert hinzufügen",
   "tmold.name.addAttribute": "Attribut hinzufügen",
 
-  "tmold.system.sendToChat": "Sende Ergebnise in den Chat",
-  "tmold.system.sendToChatHint": "Diese Einstellung ändert nur, ob die Würfe an den Chat geschickt werden. Ob die Trefferpunkte gewürfelt werden, entscheidet sich an den Einstellungen in der Seitenleiste.",
+  "tmold.system.sendToChat": "Sende Ergebnise in den Chat (Diese Einstellung ändert nur, ob die Würfe an den Chat geschickt werden. Ob die Trefferpunkte gewürfelt werden, entscheidet sich an den Einstellungen in der Seitenleiste.)",
   "tmold.system.setTokenSize": "Setze die Figurengröße auf die Größe der Kreatur skaliert an die Kartengröße",
   "tmold.system.setTokenSizeHelp": "Setzt die Größe der Figur passend zu der Größe des Charakters anhand der Regeln. Wenn die Karte ft. als Einheit eingetragen hat, wird es passend skaliert.",
 

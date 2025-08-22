@@ -1,9 +1,7 @@
 {
-	"use-tabs": false,
-	"tabWidth": 2,
+	"use-tabs": true,
 	"single-quote": true,
 	"quote-props": "consistent",
-	"print-width": 120,
-	"semi": true,
-	"trailingComma": "es5"
+	"print-width": 140,
+	"semi": true
 }
