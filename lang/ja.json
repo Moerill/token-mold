@@ -1,23 +1,23 @@
 {
     "I18N.MAINTAINERS": [ "Moerill" ],
-  
+
     "Token Mold": "Token Mold",
-  
+
     "tmold.config.applySettings": "リンクされてないトークンのみ",
     "tmold.config.unlinkedOnly": "設定を適用します。",
-  
+
     "tmold.tab.infoHelp": "案内",
     "tmold.tab.name": "名前",
     "tmold.tab.systemSpecific": "システム固有",
     "tmold.tab.defaultConfig": "デフォルト設定の変更",
     "tmold.tab.statOverlay": "オーバーレイ表示",
-  
+
     "tmold.info.featureOverview": "機能の概要 / お読みください！",
     "tmold.info.bugsOrSuggestions": "バグや機能の提案は？ ここで作成します。",
     "tmold.info.changelog": "変更履歴",
     "tmold.info.support": "開発をサポートしてみませんか？",
     "tmold.info.clickHere": "ここをクリック",
-  
+
     "tmold.name.addNumbers": "通し番号を名前に追加する",
     "tmold.name.numberStyle": "通し番号のスタイルを選択します。最初のフィールドは空にできません！",
     "tmold.name.prefix": "接頭",
@@ -54,11 +54,12 @@
     "tmold.stat.name": "名前",
     "tmold.name.addValue": "値を追加",
     "tmold.name.addAttribute": "特性を追加",
-  
-    "tmold.system.sendToChat": "チャットに結果を送信（この設定はロール結果がチャットに送信される場合にのみ有効です。ｈｐがロールされるかどうかは､元々の設定に基づきます）",
+
+    "tmold.system.sendToChat": "チャットに結果を送信",
+    "tmold.system.sendToChatHint": "この設定はロール結果がチャットに送信される場合にのみ有効です。ｈｐがロールされるかどうかは､元々の設定に基づきます",
     "tmold.system.setTokenSize": "トークンのサイズをクリーチャーのサイズに設定し､マップのスケールに合わせて調整する",
     "tmold.system.setTokenSizeHelp": "ルールに準拠するアクターシートに設定されたサイズに従って､トークンサイズを設定します。マップに距離単位としてft.がある場合､それに応じて調整されます。",
-  
+
     "TOKEN.ResourceDisplay": "リソース･バーの表示",
     "tmold.default.overwrite": "上書き",
     "TOKEN.ResourceBar1A": "バー 1 設定",
@@ -77,7 +78,7 @@
     "tmold.default.randMirroring": "ランダム･ミラーリング",
     "tmold.default.horizontal": "水平",
     "tmold.default.vertical": "垂直",
-  
+
     "tmold.stat.attributeChooseDisplay": "オーバーレイ表示する特性を選択",
     "tmold.stat.attribute": "特性",
     "tmold.stat.attributeIcon": "アイコン",

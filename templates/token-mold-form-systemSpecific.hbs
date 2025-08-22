@@ -1,0 +1,20 @@
+<div class="tab scrollable{{#if tab.active}} active{{/if}}" data-group="{{tab.group}}" data-tab="{{tab.id}}">
+    {{#if showHP}}
+    <div class="form-group slim">
+        <label for='hp_to_Chat'>{{ localize "tmold.system.sendToChat" }}</label>
+        <div class="form-fields">
+            <input data-dtype="Boolean" type='checkbox' name='hp.toChat' id='hp_to_Chat' {{checked settings.hp.toChat}}>
+        </div>
+        <p class="hint">{{ localize "tmold.system.sendToChatHint" }}</p>
+    </div>
+    {{/if}}
+    {{#if showCreatureSize}}
+    <div class="form-group slim">
+        <label for='sizeUse'>{{ localize "tmold.system.setTokenSize" }}</label>
+        <div class="form-fields">
+            <input data-dtype="Boolean" type='checkbox' name='size.use' id='sizeUse' {{checked settings.size.use}} />
+        </div>
+        <p class="hint">{{ localize "tmold.system.setTokenSizeHelp" }}</p>
+    </div>
+    {{/if}}
+</div>

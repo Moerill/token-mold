@@ -56,7 +56,8 @@
   "tmold.name.addValue": "Añadir valor",
   "tmold.name.addAttribute": "Añadir atributo",
 
-  "tmold.system.sendToChat": "Enviar resultados al chat (esto lo que hace es simplemente cambiar si las tiradas se envian al chat. El que se tiren o no los PV está basado en los ajustes en la barra lateral)",
+  "tmold.system.sendToChat": "Enviar resultados al chat",
+  "tmold.system.sendToChatHint": "Esto lo que hace es simplemente cambiar si las tiradas se envian al chat. El que se tiren o no los PV está basado en los ajustes en la barra lateral.",
   "tmold.system.setTokenSize": "Ajustar tamaño del icono al de la criatura y escalado al mapa",
   "tmold.system.setTokenSizeHelp": "Ajusta el tamaño del icono de acuerdo al tamaño que tiene especificado en la hoja de personaje y de acuerdo a las reglas. Si el mapa usa ft. como unidad de distancia, se escalará consecuentemente",
 
