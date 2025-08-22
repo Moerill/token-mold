@@ -1,8 +1,3 @@
-# v2.23.0
-- Updated to support DnD5e 5.x and Foundry v13
-- Dropped support for Foundry v12
-- Update to ApplicationV2
-
 # v2.22.3
 - Split up files into smaller files
 - Rename the duplicate 'data' members into separate names for readability (created form, consts, and log js files)

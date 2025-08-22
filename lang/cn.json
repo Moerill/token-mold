@@ -56,8 +56,7 @@
   "tmold.name.addValue": "添加数值",
   "tmold.name.addAttribute": "添加属性",
 
-  "tmold.system.sendToChat": "发送结果到聊天消息",
-  "tmold.system.sendToChatHint": "这个设置只是改变了是否将结果发送至聊天消息。HP是否被发送是基于侧边栏的设置.",
+  "tmold.system.sendToChat": "发送结果到聊天消息 (这个设置只是改变了是否将结果发送至聊天消息。HP是否被发送是基于侧边栏的设置.)",
   "tmold.system.setTokenSize": "将指示物的大小设置为生物的大小，并按地图比例进行缩放。",
   "tmold.system.setTokenSizeHelp": "根据角色单中设置的尺寸规则来设置指示物的大小。如果地图上的距离单位是英尺，它就会相应地放大。",
 
