@@ -3,7 +3,7 @@
 	"tabWidth": 2,
 	"single-quote": true,
 	"quote-props": "consistent",
-	"print-width": 120,
+	"print-width": 140,
 	"semi": true,
 	"trailingComma": "es5"
 }

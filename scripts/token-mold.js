@@ -1314,33 +1314,10 @@ export default class TokenMold {
    */
   async #getBarAttributes() {
     TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#getBarAttributes");
-    // const types = CONFIG.Actor.documentClass.TYPES.filter(x => x !== 'base');
-    let barData = []; //{ bar: {}, value: {} };
-    // let addElement = (obj, key, val) => {
-    //   if (obj[key]) obj[key] += ", " + val;
-    //   else obj[key] = val;
-    // };
-    // for (const type of types) {
-    try {
-      // const docClass = new CONFIG.Actor.documentClass({
-      //   type: type,
-      //   name: type + "_tmp",
-      // }).system;
-      // const { bar, value } =
-      //   CONFIG.Token.documentClass.getTrackedAttributes(docClass);
-      // for (const val of bar) {
-      //   addElement(barData.bar, val.join("."), type);
-      // }
-      // for (const val of value) {
-      //   addElement(barData.value, val.join("."), type);
-      // }
 
-      // new?? from mixin.mjs async _prepareResourcesTab()
-      //const usesTrackableAttributes = !foundry.utils.isEmpty(CONFIG.Actor.trackableAttributes);
-      //const attributeSource = (this.actor?.system instanceof foundry.abstract.DataModel) && usesTrackableAttributes
-      //  ? this.actor?.type
-      //  : this.actor?.system;
-      //const attributeSource = type;
+    let barData = [];
+
+    try {
       const TokenDocument = foundry.utils.getDocumentClass("Token");
       const attributes = TokenDocument.getTrackedAttributes();
 
@@ -1353,7 +1330,7 @@ export default class TokenMold {
         error
       );
     }
-    // }
+
     TokenLog.log(TokenLog.LOG_LEVEL.Debug, "#getBarAttributes Complete");
     return barData;
   }
