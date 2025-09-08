@@ -734,6 +734,9 @@ export default class TokenMold {
     }
 
     if (this.settings.name.prefix.use) {
+      // TODO - Make this async and use the table roll
+      // const defaultResults = await this.adjectives.roll();
+      // const adj = defaultResults.results[0].description;
       const adj =
         this.adjectives.results._source[
           Math.floor(this.adjectives.results.size * Math.random())

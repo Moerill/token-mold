@@ -138,7 +138,7 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(
    * Style of number to append
    * @private
    */
-  static #NUMBER_SYTLES = Object.freeze({
+  static #NUMBER_STYLES = Object.freeze({
     ar: "arabic numerals",
     alu: "alphabetic UPPER",
     all: "alphabetic LOWER",
@@ -328,7 +328,7 @@ export default class TokenMoldForm extends HandlebarsApplicationMixin(
             Object.assign(languages, { [language]: language }),
           langs
         );
-        partContext.numberStyles = TokenMoldForm.#NUMBER_SYTLES;
+        partContext.numberStyles = TokenMoldForm.#NUMBER_STYLES;
         partContext.prefixPositions = TokenMoldForm.#PREFIX_POSITIONS;
         partContext.nameReplaceOptions = TokenMoldForm.#NAME_REPLACE_OPTIONS;
         partContext.rollTableList = this.object._rollTableList;

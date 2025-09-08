@@ -22,12 +22,8 @@
     "verified": "13",
     "maximum": "13"
   },
-  "esmodules": [
-    "scripts/index.js"
-  ],
-  "styles": [
-    "token-mold.css"
-  ],
+  "esmodules": ["scripts/index.js"],
+  "styles": ["token-mold.css"],
   "languages": [
     {
       "lang": "en",
@@ -61,7 +57,7 @@
       "name": "adjectives",
       "label": "Adjectives",
       "module": "token-mold",
-      "path": "assets/adjectives.db",
+      "path": "assets/adjectives",
       "type": "RollTable",
       "private": false
     }

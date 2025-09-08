@@ -2,11 +2,13 @@
 
 - Updated to support DnD5e 5.x and Foundry v13
 - Dropped support for Foundry v12
-- Complete rewrite to ApplicationV2
-- Removed majority of custom CSS. Style now matches Foundry default.
-- Only display TokenMold Adjective tables in drop down
+- Complete rewrite from FormApplication to ApplicationV2 with HandlebarsApplicationMixin
+- Enhanced code organization with better separation of concerns
+- Updated UI styling to match Foundry's default appearance with minimal custom CSS
+- Streamlined adjective table selection to only display TokenMold tables
 - Lint/Prettier are working again.
-- Split HTML into seperate HBS file per tab
+- Restructuring HTML templates into separate HBS files per tab for better organization
+- Added JSON source for rollable tables. Removed nedb. Updated leveldb.
 - And many more...
 
 # v2.22.3

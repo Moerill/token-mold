@@ -1,0 +1,571 @@
+{
+  "_id": "UP1c6ePegr8fXFOr",
+  "name": "Spanish",
+  "permission": {
+    "default": 0,
+    "U6aHCpLfrOLJ0wEf": 3
+  },
+  "flags": {},
+  "description": "Spanish adjective list for Token-Mold.\r\nThis will get replaced on an update, so make sure to copy it before making changes to the copy.",
+  "results": [
+    {
+      "_id": "tfaXu4CwP0L8BUdu",
+      "flags": {},
+      "type": 0,
+      "text": "Alerta",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.tfaXu4CwP0L8BUdu"
+    },
+    {
+      "_id": "vfUrygy1owwwKCNM",
+      "flags": {},
+      "type": 0,
+      "text": "Arrogante",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.vfUrygy1owwwKCNM"
+    },
+    {
+      "_id": "idgBEKdGAtFggyEx",
+      "flags": {},
+      "type": 0,
+      "text": "Torpe",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.idgBEKdGAtFggyEx"
+    },
+    {
+      "_id": "gDJ6M009ukHw4E8y",
+      "flags": {},
+      "type": 0,
+      "text": "Impaciente",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.gDJ6M009ukHw4E8y"
+    },
+    {
+      "_id": "GzjoaE3v1UvrHLNY",
+      "flags": {},
+      "type": 0,
+      "text": "Feroz",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.GzjoaE3v1UvrHLNY"
+    },
+    {
+      "_id": "GbrWiKIBivxL27lV",
+      "flags": {},
+      "type": 0,
+      "text": "Frágil",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.GbrWiKIBivxL27lV"
+    },
+    {
+      "_id": "s56OOyKASWvlQHyA",
+      "flags": {},
+      "type": 0,
+      "text": "Genocida",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.s56OOyKASWvlQHyA"
+    },
+    {
+      "_id": "QR0GEUckbU3VDUbR",
+      "flags": {},
+      "type": 0,
+      "text": "Grande",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.QR0GEUckbU3VDUbR"
+    },
+    {
+      "_id": "IZohCckJnjumGmwZ",
+      "flags": {},
+      "type": 0,
+      "text": "Salvaje",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.IZohCckJnjumGmwZ"
+    },
+    {
+      "_id": "PWafehAKhufzpeto",
+      "flags": {},
+      "type": 0,
+      "text": "Obediente",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.PWafehAKhufzpeto"
+    },
+    {
+      "_id": "TQN2sm0GDwgSTKqc",
+      "flags": {},
+      "type": 0,
+      "text": "Hipócrita",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.TQN2sm0GDwgSTKqc"
+    },
+    {
+      "_id": "BXbL5kmwZCF7pw2D",
+      "flags": {},
+      "type": 0,
+      "text": "Terrible",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.BXbL5kmwZCF7pw2D"
+    },
+    {
+      "_id": "UWhT3qhHNVeQXnCu",
+      "flags": {},
+      "type": 0,
+      "text": "Inteligente",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.UWhT3qhHNVeQXnCu"
+    },
+    {
+      "_id": "cyiOSMDcAY427YW1",
+      "flags": {},
+      "type": 0,
+      "text": "Veloz",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.cyiOSMDcAY427YW1"
+    },
+    {
+      "_id": "gXc5f6nMWkawuqMe",
+      "flags": {},
+      "type": 0,
+      "text": "Eficaz",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.gXc5f6nMWkawuqMe"
+    },
+    {
+      "_id": "A9Nj1ZeitnDkbQgK",
+      "flags": {},
+      "type": 0,
+      "text": "Valiente",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.A9Nj1ZeitnDkbQgK"
+    },
+    {
+      "_id": "zB4tVsfJR5yuAJR0",
+      "flags": {},
+      "type": 0,
+      "text": "Decadente",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.zB4tVsfJR5yuAJR0"
+    },
+    {
+      "_id": "qZXDiGpuWDLsa885",
+      "flags": {},
+      "type": 0,
+      "text": "Admirable",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.qZXDiGpuWDLsa885"
+    },
+    {
+      "_id": "fN9ZU9wQBAhqEJfL",
+      "flags": {},
+      "type": 0,
+      "text": "Dócil",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.fN9ZU9wQBAhqEJfL"
+    },
+    {
+      "_id": "hYvZCaoK7wPiyUfV",
+      "flags": {},
+      "type": 0,
+      "text": "Contaminante",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.hYvZCaoK7wPiyUfV"
+    },
+    {
+      "_id": "KlT7XmMmofYg8rR4",
+      "flags": {},
+      "type": 0,
+      "text": "Endeble",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        21,
+        21
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.KlT7XmMmofYg8rR4"
+    },
+    {
+      "_id": "ADtNVk8mF8bAKaMR",
+      "flags": {},
+      "type": 0,
+      "text": "Brillante",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        22,
+        22
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.ADtNVk8mF8bAKaMR"
+    },
+    {
+      "_id": "x8Fe4sf0LXMPzXdO",
+      "flags": {},
+      "type": 0,
+      "text": "Ténue",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        23,
+        23
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.x8Fe4sf0LXMPzXdO"
+    },
+    {
+      "_id": "V2gDhXQ97KvvsKGy",
+      "flags": {},
+      "type": 0,
+      "text": "Genial",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        24,
+        24
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.V2gDhXQ97KvvsKGy"
+    },
+    {
+      "_id": "cEd2iz8FbxdzKWVq",
+      "flags": {},
+      "type": 0,
+      "text": "Perfeccionista",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        25,
+        25
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.cEd2iz8FbxdzKWVq"
+    },
+    {
+      "_id": "60uK6Rujq2I6M4PT",
+      "flags": {},
+      "type": 0,
+      "text": "Indignante",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        26,
+        26
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.60uK6Rujq2I6M4PT"
+    },
+    {
+      "_id": "MMkDIjVCfZCHMn1X",
+      "flags": {},
+      "type": 0,
+      "text": "Elegante",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        27,
+        27
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.MMkDIjVCfZCHMn1X"
+    },
+    {
+      "_id": "xmsdFQZsrMZG78pu",
+      "flags": {},
+      "type": 0,
+      "text": "Noble",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        28,
+        28
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.xmsdFQZsrMZG78pu"
+    },
+    {
+      "_id": "yzhywprCD2nvgT3c",
+      "flags": {},
+      "type": 0,
+      "text": "Imputable",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        29,
+        29
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.yzhywprCD2nvgT3c"
+    },
+    {
+      "_id": "4N5H6QJaA5cZqkMU",
+      "flags": {},
+      "type": 0,
+      "text": "Espía",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        30,
+        30
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.4N5H6QJaA5cZqkMU"
+    },
+    {
+      "_id": "VWpWFNEHLZprve5W",
+      "flags": {},
+      "type": 0,
+      "text": "Vidente",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        31,
+        31
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.VWpWFNEHLZprve5W"
+    },
+    {
+      "_id": "Z4wpcRm6kJIH53rv",
+      "flags": {},
+      "type": 0,
+      "text": "Gurú",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        32,
+        32
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.Z4wpcRm6kJIH53rv"
+    },
+    {
+      "_id": "zGcZbXi1vL5z7sm8",
+      "flags": {},
+      "type": 0,
+      "text": "Atleta",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        33,
+        33
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.zGcZbXi1vL5z7sm8"
+    },
+    {
+      "_id": "CapbdNaPbTNC1gXA",
+      "flags": {},
+      "type": 0,
+      "text": "Saludable",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        34,
+        34
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.CapbdNaPbTNC1gXA"
+    },
+    {
+      "_id": "LYy3PWC9XmZSfS60",
+      "flags": {},
+      "type": 0,
+      "text": "del Infierno",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        35,
+        35
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.LYy3PWC9XmZSfS60"
+    },
+    {
+      "_id": "u0YScKzY35w0y6YL",
+      "flags": {},
+      "type": 0,
+      "text": "Convincente",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        36,
+        36
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.u0YScKzY35w0y6YL"
+    },
+    {
+      "_id": "5MOsyTyuVjTJtHr1",
+      "flags": {},
+      "type": 0,
+      "text": "Egoísta",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        37,
+        37
+      ],
+      "drawn": false,
+      "_key": "!tables.results!UP1c6ePegr8fXFOr.5MOsyTyuVjTJtHr1"
+    }
+  ],
+  "formula": "1d37",
+  "replacement": true,
+  "displayRoll": false,
+  "_key": "!tables!UP1c6ePegr8fXFOr"
+}
