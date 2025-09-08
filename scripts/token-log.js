@@ -17,9 +17,8 @@ export default class TokenLog {
    */
   static log(level, ...args) {
     // NOTE: Developer Mode doesn't work in Foundry v12
-    const shouldLog =
-      level >= TokenLog.CURRENT_LOG_LEVEL;
-      // || game.modules.get("_dev-mode")?.api?.getPackageDebugValue(TokenLog.MODULEID);
+    const shouldLog = level >= TokenLog.CURRENT_LOG_LEVEL;
+    // || game.modules.get("_dev-mode")?.api?.getPackageDebugValue(TokenLog.MODULEID);
 
     if (shouldLog) {
       switch (level) {

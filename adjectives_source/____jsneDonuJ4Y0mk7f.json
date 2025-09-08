@@ -1,0 +1,2461 @@
+{
+  "_id": "jsneDonuJ4Y0mk7f",
+  "name": "日本語",
+  "permission": {
+    "default": 0,
+    "U6aHCpLfrOLJ0wEf": 3
+  },
+  "flags": {},
+  "description": "Token-mold用の形容詞表です。\r\nこの中身を更新しても次のアップデートで初期化されますのでバックアップを取ってください。",
+  "results": [
+    {
+      "_id": "tfaXu4CwP0L8BUdu",
+      "flags": {},
+      "type": 0,
+      "text": "凶暴な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.tfaXu4CwP0L8BUdu"
+    },
+    {
+      "_id": "vfUrygy1owwwKCNM",
+      "flags": {},
+      "type": 0,
+      "text": "用心深い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.vfUrygy1owwwKCNM"
+    },
+    {
+      "_id": "idgBEKdGAtFggyEx",
+      "flags": {},
+      "type": 0,
+      "text": "怒りっぽい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.idgBEKdGAtFggyEx"
+    },
+    {
+      "_id": "gDJ6M009ukHw4E8y",
+      "flags": {},
+      "type": 0,
+      "text": "傲慢な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.gDJ6M009ukHw4E8y"
+    },
+    {
+      "_id": "GzjoaE3v1UvrHLNY",
+      "flags": {},
+      "type": 0,
+      "text": "野蛮な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.GzjoaE3v1UvrHLNY"
+    },
+    {
+      "_id": "GbrWiKIBivxL27lV",
+      "flags": {},
+      "type": 0,
+      "text": "酔いどれの",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.GbrWiKIBivxL27lV"
+    },
+    {
+      "_id": "s56OOyKASWvlQHyA",
+      "flags": {},
+      "type": 0,
+      "text": "古強者の",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.s56OOyKASWvlQHyA"
+    },
+    {
+      "_id": "QR0GEUckbU3VDUbR",
+      "flags": {},
+      "type": 0,
+      "text": "影の薄い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.QR0GEUckbU3VDUbR"
+    },
+    {
+      "_id": "IZohCckJnjumGmwZ",
+      "flags": {},
+      "type": 0,
+      "text": "熱狂的な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.IZohCckJnjumGmwZ"
+    },
+    {
+      "_id": "PWafehAKhufzpeto",
+      "flags": {},
+      "type": 0,
+      "text": "血まみれの",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.PWafehAKhufzpeto"
+    },
+    {
+      "_id": "TQN2sm0GDwgSTKqc",
+      "flags": {},
+      "type": 0,
+      "text": "殺伐とした",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.TQN2sm0GDwgSTKqc"
+    },
+    {
+      "_id": "BXbL5kmwZCF7pw2D",
+      "flags": {},
+      "type": 0,
+      "text": "冷静な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.BXbL5kmwZCF7pw2D"
+    },
+    {
+      "_id": "UWhT3qhHNVeQXnCu",
+      "flags": {},
+      "type": 0,
+      "text": "よく肥えた",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.UWhT3qhHNVeQXnCu"
+    },
+    {
+      "_id": "cyiOSMDcAY427YW1",
+      "flags": {},
+      "type": 0,
+      "text": "ぶきっちょな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.cyiOSMDcAY427YW1"
+    },
+    {
+      "_id": "gXc5f6nMWkawuqMe",
+      "flags": {},
+      "type": 0,
+      "text": "イカれた",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.gXc5f6nMWkawuqMe"
+    },
+    {
+      "_id": "A9Nj1ZeitnDkbQgK",
+      "flags": {},
+      "type": 0,
+      "text": "熱心な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.A9Nj1ZeitnDkbQgK"
+    },
+    {
+      "_id": "zB4tVsfJR5yuAJR0",
+      "flags": {},
+      "type": 0,
+      "text": "凶悪な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.zB4tVsfJR5yuAJR0"
+    },
+    {
+      "_id": "qZXDiGpuWDLsa885",
+      "flags": {},
+      "type": 0,
+      "text": "猛烈な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.qZXDiGpuWDLsa885"
+    },
+    {
+      "_id": "fN9ZU9wQBAhqEJfL",
+      "flags": {},
+      "type": 0,
+      "text": "汚れた",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.fN9ZU9wQBAhqEJfL"
+    },
+    {
+      "_id": "hYvZCaoK7wPiyUfV",
+      "flags": {},
+      "type": 0,
+      "text": "気まぐれな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.hYvZCaoK7wPiyUfV"
+    },
+    {
+      "_id": "KlT7XmMmofYg8rR4",
+      "flags": {},
+      "type": 0,
+      "text": "困惑した",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        21,
+        21
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.KlT7XmMmofYg8rR4"
+    },
+    {
+      "_id": "ADtNVk8mF8bAKaMR",
+      "flags": {},
+      "type": 0,
+      "text": "弱々しい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        22,
+        22
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.ADtNVk8mF8bAKaMR"
+    },
+    {
+      "_id": "x8Fe4sf0LXMPzXdO",
+      "flags": {},
+      "type": 0,
+      "text": "生真面目な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        23,
+        23
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.x8Fe4sf0LXMPzXdO"
+    },
+    {
+      "_id": "V2gDhXQ97KvvsKGy",
+      "flags": {},
+      "type": 0,
+      "text": "狂乱した",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        24,
+        24
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.V2gDhXQ97KvvsKGy"
+    },
+    {
+      "_id": "cEd2iz8FbxdzKWVq",
+      "flags": {},
+      "type": 0,
+      "text": "怯えた",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        25,
+        25
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.cEd2iz8FbxdzKWVq"
+    },
+    {
+      "_id": "60uK6Rujq2I6M4PT",
+      "flags": {},
+      "type": 0,
+      "text": "優雅な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        26,
+        26
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.60uK6Rujq2I6M4PT"
+    },
+    {
+      "_id": "MMkDIjVCfZCHMn1X",
+      "flags": {},
+      "type": 0,
+      "text": "残虐な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        27,
+        27
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.MMkDIjVCfZCHMn1X"
+    },
+    {
+      "_id": "xmsdFQZsrMZG78pu",
+      "flags": {},
+      "type": 0,
+      "text": "血みどろの",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        28,
+        28
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.xmsdFQZsrMZG78pu"
+    },
+    {
+      "_id": "yzhywprCD2nvgT3c",
+      "flags": {},
+      "type": 0,
+      "text": "まったりした",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        29,
+        29
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.yzhywprCD2nvgT3c"
+    },
+    {
+      "_id": "4N5H6QJaA5cZqkMU",
+      "flags": {},
+      "type": 0,
+      "text": "癇癪持ちの",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        30,
+        30
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.4N5H6QJaA5cZqkMU"
+    },
+    {
+      "_id": "VWpWFNEHLZprve5W",
+      "flags": {},
+      "type": 0,
+      "text": "細身の",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        31,
+        31
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.VWpWFNEHLZprve5W"
+    },
+    {
+      "_id": "Z4wpcRm6kJIH53rv",
+      "flags": {},
+      "type": 0,
+      "text": "大柄な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        32,
+        32
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.Z4wpcRm6kJIH53rv"
+    },
+    {
+      "_id": "zGcZbXi1vL5z7sm8",
+      "flags": {},
+      "type": 0,
+      "text": "愚鈍な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        33,
+        33
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.zGcZbXi1vL5z7sm8"
+    },
+    {
+      "_id": "CapbdNaPbTNC1gXA",
+      "flags": {},
+      "type": 0,
+      "text": "気が触れた",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        34,
+        34
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.CapbdNaPbTNC1gXA"
+    },
+    {
+      "_id": "LYy3PWC9XmZSfS60",
+      "flags": {},
+      "type": 0,
+      "text": "小声で呟く",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        35,
+        35
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.LYy3PWC9XmZSfS60"
+    },
+    {
+      "_id": "u0YScKzY35w0y6YL",
+      "flags": {},
+      "type": 0,
+      "text": "憎悪に満ちた",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        36,
+        36
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.u0YScKzY35w0y6YL"
+    },
+    {
+      "_id": "5MOsyTyuVjTJtHr1",
+      "flags": {},
+      "type": 0,
+      "text": "やんちゃな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        37,
+        37
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.5MOsyTyuVjTJtHr1"
+    },
+    {
+      "_id": "xLN7NyuEGr70jaFM",
+      "flags": {},
+      "type": 0,
+      "text": "神経質な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        38,
+        38
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.xLN7NyuEGr70jaFM"
+    },
+    {
+      "_id": "yFuBCDpEHgoOZSLF",
+      "flags": {},
+      "type": 0,
+      "text": "狼狽する",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        39,
+        39
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.yFuBCDpEHgoOZSLF"
+    },
+    {
+      "_id": "F6yY8KM8Oq27rwyu",
+      "flags": {},
+      "type": 0,
+      "text": "わめき叫ぶ",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        40,
+        40
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.F6yY8KM8Oq27rwyu"
+    },
+    {
+      "_id": "f4gZNbbqiIgRd4QK",
+      "flags": {},
+      "type": 0,
+      "text": "不気味な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        41,
+        41
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.f4gZNbbqiIgRd4QK"
+    },
+    {
+      "_id": "qQ1BmTdfEaO2pBnt",
+      "flags": {},
+      "type": 0,
+      "text": "古傷がある",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        42,
+        42
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.qQ1BmTdfEaO2pBnt"
+    },
+    {
+      "_id": "IJGi9rPC5PDmJ5uX",
+      "flags": {},
+      "type": 0,
+      "text": "豪胆な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        43,
+        43
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.IJGi9rPC5PDmJ5uX"
+    },
+    {
+      "_id": "ban5VOykVDG2g9sg",
+      "flags": {},
+      "type": 0,
+      "text": "狡猾そうな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        44,
+        44
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.ban5VOykVDG2g9sg"
+    },
+    {
+      "_id": "SDuhu1TgFM5ywV9N",
+      "flags": {},
+      "type": 0,
+      "text": "たちの悪い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        45,
+        45
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.SDuhu1TgFM5ywV9N"
+    },
+    {
+      "_id": "QxukXIorkzomM35g",
+      "flags": {},
+      "type": 0,
+      "text": "素早い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        46,
+        46
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.QxukXIorkzomM35g"
+    },
+    {
+      "_id": "Lj5kD9f0xR7duuvT",
+      "flags": {},
+      "type": 0,
+      "text": "やぶ睨みの",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        47,
+        47
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.Lj5kD9f0xR7duuvT"
+    },
+    {
+      "_id": "6U37JGEoSFIwD3qY",
+      "flags": {},
+      "type": 0,
+      "text": "ご機嫌とりの",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        48,
+        48
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.6U37JGEoSFIwD3qY"
+    },
+    {
+      "_id": "F0jq8oZD7N65arzo",
+      "flags": {},
+      "type": 0,
+      "text": "小柄な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        49,
+        49
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.F0jq8oZD7N65arzo"
+    },
+    {
+      "_id": "jK9CmBD2hyIfMT94",
+      "flags": {},
+      "type": 0,
+      "text": "痩せこけた",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        50,
+        50
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.jK9CmBD2hyIfMT94"
+    },
+    {
+      "_id": "TpvIMwc3iyYtdE7K",
+      "flags": {},
+      "type": 0,
+      "text": "鈍い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        51,
+        51
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.TpvIMwc3iyYtdE7K"
+    },
+    {
+      "_id": "5mjtpYZudTAdRTX8",
+      "flags": {},
+      "type": 0,
+      "text": "キビキビした",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        52,
+        52
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.5mjtpYZudTAdRTX8"
+    },
+    {
+      "_id": "9DWoxdNY26kVEA3f",
+      "flags": {},
+      "type": 0,
+      "text": "のっぽな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        53,
+        53
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.9DWoxdNY26kVEA3f"
+    },
+    {
+      "_id": "OUNRLrHhKYIPUsUf",
+      "flags": {},
+      "type": 0,
+      "text": "醜悪な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        54,
+        54
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.OUNRLrHhKYIPUsUf"
+    },
+    {
+      "_id": "7Dnd41LxTsKCS0Fi",
+      "flags": {},
+      "type": 0,
+      "text": "凶暴な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        55,
+        55
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.7Dnd41LxTsKCS0Fi"
+    },
+    {
+      "_id": "eimlP4SvSsR6KIZ2",
+      "flags": {},
+      "type": 0,
+      "text": "暴力的な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        56,
+        56
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.eimlP4SvSsR6KIZ2"
+    },
+    {
+      "_id": "uLv8maCfEUt08Ncq",
+      "flags": {},
+      "type": 0,
+      "text": "無謀な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        57,
+        57
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.uLv8maCfEUt08Ncq"
+    },
+    {
+      "_id": "ahek5mM1leZK9xUT",
+      "flags": {},
+      "type": 0,
+      "text": "ワイルドな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        58,
+        58
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.ahek5mM1leZK9xUT"
+    },
+    {
+      "_id": "xkl7c49ou3qtNNsQ",
+      "flags": {},
+      "type": 0,
+      "text": "浅ましい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        59,
+        59
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.xkl7c49ou3qtNNsQ"
+    },
+    {
+      "_id": "Cn6dNYLUCO3vGqB8",
+      "flags": {},
+      "type": 0,
+      "text": "義理堅い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        60,
+        60
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.Cn6dNYLUCO3vGqB8"
+    },
+    {
+      "_id": "iMVrFPhegR5S4enD",
+      "flags": {},
+      "type": 0,
+      "text": "照れくさい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        61,
+        61
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.iMVrFPhegR5S4enD"
+    },
+    {
+      "_id": "E3VOQp0VWRiTCjK5",
+      "flags": {},
+      "type": 0,
+      "text": "尊い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        62,
+        62
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.E3VOQp0VWRiTCjK5"
+    },
+    {
+      "_id": "9fHUaFLrm0w8xsfc",
+      "flags": {},
+      "type": 0,
+      "text": "卑しい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        63,
+        63
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.9fHUaFLrm0w8xsfc"
+    },
+    {
+      "_id": "L8tW2hTo4BgrCzUc",
+      "flags": {},
+      "type": 0,
+      "text": "計算高い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        64,
+        64
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.L8tW2hTo4BgrCzUc"
+    },
+    {
+      "_id": "hOH9ZWmqP9IGwA5i",
+      "flags": {},
+      "type": 0,
+      "text": "いやらしい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        65,
+        65
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.hOH9ZWmqP9IGwA5i"
+    },
+    {
+      "_id": "LtCRkaUq4jAu2lwo",
+      "flags": {},
+      "type": 0,
+      "text": "後ろめたい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        66,
+        66
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.LtCRkaUq4jAu2lwo"
+    },
+    {
+      "_id": "DibyABEv1fpvX7GD",
+      "flags": {},
+      "type": 0,
+      "text": "嘆かわしい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        67,
+        67
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.DibyABEv1fpvX7GD"
+    },
+    {
+      "_id": "L8aTIZtmXNW25nrj",
+      "flags": {},
+      "type": 0,
+      "text": "疎い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        68,
+        68
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.L8aTIZtmXNW25nrj"
+    },
+    {
+      "_id": "TlIrbrylWZmdz8q8",
+      "flags": {},
+      "type": 0,
+      "text": "心細い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        69,
+        69
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.TlIrbrylWZmdz8q8"
+    },
+    {
+      "_id": "4LczVlTjPjLEF6gq",
+      "flags": {},
+      "type": 0,
+      "text": "奥深い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        70,
+        70
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.4LczVlTjPjLEF6gq"
+    },
+    {
+      "_id": "5MkxHRBMbJwNQ8DP",
+      "flags": {},
+      "type": 0,
+      "text": "名高い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        71,
+        71
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.5MkxHRBMbJwNQ8DP"
+    },
+    {
+      "_id": "MynzRSCaB5NmzOz8",
+      "flags": {},
+      "type": 0,
+      "text": "何気ない",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        72,
+        72
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.MynzRSCaB5NmzOz8"
+    },
+    {
+      "_id": "QYAO38AxgnEcJehf",
+      "flags": {},
+      "type": 0,
+      "text": "おっかない",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        73,
+        73
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.QYAO38AxgnEcJehf"
+    },
+    {
+      "_id": "NKARLHi59wsG0T6p",
+      "flags": {},
+      "type": 0,
+      "text": "生々しい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        74,
+        74
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.NKARLHi59wsG0T6p"
+    },
+    {
+      "_id": "6SAPOmQUQelE9Vw6",
+      "flags": {},
+      "type": 0,
+      "text": "しぶとい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        75,
+        75
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.6SAPOmQUQelE9Vw6"
+    },
+    {
+      "_id": "DkcMPrdJWjgz0Jsh",
+      "flags": {},
+      "type": 0,
+      "text": "おぼつかない",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        76,
+        76
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.DkcMPrdJWjgz0Jsh"
+    },
+    {
+      "_id": "XOWlRnHCD5pTfcEU",
+      "flags": {},
+      "type": 0,
+      "text": "馴れ馴れしい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        77,
+        77
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.XOWlRnHCD5pTfcEU"
+    },
+    {
+      "_id": "JC0Ws56qDM5sb4qx",
+      "flags": {},
+      "type": 0,
+      "text": "辛抱強い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        78,
+        78
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.JC0Ws56qDM5sb4qx"
+    },
+    {
+      "_id": "zxTgI1eSWCLgZTTi",
+      "flags": {},
+      "type": 0,
+      "text": "輝かしい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        79,
+        79
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.zxTgI1eSWCLgZTTi"
+    },
+    {
+      "_id": "DSOyQwq3B6CYXz7D",
+      "flags": {},
+      "type": 0,
+      "text": "妬ましい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        80,
+        80
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.DSOyQwq3B6CYXz7D"
+    },
+    {
+      "_id": "Zv1ip7T2pXa9XGSX",
+      "flags": {},
+      "type": 0,
+      "text": "すさまじい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        81,
+        81
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.Zv1ip7T2pXa9XGSX"
+    },
+    {
+      "_id": "hyztnPkFOebJhFPU",
+      "flags": {},
+      "type": 0,
+      "text": "粘り強い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        82,
+        82
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.hyztnPkFOebJhFPU"
+    },
+    {
+      "_id": "upU4UEKqhtLW82rZ",
+      "flags": {},
+      "type": 0,
+      "text": "堅苦しい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        83,
+        83
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.upU4UEKqhtLW82rZ"
+    },
+    {
+      "_id": "yMQiaM9uSdsNw4jL",
+      "flags": {},
+      "type": 0,
+      "text": "すばしっこい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        84,
+        84
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.yMQiaM9uSdsNw4jL"
+    },
+    {
+      "_id": "n2AxfeBDWNzFCQPv",
+      "flags": {},
+      "type": 0,
+      "text": "儚い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        85,
+        85
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.n2AxfeBDWNzFCQPv"
+    },
+    {
+      "_id": "RJNlAcgNfikg4JOQ",
+      "flags": {},
+      "type": 0,
+      "text": "ばかばかしい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        86,
+        86
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.RJNlAcgNfikg4JOQ"
+    },
+    {
+      "_id": "n6npRGDBEeWF63ua",
+      "flags": {},
+      "type": 0,
+      "text": "計り知れない",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        87,
+        87
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.n6npRGDBEeWF63ua"
+    },
+    {
+      "_id": "9KYWU1it1Y4pipce",
+      "flags": {},
+      "type": 0,
+      "text": "回りくどい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        88,
+        88
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.9KYWU1it1Y4pipce"
+    },
+    {
+      "_id": "Zz2NMOKqXUb7VDh2",
+      "flags": {},
+      "type": 0,
+      "text": "安っぽい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        89,
+        89
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.Zz2NMOKqXUb7VDh2"
+    },
+    {
+      "_id": "x9mFpt3FlMCnxuWO",
+      "flags": {},
+      "type": 0,
+      "text": "ややこしい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        90,
+        90
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.x9mFpt3FlMCnxuWO"
+    },
+    {
+      "_id": "TowduuQYNKS8blks",
+      "flags": {},
+      "type": 0,
+      "text": "腹立たしい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        91,
+        91
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.TowduuQYNKS8blks"
+    },
+    {
+      "_id": "qQowQCEFaYBQqEfh",
+      "flags": {},
+      "type": 0,
+      "text": "みすぼらしい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        92,
+        92
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.qQowQCEFaYBQqEfh"
+    },
+    {
+      "_id": "qYypbgF1107SHLaU",
+      "flags": {},
+      "type": 0,
+      "text": "欲深い",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        93,
+        93
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.qYypbgF1107SHLaU"
+    },
+    {
+      "_id": "mvLrtNSD56hdjVFG",
+      "flags": {},
+      "type": 0,
+      "text": "未練がましい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        94,
+        94
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.mvLrtNSD56hdjVFG"
+    },
+    {
+      "_id": "oSk3scxA1ccSnDaE",
+      "flags": {},
+      "type": 0,
+      "text": "理屈っぽい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        95,
+        95
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.oSk3scxA1ccSnDaE"
+    },
+    {
+      "_id": "6b28AtY9MlWLAe53",
+      "flags": {},
+      "type": 0,
+      "text": "わざとらしい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        96,
+        96
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.6b28AtY9MlWLAe53"
+    },
+    {
+      "_id": "V2cRDzUUokf8uzJN",
+      "flags": {},
+      "type": 0,
+      "text": "古めかしい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        97,
+        97
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.V2cRDzUUokf8uzJN"
+    },
+    {
+      "_id": "4cl3gAliEOGOvbLV",
+      "flags": {},
+      "type": 0,
+      "text": "煩わしい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        98,
+        98
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.4cl3gAliEOGOvbLV"
+    },
+    {
+      "_id": "a1sDhYRYUIdWi4bS",
+      "flags": {},
+      "type": 0,
+      "text": "紛らわしい",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        99,
+        99
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.a1sDhYRYUIdWi4bS"
+    },
+    {
+      "_id": "aWrOZLNKt2ED3WiP",
+      "flags": {},
+      "type": 0,
+      "text": "悪質な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        100,
+        100
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.aWrOZLNKt2ED3WiP"
+    },
+    {
+      "_id": "ydE8T6krr1kvDp9c",
+      "flags": {},
+      "type": 0,
+      "text": "鮮やかな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        101,
+        101
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.ydE8T6krr1kvDp9c"
+    },
+    {
+      "_id": "7NOq8M3pVNBIIwHW",
+      "flags": {},
+      "type": 0,
+      "text": "安静な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        102,
+        102
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.7NOq8M3pVNBIIwHW"
+    },
+    {
+      "_id": "3VN0RZ2qPZ8YtEKK",
+      "flags": {},
+      "type": 0,
+      "text": "虚ろな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        103,
+        103
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.3VN0RZ2qPZ8YtEKK"
+    },
+    {
+      "_id": "6OzZlq1acdRjnJ39",
+      "flags": {},
+      "type": 0,
+      "text": "内気な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        104,
+        104
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.6OzZlq1acdRjnJ39"
+    },
+    {
+      "_id": "mCqR1mC5TscTfZJu",
+      "flags": {},
+      "type": 0,
+      "text": "陰気な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        105,
+        105
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.mCqR1mC5TscTfZJu"
+    },
+    {
+      "_id": "HsQ5LKC6iakzSaAo",
+      "flags": {},
+      "type": 0,
+      "text": "臆病な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        106,
+        106
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.HsQ5LKC6iakzSaAo"
+    },
+    {
+      "_id": "f2Xg8TXfFxV6rmWB",
+      "flags": {},
+      "type": 0,
+      "text": "お節介な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        107,
+        107
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.f2Xg8TXfFxV6rmWB"
+    },
+    {
+      "_id": "mwXZ4pHcBdXCMGX0",
+      "flags": {},
+      "type": 0,
+      "text": "温和な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        108,
+        108
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.mwXZ4pHcBdXCMGX0"
+    },
+    {
+      "_id": "3z3Q3kulDGgA2Dse",
+      "flags": {},
+      "type": 0,
+      "text": "過敏な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        109,
+        109
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.3z3Q3kulDGgA2Dse"
+    },
+    {
+      "_id": "onOXxQrble7S0Lky",
+      "flags": {},
+      "type": 0,
+      "text": "頑固な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        110,
+        110
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.onOXxQrble7S0Lky"
+    },
+    {
+      "_id": "iouMSCySVOIsPeGt",
+      "flags": {},
+      "type": 0,
+      "text": "頑丈な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        111,
+        111
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.iouMSCySVOIsPeGt"
+    },
+    {
+      "_id": "tS7Iem8ugOG7H8nT",
+      "flags": {},
+      "type": 0,
+      "text": "完璧な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        112,
+        112
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.tS7Iem8ugOG7H8nT"
+    },
+    {
+      "_id": "2q72cxqmQnTPjfnu",
+      "flags": {},
+      "type": 0,
+      "text": "寛容な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        113,
+        113
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.2q72cxqmQnTPjfnu"
+    },
+    {
+      "_id": "vUyfrPi79WfpdvTl",
+      "flags": {},
+      "type": 0,
+      "text": "几帳面な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        114,
+        114
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.vUyfrPi79WfpdvTl"
+    },
+    {
+      "_id": "TPrDrKF9n4HbkIei",
+      "flags": {},
+      "type": 0,
+      "text": "希薄な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        115,
+        115
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.TPrDrKF9n4HbkIei"
+    },
+    {
+      "_id": "f6rVVBAx7FYHv38M",
+      "flags": {},
+      "type": 0,
+      "text": "気まぐれな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        116,
+        116
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.f6rVVBAx7FYHv38M"
+    },
+    {
+      "_id": "4QNktEajZa1o2guz",
+      "flags": {},
+      "type": 0,
+      "text": "強烈な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        117,
+        117
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.4QNktEajZa1o2guz"
+    },
+    {
+      "_id": "pnVIiI8U4zInKWPt",
+      "flags": {},
+      "type": 0,
+      "text": "清らかな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        118,
+        118
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.pnVIiI8U4zInKWPt"
+    },
+    {
+      "_id": "I6LuRw6KsU5VWsgE",
+      "flags": {},
+      "type": 0,
+      "text": "煌びやかな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        119,
+        119
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.I6LuRw6KsU5VWsgE"
+    },
+    {
+      "_id": "CZJEmJ7seqOXNbAk",
+      "flags": {},
+      "type": 0,
+      "text": "軽率な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        120,
+        120
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.CZJEmJ7seqOXNbAk"
+    },
+    {
+      "_id": "FeVQogLzPOfPtch9",
+      "flags": {},
+      "type": 0,
+      "text": "賢明な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        121,
+        121
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.FeVQogLzPOfPtch9"
+    },
+    {
+      "_id": "dMZ6s35D9G82wili",
+      "flags": {},
+      "type": 0,
+      "text": "小柄な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        122,
+        122
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.dMZ6s35D9G82wili"
+    },
+    {
+      "_id": "zxkJH3Mq5l4KyeMj",
+      "flags": {},
+      "type": 0,
+      "text": "滑稽な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        123,
+        123
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.zxkJH3Mq5l4KyeMj"
+    },
+    {
+      "_id": "PsOq698UAQOjKWc3",
+      "flags": {},
+      "type": 0,
+      "text": "最悪な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        124,
+        124
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.PsOq698UAQOjKWc3"
+    },
+    {
+      "_id": "B4vnRoz2DJtNMirc",
+      "flags": {},
+      "type": 0,
+      "text": "雑な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        125,
+        125
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.B4vnRoz2DJtNMirc"
+    },
+    {
+      "_id": "HioKSL8spuZZX3Qg",
+      "flags": {},
+      "type": 0,
+      "text": "執拗な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        126,
+        126
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.HioKSL8spuZZX3Qg"
+    },
+    {
+      "_id": "MJd61EwDUywXzrqI",
+      "flags": {},
+      "type": 0,
+      "text": "しなやかな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        127,
+        127
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.MJd61EwDUywXzrqI"
+    },
+    {
+      "_id": "K29TCsrJmQmX2Fji",
+      "flags": {},
+      "type": 0,
+      "text": "神経質な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        128,
+        128
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.K29TCsrJmQmX2Fji"
+    },
+    {
+      "_id": "LX29PEtpn7DSy0mU",
+      "flags": {},
+      "type": 0,
+      "text": "盛大な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        129,
+        129
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.LX29PEtpn7DSy0mU"
+    },
+    {
+      "_id": "7JJxdybl2fALs2ia",
+      "flags": {},
+      "type": 0,
+      "text": "切実な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        130,
+        130
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.7JJxdybl2fALs2ia"
+    },
+    {
+      "_id": "mUSVn8Bd05HqlXbu",
+      "flags": {},
+      "type": 0,
+      "text": "善良な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        131,
+        131
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.mUSVn8Bd05HqlXbu"
+    },
+    {
+      "_id": "hLFvNDTxhpIEpd1d",
+      "flags": {},
+      "type": 0,
+      "text": "素朴な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        132,
+        132
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.hLFvNDTxhpIEpd1d"
+    },
+    {
+      "_id": "doX5uMV51UTAoKGZ",
+      "flags": {},
+      "type": 0,
+      "text": "大胆な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        133,
+        133
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.doX5uMV51UTAoKGZ"
+    },
+    {
+      "_id": "rAUdAQvBMG73I4kr",
+      "flags": {},
+      "type": 0,
+      "text": "怠慢な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        134,
+        134
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.rAUdAQvBMG73I4kr"
+    },
+    {
+      "_id": "eXUAfQtkMYJZHG6U",
+      "flags": {},
+      "type": 0,
+      "text": "達者な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        135,
+        135
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.eXUAfQtkMYJZHG6U"
+    },
+    {
+      "_id": "hSmoe70fgDBbGTUA",
+      "flags": {},
+      "type": 0,
+      "text": "知的な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        136,
+        136
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.hSmoe70fgDBbGTUA"
+    },
+    {
+      "_id": "SxXvnvkhC4vmd6H7",
+      "flags": {},
+      "type": 0,
+      "text": "忠実な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        137,
+        137
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.SxXvnvkhC4vmd6H7"
+    },
+    {
+      "_id": "NplI7HYXKs8KvRDI",
+      "flags": {},
+      "type": 0,
+      "text": "つぶらな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        138,
+        138
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.NplI7HYXKs8KvRDI"
+    },
+    {
+      "_id": "5OkynLcWRwAcrgek",
+      "flags": {},
+      "type": 0,
+      "text": "遠回りな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        139,
+        139
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.5OkynLcWRwAcrgek"
+    },
+    {
+      "_id": "hArtd8vDx6Ba6b8Q",
+      "flags": {},
+      "type": 0,
+      "text": "薄弱な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        140,
+        140
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.hArtd8vDx6Ba6b8Q"
+    },
+    {
+      "_id": "pTogKffhIzjvboha",
+      "flags": {},
+      "type": 0,
+      "text": "半端な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        141,
+        141
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.pTogKffhIzjvboha"
+    },
+    {
+      "_id": "AylfsInXz39hjG3n",
+      "flags": {},
+      "type": 0,
+      "text": "風変わりな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        142,
+        142
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.AylfsInXz39hjG3n"
+    },
+    {
+      "_id": "jghSbguWesqRQnxl",
+      "flags": {},
+      "type": 0,
+      "text": "不可解な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        143,
+        143
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.jghSbguWesqRQnxl"
+    },
+    {
+      "_id": "e7tneOzWxhHTOi5o",
+      "flags": {},
+      "type": 0,
+      "text": "不吉な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        144,
+        144
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.e7tneOzWxhHTOi5o"
+    },
+    {
+      "_id": "xTr2PzLuf3qcwgP1",
+      "flags": {},
+      "type": 0,
+      "text": "不順な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        145,
+        145
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.xTr2PzLuf3qcwgP1"
+    },
+    {
+      "_id": "wq0eqCG7ErADRDru",
+      "flags": {},
+      "type": 0,
+      "text": "不審な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        146,
+        146
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.wq0eqCG7ErADRDru"
+    },
+    {
+      "_id": "SQDU4KCygjdKBURV",
+      "flags": {},
+      "type": 0,
+      "text": "不服な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        147,
+        147
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.SQDU4KCygjdKBURV"
+    },
+    {
+      "_id": "SnuvOnlHWCjNdgxS",
+      "flags": {},
+      "type": 0,
+      "text": "未熟な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        148,
+        148
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.SnuvOnlHWCjNdgxS"
+    },
+    {
+      "_id": "375N0mw9FUtvRW7R",
+      "flags": {},
+      "type": 0,
+      "text": "無口な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        149,
+        149
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.375N0mw9FUtvRW7R"
+    },
+    {
+      "_id": "FLZr44hdA3Sa0uQM",
+      "flags": {},
+      "type": 0,
+      "text": "無気力な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        150,
+        150
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.FLZr44hdA3Sa0uQM"
+    },
+    {
+      "_id": "bmD22wa4JWczbdhK",
+      "flags": {},
+      "type": 0,
+      "text": "無能な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        151,
+        151
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.bmD22wa4JWczbdhK"
+    },
+    {
+      "_id": "3fchrVfq21JGUJeq",
+      "flags": {},
+      "type": 0,
+      "text": "名誉な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        152,
+        152
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.3fchrVfq21JGUJeq"
+    },
+    {
+      "_id": "psvBK6mBcc9nQHJl",
+      "flags": {},
+      "type": 0,
+      "text": "盲目的な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        153,
+        153
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.psvBK6mBcc9nQHJl"
+    },
+    {
+      "_id": "AOaaPfx2Fc5VgcJW",
+      "flags": {},
+      "type": 0,
+      "text": "猛烈な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        154,
+        154
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.AOaaPfx2Fc5VgcJW"
+    },
+    {
+      "_id": "Ha0Nsxy24dr1ptVc",
+      "flags": {},
+      "type": 0,
+      "text": "物好きな",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        155,
+        155
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.Ha0Nsxy24dr1ptVc"
+    },
+    {
+      "_id": "QiKNYpnLZYo9HC2I",
+      "flags": {},
+      "type": 0,
+      "text": "勇敢な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        156,
+        156
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.QiKNYpnLZYo9HC2I"
+    },
+    {
+      "_id": "YhfrUxgunZ5tltm9",
+      "flags": {},
+      "type": 0,
+      "text": "優美な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        157,
+        157
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.YhfrUxgunZ5tltm9"
+    },
+    {
+      "_id": "mcVEVlGvFdZsblkx",
+      "flags": {},
+      "type": 0,
+      "text": "有力な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        158,
+        158
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.mcVEVlGvFdZsblkx"
+    },
+    {
+      "_id": "DSx8gRGMzqKnWdYH",
+      "flags": {},
+      "type": 0,
+      "text": "理不尽な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        159,
+        159
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.DSx8gRGMzqKnWdYH"
+    },
+    {
+      "_id": "XPtevslp5WioQjdb",
+      "flags": {},
+      "type": 0,
+      "text": "流暢な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        160,
+        160
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.XPtevslp5WioQjdb"
+    },
+    {
+      "_id": "IQXRPx4jy0hUDuNE",
+      "flags": {},
+      "type": 0,
+      "text": "冷酷な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        161,
+        161
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.IQXRPx4jy0hUDuNE"
+    },
+    {
+      "_id": "KFw3WM9gfZPXsJRg",
+      "flags": {},
+      "type": 0,
+      "text": "劣等な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        162,
+        162
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.KFw3WM9gfZPXsJRg"
+    },
+    {
+      "_id": "JdOEB57GFFDYTl5N",
+      "flags": {},
+      "type": 0,
+      "text": "露骨な",
+      "img": "icons/svg/d20-black.svg",
+      "resultId": "",
+      "weight": 1,
+      "range": [
+        163,
+        163
+      ],
+      "drawn": false,
+      "_key": "!tables.results!jsneDonuJ4Y0mk7f.JdOEB57GFFDYTl5N"
+    }
+  ],
+  "formula": "1d163",
+  "replacement": true,
+  "displayRoll": false,
+  "_key": "!tables!jsneDonuJ4Y0mk7f"
+}

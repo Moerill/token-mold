@@ -1,0 +1,3217 @@
+{
+  "_id": "V7AqF84KsZt56rC6",
+  "name": "Portuguese",
+  "permission": {
+    "default": 0,
+    "U6aHCpLfrOLJ0wEf": 3
+  },
+  "img": "icons/svg/d20-grey.svg",
+  "flags": {},
+  "description": "Portuguese adjective list for Token-Mold.Thanks to @innocenti!\nThis will get replaced on an update, so make sure to copy it before making changes to the copy.",
+  "results": [
+    {
+      "_id": "tfaXu4CwP0L8BUdu",
+      "flags": {},
+      "type": 0,
+      "text": "Alerta",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.tfaXu4CwP0L8BUdu"
+    },
+    {
+      "_id": "vfUrygy1owwwKCNM",
+      "flags": {},
+      "type": 0,
+      "text": "Arrogante",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.vfUrygy1owwwKCNM"
+    },
+    {
+      "_id": "idgBEKdGAtFggyEx",
+      "flags": {},
+      "type": 0,
+      "text": "Lerdo",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.idgBEKdGAtFggyEx"
+    },
+    {
+      "_id": "gDJ6M009ukHw4E8y",
+      "flags": {},
+      "type": 0,
+      "text": "Impaciente",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.gDJ6M009ukHw4E8y"
+    },
+    {
+      "_id": "GzjoaE3v1UvrHLNY",
+      "flags": {},
+      "type": 0,
+      "text": "Feroz",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.GzjoaE3v1UvrHLNY"
+    },
+    {
+      "_id": "GbrWiKIBivxL27lV",
+      "flags": {},
+      "type": 0,
+      "text": "Frágil",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.GbrWiKIBivxL27lV"
+    },
+    {
+      "_id": "s56OOyKASWvlQHyA",
+      "flags": {},
+      "type": 0,
+      "text": "Agressivo",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.s56OOyKASWvlQHyA"
+    },
+    {
+      "_id": "QR0GEUckbU3VDUbR",
+      "flags": {},
+      "type": 0,
+      "text": "Grande",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.QR0GEUckbU3VDUbR"
+    },
+    {
+      "_id": "IZohCckJnjumGmwZ",
+      "flags": {},
+      "type": 0,
+      "text": "Selvagem",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.IZohCckJnjumGmwZ"
+    },
+    {
+      "_id": "PWafehAKhufzpeto",
+      "flags": {},
+      "type": 0,
+      "text": "Obediente",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.PWafehAKhufzpeto"
+    },
+    {
+      "_id": "TQN2sm0GDwgSTKqc",
+      "flags": {},
+      "type": 0,
+      "text": "Cuidadoso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.TQN2sm0GDwgSTKqc"
+    },
+    {
+      "_id": "BXbL5kmwZCF7pw2D",
+      "flags": {},
+      "type": 0,
+      "text": "Terrivel",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.BXbL5kmwZCF7pw2D"
+    },
+    {
+      "_id": "UWhT3qhHNVeQXnCu",
+      "flags": {},
+      "type": 0,
+      "text": "Esperto",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.UWhT3qhHNVeQXnCu"
+    },
+    {
+      "_id": "cyiOSMDcAY427YW1",
+      "flags": {},
+      "type": 0,
+      "text": "Veloz",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.cyiOSMDcAY427YW1"
+    },
+    {
+      "_id": "gXc5f6nMWkawuqMe",
+      "flags": {},
+      "type": 0,
+      "text": "Ousado",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.gXc5f6nMWkawuqMe"
+    },
+    {
+      "_id": "A9Nj1ZeitnDkbQgK",
+      "flags": {},
+      "type": 0,
+      "text": "Valente",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.A9Nj1ZeitnDkbQgK"
+    },
+    {
+      "_id": "zB4tVsfJR5yuAJR0",
+      "flags": {},
+      "type": 0,
+      "text": "Decadente",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.zB4tVsfJR5yuAJR0"
+    },
+    {
+      "_id": "qZXDiGpuWDLsa885",
+      "flags": {},
+      "type": 0,
+      "text": "Admirável",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.qZXDiGpuWDLsa885"
+    },
+    {
+      "_id": "fN9ZU9wQBAhqEJfL",
+      "flags": {},
+      "type": 0,
+      "text": "Dócil",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.fN9ZU9wQBAhqEJfL"
+    },
+    {
+      "_id": "hYvZCaoK7wPiyUfV",
+      "flags": {},
+      "type": 0,
+      "text": "Ferido",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.hYvZCaoK7wPiyUfV"
+    },
+    {
+      "_id": "KlT7XmMmofYg8rR4",
+      "flags": {},
+      "type": 0,
+      "text": "Pequeno",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        21,
+        21
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.KlT7XmMmofYg8rR4"
+    },
+    {
+      "_id": "ADtNVk8mF8bAKaMR",
+      "flags": {},
+      "type": 0,
+      "text": "Brilhante",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        22,
+        22
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.ADtNVk8mF8bAKaMR"
+    },
+    {
+      "_id": "x8Fe4sf0LXMPzXdO",
+      "flags": {},
+      "type": 0,
+      "text": "Jovem",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        23,
+        23
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.x8Fe4sf0LXMPzXdO"
+    },
+    {
+      "_id": "V2gDhXQ97KvvsKGy",
+      "flags": {},
+      "type": 0,
+      "text": "Engenhoso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        24,
+        24
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.V2gDhXQ97KvvsKGy"
+    },
+    {
+      "_id": "cEd2iz8FbxdzKWVq",
+      "flags": {},
+      "type": 0,
+      "text": "Velho",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        25,
+        25
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.cEd2iz8FbxdzKWVq"
+    },
+    {
+      "_id": "60uK6Rujq2I6M4PT",
+      "flags": {},
+      "type": 0,
+      "text": "Furioso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        26,
+        26
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.60uK6Rujq2I6M4PT"
+    },
+    {
+      "_id": "MMkDIjVCfZCHMn1X",
+      "flags": {},
+      "type": 0,
+      "text": "Elegante",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        27,
+        27
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.MMkDIjVCfZCHMn1X"
+    },
+    {
+      "_id": "xmsdFQZsrMZG78pu",
+      "flags": {},
+      "type": 0,
+      "text": "Nobre",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        28,
+        28
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.xmsdFQZsrMZG78pu"
+    },
+    {
+      "_id": "yzhywprCD2nvgT3c",
+      "flags": {},
+      "type": 0,
+      "text": "Arrojado",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        29,
+        29
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.yzhywprCD2nvgT3c"
+    },
+    {
+      "_id": "4N5H6QJaA5cZqkMU",
+      "flags": {},
+      "type": 0,
+      "text": "Calmo",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        30,
+        30
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.4N5H6QJaA5cZqkMU"
+    },
+    {
+      "_id": "VWpWFNEHLZprve5W",
+      "flags": {},
+      "type": 0,
+      "text": "Apático",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        31,
+        31
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.VWpWFNEHLZprve5W"
+    },
+    {
+      "_id": "Z4wpcRm6kJIH53rv",
+      "flags": {},
+      "type": 0,
+      "text": "Bruto",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        32,
+        32
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.Z4wpcRm6kJIH53rv"
+    },
+    {
+      "_id": "zGcZbXi1vL5z7sm8",
+      "flags": {},
+      "type": 0,
+      "text": "Atlético",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        33,
+        33
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.zGcZbXi1vL5z7sm8"
+    },
+    {
+      "_id": "CapbdNaPbTNC1gXA",
+      "flags": {},
+      "type": 0,
+      "text": "Saudável",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        34,
+        34
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.CapbdNaPbTNC1gXA"
+    },
+    {
+      "_id": "LYy3PWC9XmZSfS60",
+      "flags": {},
+      "type": 0,
+      "text": "dos Infernos",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        35,
+        35
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.LYy3PWC9XmZSfS60"
+    },
+    {
+      "_id": "u0YScKzY35w0y6YL",
+      "flags": {},
+      "type": 0,
+      "text": "Convincente",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        36,
+        36
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.u0YScKzY35w0y6YL"
+    },
+    {
+      "_id": "5MOsyTyuVjTJtHr1",
+      "flags": {},
+      "type": 0,
+      "text": "Egoísta",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        37,
+        37
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.5MOsyTyuVjTJtHr1"
+    },
+    {
+      "_id": "diAz2nHwvHVfbVM5",
+      "flags": {},
+      "type": 0,
+      "text": "Cavalheiro",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        38,
+        38
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.diAz2nHwvHVfbVM5"
+    },
+    {
+      "_id": "nRuQbVL5bIjz7rQr",
+      "flags": {},
+      "type": 0,
+      "text": "Sábio",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        39,
+        39
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.nRuQbVL5bIjz7rQr"
+    },
+    {
+      "_id": "jhYS6mWsU8tWtFjZ",
+      "flags": {},
+      "type": 0,
+      "text": "Inápto",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        40,
+        40
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.jhYS6mWsU8tWtFjZ"
+    },
+    {
+      "_id": "g9CtCIQyXYzqejkh",
+      "flags": {},
+      "type": 0,
+      "text": "Maldito",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        41,
+        41
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.g9CtCIQyXYzqejkh"
+    },
+    {
+      "_id": "rgb32ohCK0MVC2ow",
+      "flags": {},
+      "type": 0,
+      "text": "Malandro",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        42,
+        42
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.rgb32ohCK0MVC2ow"
+    },
+    {
+      "_id": "ng2w8SY6arlri3Mz",
+      "flags": {},
+      "type": 0,
+      "text": "Sorrateiro",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        43,
+        43
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.ng2w8SY6arlri3Mz"
+    },
+    {
+      "_id": "NA1cwKzNo09rz2Q5",
+      "flags": {},
+      "type": 0,
+      "text": "Traiçoeiro",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        44,
+        44
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.NA1cwKzNo09rz2Q5"
+    },
+    {
+      "_id": "dwqFWM2TNrhurqNw",
+      "flags": {},
+      "type": 0,
+      "text": "Violento",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        45,
+        45
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.dwqFWM2TNrhurqNw"
+    },
+    {
+      "_id": "DGJcjuzDg5N3IPmu",
+      "flags": {},
+      "type": 0,
+      "text": "Confiante",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        46,
+        46
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.DGJcjuzDg5N3IPmu"
+    },
+    {
+      "_id": "emmxUIpLs6Nl7pH5",
+      "flags": {},
+      "type": 0,
+      "text": "Corajoso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        47,
+        47
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.emmxUIpLs6Nl7pH5"
+    },
+    {
+      "_id": "RiDBZLoN9I0aD3na",
+      "flags": {},
+      "type": 0,
+      "text": "Medroso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        48,
+        48
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.RiDBZLoN9I0aD3na"
+    },
+    {
+      "_id": "C77VyK0zCunSCXaN",
+      "flags": {},
+      "type": 0,
+      "text": "Habilidoso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        49,
+        49
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.C77VyK0zCunSCXaN"
+    },
+    {
+      "_id": "t9akrrDuS8cYj4qf",
+      "flags": {},
+      "type": 0,
+      "text": "Desastrado",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        50,
+        50
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.t9akrrDuS8cYj4qf"
+    },
+    {
+      "_id": "tGq21zPCQlkMMLMu",
+      "flags": {},
+      "type": 0,
+      "text": "Confuso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        51,
+        51
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.tGq21zPCQlkMMLMu"
+    },
+    {
+      "_id": "sc7ja6elOm3XoG0h",
+      "flags": {},
+      "type": 0,
+      "text": "Sonolento",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        52,
+        52
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.sc7ja6elOm3XoG0h"
+    },
+    {
+      "_id": "im5z47eYViyBf2J3",
+      "flags": {},
+      "type": 0,
+      "text": "Desafiador",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        53,
+        53
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.im5z47eYViyBf2J3"
+    },
+    {
+      "_id": "TFSKjTTnPC7vMH3g",
+      "flags": {},
+      "type": 0,
+      "text": "Cruel",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        54,
+        54
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.TFSKjTTnPC7vMH3g"
+    },
+    {
+      "_id": "nRTcwMXwefBSzjTo",
+      "flags": {},
+      "type": 0,
+      "text": "Protetor",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        55,
+        55
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.nRTcwMXwefBSzjTo"
+    },
+    {
+      "_id": "ecQQmhXdRIFiDNyS",
+      "flags": {},
+      "type": 0,
+      "text": "Paranoico",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        56,
+        56
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.ecQQmhXdRIFiDNyS"
+    },
+    {
+      "_id": "2BxGWPJE9GKhZEXC",
+      "flags": {},
+      "type": 0,
+      "text": "Fiel",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        57,
+        57
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.2BxGWPJE9GKhZEXC"
+    },
+    {
+      "_id": "8ZruBBgc16vS1uXh",
+      "flags": {},
+      "type": 0,
+      "text": "Leal",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        58,
+        58
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.8ZruBBgc16vS1uXh"
+    },
+    {
+      "_id": "WKI7MiYaaKjpAnLF",
+      "flags": {},
+      "type": 0,
+      "text": "Esperançoso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        59,
+        59
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.WKI7MiYaaKjpAnLF"
+    },
+    {
+      "_id": "Jtg2ioNKmHEEw5td",
+      "flags": {},
+      "type": 0,
+      "text": "Desconfiado",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        60,
+        60
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.Jtg2ioNKmHEEw5td"
+    },
+    {
+      "_id": "ZiF2ErBzj2FE1kJp",
+      "flags": {},
+      "type": 0,
+      "text": "Distrído",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        61,
+        61
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.ZiF2ErBzj2FE1kJp"
+    },
+    {
+      "_id": "QbJdq1cuaiuxxJuW",
+      "flags": {},
+      "type": 0,
+      "text": "Furtivo",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        62,
+        62
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.QbJdq1cuaiuxxJuW"
+    },
+    {
+      "_id": "3kgPYNmZovyapmdJ",
+      "flags": {},
+      "type": 0,
+      "text": "Estúpido",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        63,
+        63
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.3kgPYNmZovyapmdJ"
+    },
+    {
+      "_id": "TtqMz87zI1ysFY3H",
+      "flags": {},
+      "type": 0,
+      "text": "Grosso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        64,
+        64
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.TtqMz87zI1ysFY3H"
+    },
+    {
+      "_id": "lyJXoz5lm0Wt4ARk",
+      "flags": {},
+      "type": 0,
+      "text": "Majestoso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        65,
+        65
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.lyJXoz5lm0Wt4ARk"
+    },
+    {
+      "_id": "I5wKtJzkWnw98Dan",
+      "flags": {},
+      "type": 0,
+      "text": "Sorridente",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        66,
+        66
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.I5wKtJzkWnw98Dan"
+    },
+    {
+      "_id": "oZCwoWA4EpvFnm9l",
+      "flags": {},
+      "type": 0,
+      "text": "Choroso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        67,
+        67
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.oZCwoWA4EpvFnm9l"
+    },
+    {
+      "_id": "08gty7ZaUNKzozW3",
+      "flags": {},
+      "type": 0,
+      "text": "Melindroso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        68,
+        68
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.08gty7ZaUNKzozW3"
+    },
+    {
+      "_id": "feIf5U6F0xw4PGX1",
+      "flags": {},
+      "type": 0,
+      "text": "Confuso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        69,
+        69
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.feIf5U6F0xw4PGX1"
+    },
+    {
+      "_id": "QGa1CGTtombZnZpx",
+      "flags": {},
+      "type": 0,
+      "text": "Belo",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        70,
+        70
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.QGa1CGTtombZnZpx"
+    },
+    {
+      "_id": "LdNC0vtRczpFSKxi",
+      "flags": {},
+      "type": 0,
+      "text": "Indeciso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        71,
+        71
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.LdNC0vtRczpFSKxi"
+    },
+    {
+      "_id": "6zgENvV7OBxdFL2t",
+      "flags": {},
+      "type": 0,
+      "text": "Fedido",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        72,
+        72
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.6zgENvV7OBxdFL2t"
+    },
+    {
+      "_id": "RCVVPGmwTYpxlQK2",
+      "flags": {},
+      "type": 0,
+      "text": "Cheiroso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        73,
+        73
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.RCVVPGmwTYpxlQK2"
+    },
+    {
+      "_id": "36f30E4ik7vktPrb",
+      "flags": {},
+      "type": 0,
+      "text": "Alegre",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        74,
+        74
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.36f30E4ik7vktPrb"
+    },
+    {
+      "_id": "StKzvRyqErUdWp18",
+      "flags": {},
+      "type": 0,
+      "text": "Mentiroso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        75,
+        75
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.StKzvRyqErUdWp18"
+    },
+    {
+      "_id": "iE9R37eKYF3FkSb0",
+      "flags": {},
+      "type": 0,
+      "text": "Honrado",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        76,
+        76
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.iE9R37eKYF3FkSb0"
+    },
+    {
+      "_id": "FRl2W9UmB0DgABHL",
+      "flags": {},
+      "type": 0,
+      "text": "Virtuoso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        77,
+        77
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.FRl2W9UmB0DgABHL"
+    },
+    {
+      "_id": "q8ADpwElwLL24aAd",
+      "flags": {},
+      "type": 0,
+      "text": "Simpático",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        78,
+        78
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.q8ADpwElwLL24aAd"
+    },
+    {
+      "_id": "YQKb1phoIbtvu9EM",
+      "flags": {},
+      "type": 0,
+      "text": "Simplório",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        79,
+        79
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.YQKb1phoIbtvu9EM"
+    },
+    {
+      "_id": "NtF0JDIxyO9dTucx",
+      "flags": {},
+      "type": 0,
+      "text": "Gostoso",
+      "img": "icons/svg/d20-black.svg",
+      "weight": 1,
+      "range": [
+        80,
+        80
+      ],
+      "drawn": false,
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.NtF0JDIxyO9dTucx"
+    },
+    {
+      "_id": "I0wvUmiYNwcQr9GJ",
+      "type": 0,
+      "text": "Musical",
+      "weight": 1,
+      "range": [
+        81,
+        81
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.I0wvUmiYNwcQr9GJ"
+    },
+    {
+      "_id": "z4aFUOUcpDkX8vIg",
+      "type": 0,
+      "text": "Impiedoso",
+      "weight": 1,
+      "range": [
+        82,
+        82
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.z4aFUOUcpDkX8vIg"
+    },
+    {
+      "_id": "ehbVrYIVO2i8KN7p",
+      "type": 0,
+      "text": "Engraçado",
+      "weight": 1,
+      "range": [
+        83,
+        83
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.ehbVrYIVO2i8KN7p"
+    },
+    {
+      "_id": "6gHDVcljbIcJ6Y84",
+      "type": 0,
+      "text": "Extrovertido",
+      "weight": 1,
+      "range": [
+        84,
+        84
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.6gHDVcljbIcJ6Y84"
+    },
+    {
+      "_id": "FhfjzldcsA4FeCXG",
+      "type": 0,
+      "text": "Introvertido",
+      "weight": 1,
+      "range": [
+        85,
+        85
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.FhfjzldcsA4FeCXG"
+    },
+    {
+      "_id": "gcNJR7frtb67fI7V",
+      "type": 0,
+      "text": "Julgador",
+      "weight": 1,
+      "range": [
+        86,
+        86
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.gcNJR7frtb67fI7V"
+    },
+    {
+      "_id": "57FEWticUodDs2Xs",
+      "type": 0,
+      "text": "Sentimental",
+      "weight": 1,
+      "range": [
+        87,
+        87
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.57FEWticUodDs2Xs"
+    },
+    {
+      "_id": "TcMDpH29xBJERgzR",
+      "type": 0,
+      "text": "Observador",
+      "weight": 1,
+      "range": [
+        88,
+        88
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.TcMDpH29xBJERgzR"
+    },
+    {
+      "_id": "dvupTbmx4ATGD1SJ",
+      "type": 0,
+      "text": "Intuitivo",
+      "weight": 1,
+      "range": [
+        89,
+        89
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.dvupTbmx4ATGD1SJ"
+    },
+    {
+      "_id": "TioOIgRudAj7ZTwo",
+      "type": 0,
+      "text": "Assertivo",
+      "weight": 1,
+      "range": [
+        90,
+        90
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.TioOIgRudAj7ZTwo"
+    },
+    {
+      "_id": "arqbqWS3DLDRbqnN",
+      "type": 0,
+      "text": "Turbulento",
+      "weight": 1,
+      "range": [
+        91,
+        91
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.arqbqWS3DLDRbqnN"
+    },
+    {
+      "_id": "HZxlAoyjLtHiWpoc",
+      "type": 0,
+      "text": "Insano",
+      "weight": 1,
+      "range": [
+        92,
+        92
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.HZxlAoyjLtHiWpoc"
+    },
+    {
+      "_id": "HufYrt5xT7i8jre3",
+      "type": 0,
+      "text": "Maldito",
+      "weight": 1,
+      "range": [
+        93,
+        93
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.HufYrt5xT7i8jre3"
+    },
+    {
+      "_id": "UsiRTBVD4HRJEfwF",
+      "type": 0,
+      "text": "Peludo",
+      "weight": 1,
+      "range": [
+        94,
+        94
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.UsiRTBVD4HRJEfwF"
+    },
+    {
+      "_id": "1duZbQ3iT4eJsth7",
+      "type": 0,
+      "text": "Gordo",
+      "weight": 1,
+      "range": [
+        95,
+        95
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.1duZbQ3iT4eJsth7"
+    },
+    {
+      "_id": "YcmXCBB9V36jYsVH",
+      "type": 0,
+      "text": "Magro",
+      "weight": 1,
+      "range": [
+        96,
+        96
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.YcmXCBB9V36jYsVH"
+    },
+    {
+      "_id": "ykSeRhMhA5D9g1GQ",
+      "type": 0,
+      "text": "Leal",
+      "weight": 1,
+      "range": [
+        97,
+        97
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.ykSeRhMhA5D9g1GQ"
+    },
+    {
+      "_id": "svgTvLOsJJzv3voY",
+      "type": 0,
+      "text": "Caótico",
+      "weight": 1,
+      "range": [
+        98,
+        98
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.svgTvLOsJJzv3voY"
+    },
+    {
+      "_id": "BxMwBmwEDl2gIRpL",
+      "type": 0,
+      "text": "Veloz",
+      "weight": 1,
+      "range": [
+        99,
+        99
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.BxMwBmwEDl2gIRpL"
+    },
+    {
+      "_id": "g0ubG37LZIGryfGY",
+      "type": 0,
+      "text": "Aventureiro",
+      "weight": 1,
+      "range": [
+        100,
+        100
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.g0ubG37LZIGryfGY"
+    },
+    {
+      "_id": "tPbP0HaxT1mcCD3O",
+      "type": 0,
+      "text": "Agitado",
+      "weight": 1,
+      "range": [
+        101,
+        101
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.tPbP0HaxT1mcCD3O"
+    },
+    {
+      "_id": "TcHLLNaBGdEDnGrI",
+      "type": 0,
+      "text": "Vesgo",
+      "weight": 1,
+      "range": [
+        102,
+        102
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.TcHLLNaBGdEDnGrI"
+    },
+    {
+      "_id": "5jZXFKv8J47pUzYV",
+      "type": 0,
+      "text": "Ambicioso",
+      "weight": 1,
+      "range": [
+        103,
+        103
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.5jZXFKv8J47pUzYV"
+    },
+    {
+      "_id": "zIdYD9qSAOnW6ada",
+      "type": 0,
+      "text": "Charmoso",
+      "weight": 1,
+      "range": [
+        104,
+        104
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.zIdYD9qSAOnW6ada"
+    },
+    {
+      "_id": "t1YfeiapkWWXGkId",
+      "type": 0,
+      "text": "Albino",
+      "weight": 1,
+      "range": [
+        105,
+        105
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.t1YfeiapkWWXGkId"
+    },
+    {
+      "_id": "pt02hvTsLZPyegsk",
+      "type": 0,
+      "text": "Caolho",
+      "weight": 1,
+      "range": [
+        106,
+        106
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.pt02hvTsLZPyegsk"
+    },
+    {
+      "_id": "j60X3iHdizBt4J8H",
+      "type": 0,
+      "text": "Macho",
+      "weight": 1,
+      "range": [
+        107,
+        107
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.j60X3iHdizBt4J8H"
+    },
+    {
+      "_id": "m9zJFDnW7Tw4qOzf",
+      "type": 0,
+      "text": "Fêmea",
+      "weight": 1,
+      "range": [
+        108,
+        108
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.m9zJFDnW7Tw4qOzf"
+    },
+    {
+      "_id": "L368UTtGWzhYCCZu",
+      "type": 0,
+      "text": "Ferido",
+      "weight": 1,
+      "range": [
+        109,
+        109
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.L368UTtGWzhYCCZu"
+    },
+    {
+      "_id": "bnJ4VqQ5niHH1E8P",
+      "type": 0,
+      "text": "Cabeçudo",
+      "weight": 1,
+      "range": [
+        110,
+        110
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.bnJ4VqQ5niHH1E8P"
+    },
+    {
+      "_id": "bZYNM7fsE804nlRD",
+      "type": 0,
+      "text": "De Bigode",
+      "weight": 1,
+      "range": [
+        111,
+        111
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.bZYNM7fsE804nlRD"
+    },
+    {
+      "_id": "C7qh8I7A41422rpL",
+      "type": 0,
+      "text": "De Moicano",
+      "weight": 1,
+      "range": [
+        112,
+        112
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.C7qh8I7A41422rpL"
+    },
+    {
+      "_id": "PinsMW2o53mRqO7W",
+      "type": 0,
+      "text": "Cabeludo",
+      "weight": 1,
+      "range": [
+        113,
+        113
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.PinsMW2o53mRqO7W"
+    },
+    {
+      "_id": "LwSLxN2MdvdYPucq",
+      "type": 0,
+      "text": "Careca",
+      "weight": 1,
+      "range": [
+        114,
+        114
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.LwSLxN2MdvdYPucq"
+    },
+    {
+      "_id": "bGSJjgr4h5xdrIuD",
+      "type": 0,
+      "text": "Musculoso",
+      "weight": 1,
+      "range": [
+        115,
+        115
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.bGSJjgr4h5xdrIuD"
+    },
+    {
+      "_id": "PwUPnDBq65QXLwIY",
+      "type": 0,
+      "text": "Civilizado",
+      "weight": 1,
+      "range": [
+        116,
+        116
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.PwUPnDBq65QXLwIY"
+    },
+    {
+      "_id": "7ohCaeoAJojkydbp",
+      "type": 0,
+      "text": "Frio",
+      "weight": 1,
+      "range": [
+        117,
+        117
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.7ohCaeoAJojkydbp"
+    },
+    {
+      "_id": "GjpJHBqClhWlqbDM",
+      "type": 0,
+      "text": "Confuso",
+      "weight": 1,
+      "range": [
+        118,
+        118
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.GjpJHBqClhWlqbDM"
+    },
+    {
+      "_id": "M0ba7Wt7earxbdAT",
+      "type": 0,
+      "text": "Dançante",
+      "weight": 1,
+      "range": [
+        119,
+        119
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.M0ba7Wt7earxbdAT"
+    },
+    {
+      "_id": "JQbcUGO1nE4ILU25",
+      "type": 0,
+      "text": "Baixinho",
+      "weight": 1,
+      "range": [
+        120,
+        120
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.JQbcUGO1nE4ILU25"
+    },
+    {
+      "_id": "1jeaLFzXcTeEhFmb",
+      "type": 0,
+      "text": "Estranho",
+      "weight": 1,
+      "range": [
+        121,
+        121
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.1jeaLFzXcTeEhFmb"
+    },
+    {
+      "_id": "EvVlOXjFcHeFoczj",
+      "type": 0,
+      "text": "Bizarro",
+      "weight": 1,
+      "range": [
+        122,
+        122
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.EvVlOXjFcHeFoczj"
+    },
+    {
+      "_id": "LxSY4MwzzECl18ZV",
+      "type": 0,
+      "text": "Trevoso",
+      "weight": 1,
+      "range": [
+        123,
+        123
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.LxSY4MwzzECl18ZV"
+    },
+    {
+      "_id": "6mqABrDKZ37C2bMp",
+      "type": 0,
+      "text": "Discreto",
+      "weight": 1,
+      "range": [
+        124,
+        124
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.6mqABrDKZ37C2bMp"
+    },
+    {
+      "_id": "fwI3JahkAjyXECmj",
+      "type": 0,
+      "text": "Embriagado",
+      "weight": 1,
+      "range": [
+        125,
+        125
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.fwI3JahkAjyXECmj"
+    },
+    {
+      "_id": "prm3rQypUg3EY8Hi",
+      "type": 0,
+      "text": "Emotivo",
+      "weight": 1,
+      "range": [
+        126,
+        126
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.prm3rQypUg3EY8Hi"
+    },
+    {
+      "_id": "OdLkqrk0jE9b9BDL",
+      "type": 0,
+      "text": "Gago",
+      "weight": 1,
+      "range": [
+        127,
+        127
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.OdLkqrk0jE9b9BDL"
+    },
+    {
+      "_id": "yDun9W7e2K1x97Jm",
+      "type": 0,
+      "text": "Bem Vestido",
+      "weight": 1,
+      "range": [
+        128,
+        128
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.yDun9W7e2K1x97Jm"
+    },
+    {
+      "_id": "6FxO2khux6yrguDF",
+      "type": 0,
+      "text": "Bonitona",
+      "weight": 1,
+      "range": [
+        129,
+        129
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.6FxO2khux6yrguDF"
+    },
+    {
+      "_id": "Dgzvo164cm316wck",
+      "type": 0,
+      "text": "Queimado",
+      "weight": 1,
+      "range": [
+        130,
+        130
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.Dgzvo164cm316wck"
+    },
+    {
+      "_id": "7SXs0YlX9mLLjifN",
+      "type": 0,
+      "text": "Com Cicatriz",
+      "weight": 1,
+      "range": [
+        131,
+        131
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.7SXs0YlX9mLLjifN"
+    },
+    {
+      "_id": "8NfFOJmuryHoBs9o",
+      "type": 0,
+      "text": "Heróico",
+      "weight": 1,
+      "range": [
+        132,
+        132
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.8NfFOJmuryHoBs9o"
+    },
+    {
+      "_id": "LJQAuIlnZtobVlvf",
+      "type": 0,
+      "text": "Vilanesco",
+      "weight": 1,
+      "range": [
+        133,
+        133
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.LJQAuIlnZtobVlvf"
+    },
+    {
+      "_id": "27IuMzWnz5q6FrIt",
+      "type": 0,
+      "text": "Recruta",
+      "weight": 1,
+      "range": [
+        134,
+        134
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.27IuMzWnz5q6FrIt"
+    },
+    {
+      "_id": "gd8gO6gF28mSSIQJ",
+      "type": 0,
+      "text": "Soldado",
+      "weight": 1,
+      "range": [
+        135,
+        135
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.gd8gO6gF28mSSIQJ"
+    },
+    {
+      "_id": "862kr6GfpTdczIgV",
+      "type": 0,
+      "text": "Comandante",
+      "weight": 1,
+      "range": [
+        136,
+        136
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.862kr6GfpTdczIgV"
+    },
+    {
+      "_id": "3tNnAfGlvHn5OejF",
+      "type": 0,
+      "text": "Capitão",
+      "weight": 1,
+      "range": [
+        137,
+        137
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.3tNnAfGlvHn5OejF"
+    },
+    {
+      "_id": "ZyDWDsbZGlsmx3cU",
+      "type": 0,
+      "text": "Tático",
+      "weight": 1,
+      "range": [
+        138,
+        138
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.ZyDWDsbZGlsmx3cU"
+    },
+    {
+      "_id": "KDiWNRFMbjYvL8qk",
+      "type": 0,
+      "text": "Estratégico",
+      "weight": 1,
+      "range": [
+        139,
+        139
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.KDiWNRFMbjYvL8qk"
+    },
+    {
+      "_id": "8TAqTDDBPJptk51c",
+      "type": 0,
+      "text": "Língua Presa",
+      "weight": 1,
+      "range": [
+        140,
+        140
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.8TAqTDDBPJptk51c"
+    },
+    {
+      "_id": "RrmxONPW8glK2Hx1",
+      "type": 0,
+      "text": "Religioso",
+      "weight": 1,
+      "range": [
+        141,
+        141
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.RrmxONPW8glK2Hx1"
+    },
+    {
+      "_id": "xJoY7q4HduwhgSVA",
+      "type": 0,
+      "text": "Trêmulo",
+      "weight": 1,
+      "range": [
+        142,
+        142
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.xJoY7q4HduwhgSVA"
+    },
+    {
+      "_id": "njQ17blC7Tj7GBD6",
+      "type": 0,
+      "text": "Lunático",
+      "weight": 1,
+      "range": [
+        143,
+        143
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.njQ17blC7Tj7GBD6"
+    },
+    {
+      "_id": "dR0C9sx1qk2r5gAd",
+      "type": 0,
+      "text": "Maluco",
+      "weight": 1,
+      "range": [
+        144,
+        144
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.dR0C9sx1qk2r5gAd"
+    },
+    {
+      "_id": "GtJ2CzUg0z9cS5om",
+      "type": 0,
+      "text": "Possesso",
+      "weight": 1,
+      "range": [
+        145,
+        145
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.GtJ2CzUg0z9cS5om"
+    },
+    {
+      "_id": "lge9PDlzNWOP1fai",
+      "type": 0,
+      "text": "Trabalhador",
+      "weight": 1,
+      "range": [
+        146,
+        146
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.lge9PDlzNWOP1fai"
+    },
+    {
+      "_id": "PGS9tjQWNeCbMprL",
+      "type": 0,
+      "text": "Másculo",
+      "weight": 1,
+      "range": [
+        147,
+        147
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.PGS9tjQWNeCbMprL"
+    },
+    {
+      "_id": "M5Qj95MbFHUvdDZK",
+      "type": 0,
+      "text": "Chad",
+      "weight": 1,
+      "range": [
+        148,
+        148
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.M5Qj95MbFHUvdDZK"
+    },
+    {
+      "_id": "myeY58nTnmbzw93k",
+      "type": 0,
+      "text": "Estressado",
+      "weight": 1,
+      "range": [
+        149,
+        149
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.myeY58nTnmbzw93k"
+    },
+    {
+      "_id": "tk2bEI0qUT9t7vCl",
+      "type": 0,
+      "text": "Doente",
+      "weight": 1,
+      "range": [
+        150,
+        150
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.tk2bEI0qUT9t7vCl"
+    },
+    {
+      "_id": "bvHWaldTTCTtIiZu",
+      "type": 0,
+      "text": "Sujo",
+      "weight": 1,
+      "range": [
+        151,
+        151
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.bvHWaldTTCTtIiZu"
+    },
+    {
+      "_id": "2834tVX89LQR00pD",
+      "type": 0,
+      "text": "Manco",
+      "weight": 1,
+      "range": [
+        152,
+        152
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.2834tVX89LQR00pD"
+    },
+    {
+      "_id": "s9YvM18dSY5dAmiv",
+      "type": 0,
+      "text": "Desfigurado",
+      "weight": 1,
+      "range": [
+        153,
+        153
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.s9YvM18dSY5dAmiv"
+    },
+    {
+      "_id": "H89QSlbtk9KdgabS",
+      "type": 0,
+      "text": "Maneta",
+      "weight": 1,
+      "range": [
+        154,
+        154
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.H89QSlbtk9KdgabS"
+    },
+    {
+      "_id": "V8EtLYmlekADnh9k",
+      "type": 0,
+      "text": "Perneta",
+      "weight": 1,
+      "range": [
+        155,
+        155
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.V8EtLYmlekADnh9k"
+    },
+    {
+      "_id": "CU1xzwMJNo6uenfG",
+      "type": 0,
+      "text": "Baixinho",
+      "weight": 1,
+      "range": [
+        156,
+        156
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.CU1xzwMJNo6uenfG"
+    },
+    {
+      "_id": "LxzYhxPijfH3AstA",
+      "type": 0,
+      "text": "Corcunda",
+      "weight": 1,
+      "range": [
+        157,
+        157
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.LxzYhxPijfH3AstA"
+    },
+    {
+      "_id": "tr5YVmDfdOz7FAma",
+      "type": 0,
+      "text": "Imbecil",
+      "weight": 1,
+      "range": [
+        158,
+        158
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.tr5YVmDfdOz7FAma"
+    },
+    {
+      "_id": "CUq5X1732g76hfFx",
+      "type": 0,
+      "text": "Horroroso",
+      "weight": 1,
+      "range": [
+        159,
+        159
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.CUq5X1732g76hfFx"
+    },
+    {
+      "_id": "ekSclwpzEw7RfGkH",
+      "type": 0,
+      "text": "Animalesco",
+      "weight": 1,
+      "range": [
+        160,
+        160
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.ekSclwpzEw7RfGkH"
+    },
+    {
+      "_id": "QTygW04PLAydH0YJ",
+      "type": 0,
+      "text": "Monstruoso",
+      "weight": 1,
+      "range": [
+        161,
+        161
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.QTygW04PLAydH0YJ"
+    },
+    {
+      "_id": "LlZ9s06Z5Dayu4wI",
+      "type": 0,
+      "text": "Gigantesco",
+      "weight": 1,
+      "range": [
+        162,
+        162
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.LlZ9s06Z5Dayu4wI"
+    },
+    {
+      "_id": "yOh5jFgjYw275vdq",
+      "type": 0,
+      "text": "Canhoto",
+      "weight": 1,
+      "range": [
+        163,
+        163
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.yOh5jFgjYw275vdq"
+    },
+    {
+      "_id": "ulrmyEaVhTHGOqIR",
+      "type": 0,
+      "text": "Arrumado",
+      "weight": 1,
+      "range": [
+        164,
+        164
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.ulrmyEaVhTHGOqIR"
+    },
+    {
+      "_id": "aMaryZdf4GMpSwXY",
+      "type": 0,
+      "text": "Místico",
+      "weight": 1,
+      "range": [
+        165,
+        165
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.aMaryZdf4GMpSwXY"
+    },
+    {
+      "_id": "DpsNxAnMqquFzSCl",
+      "type": 0,
+      "text": "Guloso",
+      "weight": 1,
+      "range": [
+        166,
+        166
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.DpsNxAnMqquFzSCl"
+    },
+    {
+      "_id": "H3fwVXEfwTFSlp5E",
+      "type": 0,
+      "text": "Preguiçoso",
+      "weight": 1,
+      "range": [
+        167,
+        167
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.H3fwVXEfwTFSlp5E"
+    },
+    {
+      "_id": "KnJOVBtUlWK31Ahc",
+      "type": 0,
+      "text": "Irado",
+      "weight": 1,
+      "range": [
+        168,
+        168
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.KnJOVBtUlWK31Ahc"
+    },
+    {
+      "_id": "THOLQAeOkkcWX0YY",
+      "type": 0,
+      "text": "Paciente",
+      "weight": 1,
+      "range": [
+        169,
+        169
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.THOLQAeOkkcWX0YY"
+    },
+    {
+      "_id": "FOv82Unc7AG8wBbU",
+      "type": 0,
+      "text": "Invejoso",
+      "weight": 1,
+      "range": [
+        170,
+        170
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.FOv82Unc7AG8wBbU"
+    },
+    {
+      "_id": "RN3mBCGshwxTtFAx",
+      "type": 0,
+      "text": "Orgulhoso",
+      "weight": 1,
+      "range": [
+        171,
+        171
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.RN3mBCGshwxTtFAx"
+    },
+    {
+      "_id": "CB7jkNWJB0X0nRFA",
+      "type": 0,
+      "text": "Cínico",
+      "weight": 1,
+      "range": [
+        172,
+        172
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.CB7jkNWJB0X0nRFA"
+    },
+    {
+      "_id": "1SvaYEoVajb8jpUV",
+      "type": 0,
+      "text": "Enganoso",
+      "weight": 1,
+      "range": [
+        173,
+        173
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.1SvaYEoVajb8jpUV"
+    },
+    {
+      "_id": "Qd1oxVvVSdDrnSMD",
+      "type": 0,
+      "text": "Erudito",
+      "weight": 1,
+      "range": [
+        174,
+        174
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.Qd1oxVvVSdDrnSMD"
+    },
+    {
+      "_id": "fv7268l5b4kft2vN",
+      "type": 0,
+      "text": "Tímido",
+      "weight": 1,
+      "range": [
+        175,
+        175
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.fv7268l5b4kft2vN"
+    },
+    {
+      "_id": "PiXVYpTkz73KIsZn",
+      "type": 0,
+      "text": "Pesado",
+      "weight": 1,
+      "range": [
+        176,
+        176
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.PiXVYpTkz73KIsZn"
+    },
+    {
+      "_id": "dUx9CKtRyjlaACCo",
+      "type": 0,
+      "text": "Zeloso",
+      "weight": 1,
+      "range": [
+        177,
+        177
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.dUx9CKtRyjlaACCo"
+    },
+    {
+      "_id": "UT187tirZyY2zE7t",
+      "type": 0,
+      "text": "Líder",
+      "weight": 1,
+      "range": [
+        178,
+        178
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.UT187tirZyY2zE7t"
+    },
+    {
+      "_id": "6AYMsdqd2zqOBG0T",
+      "type": 0,
+      "text": "Chefe",
+      "weight": 1,
+      "range": [
+        179,
+        179
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.6AYMsdqd2zqOBG0T"
+    },
+    {
+      "_id": "nqrSb7eyqlFd1QO1",
+      "type": 0,
+      "text": "Falador",
+      "weight": 1,
+      "range": [
+        180,
+        180
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.nqrSb7eyqlFd1QO1"
+    },
+    {
+      "_id": "kNvvEq1D6IDB3iV8",
+      "type": 0,
+      "text": "Canibal",
+      "weight": 1,
+      "range": [
+        181,
+        181
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.kNvvEq1D6IDB3iV8"
+    },
+    {
+      "_id": "QgJWDM1H0aDEmpoK",
+      "type": 0,
+      "text": "Eunuco",
+      "weight": 1,
+      "range": [
+        182,
+        182
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.QgJWDM1H0aDEmpoK"
+    },
+    {
+      "_id": "SIJpVLOg3wWBSLZs",
+      "type": 0,
+      "text": "Insistente",
+      "weight": 1,
+      "range": [
+        183,
+        183
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.SIJpVLOg3wWBSLZs"
+    },
+    {
+      "_id": "c49o4N6BWflHkaow",
+      "type": 0,
+      "text": "Vingativo",
+      "weight": 1,
+      "range": [
+        184,
+        184
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.c49o4N6BWflHkaow"
+    },
+    {
+      "_id": "GkKLLik4TloWTRtT",
+      "type": 0,
+      "text": "Melancólico",
+      "weight": 1,
+      "range": [
+        185,
+        185
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.GkKLLik4TloWTRtT"
+    },
+    {
+      "_id": "wMLojMuI401VC0fE",
+      "type": 0,
+      "text": "Bagunceiro",
+      "weight": 1,
+      "range": [
+        186,
+        186
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.wMLojMuI401VC0fE"
+    },
+    {
+      "_id": "94jagpNjMQ30uS9t",
+      "type": 0,
+      "text": "Culpado",
+      "weight": 1,
+      "range": [
+        187,
+        187
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.94jagpNjMQ30uS9t"
+    },
+    {
+      "_id": "I9rz6J9l4ZsIZKDw",
+      "type": 0,
+      "text": "Mandão",
+      "weight": 1,
+      "range": [
+        188,
+        188
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.I9rz6J9l4ZsIZKDw"
+    },
+    {
+      "_id": "tktHCPFeC9fCqzZD",
+      "type": 0,
+      "text": "Exibido",
+      "weight": 1,
+      "range": [
+        189,
+        189
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.tktHCPFeC9fCqzZD"
+    },
+    {
+      "_id": "tlkAmoekZl8FsGSl",
+      "type": 0,
+      "text": "Vacilão",
+      "weight": 1,
+      "range": [
+        190,
+        190
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.tlkAmoekZl8FsGSl"
+    },
+    {
+      "_id": "tL4tV6DJecY7rHMp",
+      "type": 0,
+      "text": "Encapetado",
+      "weight": 1,
+      "range": [
+        191,
+        191
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.tL4tV6DJecY7rHMp"
+    },
+    {
+      "_id": "ZsPojYehy4hzeiSC",
+      "type": 0,
+      "text": "Monocelha",
+      "weight": 1,
+      "range": [
+        192,
+        192
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.ZsPojYehy4hzeiSC"
+    },
+    {
+      "_id": "4eCKtvLzCd9Fqer4",
+      "type": 0,
+      "text": "Criminoso",
+      "weight": 1,
+      "range": [
+        193,
+        193
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.4eCKtvLzCd9Fqer4"
+    },
+    {
+      "_id": "h9uxLr7AoimV0u1L",
+      "type": 0,
+      "text": "Misterioso",
+      "weight": 1,
+      "range": [
+        194,
+        194
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.h9uxLr7AoimV0u1L"
+    },
+    {
+      "_id": "M5WbDkPgjcmM3wxX",
+      "type": 0,
+      "text": "Focado",
+      "weight": 1,
+      "range": [
+        195,
+        195
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.M5WbDkPgjcmM3wxX"
+    },
+    {
+      "_id": "4iJuPtwfwtf4Behm",
+      "type": 0,
+      "text": "Poderoso",
+      "weight": 1,
+      "range": [
+        196,
+        196
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.4iJuPtwfwtf4Behm"
+    },
+    {
+      "_id": "La6Ciei4QLRhdJNc",
+      "type": 0,
+      "text": "Vigoroso",
+      "weight": 1,
+      "range": [
+        197,
+        197
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.La6Ciei4QLRhdJNc"
+    },
+    {
+      "_id": "xBfIiOUKkBBU87qS",
+      "type": 0,
+      "text": "Perigoso",
+      "weight": 1,
+      "range": [
+        198,
+        198
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.xBfIiOUKkBBU87qS"
+    },
+    {
+      "_id": "1t6hotB4LOGB4Jsy",
+      "type": 0,
+      "text": "Irritante",
+      "weight": 1,
+      "range": [
+        199,
+        199
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.1t6hotB4LOGB4Jsy"
+    },
+    {
+      "_id": "uAsai9lrZVtTKyoo",
+      "type": 0,
+      "text": "Marcado",
+      "weight": 1,
+      "range": [
+        200,
+        200
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null,
+      "_key": "!tables.results!V7AqF84KsZt56rC6.uAsai9lrZVtTKyoo"
+    }
+  ],
+  "formula": "1d200",
+  "replacement": true,
+  "displayRoll": false,
+  "_key": "!tables!V7AqF84KsZt56rC6"
+}

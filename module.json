@@ -16,18 +16,14 @@
   ],
   "url": "https://github.com/Moerill/token-mold",
   "bugs": "https://github.com/Moerill/token-mold/issues",
-  "version": "2.22.3",
+  "version": "2.23.1",
   "compatibility": {
-    "minimum": "12",
-    "verified": "12",
-    "maximum": "12"
+    "minimum": "13",
+    "verified": "13",
+    "maximum": "13"
   },
-  "esmodules": [
-    "scripts/index.js"
-  ],
-  "styles": [
-    "token-mold.css"
-  ],
+  "esmodules": ["scripts/index.js"],
+  "styles": ["token-mold.css"],
   "languages": [
     {
       "lang": "en",
@@ -61,12 +57,12 @@
       "name": "adjectives",
       "label": "Adjectives",
       "module": "token-mold",
-      "path": "assets/adjectives.db",
+      "path": "assets/adjectives",
       "type": "RollTable",
       "private": false
     }
   ],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/Moerill/token-mold/master/module.json",
-  "download": "https://github.com/Moerill/token-mold/releases/download/v2.22.3/v2.22.3.zip"
+  "download": "https://github.com/Moerill/token-mold/releases/download/v2.23.1/v2.23.1.zip"
 }

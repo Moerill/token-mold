@@ -1,67 +1,94 @@
+# v2.23.1
+
+- Updated to support DnD5e 5.x and Foundry v13
+- Dropped support for Foundry v12
+- Complete rewrite from FormApplication to ApplicationV2 with HandlebarsApplicationMixin
+- Enhanced code organization with better separation of concerns
+- Updated UI styling to match Foundry's default appearance with minimal custom CSS
+- Streamlined adjective table selection to only display TokenMold tables
+- Lint/Prettier are working again.
+- Restructuring HTML templates into separate HBS files per tab for better organization
+- Added JSON source for rollable tables. Removed nedb. Updated leveldb.
+- And many more...
+
 # v2.22.3
+
 - Split up files into smaller files
 - Rename the duplicate 'data' members into separate names for readability (created form, consts, and log js files)
 - Fix config override for: vision, mirroring, and scale
 - 'Temporarily' remove "Hold Shift to override name" as shift-drag doesn't work
 
 # v2.22.2
+
 - Fix exception on 'base'
 - Fix exception on promise when no hp formula
 - Fix localization of hover titles in configuration
 - Maybe fixed default overlay
 
 # v2.22.1
+
 - Supporting v12 required removing v11 support.
 
 # v2.22.0
+
 - Updated to support Foundry v12
-   - NOTE: Due to V12 no longer supporing synchronous dice rolling HP are now set post token creation. That means you'll see the HP change displayed briefly (a small number with the delta will float over the token for a moment).
+  - NOTE: Due to V12 no longer supporing synchronous dice rolling HP are now set post token creation. That means you'll see the HP change displayed briefly (a small number with the delta will float over the token for a moment).
 - The code for the adjective table has been simplified. That might mean the table you previously select to choose adjectives from got reset.
 
 # v2.21.0
+
 - Updated to support DnD5e 3.x and Foundry v11
 - Dropped support for Foundry V9 and V10
 
 # v2.20.3
- - Corrected bug that prevented refresh tokens from functioning ( [[#181](https://github.com/Moerill/token-mold/issues/181)])
+
+- Corrected bug that prevented refresh tokens from functioning ( [[#181](https://github.com/Moerill/token-mold/issues/181)])
 
 # V2.20.2
- - Corrected bug where certain systems define types of Actors not meant to be instantiated, breaking DocumentClass reading ( [#176](https://github.com/Moerill/token-mold/issues/176) )
+
+- Corrected bug where certain systems define types of Actors not meant to be instantiated, breaking DocumentClass reading ( [#176](https://github.com/Moerill/token-mold/issues/176) )
 
 # v2.20.1
- - Corrected bug with HP not rolling correctly ( [#173](https://github.com/Moerill/token-mold/issues/173)) )
+
+- Corrected bug with HP not rolling correctly ( [#173](https://github.com/Moerill/token-mold/issues/173)) )
 
 # v2.20.0
- - Foundry v11 Compatibility Update ( [#167](https://github.com/Moerill/token-mold/issues/167))
- - Corrected bug that caused Token Mold to conflict with other modules due to overwriting certain data within the token ([#150](https://github.com/Moerill/token-mold/issues/150))
- - Corrected issue where bar attributes were being retrieved from the base Token Document, causing a problem if that document was overriden by the system ([#160](https://github.com/Moerill/token-mold/issues/160))
+
+- Foundry v11 Compatibility Update ( [#167](https://github.com/Moerill/token-mold/issues/167))
+- Corrected bug that caused Token Mold to conflict with other modules due to overwriting certain data within the token ([#150](https://github.com/Moerill/token-mold/issues/150))
+- Corrected issue where bar attributes were being retrieved from the base Token Document, causing a problem if that document was overriden by the system ([#160](https://github.com/Moerill/token-mold/issues/160))
 
 # v2.15.4
- - Adjusted resolutions to #137 & #138
- - Corrected an issue where refreshing selected tokens was causing a circular reference error ( [#141](https://github.com/Moerill/token-mold/issues/141) ).
- - Corrected an issue where the overlay could get disabled in certain cirucmstances ( [#51](https://github.com/Moerill/token-mold/issues/51) )
+
+- Adjusted resolutions to #137 & #138
+- Corrected an issue where refreshing selected tokens was causing a circular reference error ( [#141](https://github.com/Moerill/token-mold/issues/141) ).
+- Corrected an issue where the overlay could get disabled in certain cirucmstances ( [#51](https://github.com/Moerill/token-mold/issues/51) )
 
 # v2.15.3
- - Corrected an issue where a conflict with certain game systems such as PF2E and a core Foundry v10 method that Token Mold utilizes could cause an infinite recursion error.  ( Issue #138)
- - Corrected an issue where overlays may not get displayed due in Foundry v10 due to deprecated data retrieval methods ( Issue #137 )
- - Added a new option to enable or disable the overlay for Linked Tokens ( Issue # 134 )
+
+- Corrected an issue where a conflict with certain game systems such as PF2E and a core Foundry v10 method that Token Mold utilizes could cause an infinite recursion error. ( Issue #138)
+- Corrected an issue where overlays may not get displayed due in Foundry v10 due to deprecated data retrieval methods ( Issue #137 )
+- Added a new option to enable or disable the overlay for Linked Tokens ( Issue # 134 )
 
 # v2.15.2
- - ***IMPORTANT*** Token Mold no longer supports v8 of Foundry.
- - FoundryVTT v10 Compatibility Update!
- - Updated Portugese adjectives, thanks to @Kingdorugha!
- - **Fix** Scaling issue with scenes that have large grid units
- - **Fix** You can no longer configure Token Mold to completely remove names, resulting in errors
- - **Fix** Updated compendium information
- - Various minor fixes and improvements to logging, updated documentation.
+
+- **_IMPORTANT_** Token Mold no longer supports v8 of Foundry.
+- FoundryVTT v10 Compatibility Update!
+- Updated Portugese adjectives, thanks to @Kingdorugha!
+- **Fix** Scaling issue with scenes that have large grid units
+- **Fix** You can no longer configure Token Mold to completely remove names, resulting in errors
+- **Fix** Updated compendium information
+- Various minor fixes and improvements to logging, updated documentation.
 
 # v2.15.0
+
 - Added support for DCC and SW5E systems, thanks to adotor and burndaflame respectively!
 - Added integration with the Developer Mode module, greatly reducing the clutter in the console log.
 - Corrected the 'compatible core version' as pointed out by Dawidlzydor as Token Mold is currently compatible with all versions of Foundry v9
 - Added option to override name replacement if you hold SHIFT when dragging (with thanks to Kenster421 for this change!)
 
 # v2.14.0
+
 - Geekswordsman is now maintaining Token Mold while Moerill conquers Earth (or at least, IRL stuff!)
 - Added Starfinder to supported systems
 - Merged Spanish localization, with thanks to lozalojo!
