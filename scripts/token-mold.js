@@ -1145,7 +1145,7 @@ export default class TokenMold {
         use: true,
       },
       size: {
-        use: true,
+        use: false,
       },
       config: {
         use: false,
