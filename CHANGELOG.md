@@ -1,3 +1,7 @@
+# v2.23.3
+
+- Enable Foundry v14
+
 # v2.23.2
 
 - Update CSS to scope fa-solid to token-mold
