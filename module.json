@@ -16,9 +16,9 @@
   ],
   "url": "https://github.com/Moerill/token-mold",
   "bugs": "https://github.com/Moerill/token-mold/issues",
-  "version": "2.23.3",
+  "version": "2.24.0",
   "compatibility": {
-    "minimum": "13",
+    "minimum": "14",
     "verified": "14",
     "maximum": "14"
   },
@@ -64,5 +64,5 @@
   ],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/Moerill/token-mold/master/module.json",
-  "download": "https://github.com/Moerill/token-mold/releases/download/v2.23.3/v2.23.3.zip"
+  "download": "https://github.com/Moerill/token-mold/releases/download/v2.24.0/v2.24.0.zip"
 }

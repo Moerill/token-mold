@@ -1,3 +1,8 @@
+# v2.24.0
+
+- Update to Font Awesome 7 Pro to match Foundry v14 stable release.
+- This breaks support for v13, so dropping it.
+
 # v2.23.3
 
 - Enable Foundry v14
