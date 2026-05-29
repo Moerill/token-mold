@@ -5,6 +5,7 @@
 
   "tmold.config.applySettings": "Apply settings to",
   "tmold.config.unlinkedOnly": "unlinked tokens only",
+  "tmold.config.gmsOnly": "Allow module for gms only",
 
   "tmold.config.enableOverlayFor": "Enable Overlay for",
   "tmold.config.linkedTokens": "linked tokens",
